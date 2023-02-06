@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
 
+        // Turn off Dark mode
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        } else {
+            // Fallback on earlier versions
+        }
+
+        window?.rootViewController = HomeScreen()
+        window?.makeKeyAndVisible()
+        
         return true
     }
 }

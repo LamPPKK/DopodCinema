@@ -7,16 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CCD2829912CDD00AE6283 /* HomeScreen.swift */; };
+		998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998CCD2929912CDD00AE6283 /* HomeScreen.xib */; };
 		998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D4334298F54F800B3C5BF /* AppDelegate.swift */; };
-		998D433C298F54F800B3C5BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D433A298F54F800B3C5BF /* Main.storyboard */; };
 		998D433E298F54FA00B3C5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 998D433D298F54FA00B3C5BF /* Assets.xcassets */; };
 		998D4341298F54FA00B3C5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D433F298F54FA00B3C5BF /* LaunchScreen.storyboard */; };
+		B26EA3419ED9632B85979C91 /* Pods_DopodCinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C5252D51EB9543C9BAF822 /* Pods_DopodCinema.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B7BFFDAAC81B9EAA92A9E35 /* Pods-DopodCinema.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DopodCinema.release.xcconfig"; path = "Target Support Files/Pods-DopodCinema/Pods-DopodCinema.release.xcconfig"; sourceTree = "<group>"; };
+		6ACC4E1D88E49D50323C8DD4 /* Pods-DopodCinema.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DopodCinema.debug.xcconfig"; path = "Target Support Files/Pods-DopodCinema/Pods-DopodCinema.debug.xcconfig"; sourceTree = "<group>"; };
+		90C5252D51EB9543C9BAF822 /* Pods_DopodCinema.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DopodCinema.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		998CCD2829912CDD00AE6283 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		998CCD2929912CDD00AE6283 /* HomeScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreen.xib; sourceTree = "<group>"; };
 		998D4331298F54F800B3C5BF /* DopodCinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DopodCinema.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		998D4334298F54F800B3C5BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		998D433B298F54F800B3C5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		998D433D298F54FA00B3C5BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		998D4340298F54FA00B3C5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		998D4342298F54FA00B3C5BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -27,17 +33,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B26EA3419ED9632B85979C91 /* Pods_DopodCinema.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		998CCD2629912C4000AE6283 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				998D433D298F54FA00B3C5BF /* Assets.xcassets */,
+				998D433F298F54FA00B3C5BF /* LaunchScreen.storyboard */,
+				998D4342298F54FA00B3C5BF /* Info.plist */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		998CCD2729912C8100AE6283 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				998CCD2C29912CE200AE6283 /* Home */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		998CCD2C29912CE200AE6283 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				998CCD2829912CDD00AE6283 /* HomeScreen.swift */,
+				998CCD2929912CDD00AE6283 /* HomeScreen.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		998D4328298F54F800B3C5BF = {
 			isa = PBXGroup;
 			children = (
 				998D4333298F54F800B3C5BF /* DopodCinema */,
 				998D4332298F54F800B3C5BF /* Products */,
+				A9B64C94833591E079704652 /* Pods */,
+				9A3AC5A033B3580301643657 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,11 +88,9 @@
 		998D4333298F54F800B3C5BF /* DopodCinema */ = {
 			isa = PBXGroup;
 			children = (
+				998CCD2729912C8100AE6283 /* Module */,
+				998CCD2629912C4000AE6283 /* SupportFiles */,
 				998D4348298F557500B3C5BF /* Application */,
-				998D433A298F54F800B3C5BF /* Main.storyboard */,
-				998D433D298F54FA00B3C5BF /* Assets.xcassets */,
-				998D433F298F54FA00B3C5BF /* LaunchScreen.storyboard */,
-				998D4342298F54FA00B3C5BF /* Info.plist */,
 			);
 			path = DopodCinema;
 			sourceTree = "<group>";
@@ -69,6 +103,24 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		9A3AC5A033B3580301643657 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90C5252D51EB9543C9BAF822 /* Pods_DopodCinema.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9B64C94833591E079704652 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6ACC4E1D88E49D50323C8DD4 /* Pods-DopodCinema.debug.xcconfig */,
+				5B7BFFDAAC81B9EAA92A9E35 /* Pods-DopodCinema.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -76,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 998D4345298F54FA00B3C5BF /* Build configuration list for PBXNativeTarget "DopodCinema" */;
 			buildPhases = (
+				247956883EC86383EC144C03 /* [CP] Check Pods Manifest.lock */,
 				998D432D298F54F800B3C5BF /* Sources */,
 				998D432E298F54F800B3C5BF /* Frameworks */,
 				998D432F298F54F800B3C5BF /* Resources */,
+				F15D61D4E3E361F452E16E5C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,19 +181,62 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */,
 				998D4341298F54FA00B3C5BF /* LaunchScreen.storyboard in Resources */,
 				998D433E298F54FA00B3C5BF /* Assets.xcassets in Resources */,
-				998D433C298F54F800B3C5BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		247956883EC86383EC144C03 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DopodCinema-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F15D61D4E3E361F452E16E5C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DopodCinema/Pods-DopodCinema-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DopodCinema/Pods-DopodCinema-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DopodCinema/Pods-DopodCinema-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		998D432D298F54F800B3C5BF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
 				998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +244,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		998D433A298F54F800B3C5BF /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				998D433B298F54F800B3C5BF /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		998D433F298F54FA00B3C5BF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +371,7 @@
 		};
 		998D4346298F54FA00B3C5BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ACC4E1D88E49D50323C8DD4 /* Pods-DopodCinema.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -289,10 +379,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DopodCinema/Info.plist;
+				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -314,6 +403,7 @@
 		};
 		998D4347298F54FA00B3C5BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B7BFFDAAC81B9EAA92A9E35 /* Pods-DopodCinema.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -321,10 +411,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DopodCinema/Info.plist;
+				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
