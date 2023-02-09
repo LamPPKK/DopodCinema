@@ -12,6 +12,22 @@
 		998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D4334298F54F800B3C5BF /* AppDelegate.swift */; };
 		998D433E298F54FA00B3C5BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 998D433D298F54FA00B3C5BF /* Assets.xcassets */; };
 		998D4341298F54FA00B3C5BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 998D433F298F54FA00B3C5BF /* LaunchScreen.storyboard */; };
+		99A6A9FB2992953600D3EEEF /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6A9F92992953600D3EEEF /* MovieViewController.swift */; };
+		99A6A9FC2992953600D3EEEF /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A6A9FA2992953600D3EEEF /* MovieViewController.xib */; };
+		99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6A9FE2992964700D3EEEF /* HomePageViewController.swift */; };
+		99BACD61299543B700762A3E /* BaseHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD60299543B700762A3E /* BaseHeaderView.swift */; };
+		99BACD63299543C500762A3E /* BaseHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BACD62299543C500762A3E /* BaseHeaderView.xib */; };
+		99BACD65299544B600762A3E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD64299544B600762A3E /* Constant.swift */; };
+		99BACD682995452000762A3E /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD672995452000762A3E /* Then.swift */; };
+		99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD69299545CC00762A3E /* BaseViewController.swift */; };
+		99BACD6C299547B500762A3E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD6B299547B500762A3E /* UIColor+Extension.swift */; };
+		99BACD6F2995489500762A3E /* TVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD6D2995489500762A3E /* TVViewController.swift */; };
+		99BACD702995489500762A3E /* TVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BACD6E2995489500762A3E /* TVViewController.xib */; };
+		99BACD732995495200762A3E /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD712995495200762A3E /* FavoriteViewController.swift */; };
+		99BACD742995495200762A3E /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BACD722995495200762A3E /* FavoriteViewController.xib */; };
+		99BACD7729954A0300762A3E /* ShowTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD7529954A0300762A3E /* ShowTimeViewController.swift */; };
+		99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BACD7629954A0300762A3E /* ShowTimeViewController.xib */; };
+		99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD7A29954B1400762A3E /* UIView+Extension.swift */; };
 		B26EA3419ED9632B85979C91 /* Pods_DopodCinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C5252D51EB9543C9BAF822 /* Pods_DopodCinema.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +42,22 @@
 		998D433D298F54FA00B3C5BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		998D4340298F54FA00B3C5BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		998D4342298F54FA00B3C5BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99A6A9F92992953600D3EEEF /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		99A6A9FA2992953600D3EEEF /* MovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
+		99A6A9FE2992964700D3EEEF /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		99BACD60299543B700762A3E /* BaseHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHeaderView.swift; sourceTree = "<group>"; };
+		99BACD62299543C500762A3E /* BaseHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseHeaderView.xib; sourceTree = "<group>"; };
+		99BACD64299544B600762A3E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		99BACD672995452000762A3E /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		99BACD69299545CC00762A3E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		99BACD6B299547B500762A3E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		99BACD6D2995489500762A3E /* TVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewController.swift; sourceTree = "<group>"; };
+		99BACD6E2995489500762A3E /* TVViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVViewController.xib; sourceTree = "<group>"; };
+		99BACD712995495200762A3E /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		99BACD722995495200762A3E /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		99BACD7529954A0300762A3E /* ShowTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeViewController.swift; sourceTree = "<group>"; };
+		99BACD7629954A0300762A3E /* ShowTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTimeViewController.xib; sourceTree = "<group>"; };
+		99BACD7A29954B1400762A3E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +85,10 @@
 		998CCD2729912C8100AE6283 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				99A6A9F82992936F00D3EEEF /* ShowTime */,
+				99A6A9F72992936500D3EEEF /* Favorite */,
+				99A6A9F62992935F00D3EEEF /* TV */,
+				99A6A9F52992935A00D3EEEF /* Movie */,
 				998CCD2C29912CE200AE6283 /* Home */,
 			);
 			path = Module;
@@ -61,6 +97,7 @@
 		998CCD2C29912CE200AE6283 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				99A6A9FD2992961500D3EEEF /* SubView */,
 				998CCD2829912CDD00AE6283 /* HomeScreen.swift */,
 				998CCD2929912CDD00AE6283 /* HomeScreen.xib */,
 			);
@@ -88,6 +125,7 @@
 		998D4333298F54F800B3C5BF /* DopodCinema */ = {
 			isa = PBXGroup;
 			children = (
+				99BACD5E2995430700762A3E /* Common */,
 				998CCD2729912C8100AE6283 /* Module */,
 				998CCD2629912C4000AE6283 /* SupportFiles */,
 				998D4348298F557500B3C5BF /* Application */,
@@ -101,6 +139,80 @@
 				998D4334298F54F800B3C5BF /* AppDelegate.swift */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		99A6A9F52992935A00D3EEEF /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				99A6A9F92992953600D3EEEF /* MovieViewController.swift */,
+				99A6A9FA2992953600D3EEEF /* MovieViewController.xib */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
+		99A6A9F62992935F00D3EEEF /* TV */ = {
+			isa = PBXGroup;
+			children = (
+				99BACD6D2995489500762A3E /* TVViewController.swift */,
+				99BACD6E2995489500762A3E /* TVViewController.xib */,
+			);
+			path = TV;
+			sourceTree = "<group>";
+		};
+		99A6A9F72992936500D3EEEF /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				99BACD712995495200762A3E /* FavoriteViewController.swift */,
+				99BACD722995495200762A3E /* FavoriteViewController.xib */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		99A6A9F82992936F00D3EEEF /* ShowTime */ = {
+			isa = PBXGroup;
+			children = (
+				99BACD7529954A0300762A3E /* ShowTimeViewController.swift */,
+				99BACD7629954A0300762A3E /* ShowTimeViewController.xib */,
+			);
+			path = ShowTime;
+			sourceTree = "<group>";
+		};
+		99A6A9FD2992961500D3EEEF /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				99A6A9FE2992964700D3EEEF /* HomePageViewController.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
+		99BACD5E2995430700762A3E /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				99BACD662995450400762A3E /* Extensions */,
+				99BACD5F2995435400762A3E /* View */,
+				99BACD64299544B600762A3E /* Constant.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		99BACD5F2995435400762A3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99BACD60299543B700762A3E /* BaseHeaderView.swift */,
+				99BACD62299543C500762A3E /* BaseHeaderView.xib */,
+				99BACD69299545CC00762A3E /* BaseViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		99BACD662995450400762A3E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				99BACD672995452000762A3E /* Then.swift */,
+				99BACD6B299547B500762A3E /* UIColor+Extension.swift */,
+				99BACD7A29954B1400762A3E /* UIView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9A3AC5A033B3580301643657 /* Frameworks */ = {
@@ -117,7 +229,6 @@
 				6ACC4E1D88E49D50323C8DD4 /* Pods-DopodCinema.debug.xcconfig */,
 				5B7BFFDAAC81B9EAA92A9E35 /* Pods-DopodCinema.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -181,9 +292,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BACD63299543C500762A3E /* BaseHeaderView.xib in Resources */,
 				998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */,
+				99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */,
 				998D4341298F54FA00B3C5BF /* LaunchScreen.storyboard in Resources */,
+				99BACD742995495200762A3E /* FavoriteViewController.xib in Resources */,
 				998D433E298F54FA00B3C5BF /* Assets.xcassets in Resources */,
+				99BACD702995489500762A3E /* TVViewController.xib in Resources */,
+				99A6A9FC2992953600D3EEEF /* MovieViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,8 +352,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99BACD732995495200762A3E /* FavoriteViewController.swift in Sources */,
+				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
+				99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
+				99BACD6F2995489500762A3E /* TVViewController.swift in Sources */,
 				998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */,
+				99BACD6C299547B500762A3E /* UIColor+Extension.swift in Sources */,
+				99A6A9FB2992953600D3EEEF /* MovieViewController.swift in Sources */,
+				99BACD61299543B700762A3E /* BaseHeaderView.swift in Sources */,
+				99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */,
+				99BACD65299544B600762A3E /* Constant.swift in Sources */,
+				99BACD7729954A0300762A3E /* ShowTimeViewController.swift in Sources */,
+				99BACD682995452000762A3E /* Then.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

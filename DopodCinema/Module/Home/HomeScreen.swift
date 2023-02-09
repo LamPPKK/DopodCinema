@@ -12,6 +12,8 @@ import RxSwift
 class HomeScreen: UIViewController {
 
     // MARK: - IBOutlets
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private weak var tabbarView: UIView!
     @IBOutlet private weak var movieNavView: UIView!
     @IBOutlet private weak var movieImageView: UIImageView!
     @IBOutlet private weak var movieDotImageView: UIImageView!
@@ -25,17 +27,28 @@ class HomeScreen: UIViewController {
     @IBOutlet private weak var discoveryImageView: UIImageView!
     @IBOutlet private weak var discoveryDotImageView: UIImageView!
     
-    // MARK: - Property
+    // MARK: - Properties
     private let disposeBag = DisposeBag()
+    private var homePageVC: HomePageViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        setAction()
     }
 
     // MARK: - Private functions
     private func setupUI() {
+        
+        setupHomePageVC()
+                
+        tvDotImageView.isHidden = true
+        favDotImageView.isHidden = true
+        discoveryDotImageView.isHidden = true
+    }
+    
+    private func setAction() {
         let tapMovie = UITapGestureRecognizer()
         movieNavView.isUserInteractionEnabled = true
         movieNavView.addGestureRecognizer(tapMovie)
@@ -83,25 +96,33 @@ class HomeScreen: UIViewController {
                 self?.handleTapDiscovery()
             }
             .disposed(by: disposeBag)
-        
-        tvDotImageView.isHidden = true
-        favDotImageView.isHidden = true
-        discoveryDotImageView.isHidden = true
+    }
+    
+    private func setupHomePageVC() {
+        homePageVC = HomePageViewController()
+        homePageVC.view.frame = containerView.bounds
+        addChild(homePageVC)
+        containerView.addSubview(homePageVC.view)
+        homePageVC.didMove(toParent: self)
     }
     
     private func handleTapMovie() {
+        homePageVC.moveToScreen(at: .kMovie)
         handleTap(isActiveMovie: true)
     }
     
     private func handleTapTV() {
+        homePageVC.moveToScreen(at: .kTV)
         handleTap(isActiveTV: true)
     }
     
     private func handleTapFav() {
+        homePageVC.moveToScreen(at: .kFavorite)
         handleTap(isActiveFav: true)
     }
     
     private func handleTapDiscovery() {
+        homePageVC.moveToScreen(at: .kDiscovery)
         handleTap(isActiveDiscovery: true)
     }
     
