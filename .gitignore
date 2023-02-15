@@ -319,3 +319,136 @@ Pods/Target Support Files/RxSwift/RxSwift-umbrella.h
 Pods/Target Support Files/RxSwift/RxSwift.debug.xcconfig
 Pods/Target Support Files/RxSwift/RxSwift.modulemap
 Pods/Target Support Files/RxSwift/RxSwift.release.xcconfig
+Pods/Alamofire/LICENSE
+Pods/Alamofire/README.md
+Pods/Alamofire/Source/AFError.swift
+Pods/Alamofire/Source/Alamofire.swift
+Pods/Alamofire/Source/AlamofireExtended.swift
+Pods/Alamofire/Source/AuthenticationInterceptor.swift
+Pods/Alamofire/Source/CachedResponseHandler.swift
+Pods/Alamofire/Source/Combine.swift
+Pods/Alamofire/Source/Concurrency.swift
+Pods/Alamofire/Source/DispatchQueue+Alamofire.swift
+Pods/Alamofire/Source/EventMonitor.swift
+Pods/Alamofire/Source/HTTPHeaders.swift
+Pods/Alamofire/Source/HTTPMethod.swift
+Pods/Alamofire/Source/MultipartFormData.swift
+Pods/Alamofire/Source/MultipartUpload.swift
+Pods/Alamofire/Source/NetworkReachabilityManager.swift
+Pods/Alamofire/Source/Notifications.swift
+Pods/Alamofire/Source/OperationQueue+Alamofire.swift
+Pods/Alamofire/Source/ParameterEncoder.swift
+Pods/Alamofire/Source/ParameterEncoding.swift
+Pods/Alamofire/Source/Protected.swift
+Pods/Alamofire/Source/RedirectHandler.swift
+Pods/Alamofire/Source/Request.swift
+Pods/Alamofire/Source/RequestInterceptor.swift
+Pods/Alamofire/Source/RequestTaskMap.swift
+Pods/Alamofire/Source/Response.swift
+Pods/Alamofire/Source/ResponseSerialization.swift
+Pods/Alamofire/Source/Result+Alamofire.swift
+Pods/Alamofire/Source/RetryPolicy.swift
+Pods/Alamofire/Source/ServerTrustEvaluation.swift
+Pods/Alamofire/Source/Session.swift
+Pods/Alamofire/Source/SessionDelegate.swift
+Pods/Alamofire/Source/StringEncoding+Alamofire.swift
+Pods/Alamofire/Source/URLConvertible+URLRequestConvertible.swift
+Pods/Alamofire/Source/URLEncodedFormEncoder.swift
+Pods/Alamofire/Source/URLRequest+Alamofire.swift
+Pods/Alamofire/Source/URLSessionConfiguration+Alamofire.swift
+Pods/Alamofire/Source/Validation.swift
+Pods/CryptoSwift/LICENSE
+Pods/CryptoSwift/README.md
+Pods/CryptoSwift/Sources/CryptoSwift/AES.Cryptors.swift
+Pods/CryptoSwift/Sources/CryptoSwift/AES.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Array+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Authenticator.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BatchedCollection.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Bit.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockCipher.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockDecryptor.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockEncryptor.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Blowfish.swift
+Pods/CryptoSwift/Sources/CryptoSwift/CBCMAC.swift
+Pods/CryptoSwift/Sources/CryptoSwift/ChaCha20.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Checksum.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Cipher.swift
+Pods/CryptoSwift/Sources/CryptoSwift/CMAC.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Collection+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/CompactMap.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Cryptor.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Cryptors.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Digest.swift
+Pods/CryptoSwift/Sources/CryptoSwift/DigestType.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Generics.swift
+Pods/CryptoSwift/Sources/CryptoSwift/HKDF.swift
+Pods/CryptoSwift/Sources/CryptoSwift/HMAC.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Int+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/ISO10126Padding.swift
+Pods/CryptoSwift/Sources/CryptoSwift/ISO78164Padding.swift
+Pods/CryptoSwift/Sources/CryptoSwift/MD5.swift
+Pods/CryptoSwift/Sources/CryptoSwift/NoPadding.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Operators.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Padding.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Poly1305.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Rabbit.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Scrypt.swift
+Pods/CryptoSwift/Sources/CryptoSwift/SecureBytes.swift
+Pods/CryptoSwift/Sources/CryptoSwift/SHA1.swift
+Pods/CryptoSwift/Sources/CryptoSwift/SHA2.swift
+Pods/CryptoSwift/Sources/CryptoSwift/SHA3.swift
+Pods/CryptoSwift/Sources/CryptoSwift/StreamDecryptor.swift
+Pods/CryptoSwift/Sources/CryptoSwift/StreamEncryptor.swift
+Pods/CryptoSwift/Sources/CryptoSwift/String+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/UInt128.swift
+Pods/CryptoSwift/Sources/CryptoSwift/UInt16+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/UInt32+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/UInt64+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/UInt8+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Updatable.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Utils.swift
+Pods/CryptoSwift/Sources/CryptoSwift/ZeroPadding.swift
+Pods/CryptoSwift/Sources/CryptoSwift/AEAD/AEAD.swift
+Pods/CryptoSwift/Sources/CryptoSwift/AEAD/AEADChaCha20Poly1305.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/BlockMode.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/BlockModeOptions.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/CBC.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/CCM.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/CFB.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/CipherModeWorker.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/CTR.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/ECB.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/GCM.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/OCB.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/OFB.swift
+Pods/CryptoSwift/Sources/CryptoSwift/BlockMode/PCBC.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/AES+Foundation.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/Array+Foundation.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/Blowfish+Foundation.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/ChaCha20+Foundation.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/Data+Extension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/HMAC+Foundation.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/Rabbit+Foundation.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/String+FoundationExtension.swift
+Pods/CryptoSwift/Sources/CryptoSwift/Foundation/Utils+Foundation.swift
+Pods/CryptoSwift/Sources/CryptoSwift/PKCS/PBKDF1.swift
+Pods/CryptoSwift/Sources/CryptoSwift/PKCS/PBKDF2.swift
+Pods/CryptoSwift/Sources/CryptoSwift/PKCS/PKCS5.swift
+Pods/CryptoSwift/Sources/CryptoSwift/PKCS/PKCS7.swift
+Pods/CryptoSwift/Sources/CryptoSwift/PKCS/PKCS7Padding.swift
+Pods/Pods.xcodeproj/xcuserdata/thengoc.xcuserdatad/xcschemes/Alamofire.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/thengoc.xcuserdatad/xcschemes/CryptoSwift.xcscheme
+Pods/Target Support Files/Alamofire/Alamofire-dummy.m
+Pods/Target Support Files/Alamofire/Alamofire-Info.plist
+Pods/Target Support Files/Alamofire/Alamofire-prefix.pch
+Pods/Target Support Files/Alamofire/Alamofire-umbrella.h
+Pods/Target Support Files/Alamofire/Alamofire.debug.xcconfig
+Pods/Target Support Files/Alamofire/Alamofire.modulemap
+Pods/Target Support Files/Alamofire/Alamofire.release.xcconfig
+Pods/Target Support Files/CryptoSwift/CryptoSwift-dummy.m
+Pods/Target Support Files/CryptoSwift/CryptoSwift-Info.plist
+Pods/Target Support Files/CryptoSwift/CryptoSwift-prefix.pch
+Pods/Target Support Files/CryptoSwift/CryptoSwift-umbrella.h
+Pods/Target Support Files/CryptoSwift/CryptoSwift.debug.xcconfig
+Pods/Target Support Files/CryptoSwift/CryptoSwift.modulemap
+Pods/Target Support Files/CryptoSwift/CryptoSwift.release.xcconfig

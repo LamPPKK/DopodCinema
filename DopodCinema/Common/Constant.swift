@@ -20,4 +20,10 @@ struct Constant {
         static let color97999B: UIColor = UIColor(hexString: "#97999B") ?? UIColor()
         static let colorE3E9ED: UIColor = UIColor(hexString: "#E3E9ED") ?? UIColor()
     }
+    
+    // MARK: - ENCRYPT
+    struct Encrypt {
+        static let SECRET: String = "qZTaO5q5dXbx2H93"
+        static let IV: String = "rvXIufiBtBorrq4w"
+    }
 }

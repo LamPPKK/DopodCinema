@@ -38,6 +38,7 @@
 		9931325C299D186F00AA9E2C /* CategoryHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931325A299D186F00AA9E2C /* CategoryHorizontalCell.swift */; };
 		9931325D299D186F00AA9E2C /* CategoryHorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9931325B299D186F00AA9E2C /* CategoryHorizontalCell.xib */; };
 		9931325F299D1DB600AA9E2C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931325E299D1DB600AA9E2C /* String+Extension.swift */; };
+		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
 		998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CCD2829912CDD00AE6283 /* HomeScreen.swift */; };
 		998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998CCD2929912CDD00AE6283 /* HomeScreen.xib */; };
 		998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998D4334298F54F800B3C5BF /* AppDelegate.swift */; };
@@ -97,6 +98,7 @@
 		9931325A299D186F00AA9E2C /* CategoryHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHorizontalCell.swift; sourceTree = "<group>"; };
 		9931325B299D186F00AA9E2C /* CategoryHorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHorizontalCell.xib; sourceTree = "<group>"; };
 		9931325E299D1DB600AA9E2C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		998CCD2829912CDD00AE6283 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		998CCD2929912CDD00AE6283 /* HomeScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreen.xib; sourceTree = "<group>"; };
 		998D4331298F54F800B3C5BF /* DopodCinema.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DopodCinema.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +192,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		99313260299D27E000AA9E2C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9956659A299D28270068B78F /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		998CCD2629912C4000AE6283 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +255,7 @@
 		998D4333298F54F800B3C5BF /* DopodCinema */ = {
 			isa = PBXGroup;
 			children = (
+				99313260299D27E000AA9E2C /* Network */,
 				99BACD5E2995430700762A3E /* Common */,
 				998CCD2729912C8100AE6283 /* Module */,
 				998CCD2629912C4000AE6283 /* SupportFiles */,
@@ -500,6 +511,7 @@
 			files = (
 				99BACD732995495200762A3E /* FavoriteViewController.swift in Sources */,
 				9931325C299D186F00AA9E2C /* CategoryHorizontalCell.swift in Sources */,
+				9956659B299D28270068B78F /* Network.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
 				99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
