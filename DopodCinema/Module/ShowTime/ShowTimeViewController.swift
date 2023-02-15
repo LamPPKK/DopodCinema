@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShowTimeViewController: BaseViewController {
+class ShowTimeViewController: BaseViewController<MovieViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstrait: NSLayoutConstraint!

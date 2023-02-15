@@ -7,9 +7,10 @@
 
 import UIKit
 
-class BaseViewController: UIViewController {
+class BaseViewController<ViewModel>: UIViewController {
     
     // MARK: - Property
+    var viewModel: ViewModel!
     var headerView: BaseHeaderView?
     
     private var isOfflineSearch: Bool = false

@@ -97,8 +97,7 @@ class BaseHeaderView: UIView {
     private func setupUI(_ textColor: UIColor) {
         self.backgroundColor = .clear
         titleLabel.textColor = textColor
-//        titleLabel.font = UIFont.fontPoppinsBold(withSize: 28)
-        titleLabel.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+        titleLabel.font = UIFont.fontPoppinsBold(withSize: 28)
     }
     
     func setupHeader(withTitle title: String,

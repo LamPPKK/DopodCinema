@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVViewController: BaseViewController {
+class TVViewController: BaseViewController<MovieViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstrait: NSLayoutConstraint!

@@ -31,6 +31,8 @@ class HomePageViewController: UIPageViewController {
     // MARK: - Private functions
     private func setupViewControllers() {
         movieVC = MovieViewController(nibName: "MovieViewController", bundle: nil)
+        movieVC.viewModel = MovieViewModel()
+        
         tvVC = TVViewController(nibName: "TVViewController", bundle: nil)
         favoriteVC = FavoriteViewController(nibName: "FavoriteViewController", bundle: nil)
         showtimeVC = ShowTimeViewController(nibName: "ShowTimeViewController", bundle: nil)

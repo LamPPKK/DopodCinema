@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteViewController: BaseViewController {
+class FavoriteViewController: BaseViewController<MovieViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstrait: NSLayoutConstraint!
