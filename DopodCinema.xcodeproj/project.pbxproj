@@ -38,6 +38,18 @@
 		9931325C299D186F00AA9E2C /* CategoryHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931325A299D186F00AA9E2C /* CategoryHorizontalCell.swift */; };
 		9931325D299D186F00AA9E2C /* CategoryHorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9931325B299D186F00AA9E2C /* CategoryHorizontalCell.xib */; };
 		9931325F299D1DB600AA9E2C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9931325E299D1DB600AA9E2C /* String+Extension.swift */; };
+		993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA17D29A1A7E100C5470B /* NewHorizontallCell.swift */; };
+		993EA18029A1A7E100C5470B /* NewHorizontallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA17E29A1A7E100C5470B /* NewHorizontallCell.xib */; };
+		993EA18329A1A82700C5470B /* NewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA18129A1A82700C5470B /* NewCell.swift */; };
+		993EA18429A1A82700C5470B /* NewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA18229A1A82700C5470B /* NewCell.xib */; };
+		993EA18829A1AE9600C5470B /* ComingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA18629A1AE9600C5470B /* ComingCell.swift */; };
+		993EA18929A1AE9600C5470B /* ComingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA18729A1AE9600C5470B /* ComingCell.xib */; };
+		993EA18C29A1AEBC00C5470B /* ComingHorizontalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA18A29A1AEBC00C5470B /* ComingHorizontalCell.swift */; };
+		993EA18D29A1AEBC00C5470B /* ComingHorizontalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA18B29A1AEBC00C5470B /* ComingHorizontalCell.xib */; };
+		993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA18E29A1B1EC00C5470B /* ActorHorizontallCell.swift */; };
+		993EA19129A1B1EC00C5470B /* ActorHorizontallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA18F29A1B1EC00C5470B /* ActorHorizontallCell.xib */; };
+		993EA19429A1B27300C5470B /* ActorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19229A1B27300C5470B /* ActorCell.swift */; };
+		993EA19529A1B27300C5470B /* ActorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA19329A1B27300C5470B /* ActorCell.xib */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
 		998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CCD2829912CDD00AE6283 /* HomeScreen.swift */; };
 		998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998CCD2929912CDD00AE6283 /* HomeScreen.xib */; };
@@ -98,6 +110,18 @@
 		9931325A299D186F00AA9E2C /* CategoryHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHorizontalCell.swift; sourceTree = "<group>"; };
 		9931325B299D186F00AA9E2C /* CategoryHorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryHorizontalCell.xib; sourceTree = "<group>"; };
 		9931325E299D1DB600AA9E2C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		993EA17D29A1A7E100C5470B /* NewHorizontallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHorizontallCell.swift; sourceTree = "<group>"; };
+		993EA17E29A1A7E100C5470B /* NewHorizontallCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewHorizontallCell.xib; sourceTree = "<group>"; };
+		993EA18129A1A82700C5470B /* NewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCell.swift; sourceTree = "<group>"; };
+		993EA18229A1A82700C5470B /* NewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewCell.xib; sourceTree = "<group>"; };
+		993EA18629A1AE9600C5470B /* ComingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingCell.swift; sourceTree = "<group>"; };
+		993EA18729A1AE9600C5470B /* ComingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComingCell.xib; sourceTree = "<group>"; };
+		993EA18A29A1AEBC00C5470B /* ComingHorizontalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingHorizontalCell.swift; sourceTree = "<group>"; };
+		993EA18B29A1AEBC00C5470B /* ComingHorizontalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComingHorizontalCell.xib; sourceTree = "<group>"; };
+		993EA18E29A1B1EC00C5470B /* ActorHorizontallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorHorizontallCell.swift; sourceTree = "<group>"; };
+		993EA18F29A1B1EC00C5470B /* ActorHorizontallCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorHorizontallCell.xib; sourceTree = "<group>"; };
+		993EA19229A1B27300C5470B /* ActorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCell.swift; sourceTree = "<group>"; };
+		993EA19329A1B27300C5470B /* ActorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorCell.xib; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		998CCD2829912CDD00AE6283 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		998CCD2929912CDD00AE6283 /* HomeScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreen.xib; sourceTree = "<group>"; };
@@ -165,6 +189,18 @@
 				99313257299B904900AA9E2C /* CategoryCell.xib */,
 				9931325A299D186F00AA9E2C /* CategoryHorizontalCell.swift */,
 				9931325B299D186F00AA9E2C /* CategoryHorizontalCell.xib */,
+				993EA17D29A1A7E100C5470B /* NewHorizontallCell.swift */,
+				993EA17E29A1A7E100C5470B /* NewHorizontallCell.xib */,
+				993EA18129A1A82700C5470B /* NewCell.swift */,
+				993EA18229A1A82700C5470B /* NewCell.xib */,
+				993EA18629A1AE9600C5470B /* ComingCell.swift */,
+				993EA18729A1AE9600C5470B /* ComingCell.xib */,
+				993EA18A29A1AEBC00C5470B /* ComingHorizontalCell.swift */,
+				993EA18B29A1AEBC00C5470B /* ComingHorizontalCell.xib */,
+				993EA18E29A1B1EC00C5470B /* ActorHorizontallCell.swift */,
+				993EA18F29A1B1EC00C5470B /* ActorHorizontallCell.xib */,
+				993EA19229A1B27300C5470B /* ActorCell.swift */,
+				993EA19329A1B27300C5470B /* ActorCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -439,21 +475,27 @@
 				998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */,
 				99313253299B7D6A00AA9E2C /* Inter-Regular.ttf in Resources */,
 				99313247299B7A0700AA9E2C /* Poppins-Medium.otf in Resources */,
+				993EA18029A1A7E100C5470B /* NewHorizontallCell.xib in Resources */,
 				99313242299B7A0700AA9E2C /* SF-Pro-Text-Italic.otf in Resources */,
 				9931325D299D186F00AA9E2C /* CategoryHorizontalCell.xib in Resources */,
 				99313248299B7A0700AA9E2C /* SF-UI-Display-Semibold.otf in Resources */,
 				99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */,
+				993EA19129A1B1EC00C5470B /* ActorHorizontallCell.xib in Resources */,
 				9931324E299B7A0700AA9E2C /* SF-Pro-Text-Semibold.otf in Resources */,
 				99313259299B904900AA9E2C /* CategoryCell.xib in Resources */,
 				9931324F299B7A0700AA9E2C /* SF-Pro-Text-Medium.otf in Resources */,
+				993EA19529A1B27300C5470B /* ActorCell.xib in Resources */,
 				99313246299B7A0700AA9E2C /* SF-Pro-Display-Medium.otf in Resources */,
 				9931324A299B7A0700AA9E2C /* SF-Pro-Display-Semibold.otf in Resources */,
 				998D4341298F54FA00B3C5BF /* LaunchScreen.storyboard in Resources */,
 				99BACD742995495200762A3E /* FavoriteViewController.xib in Resources */,
+				993EA18429A1A82700C5470B /* NewCell.xib in Resources */,
 				9931324C299B7A0700AA9E2C /* SF-Pro-Text-Bold.otf in Resources */,
 				998D433E298F54FA00B3C5BF /* Assets.xcassets in Resources */,
+				993EA18D29A1AEBC00C5470B /* ComingHorizontalCell.xib in Resources */,
 				99313245299B7A0700AA9E2C /* SF-Pro-Display-Bold.otf in Resources */,
 				9931324D299B7A0700AA9E2C /* Poppins-Bold.otf in Resources */,
+				993EA18929A1AE9600C5470B /* ComingCell.xib in Resources */,
 				99BACD702995489500762A3E /* TVViewController.xib in Resources */,
 				99313244299B7A0700AA9E2C /* SF-Pro-Display-Regular.otf in Resources */,
 				99A6A9FC2992953600D3EEEF /* MovieViewController.xib in Resources */,
@@ -512,13 +554,16 @@
 				99BACD732995495200762A3E /* FavoriteViewController.swift in Sources */,
 				9931325C299D186F00AA9E2C /* CategoryHorizontalCell.swift in Sources */,
 				9956659B299D28270068B78F /* Network.swift in Sources */,
+				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
 				99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
 				9931322D299B6CA200AA9E2C /* HeaderCell.swift in Sources */,
 				99142F9F299A867E00E7BA3D /* HomeRoute.swift in Sources */,
 				99BACD6F2995489500762A3E /* TVViewController.swift in Sources */,
+				993EA18329A1A82700C5470B /* NewCell.swift in Sources */,
 				99142F9C299A779D00E7BA3D /* MovieViewModel.swift in Sources */,
+				993EA18C29A1AEBC00C5470B /* ComingHorizontalCell.swift in Sources */,
 				9931322A299B67DE00AA9E2C /* MovieViewController+TableView.swift in Sources */,
 				998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */,
 				99BACD6C299547B500762A3E /* UIColor+Extension.swift in Sources */,
@@ -526,8 +571,11 @@
 				99A6A9FB2992953600D3EEEF /* MovieViewController.swift in Sources */,
 				99BACD61299543B700762A3E /* BaseHeaderView.swift in Sources */,
 				99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */,
+				993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */,
 				99313231299B703000AA9E2C /* TimesCell.swift in Sources */,
 				99BACD65299544B600762A3E /* Constant.swift in Sources */,
+				993EA19429A1B27300C5470B /* ActorCell.swift in Sources */,
+				993EA18829A1AE9600C5470B /* ComingCell.swift in Sources */,
 				99BACD7729954A0300762A3E /* ShowTimeViewController.swift in Sources */,
 				99313258299B904900AA9E2C /* CategoryCell.swift in Sources */,
 				99BACD682995452000762A3E /* Then.swift in Sources */,

@@ -53,6 +53,15 @@ extension MovieViewController: UITableViewDataSource {
         case .times:
             return timesCellFor(tableView)
             
+        case .new:
+            return newHorizontallCellFor(tableView)
+            
+        case .coming:
+            return comingHorizontallCellFor(tableView)
+            
+        case .actor:
+            return actorHorizontallCellFor(tableView)
+            
         default:
             return UITableViewCell()
         }
@@ -78,6 +87,21 @@ extension MovieViewController: UITableViewDataSource {
         let timesCell = tableView.dequeueReusableCell(withIdentifier: TimesCellIdentity) as! TimesCell
         return timesCell
     }
+    
+    private func newHorizontallCellFor(_ tableView: UITableView) -> NewHorizontallCell {
+        let newHorizontallCell = tableView.dequeueReusableCell(withIdentifier: NewHorizontallCellIdentity) as! NewHorizontallCell
+        return newHorizontallCell
+    }
+    
+    private func comingHorizontallCellFor(_ tableView: UITableView) -> ComingHorizontalCell {
+        let comingHorizontalCell = tableView.dequeueReusableCell(withIdentifier: ComingHorizontalCellIdentity) as! ComingHorizontalCell
+        return comingHorizontalCell
+    }
+    
+    private func actorHorizontallCellFor(_ tableView: UITableView) -> ActorHorizontallCell {
+        let actorHorizontallCell = tableView.dequeueReusableCell(withIdentifier: ActorHorizontallCellIdentity) as! ActorHorizontallCell
+        return actorHorizontallCell
+    }
 }
 
 extension MovieViewController: UITableViewDelegate {
@@ -92,7 +116,7 @@ extension MovieViewController: UITableViewDelegate {
         case .times:
             return 156
             
-        case .headerCategory, .headerPopular, .headerNew, .headerComing, .headerActor, .category:
+        case .headerCategory, .headerPopular, .headerNew, .headerComing, .headerActor, .category, .new, .coming, .actor:
             return UITableView.automaticDimension
             
         default:

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ActorCell" customModule="DopodCinema" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="139" height="175"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="139" height="175"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBS-eg-BMP">
+                        <rect key="frame" x="0.0" y="0.0" width="139" height="175"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_actor_ex" translatesAutoresizingMaskIntoConstraints="NO" id="Oap-gr-HXf">
+                                <rect key="frame" x="0.0" y="0.0" width="139" height="139"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="dEJ-6W-pJi"/>
+                                    <constraint firstAttribute="width" secondItem="Oap-gr-HXf" secondAttribute="height" multiplier="1:1" id="ksF-l9-Lkg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97w-Eo-WPQ">
+                                <rect key="frame" x="8" y="147" width="123" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="97w-Eo-WPQ" firstAttribute="leading" secondItem="QBS-eg-BMP" secondAttribute="leading" constant="8" id="A24-jp-Qtr"/>
+                            <constraint firstAttribute="bottom" secondItem="97w-Eo-WPQ" secondAttribute="bottom" id="A6n-0H-2hM"/>
+                            <constraint firstItem="Oap-gr-HXf" firstAttribute="leading" secondItem="QBS-eg-BMP" secondAttribute="leading" id="BMv-rm-3ua"/>
+                            <constraint firstAttribute="trailing" secondItem="97w-Eo-WPQ" secondAttribute="trailing" constant="8" id="UYg-Do-x0B"/>
+                            <constraint firstAttribute="trailing" secondItem="Oap-gr-HXf" secondAttribute="trailing" id="cbr-tv-h8a"/>
+                            <constraint firstItem="Oap-gr-HXf" firstAttribute="top" secondItem="QBS-eg-BMP" secondAttribute="top" id="fhI-2A-u8M"/>
+                            <constraint firstItem="97w-Eo-WPQ" firstAttribute="top" secondItem="Oap-gr-HXf" secondAttribute="bottom" constant="8" id="jeF-EM-nCd"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="QBS-eg-BMP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Nvd-JS-T1T"/>
+                <constraint firstAttribute="trailing" secondItem="QBS-eg-BMP" secondAttribute="trailing" id="eHE-Nk-eV8"/>
+                <constraint firstItem="QBS-eg-BMP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="tQv-EQ-Vvg"/>
+                <constraint firstAttribute="bottom" secondItem="QBS-eg-BMP" secondAttribute="bottom" id="vSq-07-xG0"/>
+            </constraints>
+            <size key="customSize" width="152" height="263"/>
+            <connections>
+                <outlet property="actorImageView" destination="Oap-gr-HXf" id="e3x-Wr-zKd"/>
+                <outlet property="nameLabel" destination="97w-Eo-WPQ" id="6Hr-Py-L8B"/>
+            </connections>
+            <point key="canvasLocation" x="6.1068702290076331" y="94.718309859154928"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_actor_ex" width="139" height="139.33332824707031"/>
+    </resources>
+</document>

@@ -22,6 +22,9 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     let PopularCellIdentity: String = "PopularCell"
     let HeaderCellIdentity: String = "HeaderCell"
     let TimesCellIdentity: String = "TimesCell"
+    let NewHorizontallCellIdentity: String = "NewHorizontallCell"
+    let ComingHorizontalCellIdentity: String = "ComingHorizontalCell"
+    let ActorHorizontallCellIdentity: String = "ActorHorizontallCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +38,8 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         setupHeader(withTitle: "Movie")
         
         searchView.layer.cornerRadius = 16
-        searchView.dropShadow(offSet: CGSize(width: 1, height: 1), radius: 8)
-        searchLabel.font = UIFont.fontInterRegular(withSize: 14)
+        searchView.dropShadow(offSet: CGSize(width: 0, height: 4), radius: 16)
+        searchLabel.font = .fontInterRegular(withSize: 14)
         searchLabel.textColor = Constant.Color.color97999B
         
         setupTableView()
@@ -50,6 +53,9 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         tableView.register(UINib(nibName: PopularCellIdentity, bundle: nil), forCellReuseIdentifier: PopularCellIdentity)
         tableView.register(UINib(nibName: HeaderCellIdentity, bundle: nil), forCellReuseIdentifier: HeaderCellIdentity)
         tableView.register(UINib(nibName: TimesCellIdentity, bundle: nil), forCellReuseIdentifier: TimesCellIdentity)
+        tableView.register(UINib(nibName: NewHorizontallCellIdentity, bundle: nil), forCellReuseIdentifier: NewHorizontallCellIdentity)
+        tableView.register(UINib(nibName: ComingHorizontalCellIdentity, bundle: nil), forCellReuseIdentifier: ComingHorizontalCellIdentity)
+        tableView.register(UINib(nibName: ActorHorizontallCellIdentity, bundle: nil), forCellReuseIdentifier: ActorHorizontallCellIdentity)
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.BOTTOM_SAFE_AREA, right: 0)
     }
