@@ -452,3 +452,29 @@ Pods/Target Support Files/CryptoSwift/CryptoSwift-umbrella.h
 Pods/Target Support Files/CryptoSwift/CryptoSwift.debug.xcconfig
 Pods/Target Support Files/CryptoSwift/CryptoSwift.modulemap
 Pods/Target Support Files/CryptoSwift/CryptoSwift.release.xcconfig
+Pods/Pods.xcodeproj/xcuserdata/thengoc.xcuserdatad/xcschemes/RxGesture.xcscheme
+Pods/RxGesture/LICENSE
+Pods/RxGesture/README.md
+Pods/RxGesture/Pod/Classes/GenericRxGestureRecognizerDelegate.swift
+Pods/RxGesture/Pod/Classes/GestureFactory.swift
+Pods/RxGesture/Pod/Classes/GestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/SharedTypes.swift
+Pods/RxGesture/Pod/Classes/View+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/ForceTouchGestureRecognizer.swift
+Pods/RxGesture/Pod/Classes/iOS/TouchDownGestureRecognizer.swift
+Pods/RxGesture/Pod/Classes/iOS/TransformGestureRecognizers.swift
+Pods/RxGesture/Pod/Classes/iOS/UIHoverGestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/UILongPressGestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/UIPanGestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/UIPinchGestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/UIRotationGestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/UIScreenEdgePanGestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/UISwipeGestureRecognizer+RxGesture.swift
+Pods/RxGesture/Pod/Classes/iOS/UITapGestureRecognizer+RxGesture.swift
+Pods/Target Support Files/RxGesture/RxGesture-dummy.m
+Pods/Target Support Files/RxGesture/RxGesture-Info.plist
+Pods/Target Support Files/RxGesture/RxGesture-prefix.pch
+Pods/Target Support Files/RxGesture/RxGesture-umbrella.h
+Pods/Target Support Files/RxGesture/RxGesture.debug.xcconfig
+Pods/Target Support Files/RxGesture/RxGesture.modulemap
+Pods/Target Support Files/RxGesture/RxGesture.release.xcconfig

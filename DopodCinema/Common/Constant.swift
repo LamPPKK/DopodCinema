@@ -27,4 +27,13 @@ struct Constant {
         static let SECRET: String = "qZTaO5q5dXbx2H93"
         static let IV: String = "rvXIufiBtBorrq4w"
     }
+    
+    // MARK: - SETTING
+    struct Setting {
+        static let MY_APP_ID: String = "1662246739"
+        static let URL_POLICY: String = "https://uximglobal.github.io/info/privacy.html"
+        static let EMAIL_FEEDBACK: String = "frankblakeahz34735@gmail.com"
+        static let SUBJECT_CONTENT: String = "Feedback: Uxim Box"
+        static let BODY_CONTENT: String = .empty
+    }
 }

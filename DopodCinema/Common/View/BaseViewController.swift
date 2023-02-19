@@ -12,6 +12,7 @@ class BaseViewController<ViewModel>: UIViewController {
     // MARK: - Property
     var viewModel: ViewModel!
     var headerView: BaseHeaderView?
+    var subHeaderView: BaseHeaderSubView?
     
     private var isOfflineSearch: Bool = false
     
@@ -43,12 +44,38 @@ class BaseViewController<ViewModel>: UIViewController {
             view.bringSubviewToFront(headerView)
         }
     }
+    
+    func setupSubHeader(with title: String) {
+        if subHeaderView == nil {
+            subHeaderView = BaseHeaderSubView.instanceFromNib()
+        }
+        
+        if let headerView = subHeaderView {
+            _ = headerView.then {
+                $0.delegate = self
+                $0.moveTo(parentViewController: self)
+                $0.setupHeader(withTitle: title)
+                
+            }
+            
+            view.addSubview(headerView)
+            view.bringSubviewToFront(headerView)
+        }
+    }
 }
 
 extension BaseViewController: BaseHeaderViewDelegate {
     
     func didMoveToSetting() {
-        
+        let settingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
+        settingViewController.viewModel = SettingViewModel()
+        settingViewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(settingViewController, animated: true)
     }
 }
 
+extension BaseViewController: BaseHeaderSubViewDelegate {
+    func didBackToViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+}

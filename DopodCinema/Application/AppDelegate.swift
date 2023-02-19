@@ -23,7 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Fallback on earlier versions
         }
 
-        window?.rootViewController = HomeScreen()
+        let navigationViewController = UINavigationController(rootViewController: HomeScreen())
+        window?.rootViewController = navigationViewController
         window?.makeKeyAndVisible()
         
         return true

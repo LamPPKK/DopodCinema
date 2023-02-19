@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxGesture
 
 class HomeScreen: UIViewController {
 
@@ -34,6 +35,8 @@ class HomeScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationController?.setNavigationBarHidden(true, animated: true)
+
         setupUI()
         setAction()
     }
@@ -49,52 +52,48 @@ class HomeScreen: UIViewController {
     }
     
     private func setAction() {
-        let tapMovie = UITapGestureRecognizer()
-        movieNavView.isUserInteractionEnabled = true
-        movieNavView.addGestureRecognizer(tapMovie)
-        
-        tapMovie
+        movieNavView
             .rx
-            .event
-            .bind { [weak self] _ in
-                self?.handleTapMovie()
-            }
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                
+                self.handleTapMovie()
+            })
             .disposed(by: disposeBag)
         
-        let tapTV = UITapGestureRecognizer()
-        tvNavView.isUserInteractionEnabled = true
-        tvNavView.addGestureRecognizer(tapTV)
-        
-        tapTV
+        tvNavView
             .rx
-            .event
-            .bind { [weak self] _ in
-                self?.handleTapTV()
-            }
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                
+                self.handleTapTV()
+            })
             .disposed(by: disposeBag)
         
-        let tapFav = UITapGestureRecognizer()
-        favNavView.isUserInteractionEnabled = true
-        favNavView.addGestureRecognizer(tapFav)
-        
-        tapFav
+        favNavView
             .rx
-            .event
-            .bind { [weak self] _ in
-                self?.handleTapFav()
-            }
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                
+                self.handleTapFav()
+            })
             .disposed(by: disposeBag)
         
-        let tapDiscovery = UITapGestureRecognizer()
-        discoveryNavView.isUserInteractionEnabled = true
-        discoveryNavView.addGestureRecognizer(tapDiscovery)
-        
-        tapDiscovery
+        discoveryNavView
             .rx
-            .event
-            .bind { [weak self] _ in
-                self?.handleTapDiscovery()
-            }
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                
+                self.handleTapDiscovery()
+            })
             .disposed(by: disposeBag)
     }
     

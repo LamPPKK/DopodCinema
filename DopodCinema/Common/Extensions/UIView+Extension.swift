@@ -20,4 +20,8 @@ extension UIView {
         layer.shouldRasterize = true
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
+    
+    func corner(radius: CGFloat) {
+        self.layer.cornerRadius = radius
+    }
 }

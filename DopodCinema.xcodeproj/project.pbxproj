@@ -52,6 +52,12 @@
 		993EA19529A1B27300C5470B /* ActorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA19329A1B27300C5470B /* ActorCell.xib */; };
 		993EA19729A1F4A600C5470B /* TVViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19629A1F4A600C5470B /* TVViewController+TableView.swift */; };
 		993EA19A29A1F4DF00C5470B /* TVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19929A1F4DF00C5470B /* TVViewModel.swift */; };
+		993EA19C29A1F6B700C5470B /* BaseHeaderSubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA19B29A1F6B700C5470B /* BaseHeaderSubView.xib */; };
+		993EA19E29A1F6D000C5470B /* BaseHeaderSubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19D29A1F6D000C5470B /* BaseHeaderSubView.swift */; };
+		993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19F29A1F99500C5470B /* SettingViewController.swift */; };
+		993EA1A229A1F99500C5470B /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA1A029A1F99500C5470B /* SettingViewController.xib */; };
+		993EA1A629A1F9C500C5470B /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA1A529A1F9C500C5470B /* SettingViewModel.swift */; };
+		993EA1A829A209A600C5470B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA1A729A209A600C5470B /* Utils.swift */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
 		998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CCD2829912CDD00AE6283 /* HomeScreen.swift */; };
 		998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998CCD2929912CDD00AE6283 /* HomeScreen.xib */; };
@@ -126,6 +132,12 @@
 		993EA19329A1B27300C5470B /* ActorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorCell.xib; sourceTree = "<group>"; };
 		993EA19629A1F4A600C5470B /* TVViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVViewController+TableView.swift"; sourceTree = "<group>"; };
 		993EA19929A1F4DF00C5470B /* TVViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewModel.swift; sourceTree = "<group>"; };
+		993EA19B29A1F6B700C5470B /* BaseHeaderSubView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseHeaderSubView.xib; sourceTree = "<group>"; };
+		993EA19D29A1F6D000C5470B /* BaseHeaderSubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHeaderSubView.swift; sourceTree = "<group>"; };
+		993EA19F29A1F99500C5470B /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		993EA1A029A1F99500C5470B /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		993EA1A529A1F9C500C5470B /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		993EA1A729A209A600C5470B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		998CCD2829912CDD00AE6283 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		998CCD2929912CDD00AE6283 /* HomeScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreen.xib; sourceTree = "<group>"; };
@@ -248,6 +260,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		993EA1A329A1F99F00C5470B /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				993EA1A429A1F9B400C5470B /* ViewModel */,
+				993EA19F29A1F99500C5470B /* SettingViewController.swift */,
+				993EA1A029A1F99500C5470B /* SettingViewController.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		993EA1A429A1F9B400C5470B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				993EA1A529A1F9C500C5470B /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		998CCD2629912C4000AE6283 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +292,7 @@
 		998CCD2729912C8100AE6283 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				993EA1A329A1F99F00C5470B /* Setting */,
 				99A6A9F82992936F00D3EEEF /* ShowTime */,
 				99A6A9F72992936500D3EEEF /* Favorite */,
 				99A6A9F62992935F00D3EEEF /* TV */,
@@ -375,6 +406,7 @@
 				99BACD662995450400762A3E /* Extensions */,
 				99BACD5F2995435400762A3E /* View */,
 				99BACD64299544B600762A3E /* Constant.swift */,
+				993EA1A729A209A600C5470B /* Utils.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -385,6 +417,8 @@
 				99BACD60299543B700762A3E /* BaseHeaderView.swift */,
 				99BACD62299543C500762A3E /* BaseHeaderView.xib */,
 				99BACD69299545CC00762A3E /* BaseViewController.swift */,
+				993EA19D29A1F6D000C5470B /* BaseHeaderSubView.swift */,
+				993EA19B29A1F6B700C5470B /* BaseHeaderSubView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -481,6 +515,7 @@
 				9931322E299B6CA200AA9E2C /* HeaderCell.xib in Resources */,
 				99313228299B674600AA9E2C /* PopularCell.xib in Resources */,
 				99BACD63299543C500762A3E /* BaseHeaderView.xib in Resources */,
+				993EA1A229A1F99500C5470B /* SettingViewController.xib in Resources */,
 				99313232299B703000AA9E2C /* TimesCell.xib in Resources */,
 				99313249299B7A0700AA9E2C /* SF-Pro-Text-Light.otf in Resources */,
 				99313243299B7A0700AA9E2C /* SF-Pro-Display-Light.otf in Resources */,
@@ -497,6 +532,7 @@
 				993EA19129A1B1EC00C5470B /* ActorHorizontallCell.xib in Resources */,
 				9931324E299B7A0700AA9E2C /* SF-Pro-Text-Semibold.otf in Resources */,
 				99313259299B904900AA9E2C /* CategoryCell.xib in Resources */,
+				993EA19C29A1F6B700C5470B /* BaseHeaderSubView.xib in Resources */,
 				9931324F299B7A0700AA9E2C /* SF-Pro-Text-Medium.otf in Resources */,
 				993EA19529A1B27300C5470B /* ActorCell.xib in Resources */,
 				99313246299B7A0700AA9E2C /* SF-Pro-Display-Medium.otf in Resources */,
@@ -570,16 +606,20 @@
 				993EA19A29A1F4DF00C5470B /* TVViewModel.swift in Sources */,
 				9956659B299D28270068B78F /* Network.swift in Sources */,
 				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
+				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
 				99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
 				9931322D299B6CA200AA9E2C /* HeaderCell.swift in Sources */,
 				99142F9F299A867E00E7BA3D /* HomeRoute.swift in Sources */,
+				993EA1A829A209A600C5470B /* Utils.swift in Sources */,
 				99BACD6F2995489500762A3E /* TVViewController.swift in Sources */,
 				993EA18329A1A82700C5470B /* NewCell.swift in Sources */,
 				99142F9C299A779D00E7BA3D /* MovieViewModel.swift in Sources */,
 				993EA18C29A1AEBC00C5470B /* ComingHorizontalCell.swift in Sources */,
+				993EA1A629A1F9C500C5470B /* SettingViewModel.swift in Sources */,
 				9931322A299B67DE00AA9E2C /* MovieViewController+TableView.swift in Sources */,
+				993EA19E29A1F6D000C5470B /* BaseHeaderSubView.swift in Sources */,
 				998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */,
 				99BACD6C299547B500762A3E /* UIColor+Extension.swift in Sources */,
 				9931325F299D1DB600AA9E2C /* String+Extension.swift in Sources */,
