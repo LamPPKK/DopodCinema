@@ -34,6 +34,8 @@ class HomePageViewController: UIPageViewController {
         movieVC.viewModel = MovieViewModel()
         
         tvVC = TVViewController(nibName: "TVViewController", bundle: nil)
+        tvVC.viewModel = TVViewModel()
+        
         favoriteVC = FavoriteViewController(nibName: "FavoriteViewController", bundle: nil)
         showtimeVC = ShowTimeViewController(nibName: "ShowTimeViewController", bundle: nil)
         

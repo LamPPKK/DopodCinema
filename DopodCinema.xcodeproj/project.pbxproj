@@ -50,6 +50,8 @@
 		993EA19129A1B1EC00C5470B /* ActorHorizontallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA18F29A1B1EC00C5470B /* ActorHorizontallCell.xib */; };
 		993EA19429A1B27300C5470B /* ActorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19229A1B27300C5470B /* ActorCell.swift */; };
 		993EA19529A1B27300C5470B /* ActorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA19329A1B27300C5470B /* ActorCell.xib */; };
+		993EA19729A1F4A600C5470B /* TVViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19629A1F4A600C5470B /* TVViewController+TableView.swift */; };
+		993EA19A29A1F4DF00C5470B /* TVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA19929A1F4DF00C5470B /* TVViewModel.swift */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
 		998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998CCD2829912CDD00AE6283 /* HomeScreen.swift */; };
 		998CCD2B29912CDD00AE6283 /* HomeScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998CCD2929912CDD00AE6283 /* HomeScreen.xib */; };
@@ -122,6 +124,8 @@
 		993EA18F29A1B1EC00C5470B /* ActorHorizontallCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorHorizontallCell.xib; sourceTree = "<group>"; };
 		993EA19229A1B27300C5470B /* ActorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCell.swift; sourceTree = "<group>"; };
 		993EA19329A1B27300C5470B /* ActorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorCell.xib; sourceTree = "<group>"; };
+		993EA19629A1F4A600C5470B /* TVViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TVViewController+TableView.swift"; sourceTree = "<group>"; };
+		993EA19929A1F4DF00C5470B /* TVViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVViewModel.swift; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		998CCD2829912CDD00AE6283 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		998CCD2929912CDD00AE6283 /* HomeScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeScreen.xib; sourceTree = "<group>"; };
@@ -236,6 +240,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		993EA19829A1F4CE00C5470B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				993EA19929A1F4DF00C5470B /* TVViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		998CCD2629912C4000AE6283 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,8 +335,10 @@
 		99A6A9F62992935F00D3EEEF /* TV */ = {
 			isa = PBXGroup;
 			children = (
+				993EA19829A1F4CE00C5470B /* ViewModel */,
 				99BACD6D2995489500762A3E /* TVViewController.swift */,
 				99BACD6E2995489500762A3E /* TVViewController.xib */,
+				993EA19629A1F4A600C5470B /* TVViewController+TableView.swift */,
 			);
 			path = TV;
 			sourceTree = "<group>";
@@ -553,6 +567,7 @@
 			files = (
 				99BACD732995495200762A3E /* FavoriteViewController.swift in Sources */,
 				9931325C299D186F00AA9E2C /* CategoryHorizontalCell.swift in Sources */,
+				993EA19A29A1F4DF00C5470B /* TVViewModel.swift in Sources */,
 				9956659B299D28270068B78F /* Network.swift in Sources */,
 				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
@@ -573,6 +588,7 @@
 				99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */,
 				993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */,
 				99313231299B703000AA9E2C /* TimesCell.swift in Sources */,
+				993EA19729A1F4A600C5470B /* TVViewController+TableView.swift in Sources */,
 				99BACD65299544B600762A3E /* Constant.swift in Sources */,
 				993EA19429A1B27300C5470B /* ActorCell.swift in Sources */,
 				993EA18829A1AE9600C5470B /* ComingCell.swift in Sources */,
