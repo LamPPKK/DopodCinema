@@ -14,13 +14,13 @@ class TVViewModel: NSObject {
         sections.append(.headerCategory)
         sections.append(.category)
         sections.append(.headerPopular)
-        sections.append(.popular)
+//        sections.append(.popular)
         sections.append(.headerNew)
         sections.append(.new)
         sections.append(.headerComing)
-        sections.append(.coming)
+//        sections.append(.coming)
         sections.append(.headerActor)
-        sections.append(.actor)
+//        sections.append(.actor)
         
         return sections
     }

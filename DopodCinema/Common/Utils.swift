@@ -8,6 +8,30 @@
 import UIKit
 
 struct Utils {
+    
+    // MARK: - Get URL from Poster Path
+    static func getBackDropPath(_ path: String? = nil, size: BackDropSize = .w780) -> String  {
+        return getURL(fromPath: path, size: size.rawValue)
+    }
+    
+    // MARK: - Get URL from Poster Path
+    static func getPosterPath(_ path: String? = nil, size: PosterSize = .w185) -> String  {
+        return getURL(fromPath: path, size: size.rawValue)
+    }
+    
+    // MARK: - Get URL from Profile Path
+    static func getProfilePath(_ path: String? = nil, size: ProfileSize = .w185) -> String  {
+        return getURL(fromPath: path, size: size.rawValue)
+    }
+    
+    private static func getURL(fromPath path: String? = nil, size: String) -> String {
+        if let path = path {
+            return Constant.Network.IMAGES_BASE_URL + "/\(size)" + path
+        } else {
+            return String.empty
+        }
+    }
+    
     static func open(with url: URL) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url)

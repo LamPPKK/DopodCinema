@@ -17,8 +17,8 @@ extension MovieViewController: UITableViewDataSource {
         let section = viewModel.getSections()[section]
         
         switch section {
-        case .popular:
-            return 5
+        case .popular(let movies):
+            return movies.count > 5 ? 5 : movies.count
             
         default:
             return 1
@@ -29,6 +29,9 @@ extension MovieViewController: UITableViewDataSource {
         let section = viewModel.getSections()[indexPath.section]
         
         switch section {
+        case .top:
+            return topHorizontalCellFor(tableView)
+            
         case .headerCategory:
             return headerCellFor(tableView, headerTitle: "Category", bottom: 8)
 
@@ -47,8 +50,8 @@ extension MovieViewController: UITableViewDataSource {
         case .headerActor:
             return headerCellFor(tableView, headerTitle: "Popular people", bottom: 8)
 
-        case .popular:
-            return popularCellFor(tableView)
+        case .popular(let movies):
+            return popularCell(for: tableView, indexPath: indexPath, movies: movies)
             
         case .times:
             return timesCellFor(tableView)
@@ -56,15 +59,18 @@ extension MovieViewController: UITableViewDataSource {
         case .new:
             return newHorizontallCellFor(tableView)
             
-        case .coming:
-            return comingHorizontallCellFor(tableView)
+        case .coming(let movies):
+            return comingHorizontallCell(for: tableView, indexPath: indexPath, movies: movies)
             
-        case .actor:
-            return actorHorizontallCellFor(tableView)
-            
-        default:
-            return UITableViewCell()
+        case .actor(let actors):
+            return actorHorizontallCell(for: tableView, indexPath: indexPath, actors: actors)
         }
+    }
+    
+    private func topHorizontalCellFor(_ tableView: UITableView) -> TopHorizontalCell {
+        let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
+        
+        return topHorizontallCell
     }
     
     private func headerCellFor(_ tableView: UITableView, headerTitle: String, bottom: CGFloat = 0) -> HeaderCell {
@@ -78,8 +84,12 @@ extension MovieViewController: UITableViewDataSource {
         return categoryHorizontalCell
     }
     
-    private func popularCellFor(_ tableView: UITableView) -> PopularCell {
+    private func popularCell(for tableView: UITableView,
+                             indexPath: IndexPath,
+                             movies: [MovieInfo]) -> PopularCell {
         let popularCell = tableView.dequeueReusableCell(withIdentifier: PopularCellIdentity) as! PopularCell
+        let movie = movies[indexPath.row]
+        popularCell.bindData(movie)
         return popularCell
     }
     
@@ -93,13 +103,19 @@ extension MovieViewController: UITableViewDataSource {
         return newHorizontallCell
     }
     
-    private func comingHorizontallCellFor(_ tableView: UITableView) -> ComingHorizontalCell {
+    private func comingHorizontallCell(for tableView: UITableView,
+                                       indexPath: IndexPath,
+                                       movies: [MovieInfo]) -> ComingHorizontalCell {
         let comingHorizontalCell = tableView.dequeueReusableCell(withIdentifier: ComingHorizontalCellIdentity) as! ComingHorizontalCell
+        comingHorizontalCell.movies = movies
         return comingHorizontalCell
     }
     
-    private func actorHorizontallCellFor(_ tableView: UITableView) -> ActorHorizontallCell {
+    private func actorHorizontallCell(for tableView: UITableView,
+                                      indexPath: IndexPath,
+                                      actors: [ActorInfo]) -> ActorHorizontallCell {
         let actorHorizontallCell = tableView.dequeueReusableCell(withIdentifier: ActorHorizontallCellIdentity) as! ActorHorizontallCell
+        actorHorizontallCell.actors = actors
         return actorHorizontallCell
     }
 }
@@ -116,12 +132,8 @@ extension MovieViewController: UITableViewDelegate {
         case .times:
             return 156
             
-        case .headerCategory, .headerPopular, .headerNew, .headerComing, .headerActor, .category, .new, .coming, .actor:
+        case .headerCategory, .headerPopular, .headerNew, .headerComing, .headerActor, .category, .new, .coming, .actor, .top:
             return UITableView.automaticDimension
-            
-        default:
-            return 0
         }
-        
     }
 }

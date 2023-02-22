@@ -60,13 +60,29 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWy-PR-1IM">
+                                        <rect key="frame" x="127" y="3.0000000000000009" width="31" height="14.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b62-zI-PdY">
+                                        <rect key="frame" x="161" y="3.0000000000000009" width="31" height="14.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9FX-ka-zkd"/>
                                     <constraint firstItem="71R-Gf-TYR" firstAttribute="leading" secondItem="mXz-Hn-eyf" secondAttribute="leading" id="GTn-Fj-VQQ"/>
                                     <constraint firstItem="3I5-Tf-4bt" firstAttribute="leading" secondItem="71R-Gf-TYR" secondAttribute="trailing" constant="8" id="Sju-n1-3Ii"/>
+                                    <constraint firstItem="GWy-PR-1IM" firstAttribute="centerY" secondItem="b62-zI-PdY" secondAttribute="centerY" id="aVM-Hg-c6I"/>
+                                    <constraint firstItem="b62-zI-PdY" firstAttribute="leading" secondItem="GWy-PR-1IM" secondAttribute="trailing" constant="3" id="atC-ju-0TM"/>
+                                    <constraint firstItem="b62-zI-PdY" firstAttribute="centerY" secondItem="3I5-Tf-4bt" secondAttribute="centerY" id="bSL-oz-ran"/>
                                     <constraint firstItem="3I5-Tf-4bt" firstAttribute="centerY" secondItem="71R-Gf-TYR" secondAttribute="centerY" id="cN6-5I-rjc"/>
+                                    <constraint firstAttribute="trailing" secondItem="b62-zI-PdY" secondAttribute="trailing" id="dKe-OQ-AY8"/>
                                     <constraint firstItem="71R-Gf-TYR" firstAttribute="centerY" secondItem="mXz-Hn-eyf" secondAttribute="centerY" id="z9s-ab-osY"/>
                                 </constraints>
                             </view>
@@ -95,7 +111,9 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="averageLabel" destination="GWy-PR-1IM" id="NCE-Op-XDz"/>
                 <outlet property="categoryLabel" destination="VyP-y5-hLI" id="SNa-GU-Li1"/>
+                <outlet property="countLabel" destination="b62-zI-PdY" id="bvg-AC-sS2"/>
                 <outlet property="iconImageView" destination="TEC-Ny-wCG" id="Jdj-HD-JOV"/>
                 <outlet property="nameLabel" destination="aXw-KE-HNJ" id="U9N-jt-BuQ"/>
                 <outlet property="timeLabel" destination="3I5-Tf-4bt" id="j6k-Gj-bzc"/>

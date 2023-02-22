@@ -20,6 +20,7 @@ struct Constant {
         static let color97999B: UIColor = UIColor(hexString: "#97999B") ?? UIColor()
         static let colorE3E9ED: UIColor = UIColor(hexString: "#E3E9ED") ?? UIColor()
         static let color78828A: UIColor = UIColor(hexString: "#78828A") ?? UIColor()
+        static let colorFACC15: UIColor = UIColor(hexString: "#FACC15") ?? UIColor()
     }
     
     // MARK: - ENCRYPT
@@ -35,5 +36,20 @@ struct Constant {
         static let EMAIL_FEEDBACK: String = "frankblakeahz34735@gmail.com"
         static let SUBJECT_CONTENT: String = "Feedback: Uxim Box"
         static let BODY_CONTENT: String = .empty
+    }
+    
+    // MARK: - NETWORK
+    struct Network {
+        static let HOST_URL: String = "https://api.themoviedb.org/3"
+        static let HOST_LINK_URL: String = "https://thekight.link"
+        static let APP_ID: String = "movie.test.app"
+        static let APP_KEY: String = "48cd3fa30464885ff111de6a1a24a0069e65906aa8fcc3be2c357c622cee5fe3"
+        static let API_KEY: String = "79ddd61a309a60e0e6c81f6043bc051b"
+        static let IMAGES_BASE_URL = "https://image.tmdb.org/t/p/"
+        static let MAP_KEY: String = "AIzaSyCuJs_7JjvSB_svpAuKaI2pbi_PTXy05x4"
+        static let THUMBNAIL_YOUTUBE_URL = "https://img.youtube.com/vi/"
+        static let THUMBNAIL_MAX_YOUTUBE = "/maxresdefault.jpg"
+        static let SECRET: String = "qZTaO5q5dXbx2H93"
+        static let IV: String = "rvXIufiBtBorrq4w"
     }
 }

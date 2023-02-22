@@ -14,6 +14,7 @@ class ComingHorizontalCell: UITableViewCell {
     
     // MARK: - Properties
     private let ComingCellIdentity: String = "ComingCell"
+    var movies: [MovieInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,17 +28,20 @@ class ComingHorizontalCell: UITableViewCell {
         collectionView.register(UINib(nibName: ComingCellIdentity, bundle: nil), forCellWithReuseIdentifier: ComingCellIdentity)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.reloadData()
     }
 }
 
 // MARK: - Extension UICollectionView
 extension ComingHorizontalCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return movies.count > 5 ? 5 : movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComingCellIdentity, for: indexPath) as! ComingCell
+        let movie = movies[indexPath.row]
+        cell.bindData(movie)
         return cell
     }
 }

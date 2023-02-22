@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ComingCell: UICollectionViewCell {
 
@@ -15,7 +16,10 @@ class ComingCell: UICollectionViewCell {
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
-    
+    @IBOutlet private weak var averageLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
+    @IBOutlet private weak var overviewLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -31,6 +35,26 @@ class ComingCell: UICollectionViewCell {
         
         timeLabel.font = .fontPoppinsMedium(withSize: 13)
         timeLabel.textColor = Constant.Color.color78828A
+        
+        averageLabel.font = .fontPoppinsMedium(withSize: 12)
+        averageLabel.textColor = Constant.Color.colorFACC15
+        
+        countLabel.font = .fontPoppinsMedium(withSize: 12)
+        countLabel.textColor = Constant.Color.color9CA4AB
+        
+        overviewLabel.font = .fontPoppinsMedium(withSize: 13)
+        overviewLabel.textColor = Constant.Color.color78828A
+    }
+    
+    func bindData(_ data: MovieInfo) {
+        if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
+            posterImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), context: nil)
+        }
+        
+        nameLabel.text = data.original_title
+        averageLabel.text = "\(data.vote_average)"
+        countLabel.text = "(\(data.vote_count))"
+        overviewLabel.text = data.overview
     }
 
 }

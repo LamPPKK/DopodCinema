@@ -14,6 +14,7 @@ class ActorHorizontallCell: UITableViewCell {
     
     // MARK: - Properties
     private let ActorCellIdentity: String = "ActorCell"
+    var actors: [ActorInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,17 +28,20 @@ class ActorHorizontallCell: UITableViewCell {
         collectionView.register(UINib(nibName: ActorCellIdentity, bundle: nil), forCellWithReuseIdentifier: ActorCellIdentity)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.reloadData()
     }
 }
 
 // MARK: - Extension UICollectionView
 extension ActorHorizontallCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return actors.count > 5 ? 5 : actors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActorCellIdentity, for: indexPath) as! ActorCell
+        let actor = actors[indexPath.row]
+        cell.bindData(actor)
         return cell
     }
 }

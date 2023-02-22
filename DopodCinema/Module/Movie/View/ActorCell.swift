@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ActorCell: UICollectionViewCell {
 
@@ -19,6 +20,14 @@ class ActorCell: UICollectionViewCell {
         actorImageView.layer.cornerRadius = 6
         nameLabel.font = .fontPoppinsBold(withSize: 16)
         nameLabel.textColor = .black
+    }
+    
+    func bindData(_ data: ActorInfo) {
+        if let url = URL(string: Utils.getProfilePath(data.profile_path)) {
+            actorImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), context: nil)
+        }
+        
+        nameLabel.text = data.name
     }
 
 }

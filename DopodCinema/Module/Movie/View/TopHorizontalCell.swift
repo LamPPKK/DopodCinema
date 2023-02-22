@@ -1,20 +1,19 @@
 //
-//  NewHorizontallCell.swift
+//  TopHorizontalCell.swift
 //  DopodCinema
 //
-//  Created by The Ngoc on 2023/02/19.
+//  Created by The Ngoc on 2023/02/22.
 //
 
 import UIKit
-import CPCollectionViewWheelLayoutSwift
 
-class NewHorizontallCell: UITableViewCell {
-
+class TopHorizontalCell: UITableViewCell {
+    
     // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Properties
-    private let NewCellIdentity: String = "NewCell"
+    private let TopCellIdentity: String = "TopCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,34 +24,35 @@ class NewHorizontallCell: UITableViewCell {
     // MARK: - Private functions
     private func setupUI() {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
-        collectionView.register(UINib(nibName: NewCellIdentity, bundle: nil), forCellWithReuseIdentifier: NewCellIdentity)
+        collectionView.register(UINib(nibName: TopCellIdentity, bundle: nil), forCellWithReuseIdentifier: TopCellIdentity)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
 }
 
 // MARK: - Extension UICollectionView
-extension NewHorizontallCell: UICollectionViewDataSource {
+extension TopHorizontalCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewCellIdentity, for: indexPath) as! NewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCellIdentity, for: indexPath) as! TopCell
         return cell
     }
 }
 
-extension NewHorizontallCell: UICollectionViewDelegate {
+extension TopHorizontalCell: UICollectionViewDelegate {
     
 }
 
-extension NewHorizontallCell: UICollectionViewDelegateFlowLayout {
+extension TopHorizontalCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 150)
+        return CGSize(width: 188, height: 250)
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 10
     }
 }
+

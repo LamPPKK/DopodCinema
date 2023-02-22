@@ -18,6 +18,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     @IBOutlet private weak var tableView: UITableView!
     
     // MARK: - Properties
+    let TopHorizontalCellIdentity: String = "TopHorizontalCell"
     let CategoryHorizontalCellIdentity: String = "CategoryHorizontalCell"
     let PopularCellIdentity: String = "PopularCell"
     let HeaderCellIdentity: String = "HeaderCell"
@@ -30,6 +31,10 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         super.viewDidLoad()
 
         setupUI()
+        
+        viewModel.getAllData {
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - Private function
@@ -49,6 +54,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         tableView.delegate = self
         tableView.dataSource = self
         
+        tableView.register(UINib(nibName: TopHorizontalCellIdentity, bundle: nil), forCellReuseIdentifier: TopHorizontalCellIdentity)
         tableView.register(UINib(nibName: CategoryHorizontalCellIdentity, bundle: nil), forCellReuseIdentifier: CategoryHorizontalCellIdentity)
         tableView.register(UINib(nibName: PopularCellIdentity, bundle: nil), forCellReuseIdentifier: PopularCellIdentity)
         tableView.register(UINib(nibName: HeaderCellIdentity, bundle: nil), forCellReuseIdentifier: HeaderCellIdentity)
