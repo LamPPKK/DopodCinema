@@ -15,6 +15,9 @@ class NewHorizontallCell: UITableViewCell {
     
     // MARK: - Properties
     private let NewCellIdentity: String = "NewCell"
+    private let startIndexDisplay: Int = 5
+    
+    var movies: [MovieInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,11 +37,14 @@ class NewHorizontallCell: UITableViewCell {
 // MARK: - Extension UICollectionView
 extension NewHorizontallCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        let numberItemDisplay: Int = movies.count - 5
+        return numberItemDisplay > 5 ? 5 : numberItemDisplay
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewCellIdentity, for: indexPath) as! NewCell
+        let posterPath = movies[indexPath.row + startIndexDisplay].poster_path
+        cell.bindData(posterPath)
         return cell
     }
 }

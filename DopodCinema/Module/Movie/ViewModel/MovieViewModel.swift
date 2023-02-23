@@ -8,27 +8,29 @@
 import RxSwift
 import RxCocoa
 
-enum DataSection {
-    case top
-    case headerCategory
-    case category
-    case headerPopular
-    case popular (movies: [MovieInfo])
+enum MovieSectionType {
+    case top(movies: [MovieInfo])
+    case headerCategory(title: String)
+    case category(categories: [GenreInfo])
+    case headerPopular(title: String)
+    case popular(movies: [MovieInfo])
     case times
-    case headerNew
-    case new
-    case headerComing
-    case coming (movies: [MovieInfo])
-    case headerActor
-    case actor (actors: [ActorInfo])
+    case headerNew(title: String)
+    case new(movies: [MovieInfo])
+    case headerComing(title: String)
+    case coming(movies: [MovieInfo])
+    case headerActor(title: String)
+    case actor(actors: [ActorInfo])
 }
 
 class MovieViewModel: NSObject {
     
     // MARK: - Properties
+    private var categories: [GenreInfo] = []
     private var moviesPopular: [MovieInfo] = []
     private var moviesToprated: [MovieInfo] = []
     private var moviesUpcoming: [MovieInfo] = []
+    private var moviesNowPlaying: [MovieInfo] = []
     private var actorsPopular: [ActorInfo] = []
     
     func getAllData(completion: @escaping () -> Void) {
@@ -86,33 +88,66 @@ class MovieViewModel: NSObject {
             group.leave()
         })
         
+        // 5.
+        group.enter()
+        API.shared.getMoviesNowPlaying(completion: { [weak self] moviesNowPlaying in
+            guard  let self = self else { return }
+            
+            self.moviesNowPlaying = moviesNowPlaying
+            group.leave()
+        }, error: { [weak self] error in
+            
+            group.leave()
+        })
+        
+        // 6.
+        group.enter()
+        API.shared.getListGenreMovie(completion: { [weak self] listGenre in
+            guard let self = self else { return }
+            
+            self.categories = listGenre
+            group.leave()
+        } , error: { [weak self] error in
+            
+            group.leave()
+        })
+        
         group.notify(queue: .main) {
             completion()
         }
     }
     
-    func getSections() -> [DataSection] {
-        var sections: [DataSection] = []
-        sections.append(.top)
-        sections.append(.headerCategory)
-        sections.append(.category)
+    func getSections() -> [MovieSectionType] {
+        var sections: [MovieSectionType] = []
+        
+        if !moviesNowPlaying.isEmpty {
+            sections.append(.top(movies: moviesNowPlaying))
+        }
+        
+        if !categories.isEmpty {
+            sections.append(.headerCategory(title: "Category"))
+            sections.append(.category(categories: categories))
+        }
         
         if !moviesPopular.isEmpty {
-            sections.append(.headerPopular)
+            sections.append(.headerPopular(title: "Top Popular Movies"))
             sections.append(.popular(movies: moviesPopular))
         }
         
         sections.append(.times)
-        sections.append(.headerNew)
-        sections.append(.new)
+        
+        if moviesNowPlaying.count > 5 {
+            sections.append(.headerNew(title: "New movies"))
+            sections.append(.new(movies: moviesNowPlaying))
+        }
         
         if !moviesUpcoming.isEmpty {
-            sections.append(.headerComing)
+            sections.append(.headerComing(title: "Up coming"))
             sections.append(.coming(movies: moviesUpcoming))
         }
         
         if !actorsPopular.isEmpty {
-            sections.append(.headerActor)
+            sections.append(.headerActor(title: "Popular people"))
             sections.append(.actor(actors: actorsPopular))
         }
         

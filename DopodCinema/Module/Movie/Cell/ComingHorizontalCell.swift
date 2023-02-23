@@ -28,7 +28,6 @@ class ComingHorizontalCell: UITableViewCell {
         collectionView.register(UINib(nibName: ComingCellIdentity, bundle: nil), forCellWithReuseIdentifier: ComingCellIdentity)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.reloadData()
     }
 }
 

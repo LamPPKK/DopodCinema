@@ -29,26 +29,17 @@ extension MovieViewController: UITableViewDataSource {
         let section = viewModel.getSections()[indexPath.section]
         
         switch section {
-        case .top:
-            return topHorizontalCellFor(tableView)
+        case .top(let movies):
+            return topHorizontalCell(for: tableView, indexPath: indexPath, movies: movies)
             
-        case .headerCategory:
-            return headerCellFor(tableView, headerTitle: "Category", bottom: 8)
+        case .headerCategory(let title):
+            return headerCell(for: tableView, headerTitle: title, bottom: 8)
 
-        case .category:
-            return categoryHorizontalCell(tableView)
+        case .category(let categories):
+            return categoryHorizontalCell(for: tableView, indexPath: indexPath, categories: categories)
             
-        case .headerPopular:
-            return headerCellFor(tableView, headerTitle: "Top Popular Movies", bottom: 8)
-
-        case .headerNew:
-            return headerCellFor(tableView, headerTitle: "New movies", bottom: 8)
-
-        case .headerComing:
-            return headerCellFor(tableView, headerTitle: "Up coming", bottom: 8)
-
-        case .headerActor:
-            return headerCellFor(tableView, headerTitle: "Popular people", bottom: 8)
+        case .headerPopular(let title):
+            return headerCell(for: tableView, headerTitle: title, bottom: 8)
 
         case .popular(let movies):
             return popularCell(for: tableView, indexPath: indexPath, movies: movies)
@@ -56,31 +47,47 @@ extension MovieViewController: UITableViewDataSource {
         case .times:
             return timesCellFor(tableView)
             
-        case .new:
-            return newHorizontallCellFor(tableView)
+        case .headerNew(let title):
+            return headerCell(for: tableView, headerTitle: title, bottom: 8)
+
+        case .new(let movies):
+            return newHorizontallCell(for: tableView, indexPath: indexPath, movies: movies)
             
+        case .headerComing(let title):
+            return headerCell(for: tableView, headerTitle: title, bottom: 8)
+
         case .coming(let movies):
             return comingHorizontallCell(for: tableView, indexPath: indexPath, movies: movies)
+            
+        case .headerActor(let title):
+            return headerCell(for: tableView, headerTitle: title, bottom: 8)
             
         case .actor(let actors):
             return actorHorizontallCell(for: tableView, indexPath: indexPath, actors: actors)
         }
     }
     
-    private func topHorizontalCellFor(_ tableView: UITableView) -> TopHorizontalCell {
+    private func topHorizontalCell(for tableView: UITableView,
+                                      indexPath: IndexPath,
+                                      movies: [MovieInfo]) -> TopHorizontalCell {
         let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
-        
+        topHorizontallCell.movies = movies
         return topHorizontallCell
     }
     
-    private func headerCellFor(_ tableView: UITableView, headerTitle: String, bottom: CGFloat = 0) -> HeaderCell {
+    private func headerCell(for tableView: UITableView,
+                            headerTitle: String,
+                            bottom: CGFloat = 0) -> HeaderCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCellIdentity) as! HeaderCell
         headerCell.setTitle(headerTitle, bottom: bottom)
         return headerCell
     }
     
-    private func categoryHorizontalCell(_ tableView: UITableView) -> CategoryHorizontalCell {
+    private func categoryHorizontalCell(for tableView: UITableView,
+                                        indexPath: IndexPath,
+                                        categories: [GenreInfo]) -> CategoryHorizontalCell {
         let categoryHorizontalCell = tableView.dequeueReusableCell(withIdentifier: CategoryHorizontalCellIdentity) as! CategoryHorizontalCell
+        categoryHorizontalCell.categories = categories
         return categoryHorizontalCell
     }
     
@@ -98,8 +105,11 @@ extension MovieViewController: UITableViewDataSource {
         return timesCell
     }
     
-    private func newHorizontallCellFor(_ tableView: UITableView) -> NewHorizontallCell {
+    private func newHorizontallCell(for tableView: UITableView,
+                                    indexPath: IndexPath,
+                                    movies: [MovieInfo]) -> NewHorizontallCell {
         let newHorizontallCell = tableView.dequeueReusableCell(withIdentifier: NewHorizontallCellIdentity) as! NewHorizontallCell
+        newHorizontallCell.movies = movies
         return newHorizontallCell
     }
     

@@ -186,23 +186,19 @@ class API {
     }
     
     // MARK: - Get list genre movie
-    /**
-     - parameter api_key:
-     - parameter language:
-     */
-//    func getListGenreMovie(completion: @escaping ([GenreInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "api_key": Constant.Network.API_KEY,
-//            "language": "en-US"
-//        ]
-//
-//        Network.get(URLPath.GenrePath.GET_LIST_GENRE_MOVIE,
-//                    parameters: parametters,
-//                    responseType: Genres.self,
-//                    completionHandler: { response in
-//            completion(response.genres)
-//        }, errorHandler: error)
-//    }
+    func getListGenreMovie(completion: @escaping ([GenreInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US"
+        ]
+
+        Network.get(URLPath.GenrePath.GET_LIST_GENRE_MOVIE,
+                    parameters: parametters,
+                    responseType: Genres.self,
+                    completionHandler: { response in
+            completion(response.genres)
+        }, errorHandler: error)
+    }
     
     // MARK: - Get list genre tv
     /**

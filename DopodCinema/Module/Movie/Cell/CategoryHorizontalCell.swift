@@ -14,7 +14,8 @@ class CategoryHorizontalCell: UITableViewCell {
     
     // MARK: - Properties
     private let CategoryCellIdentity: String = "CategoryCell"
-    private let listTest: [String] = ["All", "Action", "Adventure", "Adventure 1", "Adventure 2", "Adventure 3"]
+    var categories: [GenreInfo]!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -33,12 +34,12 @@ class CategoryHorizontalCell: UITableViewCell {
 // MARK: - Extension UICollectionView
 extension CategoryHorizontalCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listTest.count
+        return categories.count > 5 ? 5 : categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCellIdentity, for: indexPath) as! CategoryCell
-        cell.bindData(listTest[indexPath.row])
+        cell.bindData(categories[indexPath.row].name)
         return cell
     }
 }
@@ -49,7 +50,7 @@ extension CategoryHorizontalCell: UICollectionViewDelegate {
 
 extension CategoryHorizontalCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let value: String = listTest[indexPath.row]
+        let value: String = categories[indexPath.row].name
         let widthOfText: CGFloat = value.widthOfString(usingFont: .fontInterRegular(withSize: 13))
         let widthPerItem: CGFloat = widthOfText + 48
         return CGSize(width: widthPerItem, height: 34)

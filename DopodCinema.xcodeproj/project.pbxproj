@@ -90,6 +90,7 @@
 		99BACD7729954A0300762A3E /* ShowTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD7529954A0300762A3E /* ShowTimeViewController.swift */; };
 		99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99BACD7629954A0300762A3E /* ShowTimeViewController.xib */; };
 		99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99BACD7A29954B1400762A3E /* UIView+Extension.swift */; };
+		99D884B929A7AD970091DF91 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D884B829A7AD970091DF91 /* Genre.swift */; };
 		B26EA3419ED9632B85979C91 /* Pods_DopodCinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C5252D51EB9543C9BAF822 /* Pods_DopodCinema.framework */; };
 /* End PBXBuildFile section */
 
@@ -182,6 +183,7 @@
 		99BACD7529954A0300762A3E /* ShowTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeViewController.swift; sourceTree = "<group>"; };
 		99BACD7629954A0300762A3E /* ShowTimeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowTimeViewController.xib; sourceTree = "<group>"; };
 		99BACD7A29954B1400762A3E /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		99D884B829A7AD970091DF91 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,11 +220,12 @@
 				991C9A1E29A5C949004FE5D5 /* Movie.swift */,
 				991C9A2029A5D0A9004FE5D5 /* Image.swift */,
 				991C9A2229A68060004FE5D5 /* Actor.swift */,
+				99D884B829A7AD970091DF91 /* Genre.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		99313224299B3C3F00AA9E2C /* View */ = {
+		99313224299B3C3F00AA9E2C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				99313225299B674600AA9E2C /* PopularCell.swift */,
@@ -252,7 +255,7 @@
 				991C9A1529A5C2EF004FE5D5 /* TopCell.swift */,
 				991C9A1629A5C2EF004FE5D5 /* TopCell.xib */,
 			);
-			path = View;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		99313233299B7A0600AA9E2C /* Fonts */ = {
@@ -390,7 +393,7 @@
 		99A6A9F52992935A00D3EEEF /* Movie */ = {
 			isa = PBXGroup;
 			children = (
-				99313224299B3C3F00AA9E2C /* View */,
+				99313224299B3C3F00AA9E2C /* Cell */,
 				99142F9A299A778E00E7BA3D /* ViewModel */,
 				99A6A9F92992953600D3EEEF /* MovieViewController.swift */,
 				99A6A9FA2992953600D3EEEF /* MovieViewController.xib */,
@@ -650,6 +653,7 @@
 				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
 				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
 				991C9A1A29A5C803004FE5D5 /* URLPath.swift in Sources */,
+				99D884B929A7AD970091DF91 /* Genre.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
 				99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,

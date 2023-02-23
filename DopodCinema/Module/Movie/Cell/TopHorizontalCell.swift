@@ -14,6 +14,7 @@ class TopHorizontalCell: UITableViewCell {
     
     // MARK: - Properties
     private let TopCellIdentity: String = "TopCell"
+    var movies: [MovieInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,6 +39,8 @@ extension TopHorizontalCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCellIdentity, for: indexPath) as! TopCell
+        let posterPath = movies[indexPath.row].poster_path
+        cell.bindData(posterPath)
         return cell
     }
 }
