@@ -8,6 +8,13 @@
 import UIKit
 import SDWebImage
 
+enum CollectionViewTag: Int {
+    case trailer = 900
+    case screenshots = 901
+    case starting = 902
+    case similarmovies = 903
+}
+
 class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
 
     // MARK: - IBOutlets
@@ -23,11 +30,19 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var checkoutView: UIView!
     @IBOutlet private weak var checkoutLabel: UILabel!
-
+    @IBOutlet private weak var movieScreenShotsLabel: UILabel!
+    @IBOutlet private weak var imageCollectionView: UICollectionView!
+    @IBOutlet private weak var similarLabel: UILabel!
+    @IBOutlet private weak var similarCollectionView: UICollectionView!
+    
+    // MARK: - Properties
+    let ImageCellIdentity: String = "ImageCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        setupCollectionView()
         bindData()
     }
     
@@ -69,6 +84,26 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         checkoutLabel.text = "Check out\nmovie showtime"
         checkoutLabel.textColor = .white
         checkoutLabel.font = .fontPoppinsSemiBold(withSize: 13)
+        
+        movieScreenShotsLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        movieScreenShotsLabel.textColor = Constant.Color.color2B2F31
+        
+        similarLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        similarLabel.textColor = Constant.Color.color2B2F31
+    }
+    
+    private func setupCollectionView() {
+        imageCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
+        imageCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
+        imageCollectionView.tag = CollectionViewTag.screenshots.rawValue
+        
+        similarCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        similarCollectionView.dataSource = self
+        similarCollectionView.delegate = self
+        similarCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
+        similarCollectionView.tag = CollectionViewTag.similarmovies.rawValue
     }
     
     private func bindData() {

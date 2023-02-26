@@ -48,9 +48,21 @@ struct MovieDetailInfo: Codable {
     let original_title: String
     let genres: [GenreInfo]
     let vote_average: Float
-//    let images: MovieImagesInfo
+    let images: MovieImagesInfo
 //    let reviews: ReviewsInfo
-//    let recommendations: RecommendationsInfo
+    let recommendations: RecommendationsInfo
 //    let credits: CreditsInfo
 //    let videos: VideosContainerInfo
+}
+
+struct MovieImagesInfo: Codable {
+    let posters: [ImageInfo]
+}
+
+struct ImageInfo: Codable {
+    let file_path: String?
+}
+
+struct RecommendationsInfo: Codable {
+    let results: [MovieInfo]
 }

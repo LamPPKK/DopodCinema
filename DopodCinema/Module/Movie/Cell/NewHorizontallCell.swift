@@ -27,7 +27,7 @@ class NewHorizontallCell: UITableViewCell {
     
     // MARK: - Private functions
     private func setupUI() {
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.register(UINib(nibName: NewCellIdentity, bundle: nil), forCellWithReuseIdentifier: NewCellIdentity)
         collectionView.delegate = self
         collectionView.dataSource = self
