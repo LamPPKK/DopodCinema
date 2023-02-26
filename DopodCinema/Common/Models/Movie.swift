@@ -37,3 +37,20 @@ struct MoviesPopular: Codable {
 struct MoviesUpComing: Codable {
     let results: [MovieInfo]
 }
+
+struct MovieDetailInfo: Codable {
+    let id: Int
+    let backdrop_path: String?
+    let poster_path: String?
+    let overview: String?
+    let runtime: Int
+    let release_date: String
+    let original_title: String
+    let genres: [GenreInfo]
+    let vote_average: Float
+//    let images: MovieImagesInfo
+//    let reviews: ReviewsInfo
+//    let recommendations: RecommendationsInfo
+//    let credits: CreditsInfo
+//    let videos: VideosContainerInfo
+}

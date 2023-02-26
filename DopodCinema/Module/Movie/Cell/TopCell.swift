@@ -23,7 +23,7 @@ class TopCell: UICollectionViewCell {
     func bindData(_ poster: String?) {
         if let url = URL(string: Utils.getPosterPath(poster)) {
             posterImageView.sd_setImage(with: url,
-                                        placeholderImage: UIImage(named: ""),
+                                        placeholderImage: UIImage(named: "ic_loading"),
                                         context: nil)
         }
     }

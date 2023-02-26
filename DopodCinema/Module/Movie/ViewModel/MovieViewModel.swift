@@ -23,15 +23,27 @@ enum MovieSectionType {
     case actor(actors: [ActorInfo])
 }
 
-class MovieViewModel: NSObject {
+class MovieViewModel: ViewModelType {
+    
+    struct Input {
+    }
+    
+    struct Output {
+    }
     
     // MARK: - Properties
+    private let navigator: MovieNavigator
+    
     private var categories: [GenreInfo] = []
     private var moviesPopular: [MovieInfo] = []
     private var moviesToprated: [MovieInfo] = []
     private var moviesUpcoming: [MovieInfo] = []
     private var moviesNowPlaying: [MovieInfo] = []
     private var actorsPopular: [ActorInfo] = []
+    
+    init(navigator: MovieNavigator) {
+        self.navigator = navigator
+    }
     
     func getAllData(completion: @escaping () -> Void) {
         let group = DispatchGroup()
@@ -152,5 +164,19 @@ class MovieViewModel: NSObject {
         }
         
         return sections
+    }
+    
+    func transform(input: Input) -> Output {
+        return Output()
+    }
+    
+    func showMovieDetailInfo(with id: Int) {
+        API.shared.getMovieDetail(with: id) { [weak self] movieDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoMovieDetail(movieDetailInfo)
+        } error: { error in
+            // Do something
+        }
     }
 }

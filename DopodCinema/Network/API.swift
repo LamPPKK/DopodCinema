@@ -74,24 +74,19 @@ class API {
     }
     
     // MARK: - Get movie detail
-    /**
-     - parameter id: id of movie
-     - parameter api_key:
-     - parameter append_to_response:
-     */
-//    func getMovieDetail(withID id: Int, completion: @escaping (MovieDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "api_key": Constant.Network.API_KEY,
-//            "append_to_response": "videos,credits,recommendations,reviews,images"
-//        ]
-//
-//        Network.get(URLPath.MoviesPath.moviesPath + "/\(id)",
-//                    parameters: parametters,
-//                    responseType: MovieDetailInfo.self,
-//                    completionHandler: { response in
-//            completion(response)
-//        }, errorHandler: error)
-//    }
+    func getMovieDetail(with id: Int, completion: @escaping (MovieDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "append_to_response": "videos,credits,recommendations,reviews,images"
+        ]
+
+        Network.get(URLPath.MoviesPath.moviesPath + "/\(id)",
+                    parameters: parametters,
+                    responseType: MovieDetailInfo.self,
+                    completionHandler: { response in
+            completion(response)
+        }, errorHandler: error)
+    }
     
     // MARK: - Get list tv show top rate
 //    func getTVShowsTopRate(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {

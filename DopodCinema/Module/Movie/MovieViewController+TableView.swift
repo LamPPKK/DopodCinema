@@ -146,4 +146,17 @@ extension MovieViewController: UITableViewDelegate {
             return UITableView.automaticDimension
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = viewModel.getSections()[indexPath.section]
+        
+        switch section {
+        case .popular(let movies):
+            let id = movies[indexPath.row].id
+            viewModel.showMovieDetailInfo(with: id)
+            
+        default:
+            break
+        }
+    }
 }

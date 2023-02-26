@@ -17,7 +17,7 @@ enum PageVCTag: Int {
 class HomePageViewController: UIPageViewController {
 
     // MARK: - Properties
-    private var movieVC: MovieViewController!
+    private var movieNavigationController: UINavigationController!
     private var tvVC: TVViewController!
     private var favoriteVC: FavoriteViewController!
     private var showtimeVC: ShowTimeViewController!
@@ -30,8 +30,9 @@ class HomePageViewController: UIPageViewController {
     
     // MARK: - Private functions
     private func setupViewControllers() {
-        movieVC = MovieViewController(nibName: "MovieViewController", bundle: nil)
-        movieVC.viewModel = MovieViewModel()
+        movieNavigationController = UINavigationController()
+        let movieNavigator = DefaultMovieNavigator(navigationController: movieNavigationController)
+        movieNavigator.start()
         
         tvVC = TVViewController(nibName: "TVViewController", bundle: nil)
         tvVC.viewModel = TVViewModel()
@@ -39,7 +40,7 @@ class HomePageViewController: UIPageViewController {
         favoriteVC = FavoriteViewController(nibName: "FavoriteViewController", bundle: nil)
         showtimeVC = ShowTimeViewController(nibName: "ShowTimeViewController", bundle: nil)
         
-        setViewControllers([movieVC], direction: .forward, animated: false)
+        setViewControllers([movieNavigationController], direction: .forward, animated: false)
     }
     
     func moveToScreen(at index: PageVCTag) {
@@ -47,7 +48,7 @@ class HomePageViewController: UIPageViewController {
         
         switch index {
         case .kMovie:
-            selectedVC = movieVC
+            selectedVC = movieNavigationController
             
         case .kTV:
             selectedVC = tvVC

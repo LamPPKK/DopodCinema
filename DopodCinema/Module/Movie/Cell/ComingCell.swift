@@ -48,7 +48,9 @@ class ComingCell: UICollectionViewCell {
     
     func bindData(_ data: MovieInfo) {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
-            posterImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), context: nil)
+            posterImageView.sd_setImage(with: url,
+                                        placeholderImage: UIImage(named: "ic_loading"),
+                                        context: nil)
         }
         
         nameLabel.text = data.original_title

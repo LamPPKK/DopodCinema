@@ -13,24 +13,8 @@ extension UIFont {
         return UIFont(name: "HelveticaNeue", size: fontSize)!
     }
     
-    static func fontSFProTextMedium(withSize size: CGFloat)  -> UIFont {
-        return UIFont(name: "SFProText-Medium", size: size) ?? fontDefault(fontSize: size)
-    }
-    
-    static func fontSFProTextLight(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProText-Light", size: size) ?? fontDefault(fontSize: size)
-    }
-    
-    static func fontSFProTextBold(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProText-Bold", size: size) ?? fontDefault(fontSize: size)
-    }
-    
-    static func fontSFProTextRegular(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProText-Regular", size: size) ?? fontDefault(fontSize: size)
-    }
-    
-    static func fontSFProTextSemibold(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProText-Semibold", size: size) ?? fontDefault(fontSize: size)
+    static func fontPoppinsRegular(withSize size: CGFloat)  -> UIFont {
+        return UIFont(name: "Poppins-Regular", size: size) ?? fontDefault(fontSize: size)
     }
     
     static func fontPoppinsBold(withSize size: CGFloat) -> UIFont {
@@ -43,14 +27,6 @@ extension UIFont {
     
     static func fontPoppinsSemiBold(withSize size: CGFloat) -> UIFont {
         return UIFont(name: "Poppins-SemiBold", size: size) ?? fontDefault(fontSize: size)
-    }
-    
-    static func fontSFUIDisplaySemibold(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "SFUIDisplay-Semibold", size: size) ?? fontDefault(fontSize: size)
-    }
-    
-    static func fontSFProTextItalic(withSize size: CGFloat) -> UIFont {
-        return UIFont(name: "SFProText-Italic", size: size) ?? fontDefault(fontSize: size)
     }
     
     static func fontInterRegular(withSize size: CGFloat) -> UIFont {

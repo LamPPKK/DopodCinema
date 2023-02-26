@@ -46,6 +46,8 @@ class BaseViewController<ViewModel>: UIViewController {
     }
     
     func setupSubHeader(with title: String) {
+        NotificationCenter.default.post(name: Notification.Name("hide_tabbar"), object: nil)
+        
         if subHeaderView == nil {
             subHeaderView = BaseHeaderSubView.instanceFromNib()
         }
@@ -77,5 +79,9 @@ extension BaseViewController: BaseHeaderViewDelegate {
 extension BaseViewController: BaseHeaderSubViewDelegate {
     func didBackToViewController() {
         self.navigationController?.popViewController(animated: true)
+        
+        if subHeaderView != nil {
+            NotificationCenter.default.post(name: Notification.Name("show_tabbar"), object: nil)
+        }
     }
 }

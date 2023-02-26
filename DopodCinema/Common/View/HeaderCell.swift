@@ -22,8 +22,9 @@ class HeaderCell: UITableViewCell {
         seeAllButton.titleLabel?.font = UIFont.fontInterRegular(withSize: 13)
     }
 
-    func setTitle(_ title: String, bottom: CGFloat) {
+    func setTitle(_ title: String, bottom: CGFloat, isHideSeeAll: Bool = false) {
         headerLabel.text = title
         bottomConstraint.constant = bottom
+        seeAllButton.isHidden = isHideSeeAll
     }
 }

@@ -32,6 +32,18 @@ struct Utils {
         }
     }
     
+    // MARK: - Get list genre name from list genre, After convert to String
+    static func getGenresString(from genres: [GenreInfo]) -> String {
+        let names: [String] = genres.map({ return $0.name })
+        return names.joined(separator: " • ")
+    }
+    
+    static func getHourMin(from minutes: Int) -> (hour: Int, min: Int) {
+        let hour: Int = minutes / 60
+        let min: Int = minutes % 60
+        return (hour, min)
+    }
+    
     static func open(with url: URL) {
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url)

@@ -35,6 +35,9 @@ class HomeScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(hideTabbar), name: Notification.Name("hide_tabbar"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showTabbar), name: Notification.Name("show_tabbar"), object: nil)
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
 
         setupUI()
@@ -138,5 +141,18 @@ class HomeScreen: UIViewController {
         tvDotImageView.isHidden = !isActiveTV
         favDotImageView.isHidden = !isActiveFav
         discoveryDotImageView.isHidden = !isActiveDiscovery
+    }
+}
+
+extension HomeScreen {
+    
+    @objc
+    private func hideTabbar() {
+        tabbarView.isHidden = true
+    }
+    
+    @objc
+    private func showTabbar() {
+        tabbarView.isHidden = false
     }
 }
