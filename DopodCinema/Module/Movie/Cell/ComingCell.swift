@@ -15,7 +15,6 @@ class ComingCell: UICollectionViewCell {
     @IBOutlet private weak var posterImageView: UIImageView!
     @IBOutlet private weak var categoryLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var averageLabel: UILabel!
     @IBOutlet private weak var countLabel: UILabel!
     @IBOutlet private weak var overviewLabel: UILabel!
@@ -32,9 +31,6 @@ class ComingCell: UICollectionViewCell {
         
         nameLabel.font = .fontPoppinsBold(withSize: 16)
         nameLabel.textColor = .black
-        
-        timeLabel.font = .fontPoppinsMedium(withSize: 13)
-        timeLabel.textColor = Constant.Color.color78828A
         
         averageLabel.font = .fontPoppinsMedium(withSize: 12)
         averageLabel.textColor = Constant.Color.colorFACC15

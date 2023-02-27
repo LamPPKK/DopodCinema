@@ -30,6 +30,8 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var checkoutView: UIView!
     @IBOutlet private weak var checkoutLabel: UILabel!
+    @IBOutlet private weak var trailerLabel: UILabel!
+    @IBOutlet private weak var trailerCollectionView: UICollectionView!
     @IBOutlet private weak var movieScreenShotsLabel: UILabel!
     @IBOutlet private weak var imageCollectionView: UICollectionView!
     @IBOutlet private weak var similarLabel: UILabel!
@@ -37,6 +39,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     
     // MARK: - Properties
     let ImageCellIdentity: String = "ImageCell"
+    let TrailerCellIdentity: String = "TrailerCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +88,9 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         checkoutLabel.textColor = .white
         checkoutLabel.font = .fontPoppinsSemiBold(withSize: 13)
         
+        trailerLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        trailerLabel.textColor = Constant.Color.color2B2F31
+        
         movieScreenShotsLabel.font = .fontPoppinsSemiBold(withSize: 16)
         movieScreenShotsLabel.textColor = Constant.Color.color2B2F31
         
@@ -93,6 +99,12 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     }
     
     private func setupCollectionView() {
+        trailerCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        trailerCollectionView.dataSource = self
+        trailerCollectionView.delegate = self
+        trailerCollectionView.register(UINib(nibName: TrailerCellIdentity, bundle: nil), forCellWithReuseIdentifier: TrailerCellIdentity)
+        trailerCollectionView.tag = CollectionViewTag.trailer.rawValue
+        
         imageCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
@@ -118,7 +130,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         }
         
         nameLabel.text = movieDetailInfo.original_title
-        genresLabel.text = Utils.getGenresString(from: movieDetailInfo.genres)
+        genresLabel.text = Utils.getGenresString(from: movieDetailInfo.genres, separator: " • ")
         ratingLabel.text = "\(movieDetailInfo.vote_average.format(f: 1))/10"
         let (hour, min) = Utils.getHourMin(from: movieDetailInfo.runtime)
         timeLabel.text = "\(hour)h\(min)m"

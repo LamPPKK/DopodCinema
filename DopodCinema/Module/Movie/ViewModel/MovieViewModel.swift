@@ -46,6 +46,9 @@ class MovieViewModel: ViewModelType {
     }
     
     func getAllData(completion: @escaping () -> Void) {
+        
+        LoadingView.shared.startLoading()
+        
         let group = DispatchGroup()
         
         // 1.
@@ -125,6 +128,7 @@ class MovieViewModel: ViewModelType {
         })
         
         group.notify(queue: .main) {
+            LoadingView.shared.endLoading()
             completion()
         }
     }
@@ -171,12 +175,15 @@ class MovieViewModel: ViewModelType {
     }
     
     func showMovieDetailInfo(with id: Int) {
+        LoadingView.shared.startLoading()
+        
         API.shared.getMovieDetail(with: id) { [weak self] movieDetailInfo in
             guard let self = self else { return }
             
             self.navigator.gotoMovieDetail(movieDetailInfo)
+            LoadingView.shared.endLoading()
         } error: { error in
-            // Do something
+            LoadingView.shared.endLoading()
         }
     }
 }

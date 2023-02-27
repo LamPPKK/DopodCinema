@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CPCollectionViewWheelLayoutSwift
 
 class NewHorizontallCell: UITableViewCell {
 

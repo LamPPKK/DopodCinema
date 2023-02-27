@@ -48,27 +48,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2f-96-5fI">
                                 <rect key="frame" x="116" y="52" width="371" height="20"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_clock" translatesAutoresizingMaskIntoConstraints="NO" id="eGY-TT-9SL">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="eGY-TT-9SL">
                                         <rect key="frame" x="0.0" y="2" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="VSa-mn-5EV"/>
                                             <constraint firstAttribute="width" constant="16" id="pF6-23-foO"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="148 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eIg-cQ-4Tk">
-                                        <rect key="frame" x="24" y="2.3333333333333348" width="74.333333333333329" height="15.666666666666664"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHF-eI-uPX">
-                                        <rect key="frame" x="306" y="3.0000000000000009" width="31" height="14.333333333333336"/>
+                                        <rect key="frame" x="21" y="3.0000000000000009" width="31" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwO-Pj-34K">
-                                        <rect key="frame" x="340" y="3.0000000000000009" width="31" height="14.333333333333336"/>
+                                        <rect key="frame" x="55" y="3.0000000000000009" width="31" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -76,14 +70,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="uwO-Pj-34K" firstAttribute="centerY" secondItem="eIg-cQ-4Tk" secondAttribute="centerY" id="1ST-7a-Kqk"/>
                                     <constraint firstItem="eGY-TT-9SL" firstAttribute="leading" secondItem="P2f-96-5fI" secondAttribute="leading" id="5Da-fX-j5T"/>
                                     <constraint firstItem="uwO-Pj-34K" firstAttribute="leading" secondItem="eHF-eI-uPX" secondAttribute="trailing" constant="3" id="D1m-rr-ihs"/>
                                     <constraint firstAttribute="height" constant="20" id="Fgd-NA-haM"/>
-                                    <constraint firstAttribute="trailing" secondItem="uwO-Pj-34K" secondAttribute="trailing" id="Q4p-c6-Vp3"/>
-                                    <constraint firstItem="eIg-cQ-4Tk" firstAttribute="leading" secondItem="eGY-TT-9SL" secondAttribute="trailing" constant="8" id="Rv6-YW-clJ"/>
+                                    <constraint firstItem="eHF-eI-uPX" firstAttribute="leading" secondItem="eGY-TT-9SL" secondAttribute="trailing" constant="5" id="L9u-ON-LSn"/>
                                     <constraint firstItem="eHF-eI-uPX" firstAttribute="centerY" secondItem="uwO-Pj-34K" secondAttribute="centerY" id="c69-VF-Qhz"/>
-                                    <constraint firstItem="eIg-cQ-4Tk" firstAttribute="centerY" secondItem="eGY-TT-9SL" secondAttribute="centerY" id="k3c-Mg-S3E"/>
+                                    <constraint firstItem="eHF-eI-uPX" firstAttribute="centerY" secondItem="P2f-96-5fI" secondAttribute="centerY" id="dIO-dN-Cse"/>
                                     <constraint firstItem="eGY-TT-9SL" firstAttribute="centerY" secondItem="P2f-96-5fI" secondAttribute="centerY" id="k4P-UU-Ha7"/>
                                 </constraints>
                             </view>
@@ -129,14 +121,13 @@
                 <outlet property="nameLabel" destination="clj-jq-HDm" id="1Z2-Wk-S1s"/>
                 <outlet property="overviewLabel" destination="yJN-ph-BOQ" id="icq-LJ-D3U"/>
                 <outlet property="posterImageView" destination="1rB-fD-L0B" id="tyG-VZ-Tic"/>
-                <outlet property="timeLabel" destination="eIg-cQ-4Tk" id="Bv2-wL-3LN"/>
             </connections>
             <point key="canvasLocation" x="145.80152671755724" y="100.35211267605634"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_clock" width="16" height="16.333333969116211"/>
         <image name="ic_example1" width="163" height="217"/>
+        <image name="ic_star_active" width="14" height="14.333333015441895"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -33,9 +33,9 @@ struct Utils {
     }
     
     // MARK: - Get list genre name from list genre, After convert to String
-    static func getGenresString(from genres: [GenreInfo]) -> String {
+    static func getGenresString(from genres: [GenreInfo], separator: String) -> String {
         let names: [String] = genres.map({ return $0.name })
-        return names.joined(separator: " • ")
+        return names.joined(separator: separator)
     }
     
     static func getHourMin(from minutes: Int) -> (hour: Int, min: Int) {

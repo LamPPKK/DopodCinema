@@ -47,27 +47,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXz-Hn-eyf">
                                 <rect key="frame" x="96" y="60" width="192" height="20"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_clock" translatesAutoresizingMaskIntoConstraints="NO" id="71R-Gf-TYR">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star_active" translatesAutoresizingMaskIntoConstraints="NO" id="71R-Gf-TYR">
                                         <rect key="frame" x="0.0" y="2" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="gZf-5d-d2K"/>
                                             <constraint firstAttribute="width" constant="16" id="pBx-ca-h2m"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="148 Minutes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3I5-Tf-4bt">
-                                        <rect key="frame" x="24" y="2.3333333333333277" width="74.333333333333329" height="15.666666666666664"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWy-PR-1IM">
-                                        <rect key="frame" x="127" y="3.0000000000000009" width="31" height="14.333333333333336"/>
+                                        <rect key="frame" x="21" y="3.0000000000000009" width="31" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b62-zI-PdY">
-                                        <rect key="frame" x="161" y="3.0000000000000009" width="31" height="14.333333333333336"/>
+                                        <rect key="frame" x="55" y="3.0000000000000009" width="31" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -77,12 +71,10 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="9FX-ka-zkd"/>
                                     <constraint firstItem="71R-Gf-TYR" firstAttribute="leading" secondItem="mXz-Hn-eyf" secondAttribute="leading" id="GTn-Fj-VQQ"/>
-                                    <constraint firstItem="3I5-Tf-4bt" firstAttribute="leading" secondItem="71R-Gf-TYR" secondAttribute="trailing" constant="8" id="Sju-n1-3Ii"/>
+                                    <constraint firstItem="GWy-PR-1IM" firstAttribute="centerY" secondItem="mXz-Hn-eyf" secondAttribute="centerY" id="aH6-wV-D2P"/>
                                     <constraint firstItem="GWy-PR-1IM" firstAttribute="centerY" secondItem="b62-zI-PdY" secondAttribute="centerY" id="aVM-Hg-c6I"/>
                                     <constraint firstItem="b62-zI-PdY" firstAttribute="leading" secondItem="GWy-PR-1IM" secondAttribute="trailing" constant="3" id="atC-ju-0TM"/>
-                                    <constraint firstItem="b62-zI-PdY" firstAttribute="centerY" secondItem="3I5-Tf-4bt" secondAttribute="centerY" id="bSL-oz-ran"/>
-                                    <constraint firstItem="3I5-Tf-4bt" firstAttribute="centerY" secondItem="71R-Gf-TYR" secondAttribute="centerY" id="cN6-5I-rjc"/>
-                                    <constraint firstAttribute="trailing" secondItem="b62-zI-PdY" secondAttribute="trailing" id="dKe-OQ-AY8"/>
+                                    <constraint firstItem="GWy-PR-1IM" firstAttribute="leading" secondItem="71R-Gf-TYR" secondAttribute="trailing" constant="5" id="pth-G7-6Dz"/>
                                     <constraint firstItem="71R-Gf-TYR" firstAttribute="centerY" secondItem="mXz-Hn-eyf" secondAttribute="centerY" id="z9s-ab-osY"/>
                                 </constraints>
                             </view>
@@ -116,13 +108,12 @@
                 <outlet property="countLabel" destination="b62-zI-PdY" id="bvg-AC-sS2"/>
                 <outlet property="iconImageView" destination="TEC-Ny-wCG" id="Jdj-HD-JOV"/>
                 <outlet property="nameLabel" destination="aXw-KE-HNJ" id="U9N-jt-BuQ"/>
-                <outlet property="timeLabel" destination="3I5-Tf-4bt" id="j6k-Gj-bzc"/>
             </connections>
             <point key="canvasLocation" x="71.755725190839698" y="36.267605633802816"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_clock" width="16" height="16.333333969116211"/>
         <image name="ic_example" width="80" height="80.333335876464844"/>
+        <image name="ic_star_active" width="14" height="14.333333015441895"/>
     </resources>
 </document>

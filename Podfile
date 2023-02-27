@@ -12,5 +12,6 @@ target 'DopodCinema' do
     pod 'RxCocoa', '6.5.0'
     pod "RxGesture"
     
-    pod "CPCollectionViewWheelLayoutSwift"
+    # Animation
+    pod 'lottie-ios'
 end

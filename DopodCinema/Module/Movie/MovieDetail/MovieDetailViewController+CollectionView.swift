@@ -13,6 +13,10 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         let tag = CollectionViewTag(rawValue: collectionView.tag)
         
         switch tag {
+        case .trailer:
+            let numberOfItemsTrailer = viewModel.movieDetailInfo.videos.results.count
+            return numberOfItemsTrailer > 5 ? 5 : numberOfItemsTrailer
+            
         case .screenshots:
             let numberOfItemsPoster = viewModel.movieDetailInfo.images.posters.count
             return numberOfItemsPoster > 10 ? 10 : numberOfItemsPoster
@@ -32,6 +36,9 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         let tag = CollectionViewTag(rawValue: collectionView.tag)
         
         switch tag {
+        case .trailer:
+            return trailerCell(for: collectionView, indexPath: indexPath, videos: viewModel.movieDetailInfo.videos.results)
+            
         case .screenshots:
             let path = viewModel.movieDetailInfo.images.posters[indexPath.row].file_path
             return imageCell(for: collectionView, indexPath: indexPath, path: path)
@@ -45,6 +52,14 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         }
     }
     
+    private func trailerCell(for collectionView: UICollectionView,
+                             indexPath: IndexPath,
+                             videos: [VideoInfo]) -> TrailerCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrailerCellIdentity, for: indexPath) as! TrailerCell
+        cell.bindData(videos[indexPath.row])
+        return cell
+    }
+    
     private func imageCell(for collectionView: UICollectionView,
                            indexPath: IndexPath,
                            path: String?) -> ImageCell {
@@ -56,7 +71,19 @@ extension MovieDetailViewController: UICollectionViewDataSource {
 
 extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 150)
+        
+        let tag = CollectionViewTag(rawValue: collectionView.tag)
+        
+        switch tag {
+        case .trailer:
+            return CGSize(width: 208, height: 117)
+            
+        case .screenshots, .similarmovies:
+            return CGSize(width: 100, height: 150)
+
+        default:
+            return .zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
