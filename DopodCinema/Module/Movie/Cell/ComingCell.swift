@@ -42,12 +42,13 @@ class ComingCell: UICollectionViewCell {
         overviewLabel.textColor = Constant.Color.color78828A
     }
     
-    func bindData(_ data: MovieInfo) {
+    func bindData(_ data: MovieInfo, genres: [GenreInfo]) {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
         }
         
+        categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
         nameLabel.text = data.original_title
         averageLabel.text = "\(data.vote_average)"
         countLabel.text = "(\(data.vote_count))"

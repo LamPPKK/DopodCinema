@@ -96,7 +96,7 @@ extension MovieViewController: UITableViewDataSource {
                              movies: [MovieInfo]) -> PopularCell {
         let popularCell = tableView.dequeueReusableCell(withIdentifier: PopularCellIdentity) as! PopularCell
         let movie = movies[indexPath.row]
-        popularCell.bindData(movie)
+        popularCell.bindData(movie, genres: viewModel.categories)
         return popularCell
     }
     
@@ -109,6 +109,7 @@ extension MovieViewController: UITableViewDataSource {
                                     indexPath: IndexPath,
                                     movies: [MovieInfo]) -> NewHorizontallCell {
         let newHorizontallCell = tableView.dequeueReusableCell(withIdentifier: NewHorizontallCellIdentity) as! NewHorizontallCell
+        newHorizontallCell.delegate = self
         newHorizontallCell.movies = movies
         return newHorizontallCell
     }
@@ -117,7 +118,9 @@ extension MovieViewController: UITableViewDataSource {
                                        indexPath: IndexPath,
                                        movies: [MovieInfo]) -> ComingHorizontalCell {
         let comingHorizontalCell = tableView.dequeueReusableCell(withIdentifier: ComingHorizontalCellIdentity) as! ComingHorizontalCell
+        comingHorizontalCell.delegate = self
         comingHorizontalCell.movies = movies
+        comingHorizontalCell.genres = viewModel.categories
         return comingHorizontalCell
     }
     
@@ -158,5 +161,11 @@ extension MovieViewController: UITableViewDelegate {
         default:
             break
         }
+    }
+}
+
+extension MovieViewController: NewHorizontallCellDelegate, ComingHorizontalCellDelegate {
+    func selectedMovie(_ id: Int) {
+        viewModel.showMovieDetailInfo(with: id)
     }
 }

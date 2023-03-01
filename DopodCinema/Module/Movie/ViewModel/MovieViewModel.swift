@@ -34,7 +34,7 @@ class MovieViewModel: ViewModelType {
     // MARK: - Properties
     private let navigator: MovieNavigator
     
-    private var categories: [GenreInfo] = []
+    var categories: [GenreInfo] = []
     private var moviesPopular: [MovieInfo] = []
     private var moviesToprated: [MovieInfo] = []
     private var moviesUpcoming: [MovieInfo] = []

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ComingHorizontalCellDelegate: NSObjectProtocol {
+    func selectedMovie(_ id: Int)
+}
+
 class ComingHorizontalCell: UITableViewCell {
 
     // MARK: - IBOutlets
@@ -14,7 +18,10 @@ class ComingHorizontalCell: UITableViewCell {
     
     // MARK: - Properties
     private let ComingCellIdentity: String = "ComingCell"
+    
+    weak var delegate: ComingHorizontalCellDelegate?
     var movies: [MovieInfo]!
+    var genres: [GenreInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,13 +47,15 @@ extension ComingHorizontalCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComingCellIdentity, for: indexPath) as! ComingCell
         let movie = movies[indexPath.row]
-        cell.bindData(movie)
+        cell.bindData(movie, genres: genres)
         return cell
     }
 }
 
 extension ComingHorizontalCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.selectedMovie(movies[indexPath.row].id)
+    }
 }
 
 extension ComingHorizontalCell: UICollectionViewDelegateFlowLayout {

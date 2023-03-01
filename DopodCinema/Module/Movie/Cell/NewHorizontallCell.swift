@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol NewHorizontallCellDelegate: NSObjectProtocol {
+    func selectedMovie(_ id: Int)
+}
+
 class NewHorizontallCell: UITableViewCell {
 
     // MARK: - IBOutlets
@@ -16,6 +20,7 @@ class NewHorizontallCell: UITableViewCell {
     private let NewCellIdentity: String = "NewCell"
     private let startIndexDisplay: Int = 5
     
+    weak var delegate: NewHorizontallCellDelegate?
     var movies: [MovieInfo]!
     
     override func awakeFromNib() {
@@ -49,7 +54,9 @@ extension NewHorizontallCell: UICollectionViewDataSource {
 }
 
 extension NewHorizontallCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.selectedMovie(movies[indexPath.row + startIndexDisplay].id)
+    }
 }
 
 extension NewHorizontallCell: UICollectionViewDelegateFlowLayout {

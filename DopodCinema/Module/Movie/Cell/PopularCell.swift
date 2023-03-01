@@ -41,12 +41,13 @@ class PopularCell: UITableViewCell {
         countLabel.textColor = Constant.Color.color9CA4AB
     }
     
-    func bindData(_ data: MovieInfo) {
+    func bindData(_ data: MovieInfo, genres: [GenreInfo]) {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
             iconImageView.sd_setImage(with: url,
                                       placeholderImage: UIImage(named: "ic_loading"))
         }
         
+        categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
         nameLabel.text = data.original_title
         averageLabel.text = "\(data.vote_average)"
         countLabel.text = "(\(data.vote_count))"

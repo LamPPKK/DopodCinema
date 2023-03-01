@@ -32,6 +32,16 @@ struct Utils {
         }
     }
     
+    static func getNameGenres(from ids: [Int], genres: [GenreInfo]) -> String {
+        var listName: [String] = []
+        for genre in genres {
+            for id in ids where id == genre.id {
+                listName.append(genre.name)
+            }
+        }
+        return listName.joined(separator: ", ")
+    }
+    
     // MARK: - Get list genre name from list genre, After convert to String
     static func getGenresString(from genres: [GenreInfo], separator: String) -> String {
         let names: [String] = genres.map({ return $0.name })
