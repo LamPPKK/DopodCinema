@@ -44,8 +44,7 @@ class PopularCell: UITableViewCell {
     func bindData(_ data: MovieInfo) {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
             iconImageView.sd_setImage(with: url,
-                                      placeholderImage: UIImage(named: "ic_loading"),
-                                      context: nil)
+                                      placeholderImage: UIImage(named: "ic_loading"))
         }
         
         nameLabel.text = data.original_title

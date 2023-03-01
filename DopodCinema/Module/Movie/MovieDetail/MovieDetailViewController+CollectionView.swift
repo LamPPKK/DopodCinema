@@ -21,6 +21,10 @@ extension MovieDetailViewController: UICollectionViewDataSource {
             let numberOfItemsPoster = viewModel.movieDetailInfo.images.posters.count
             return numberOfItemsPoster > 10 ? 10 : numberOfItemsPoster
             
+        case .starting:
+            let numberOfItemsActing = viewModel.movieDetailInfo.credits.cast.count
+            return numberOfItemsActing > 10 ? 10 : numberOfItemsActing
+            
         case .similarmovies:
             let numberOfItemsSimilar = viewModel.movieDetailInfo.recommendations.results.count
             return numberOfItemsSimilar > 10 ? 10 : numberOfItemsSimilar
@@ -42,6 +46,11 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         case .screenshots:
             let path = viewModel.movieDetailInfo.images.posters[indexPath.row].file_path
             return imageCell(for: collectionView, indexPath: indexPath, path: path)
+            
+        case .starting:
+            return startingCell(for: collectionView,
+                                indexPath: indexPath,
+                                actings: viewModel.movieDetailInfo.credits.cast)
             
         case .similarmovies:
             let path = viewModel.movieDetailInfo.recommendations.results[indexPath.row].poster_path
@@ -67,6 +76,15 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         cell.bindData(path)
         return cell
     }
+    
+    private func startingCell(for collectionView: UICollectionView,
+                              indexPath: IndexPath,
+                              actings: [CastInfo]) -> StartingCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StartingCellIdentity, for: indexPath) as! StartingCell
+        let acting = viewModel.movieDetailInfo.credits.cast[indexPath.row]
+        cell.bindData(acting)
+        return cell
+    }
 }
 
 extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
@@ -77,6 +95,9 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
         switch tag {
         case .trailer:
             return CGSize(width: 208, height: 117)
+            
+        case .starting:
+            return CGSize(width: 80, height: 76)
             
         case .screenshots, .similarmovies:
             return CGSize(width: 100, height: 150)

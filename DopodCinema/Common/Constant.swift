@@ -22,7 +22,7 @@ struct Constant {
         static let color78828A: UIColor = UIColor(hexString: "#78828A") ?? UIColor()
         static let colorFACC15: UIColor = UIColor(hexString: "#FACC15") ?? UIColor()
         static let color2B2F31: UIColor = UIColor(hexString: "#2B2F31") ?? UIColor()
-
+        static let color55595A: UIColor = UIColor(hexString: "#55595A") ?? UIColor()
     }
     
     // MARK: - ENCRYPT

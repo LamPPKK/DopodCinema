@@ -25,8 +25,7 @@ class ActorCell: UICollectionViewCell {
     func bindData(_ data: ActorInfo) {
         if let url = URL(string: Utils.getProfilePath(data.profile_path)) {
             actorImageView.sd_setImage(with: url,
-                                       placeholderImage: UIImage(named: "ic_loading"),
-                                       context: nil)
+                                       placeholderImage: UIImage(named: "ic_loading"))
         }
         
         nameLabel.text = data.name

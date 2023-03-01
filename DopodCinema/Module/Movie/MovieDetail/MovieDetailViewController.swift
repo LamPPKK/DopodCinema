@@ -34,12 +34,15 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     @IBOutlet private weak var trailerCollectionView: UICollectionView!
     @IBOutlet private weak var movieScreenShotsLabel: UILabel!
     @IBOutlet private weak var imageCollectionView: UICollectionView!
+    @IBOutlet private weak var startingLabel: UILabel!
+    @IBOutlet private weak var startingCollectionView: UICollectionView!
     @IBOutlet private weak var similarLabel: UILabel!
     @IBOutlet private weak var similarCollectionView: UICollectionView!
     
     // MARK: - Properties
     let ImageCellIdentity: String = "ImageCell"
     let TrailerCellIdentity: String = "TrailerCell"
+    let StartingCellIdentity: String = "StartingCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +97,9 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         movieScreenShotsLabel.font = .fontPoppinsSemiBold(withSize: 16)
         movieScreenShotsLabel.textColor = Constant.Color.color2B2F31
         
+        startingLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        startingLabel.textColor = Constant.Color.color2B2F31
+        
         similarLabel.font = .fontPoppinsSemiBold(withSize: 16)
         similarLabel.textColor = Constant.Color.color2B2F31
     }
@@ -111,6 +117,12 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         imageCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
         imageCollectionView.tag = CollectionViewTag.screenshots.rawValue
         
+        startingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        startingCollectionView.dataSource = self
+        startingCollectionView.delegate = self
+        startingCollectionView.register(UINib(nibName: StartingCellIdentity, bundle: nil), forCellWithReuseIdentifier: StartingCellIdentity)
+        startingCollectionView.tag = CollectionViewTag.starting.rawValue
+        
         similarCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         similarCollectionView.dataSource = self
         similarCollectionView.delegate = self
@@ -125,8 +137,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         
         if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path, size: .w342)) {
             posterImageView.sd_setImage(with: url,
-                                        placeholderImage: UIImage(named: "ic_loading"),
-                                        context: nil)
+                                        placeholderImage: UIImage(named: "ic_loading"))
         }
         
         nameLabel.text = movieDetailInfo.original_title

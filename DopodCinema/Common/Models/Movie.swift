@@ -51,7 +51,7 @@ struct MovieDetailInfo: Codable {
     let images: MovieImagesInfo
 //    let reviews: ReviewsInfo
     let recommendations: RecommendationsInfo
-//    let credits: CreditsInfo
+    let credits: CreditsInfo
     let videos: VideosContainerInfo
 }
 
@@ -76,4 +76,14 @@ struct VideoInfo: Codable {
     let name: String
     let key: String
     let published_at: String
+}
+
+struct CreditsInfo: Codable {
+    let cast: [CastInfo]
+}
+
+struct CastInfo: Codable {
+    let id: Int
+    let name: String
+    let profile_path: String?
 }
