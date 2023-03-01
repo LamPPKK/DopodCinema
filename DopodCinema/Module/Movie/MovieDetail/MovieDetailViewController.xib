@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailViewController" customModule="DopodCinema" customModuleProvider="target">
             <connections>
+                <outlet property="arrowButton" destination="BYc-2N-jPc" id="c6w-m4-ciu"/>
                 <outlet property="checkoutLabel" destination="F3B-Sc-Gbl" id="8dV-Bp-BJ0"/>
                 <outlet property="checkoutView" destination="Ysw-Ey-A1T" id="p7X-hk-0hI"/>
                 <outlet property="genresLabel" destination="jY4-NF-a9P" id="5a7-3C-b4j"/>
@@ -336,24 +337,29 @@
                             </constraints>
                         </scrollView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ysw-Ey-A1T">
-                            <rect key="frame" x="169" y="1385" width="245" height="83"/>
+                            <rect key="frame" x="175" y="1385" width="239" height="83"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_ar_right_white" translatesAutoresizingMaskIntoConstraints="NO" id="9uJ-bk-v9E">
-                                    <rect key="frame" x="12" y="29.666666666666742" width="24" height="24"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYc-2N-jPc">
+                                    <rect key="frame" x="10" y="21.666666666666742" width="40" height="40"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="24" id="ItV-rF-kuC"/>
-                                        <constraint firstAttribute="width" constant="24" id="ZPj-Mu-PN0"/>
+                                        <constraint firstAttribute="height" constant="40" id="dcl-U8-5Kx"/>
+                                        <constraint firstAttribute="width" constant="40" id="yju-p8-dlT"/>
                                     </constraints>
-                                </imageView>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="ic_ar_right_white"/>
+                                    <connections>
+                                        <action selector="didArrow" destination="-1" eventType="touchUpInside" id="gov-Zu-52A"/>
+                                    </connections>
+                                </button>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_checkout" translatesAutoresizingMaskIntoConstraints="NO" id="UGE-e3-gF0">
-                                    <rect key="frame" x="56" y="7.6666666666667425" width="68" height="68"/>
+                                    <rect key="frame" x="50" y="7.6666666666667425" width="68" height="68"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="68" id="B5a-xL-Buh"/>
                                         <constraint firstAttribute="width" constant="68" id="Y0E-uq-m1x"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check out movie showtime" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F3B-Sc-Gbl">
-                                    <rect key="frame" x="127" y="26" width="110" height="31.333333333333329"/>
+                                    <rect key="frame" x="121" y="26" width="110" height="31.333333333333329"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="110" id="XY4-zY-4OR"/>
                                     </constraints>
@@ -365,12 +371,12 @@
                             <color key="backgroundColor" systemColor="systemIndigoColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="83" id="5nP-HH-POH"/>
-                                <constraint firstItem="9uJ-bk-v9E" firstAttribute="leading" secondItem="Ysw-Ey-A1T" secondAttribute="leading" constant="12" id="6km-Ue-4Hu"/>
-                                <constraint firstItem="UGE-e3-gF0" firstAttribute="leading" secondItem="9uJ-bk-v9E" secondAttribute="trailing" constant="20" id="ClY-bR-8Id"/>
+                                <constraint firstItem="UGE-e3-gF0" firstAttribute="leading" secondItem="BYc-2N-jPc" secondAttribute="trailing" id="Fad-ua-en4"/>
                                 <constraint firstItem="F3B-Sc-Gbl" firstAttribute="centerY" secondItem="Ysw-Ey-A1T" secondAttribute="centerY" id="HE9-uG-3rS"/>
                                 <constraint firstAttribute="trailing" secondItem="F3B-Sc-Gbl" secondAttribute="trailing" constant="8" id="M6z-hA-F9w"/>
-                                <constraint firstItem="9uJ-bk-v9E" firstAttribute="centerY" secondItem="Ysw-Ey-A1T" secondAttribute="centerY" id="X5X-i1-ppx"/>
+                                <constraint firstItem="BYc-2N-jPc" firstAttribute="centerY" secondItem="Ysw-Ey-A1T" secondAttribute="centerY" id="X71-H9-nv2"/>
                                 <constraint firstItem="F3B-Sc-Gbl" firstAttribute="leading" secondItem="UGE-e3-gF0" secondAttribute="trailing" constant="3" id="Yt7-EO-mkj"/>
+                                <constraint firstItem="BYc-2N-jPc" firstAttribute="leading" secondItem="Ysw-Ey-A1T" secondAttribute="leading" constant="10" id="nRw-ym-IRq"/>
                                 <constraint firstItem="UGE-e3-gF0" firstAttribute="centerY" secondItem="Ysw-Ey-A1T" secondAttribute="centerY" id="uDg-j1-DtT"/>
                             </constraints>
                         </view>

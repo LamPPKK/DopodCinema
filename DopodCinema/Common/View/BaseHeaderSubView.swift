@@ -15,13 +15,14 @@ class BaseHeaderSubView: UIView {
 
     // MARK: - IBOutlet
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var settingButton: UIButton!
+    @IBOutlet private weak var saveButton: UIButton!
     
     // MARK: - Property
     private static let nibName: String = "BaseHeaderSubView"
     private var topConstraint: NSLayoutConstraint!
     private var heightConstraint: NSLayoutConstraint!
-            
+    var isSave: Bool = false
+    
     weak var delegate: BaseHeaderSubViewDelegate?
     
     class func instanceFromNib() -> BaseHeaderSubView {
@@ -99,12 +100,24 @@ class BaseHeaderSubView: UIView {
         titleLabel.font = UIFont.fontPoppinsBold(withSize: 16)
     }
     
-    func setupHeader(withTitle title: String) {
+    func setupHeader(withTitle title: String,
+                     isDetail: Bool) {
         setupUI()
         titleLabel.text = title
+        saveButton.isHidden = !isDetail
+    }
+    
+    private func setupFavouriteIcon() {
+        let saveImage = isSave ? UIImage(named: "ic_save_active") : UIImage(named: "ic_save_inactive")
+        saveButton.setImage(saveImage, for: .normal)
     }
     
     @IBAction func didBackToViewController() {
         delegate?.didBackToViewController()
+    }
+    
+    @IBAction func didSave() {
+        isSave = !isSave
+        setupFavouriteIcon()
     }
 }

@@ -45,7 +45,8 @@ class BaseViewController<ViewModel>: UIViewController {
         }
     }
     
-    func setupSubHeader(with title: String) {
+    func setupSubHeader(with title: String,
+                        isDetail: Bool = false) {
         NotificationCenter.default.post(name: Notification.Name("hide_tabbar"), object: nil)
         
         if subHeaderView == nil {
@@ -56,7 +57,8 @@ class BaseViewController<ViewModel>: UIViewController {
             _ = headerView.then {
                 $0.delegate = self
                 $0.moveTo(parentViewController: self)
-                $0.setupHeader(withTitle: title)
+                $0.setupHeader(withTitle: title,
+                               isDetail: isDetail)
                 
             }
             

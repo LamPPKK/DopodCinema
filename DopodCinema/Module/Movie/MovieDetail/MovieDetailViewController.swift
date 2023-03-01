@@ -30,6 +30,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var checkoutView: UIView!
     @IBOutlet private weak var checkoutLabel: UILabel!
+    @IBOutlet private weak var arrowButton: UIButton!
     @IBOutlet private weak var trailerLabel: UILabel!
     @IBOutlet private weak var trailerCollectionView: UICollectionView!
     @IBOutlet private weak var movieScreenShotsLabel: UILabel!
@@ -43,6 +44,8 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     let ImageCellIdentity: String = "ImageCell"
     let TrailerCellIdentity: String = "TrailerCell"
     let StartingCellIdentity: String = "StartingCell"
+    
+    private var isCloseTime: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,7 +136,8 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     private func bindData() {
         let movieDetailInfo = viewModel.movieDetailInfo
         
-        setupSubHeader(with: movieDetailInfo.original_title)
+        setupSubHeader(with: movieDetailInfo.original_title,
+                       isDetail: true)
         
         if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path, size: .w342)) {
             posterImageView.sd_setImage(with: url,
@@ -146,5 +150,26 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         let (hour, min) = Utils.getHourMin(from: movieDetailInfo.runtime)
         timeLabel.text = "\(hour)h\(min)m"
         overViewLabel.text = movieDetailInfo.overview
+    }
+    
+    // MARK: - IBAction
+    @IBAction func didArrow() {
+        isCloseTime = !isCloseTime
+        
+        if isCloseTime {
+            UIView.animateKeyframes(withDuration: 1,
+                                    delay: 0, animations: {
+                self.checkoutView.frame.origin.x = self.view.frame.maxX - 50
+            }, completion: { _ in
+                self.arrowButton.setImage(UIImage(named: "ic_ar_left_white"), for: .normal)
+            })
+        } else {
+            UIView.animateKeyframes(withDuration: 1,
+                                    delay: 0, animations: {
+                self.checkoutView.frame.origin.x = self.view.frame.maxX - self.checkoutView.frame.width
+            }, completion: { _ in
+                self.arrowButton.setImage(UIImage(named: "ic_ar_right_white"), for: .normal)
+            })
+        }
     }
 }
