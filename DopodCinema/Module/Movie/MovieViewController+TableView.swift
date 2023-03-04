@@ -128,6 +128,7 @@ extension MovieViewController: UITableViewDataSource {
                                       indexPath: IndexPath,
                                       actors: [ActorInfo]) -> ActorHorizontallCell {
         let actorHorizontallCell = tableView.dequeueReusableCell(withIdentifier: ActorHorizontallCellIdentity) as! ActorHorizontallCell
+        actorHorizontallCell.delegate = self
         actorHorizontallCell.actors = actors
         return actorHorizontallCell
     }
@@ -167,5 +168,11 @@ extension MovieViewController: UITableViewDelegate {
 extension MovieViewController: NewHorizontallCellDelegate, ComingHorizontalCellDelegate {
     func selectedMovie(_ id: Int) {
         viewModel.showMovieDetailInfo(with: id)
+    }
+}
+
+extension MovieViewController: ActorHorizontallCellDelegate {
+    func didSelectedActor(id: Int) {
+        viewModel.showActorDetail(with: id)
     }
 }

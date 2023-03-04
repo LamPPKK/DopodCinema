@@ -124,13 +124,14 @@ extension MovieDetailViewController: UICollectionViewDelegate {
             break
             
         case .starting:
-            break
+            let id = viewModel.movieDetailInfo.credits.cast[indexPath.row].id
+            viewModel.showActorDetailInfo(with: id)
             
         case .similarmovies:
             let id = viewModel.movieDetailInfo.recommendations.results[indexPath.row].id
             viewModel.showMovieDetail(with: id)
             
-        case .none:
+        default:
             break
         }
     }

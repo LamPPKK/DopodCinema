@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ActorHorizontallCellDelegate: NSObjectProtocol {
+    func didSelectedActor(id: Int)
+}
+
 class ActorHorizontallCell: UITableViewCell {
     
     // MARK: - IBOutlets
@@ -14,6 +18,8 @@ class ActorHorizontallCell: UITableViewCell {
     
     // MARK: - Properties
     private let ActorCellIdentity: String = "ActorCell"
+    weak var delegate: ActorHorizontallCellDelegate?
+    
     var actors: [ActorInfo]!
     
     override func awakeFromNib() {
@@ -47,7 +53,10 @@ extension ActorHorizontallCell: UICollectionViewDataSource {
 }
 
 extension ActorHorizontallCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let id = actors[indexPath.row].id
+        delegate?.didSelectedActor(id: id)
+    }
 }
 
 extension ActorHorizontallCell: UICollectionViewDelegateFlowLayout {

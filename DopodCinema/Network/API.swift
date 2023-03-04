@@ -145,24 +145,19 @@ class API {
 //    }
     
     // MARK: - Get actor detail
-    /**
-     - parameter id: id of actor
-     - parameter api_key:
-     - parameter append_to_response:
-     */
-//    func getActorDetail(withID id: Int, completion: @escaping (ActorDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "api_key": Constant.Network.API_KEY,
-//            "append_to_response": "movie_credits,Cimages,tv_credits,images,recommendations"
-//        ]
-//
-//        Network.get(URLPath.PersonPath.personPath + "/\(id)",
-//                    parameters: parametters,
-//                    responseType: ActorDetailInfo.self,
-//                    completionHandler: { response in
-//            completion(response)
-//        }, errorHandler: error)
-//    }
+    func getActorDetail(with id: Int, completion: @escaping (ActorDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "append_to_response": "movie_credits,Cimages,tv_credits,images,recommendations"
+        ]
+
+        Network.get(URLPath.PersonPath.personPath + "/\(id)",
+                    parameters: parametters,
+                    responseType: ActorDetailInfo.self,
+                    completionHandler: { response in
+            completion(response)
+        }, errorHandler: error)
+    }
     
     // MARK: - Get actors
     func getActors(completion: @escaping ([ActorInfo]) -> Void, error: @escaping (NetworkError) -> Void) {

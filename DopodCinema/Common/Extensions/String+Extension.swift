@@ -16,4 +16,19 @@ extension String {
         let size = self.size(withAttributes: fontAttributes)
         return size.width
     }
+    
+    // MARK: - Example 1999-04-05 -> April 5, 1999
+    func convertDateToMMMMDDYYYY() -> Self {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMMM d, YYYY"
+        
+        if let date = dateFormatterGet.date(from: self) {
+            return dateFormatterPrint.string(from: date)
+        } else {
+            return String.empty
+        }
+    }
 }

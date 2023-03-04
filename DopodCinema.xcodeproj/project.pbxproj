@@ -59,6 +59,11 @@
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
 		998B53D829AF9A0500822525 /* StartingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53D629AF9A0500822525 /* StartingCell.swift */; };
 		998B53D929AF9A0500822525 /* StartingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998B53D729AF9A0500822525 /* StartingCell.xib */; };
+		998B53DD29B2EE9500822525 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */; };
+		998B53DE29B2EE9500822525 /* ActorDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998B53DC29B2EE9500822525 /* ActorDetailViewController.xib */; };
+		998B53E029B2F45D00822525 /* ActorDetailNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53DF29B2F45D00822525 /* ActorDetailNavigator.swift */; };
+		998B53E229B301BD00822525 /* ActorDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53E129B301BD00822525 /* ActorDetailViewModel.swift */; };
+		998B53E429B30B4200822525 /* ActorDetailViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53E329B30B4200822525 /* ActorDetailViewController+CollectionView.swift */; };
 		998C15CF29ABB49F0027C3BF /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C15CD29ABB49F0027C3BF /* ImageCell.swift */; };
 		998C15D029ABB49F0027C3BF /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998C15CE29ABB49F0027C3BF /* ImageCell.xib */; };
 		998C15D229ABB6540027C3BF /* MovieDetailViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998C15D129ABB6540027C3BF /* MovieDetailViewController+CollectionView.swift */; };
@@ -156,6 +161,11 @@
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		998B53D629AF9A0500822525 /* StartingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingCell.swift; sourceTree = "<group>"; };
 		998B53D729AF9A0500822525 /* StartingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartingCell.xib; sourceTree = "<group>"; };
+		998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
+		998B53DC29B2EE9500822525 /* ActorDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActorDetailViewController.xib; sourceTree = "<group>"; };
+		998B53DF29B2F45D00822525 /* ActorDetailNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailNavigator.swift; sourceTree = "<group>"; };
+		998B53E129B301BD00822525 /* ActorDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailViewModel.swift; sourceTree = "<group>"; };
+		998B53E329B30B4200822525 /* ActorDetailViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ActorDetailViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		998C15CD29ABB49F0027C3BF /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		998C15CE29ABB49F0027C3BF /* ImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
 		998C15D129ABB6540027C3BF /* MovieDetailViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewController+CollectionView.swift"; sourceTree = "<group>"; };
@@ -316,6 +326,18 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		998B53DA29B2EE7A00822525 /* Actor */ = {
+			isa = PBXGroup;
+			children = (
+				998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */,
+				998B53DC29B2EE9500822525 /* ActorDetailViewController.xib */,
+				998B53DF29B2F45D00822525 /* ActorDetailNavigator.swift */,
+				998B53E129B301BD00822525 /* ActorDetailViewModel.swift */,
+				998B53E329B30B4200822525 /* ActorDetailViewController+CollectionView.swift */,
+			);
+			path = Actor;
+			sourceTree = "<group>";
+		};
 		998C15CC29ABB4820027C3BF /* SubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +366,7 @@
 		998CCD2729912C8100AE6283 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				998B53DA29B2EE7A00822525 /* Actor */,
 				993EA1A329A1F99F00C5470B /* Setting */,
 				99A6A9F82992936F00D3EEEF /* ShowTime */,
 				99A6A9F72992936500D3EEEF /* Favorite */,
@@ -612,6 +635,7 @@
 				99313247299B7A0700AA9E2C /* Poppins-Medium.otf in Resources */,
 				993EA18029A1A7E100C5470B /* NewHorizontallCell.xib in Resources */,
 				9931325D299D186F00AA9E2C /* CategoryHorizontalCell.xib in Resources */,
+				998B53DE29B2EE9500822525 /* ActorDetailViewController.xib in Resources */,
 				99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */,
 				993EA19129A1B1EC00C5470B /* ActorHorizontallCell.xib in Resources */,
 				99313259299B904900AA9E2C /* CategoryCell.xib in Resources */,
@@ -690,6 +714,7 @@
 				99EB6EDF29AD04CA0075F29D /* TrailerCell.swift in Sources */,
 				9915F8C329AB1A3700B6B6FC /* Float+Extension.swift in Sources */,
 				99B3E88E29A9F67B00BC4483 /* MovieDetailViewModel.swift in Sources */,
+				998B53E429B30B4200822525 /* ActorDetailViewController+CollectionView.swift in Sources */,
 				9956659B299D28270068B78F /* Network.swift in Sources */,
 				991C9A1729A5C2EF004FE5D5 /* TopCell.swift in Sources */,
 				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
@@ -699,6 +724,7 @@
 				99D884B929A7AD970091DF91 /* Genre.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
 				99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */,
+				998B53DD29B2EE9500822525 /* ActorDetailViewController.swift in Sources */,
 				998C15D229ABB6540027C3BF /* MovieDetailViewController+CollectionView.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
 				99E340DC29AA7C45004917B4 /* UILabel+Extension.swift in Sources */,
@@ -724,7 +750,9 @@
 				99BACD6C299547B500762A3E /* UIColor+Extension.swift in Sources */,
 				9931325F299D1DB600AA9E2C /* String+Extension.swift in Sources */,
 				99A6A9FB2992953600D3EEEF /* MovieViewController.swift in Sources */,
+				998B53E229B301BD00822525 /* ActorDetailViewModel.swift in Sources */,
 				99BACD61299543B700762A3E /* BaseHeaderView.swift in Sources */,
+				998B53E029B2F45D00822525 /* ActorDetailNavigator.swift in Sources */,
 				99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */,
 				993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */,
 				99313231299B703000AA9E2C /* TimesCell.swift in Sources */,

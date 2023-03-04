@@ -23,6 +23,15 @@ enum MovieSectionType {
     case actor(actors: [ActorInfo])
 }
 
+enum CollectionViewTag: Int {
+    case trailer = 900
+    case screenshots = 901
+    case starting = 902
+    case similarmovies = 903
+    case movies = 904
+    case tvShows = 905
+}
+
 class MovieViewModel: ViewModelType {
     
     struct Input {
@@ -181,6 +190,19 @@ class MovieViewModel: ViewModelType {
             guard let self = self else { return }
             
             self.navigator.gotoMovieDetail(movieDetailInfo)
+            LoadingView.shared.endLoading()
+        } error: { error in
+            LoadingView.shared.endLoading()
+        }
+    }
+    
+    func showActorDetail(with id: Int) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getActorDetail(with: id) { [weak self] actorDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoActorDetail(actorDetailInfo)
             LoadingView.shared.endLoading()
         } error: { error in
             LoadingView.shared.endLoading()

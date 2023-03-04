@@ -8,13 +8,6 @@
 import UIKit
 import SDWebImage
 
-enum CollectionViewTag: Int {
-    case trailer = 900
-    case screenshots = 901
-    case starting = 902
-    case similarmovies = 903
-}
-
 class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
 
     // MARK: - IBOutlets
@@ -139,7 +132,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         setupSubHeader(with: movieDetailInfo.original_title,
                        isDetail: true)
         
-        if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path, size: .w342)) {
+        if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
         }
