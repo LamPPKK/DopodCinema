@@ -28,9 +28,7 @@ class DefaultMovieNavigator: MovieNavigator {
     }
     
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {
-        let movieDetailViewModel = MovieDetailViewModel(movieDetailInfo)
-        let movieDetailVC = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
-        movieDetailVC.viewModel = movieDetailViewModel
-        navigationController.pushViewController(movieDetailVC, animated: true)
+        let navigator = DefaultMovieDetailNavigator(navigationController: navigationController)
+        navigator.start(movieDetailInfo)
     }
 }

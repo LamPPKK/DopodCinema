@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MovieDetailNavigator {
-    func start()
+    func start(_ movieDetailInfo: MovieDetailInfo)
 }
 
 class DefaultMovieDetailNavigator: MovieDetailNavigator {
@@ -19,8 +19,12 @@ class DefaultMovieDetailNavigator: MovieDetailNavigator {
         self.navigationController = navigationController
     }
     
-    func start() {
-        let navigator = DefaultMovieNavigator(navigationController: navigationController)
+    func start(_ movieDetailInfo: MovieDetailInfo) {
+        let navigator = DefaultMovieDetailNavigator(navigationController: navigationController)
+        let movieDetailVC = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
+        let viewModel = MovieDetailViewModel(navigator, movieDetailInfo: movieDetailInfo)
+        movieDetailVC.viewModel = viewModel
+        self.navigationController.pushViewController(movieDetailVC, animated: true)
     }
 }
 

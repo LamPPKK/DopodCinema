@@ -81,9 +81,5 @@ extension BaseViewController: BaseHeaderViewDelegate {
 extension BaseViewController: BaseHeaderSubViewDelegate {
     func didBackToViewController() {
         self.navigationController?.popViewController(animated: true)
-        
-        if subHeaderView != nil {
-            NotificationCenter.default.post(name: Notification.Name("show_tabbar"), object: nil)
-        }
     }
 }

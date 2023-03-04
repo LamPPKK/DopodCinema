@@ -111,3 +111,27 @@ extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
         return 8
     }
 }
+
+extension MovieDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tag = CollectionViewTag(rawValue: collectionView.tag)
+        
+        switch tag {
+        case .trailer:
+            break
+            
+        case .screenshots:
+            break
+            
+        case .starting:
+            break
+            
+        case .similarmovies:
+            let id = viewModel.movieDetailInfo.recommendations.results[indexPath.row].id
+            viewModel.showMovieDetail(with: id)
+            
+        case .none:
+            break
+        }
+    }
+}
