@@ -43,7 +43,7 @@ class MovieViewModel: ViewModelType {
     // MARK: - Properties
     private let navigator: MovieNavigator
     
-    var categories: [GenreInfo] = []
+    private var categories: [GenreInfo] = []
     private var moviesPopular: [MovieInfo] = []
     private var moviesToprated: [MovieInfo] = []
     private var moviesUpcoming: [MovieInfo] = []
@@ -181,6 +181,10 @@ class MovieViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         return Output()
+    }
+    
+    func getCategories() -> [GenreInfo] {
+        categories
     }
     
     func showMovieDetailInfo(with id: Int) {

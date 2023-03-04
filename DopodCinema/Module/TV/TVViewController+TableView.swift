@@ -29,69 +29,113 @@ extension TVViewController: UITableViewDataSource {
         let section = viewModel.getSections()[indexPath.section]
         
         switch section {
-        case .headerCategory:
-            return headerCellFor(tableView, headerTitle: "TV Show Category", bottom: 8)
-
-        case .category:
-            return categoryHorizontalCell(tableView)
+        case .top(let tvshows):
+            return topHorizontalCell(for: tableView,
+                                     indexPath: indexPath,
+                                     tvShows: tvshows)
             
-        case .headerPopular:
-            return headerCellFor(tableView, headerTitle: "Top Popular Shows", bottom: 8)
+        case .headerCategory(let title):
+            return headerCell(for: tableView, headerTitle: title)
 
-        case .headerNew:
-            return headerCellFor(tableView, headerTitle: "On Air", bottom: 8)
-
-        case .headerComing:
-            return headerCellFor(tableView, headerTitle: "Top Rated Shows", bottom: 8)
-
-        case .headerActor:
-            return headerCellFor(tableView, headerTitle: "Popular people", bottom: 8)
-
-        case .popular:
-            return popularCellFor(tableView)
+        case .category(let categories):
+            return categoryHorizontalCell(for: tableView,
+                                          indexPath: indexPath,
+                                          categories: categories)
             
-        case .new:
-            return newHorizontallCellFor(tableView)
+        case .headerPopular(let title):
+            return headerCell(for: tableView, headerTitle: title)
+
+        case .popular(let tvShows):
+            return popularCell(for: tableView,
+                               indexPath: indexPath,
+                               tvShows: tvShows)
             
-        case .coming:
-            return comingHorizontallCellFor(tableView)
+        case .headerOnAir(let title):
+            return headerCell(for: tableView, headerTitle: title)
             
-        case .actor:
-            return actorHorizontallCellFor(tableView)
+        case .onAir(let tvShows):
+            return newHorizontallCell(for: tableView,
+                                      indexPath: indexPath,
+                                      tvShows: tvShows)
+            
+        case .headerToprate(let title):
+            return headerCell(for: tableView, headerTitle: title)
+            
+        case .toprate(let tvShows):
+            return comingHorizontallCell(for: tableView,
+                                         indexPath: indexPath,
+                                         tvShows: tvShows)
+            
+        case .headerActor(let title):
+            return headerCell(for: tableView, headerTitle: title)
+
+        case .actor(let actors):
+            return actorHorizontallCell(for: tableView,
+                                        indexPath: indexPath,
+                                        actors: actors)
             
         default:
             return UITableViewCell()
         }
     }
     
-    private func headerCellFor(_ tableView: UITableView, headerTitle: String, bottom: CGFloat = 0) -> HeaderCell {
+    private func topHorizontalCell(for tableView: UITableView,
+                                      indexPath: IndexPath,
+                                      tvShows: [TVShowInfo]) -> TopHorizontalCell {
+        let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
+        topHorizontallCell.bindData(type: .tv, tvShows: tvShows)
+        return topHorizontallCell
+    }
+    
+    private func headerCell(for tableView: UITableView,
+                            headerTitle: String,
+                            bottom: CGFloat = 0) -> HeaderCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCellIdentity) as! HeaderCell
         headerCell.setTitle(headerTitle, bottom: bottom)
         return headerCell
     }
     
-    private func categoryHorizontalCell(_ tableView: UITableView) -> CategoryHorizontalCell {
+    private func categoryHorizontalCell(for tableView: UITableView,
+                                        indexPath: IndexPath,
+                                        categories: [GenreInfo]) -> CategoryHorizontalCell {
         let categoryHorizontalCell = tableView.dequeueReusableCell(withIdentifier: CategoryHorizontalCellIdentity) as! CategoryHorizontalCell
+        categoryHorizontalCell.categories = categories
         return categoryHorizontalCell
     }
     
-    private func popularCellFor(_ tableView: UITableView) -> PopularCell {
+    private func popularCell(for tableView: UITableView,
+                             indexPath: IndexPath,
+                             tvShows: [TVShowInfo]) -> PopularCell {
         let popularCell = tableView.dequeueReusableCell(withIdentifier: PopularCellIdentity) as! PopularCell
+        let tvShow = tvShows[indexPath.row]
+        popularCell.bindData(tvShow, genres: viewModel.getCategories())
         return popularCell
     }
     
-    private func newHorizontallCellFor(_ tableView: UITableView) -> NewHorizontallCell {
+    private func newHorizontallCell(for tableView: UITableView,
+                                    indexPath: IndexPath,
+                                    tvShows: [TVShowInfo]) -> NewHorizontallCell {
         let newHorizontallCell = tableView.dequeueReusableCell(withIdentifier: NewHorizontallCellIdentity) as! NewHorizontallCell
+        newHorizontallCell.delegate = self
+        newHorizontallCell.bindData(type: .tv, tvShows: tvShows)
         return newHorizontallCell
     }
     
-    private func comingHorizontallCellFor(_ tableView: UITableView) -> ComingHorizontalCell {
+    private func comingHorizontallCell(for tableView: UITableView,
+                                       indexPath: IndexPath,
+                                       tvShows: [TVShowInfo]) -> ComingHorizontalCell {
         let comingHorizontalCell = tableView.dequeueReusableCell(withIdentifier: ComingHorizontalCellIdentity) as! ComingHorizontalCell
+        comingHorizontalCell.delegate = self
+        comingHorizontalCell.bindData(type: .tv, tvShows: tvShows, categories: viewModel.getCategories())
         return comingHorizontalCell
     }
     
-    private func actorHorizontallCellFor(_ tableView: UITableView) -> ActorHorizontallCell {
+    private func actorHorizontallCell(for tableView: UITableView,
+                                      indexPath: IndexPath,
+                                      actors: [ActorInfo]) -> ActorHorizontallCell {
         let actorHorizontallCell = tableView.dequeueReusableCell(withIdentifier: ActorHorizontallCellIdentity) as! ActorHorizontallCell
+        actorHorizontallCell.delegate = self
+        actorHorizontallCell.actors = actors
         return actorHorizontallCell
     }
 }
@@ -102,18 +146,26 @@ extension TVViewController: UITableViewDelegate {
         let section = viewModel.getSections()[indexPath.section]
         
         switch section {
+        case .top, .headerCategory, .category, .headerOnAir, .onAir, .headerToprate, .toprate, .headerActor, .actor:
+            return UITableView.automaticDimension
+            
         case .popular:
             return 100
-            
-        case .times:
-            return 156
-            
-        case .headerCategory, .headerPopular, .headerNew, .headerComing, .headerActor, .category, .new, .coming, .actor:
-            return UITableView.automaticDimension
             
         default:
             return 0
         }
+    }
+}
+
+extension TVViewController: NewHorizontallCellDelegate, ComingHorizontalCellDelegate {
+    func selectedMovie(_ id: Int) {
         
+    }
+}
+
+extension TVViewController: ActorHorizontallCellDelegate {
+    func didSelectedActor(id: Int) {
+        viewModel.showActorDetail(with: id)
     }
 }

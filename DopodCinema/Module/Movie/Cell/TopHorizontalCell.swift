@@ -14,12 +14,22 @@ class TopHorizontalCell: UITableViewCell {
     
     // MARK: - Properties
     private let TopCellIdentity: String = "TopCell"
-    var movies: [MovieInfo]!
+    private var screenType: ScreenType!
+    private var movies: [MovieInfo]!
+    private var tvShows: [TVShowInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setupUI()
+    }
+    
+    func bindData(type: ScreenType,
+                  movies: [MovieInfo] = [],
+                  tvShows: [TVShowInfo] = []) {
+        self.screenType = type
+        self.movies = movies
+        self.tvShows = tvShows
     }
     
     // MARK: - Private functions
@@ -39,7 +49,14 @@ extension TopHorizontalCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCellIdentity, for: indexPath) as! TopCell
-        let posterPath = movies[indexPath.row].poster_path
+        let posterPath: String?
+        
+        if screenType == .movie {
+            posterPath = movies[indexPath.row].poster_path
+        } else {
+            posterPath = tvShows[indexPath.row].poster_path
+        }
+        
         cell.bindData(posterPath)
         return cell
     }

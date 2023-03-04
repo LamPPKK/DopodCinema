@@ -20,13 +20,25 @@ class ComingHorizontalCell: UITableViewCell {
     private let ComingCellIdentity: String = "ComingCell"
     
     weak var delegate: ComingHorizontalCellDelegate?
-    var movies: [MovieInfo]!
-    var genres: [GenreInfo]!
+    private var screenType: ScreenType!
+    private var movies: [MovieInfo]!
+    private var tvShows: [TVShowInfo]!
+    private var genres: [GenreInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setupUI()
+    }
+    
+    func bindData(type: ScreenType,
+                  movies: [MovieInfo] = [],
+                  tvShows: [TVShowInfo] = [],
+                  categories: [GenreInfo]) {
+        self.screenType = type
+        self.movies = movies
+        self.tvShows = tvShows
+        self.genres = categories
     }
     
     // MARK: - Private functions
@@ -41,13 +53,22 @@ class ComingHorizontalCell: UITableViewCell {
 // MARK: - Extension UICollectionView
 extension ComingHorizontalCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return movies.count > 5 ? 5 : movies.count
+        if screenType == .movie {
+            return movies.count > 5 ? 5 : movies.count
+        } else {
+            return tvShows.count > 5 ? 5 : tvShows.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComingCellIdentity, for: indexPath) as! ComingCell
-        let movie = movies[indexPath.row]
-        cell.bindData(movie, genres: genres)
+        if screenType == .movie {
+            let movie = movies[indexPath.row]
+            cell.bindData(movie, genres: genres)
+        } else {
+            let tvShow = tvShows[indexPath.row]
+            cell.bindData(tvShow, genres: genres)
+        }
         return cell
     }
 }

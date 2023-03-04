@@ -89,38 +89,55 @@ class API {
     }
     
     // MARK: - Get list tv show top rate
-//    func getTVShowsTopRate(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
-//
-//        let parametters: [String: Any] = [
-//            "api_key": Constant.Network.API_KEY,
-//            "language": "en-US",
-//            "page": 1
-//        ]
-//
-//        Network.get(URLPath.TVShowPath.GET_TV_SHOW_TOPRATED,
-//                    parameters: parametters,
-//                    responseType: TVShowsTopRateInfo.self,
-//                    completionHandler: { response in
-//            completion(response.results)
-//        }, errorHandler: error)
-//    }
+    func getTVShowsTopRate(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "page": 1
+        ]
+
+        Network.get(URLPath.TVShowPath.GET_TV_SHOW_TOPRATED,
+                    parameters: parametters,
+                    responseType: TVShowsTopRateInfo.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
     
     // MARK: - Get list tv show popular
-//    func getTVShowsPopular(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
-//
-//        let parametters: [String: Any] = [
-//            "api_key": Constant.Network.API_KEY,
-//            "language": "en-US",
-//            "page": 1
-//        ]
-//
-//        Network.get(URLPath.TVShowPath.GET_TV_SHOW_POPULAR,
-//                    parameters: parametters,
-//                    responseType: TVShowsPopularInfo.self,
-//                    completionHandler: { response in
-//            completion(response.results)
-//        }, errorHandler: error)
-//    }
+    func getTVShowsPopular(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "page": 1
+        ]
+
+        Network.get(URLPath.TVShowPath.GET_TV_SHOW_POPULAR,
+                    parameters: parametters,
+                    responseType: TVShowsPopularInfo.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
+    
+    // MARK: - Get list tv show on the air
+    func getTVShowOnAir(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+        
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "page": 1
+        ]
+        
+        Network.get(URLPath.TVShowPath.GET_TV_SHOW_ON_AIR,
+                    parameters: parametters,
+                    responseType: TVShowsOnAirInfo.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
     
     // MARK: - Get tv detail
     /**
@@ -191,23 +208,19 @@ class API {
     }
     
     // MARK: - Get list genre tv
-    /**
-     - parameter api_key:
-     - parameter language:
-     */
-//    func getListGenreTV(completion: @escaping ([GenreInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "api_key": Constant.Network.API_KEY,
-//            "language": "en-US"
-//        ]
-//
-//        Network.get(URLPath.GenrePath.GET_LIST_GENRE_TV,
-//                    parameters: parametters,
-//                    responseType: Genres.self,
-//                    completionHandler: { response in
-//            completion(response.genres)
-//        }, errorHandler: error)
-//    }
+    func getListGenreTV(completion: @escaping ([GenreInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US"
+        ]
+
+        Network.get(URLPath.GenrePath.GET_LIST_GENRE_TV,
+                    parameters: parametters,
+                    responseType: Genres.self,
+                    completionHandler: { response in
+            completion(response.genres)
+        }, errorHandler: error)
+    }
     
     // MARK: - SHOW TIME
     /**

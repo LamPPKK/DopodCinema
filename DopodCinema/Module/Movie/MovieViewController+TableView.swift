@@ -71,7 +71,7 @@ extension MovieViewController: UITableViewDataSource {
                                       indexPath: IndexPath,
                                       movies: [MovieInfo]) -> TopHorizontalCell {
         let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
-        topHorizontallCell.movies = movies
+        topHorizontallCell.bindData(type: .movie, movies: movies)
         return topHorizontallCell
     }
     
@@ -96,7 +96,7 @@ extension MovieViewController: UITableViewDataSource {
                              movies: [MovieInfo]) -> PopularCell {
         let popularCell = tableView.dequeueReusableCell(withIdentifier: PopularCellIdentity) as! PopularCell
         let movie = movies[indexPath.row]
-        popularCell.bindData(movie, genres: viewModel.categories)
+        popularCell.bindData(movie, genres: viewModel.getCategories())
         return popularCell
     }
     
@@ -110,7 +110,7 @@ extension MovieViewController: UITableViewDataSource {
                                     movies: [MovieInfo]) -> NewHorizontallCell {
         let newHorizontallCell = tableView.dequeueReusableCell(withIdentifier: NewHorizontallCellIdentity) as! NewHorizontallCell
         newHorizontallCell.delegate = self
-        newHorizontallCell.movies = movies
+        newHorizontallCell.bindData(type: .movie, movies: movies)
         return newHorizontallCell
     }
     
@@ -119,8 +119,7 @@ extension MovieViewController: UITableViewDataSource {
                                        movies: [MovieInfo]) -> ComingHorizontalCell {
         let comingHorizontalCell = tableView.dequeueReusableCell(withIdentifier: ComingHorizontalCellIdentity) as! ComingHorizontalCell
         comingHorizontalCell.delegate = self
-        comingHorizontalCell.movies = movies
-        comingHorizontalCell.genres = viewModel.categories
+        comingHorizontalCell.bindData(type: .movie, movies: movies, categories: viewModel.getCategories())
         return comingHorizontalCell
     }
     

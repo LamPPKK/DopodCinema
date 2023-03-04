@@ -52,4 +52,16 @@ class PopularCell: UITableViewCell {
         averageLabel.text = "\(data.vote_average)"
         countLabel.text = "(\(data.vote_count))"
     }
+    
+    func bindData(_ data: TVShowInfo, genres: [GenreInfo]) {
+        if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
+            iconImageView.sd_setImage(with: url,
+                                      placeholderImage: UIImage(named: "ic_loading"))
+        }
+        
+        categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
+        nameLabel.text = data.name
+        averageLabel.text = "\(data.vote_average)"
+        countLabel.text = "(\(data.vote_count))"
+    }
 }

@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum ScreenType {
+    case movie
+    case tv
+}
+
 protocol NewHorizontallCellDelegate: NSObjectProtocol {
     func selectedMovie(_ id: Int)
 }
@@ -21,12 +26,22 @@ class NewHorizontallCell: UITableViewCell {
     private let startIndexDisplay: Int = 5
     
     weak var delegate: NewHorizontallCellDelegate?
-    var movies: [MovieInfo]!
+    private var screenType: ScreenType!
+    private var movies: [MovieInfo]!
+    private var tvShows: [TVShowInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
         setupUI()
+    }
+    
+    func bindData(type: ScreenType,
+                  movies: [MovieInfo] = [],
+                  tvShows: [TVShowInfo] = []) {
+        self.screenType = type
+        self.movies = movies
+        self.tvShows = tvShows
     }
     
     // MARK: - Private functions
@@ -41,13 +56,30 @@ class NewHorizontallCell: UITableViewCell {
 // MARK: - Extension UICollectionView
 extension NewHorizontallCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let numberItemDisplay: Int = movies.count - 5
-        return numberItemDisplay > 5 ? 5 : numberItemDisplay
+        switch screenType {
+        case .movie:
+            let numberItemDisplay: Int = movies.count - 5
+            return numberItemDisplay > 5 ? 5 : numberItemDisplay
+            
+        case .tv:
+            let numberItemDisplay: Int = tvShows.count - 5
+            return numberItemDisplay > 5 ? 5 : numberItemDisplay
+            
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewCellIdentity, for: indexPath) as! NewCell
-        let posterPath = movies[indexPath.row + startIndexDisplay].poster_path
+        var posterPath: String?
+        
+        if screenType == .movie {
+            posterPath = movies[indexPath.row + startIndexDisplay].poster_path
+        } else {
+            posterPath = tvShows[indexPath.row + startIndexDisplay].poster_path
+        }
+        
         cell.bindData(posterPath)
         return cell
     }
