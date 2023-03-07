@@ -88,6 +88,23 @@ class API {
         }, errorHandler: error)
     }
     
+    // MARK: - Get movie by Category ID
+    func getMovies(with categoryId: Int, completion: @escaping ([MovieInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "with_genres": categoryId,
+            "page": 1
+        ]
+        
+        Network.get(URLPath.GET_MOVIES_BY_GENRE_ID,
+                    parameters: parametters,
+                    responseType: MoviesCategory.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
+    
     // MARK: - Get list tv show top rate
     func getTVShowsTopRate(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
 

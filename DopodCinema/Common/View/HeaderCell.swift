@@ -13,6 +13,9 @@ class HeaderCell: UITableViewCell {
     @IBOutlet private weak var headerLabel: UILabel!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var seeAllButton: UIButton!
+        
+    private var movieSection: MovieSectionType?
+    private var tvSection: TVSectionType?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,9 +25,19 @@ class HeaderCell: UITableViewCell {
         seeAllButton.titleLabel?.font = UIFont.fontInterRegular(withSize: 13)
     }
 
-    func setTitle(_ title: String, bottom: CGFloat, isHideSeeAll: Bool = false) {
+    func setTitle(_ title: String,
+                  bottom: CGFloat,
+                  isHideSeeAll: Bool = false,
+                  movieSection: MovieSectionType? = nil,
+                  tvSection: TVSectionType? = nil) {
         headerLabel.text = title
         bottomConstraint.constant = bottom
         seeAllButton.isHidden = isHideSeeAll
+        self.movieSection = movieSection
+        self.tvSection = tvSection
+    }
+    
+    @IBAction func didToSeeAll() {
+        
     }
 }

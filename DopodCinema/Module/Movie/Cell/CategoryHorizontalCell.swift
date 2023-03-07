@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CategoryHorizontalCellDelgate: NSObjectProtocol {
+    func selectedCategory(selectedIndex: Int, id: Int)
+}
+
 class CategoryHorizontalCell: UITableViewCell {
     
     // MARK: - IBOutlets
@@ -14,6 +18,8 @@ class CategoryHorizontalCell: UITableViewCell {
     
     // MARK: - Properties
     private let CategoryCellIdentity: String = "CategoryCell"
+    
+    weak var delegate: CategoryHorizontalCellDelgate?
     var categories: [GenreInfo]!
     
     override func awakeFromNib() {
@@ -45,7 +51,10 @@ extension CategoryHorizontalCell: UICollectionViewDataSource {
 }
 
 extension CategoryHorizontalCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let id = categories[indexPath.row].id
+        delegate?.selectedCategory(selectedIndex: indexPath.row, id: id)
+    }
 }
 
 extension CategoryHorizontalCell: UICollectionViewDelegateFlowLayout {

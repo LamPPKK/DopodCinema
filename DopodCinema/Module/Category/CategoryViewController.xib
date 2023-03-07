@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryViewController" customModule="DopodCinema" customModuleProvider="target">
+            <connections>
+                <outlet property="categoryCollectionView" destination="vqi-Tv-DwI" id="Rlk-6Y-LYQ"/>
+                <outlet property="collectionView" destination="cGR-yH-52B" id="YlL-lE-HwH"/>
+                <outlet property="topConstraint" destination="4k8-FW-3Vf" id="V0e-hB-5yP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w37-Cr-AfB">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="vqi-Tv-DwI">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="DCf-tw-jM1"/>
+                            </constraints>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T24-Lq-egn">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="cGR-yH-52B">
+                            <rect key="frame" x="0.0" y="50" width="414" height="686"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dog-4r-GU4">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="vqi-Tv-DwI" secondAttribute="trailing" id="Jl8-u7-4eV"/>
+                        <constraint firstItem="vqi-Tv-DwI" firstAttribute="leading" secondItem="w37-Cr-AfB" secondAttribute="leading" id="NEo-e6-dbv"/>
+                        <constraint firstAttribute="bottom" secondItem="cGR-yH-52B" secondAttribute="bottom" id="Q6d-SU-FX6"/>
+                        <constraint firstItem="cGR-yH-52B" firstAttribute="top" secondItem="vqi-Tv-DwI" secondAttribute="bottom" id="egS-Fp-fdg"/>
+                        <constraint firstItem="cGR-yH-52B" firstAttribute="leading" secondItem="w37-Cr-AfB" secondAttribute="leading" id="j5X-Ke-JK1"/>
+                        <constraint firstItem="vqi-Tv-DwI" firstAttribute="top" secondItem="w37-Cr-AfB" secondAttribute="top" id="rfl-pe-e2J"/>
+                        <constraint firstAttribute="trailing" secondItem="cGR-yH-52B" secondAttribute="trailing" id="u3H-Wg-SLm"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="w37-Cr-AfB" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4k8-FW-3Vf"/>
+                <constraint firstItem="w37-Cr-AfB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="8w7-Fv-WSe"/>
+                <constraint firstAttribute="bottom" secondItem="w37-Cr-AfB" secondAttribute="bottom" id="YLy-KJ-fCv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="w37-Cr-AfB" secondAttribute="trailing" id="mow-9e-U8q"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="-11"/>
+        </view>
+    </objects>
+</document>

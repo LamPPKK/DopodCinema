@@ -27,4 +27,10 @@ class CategoryCell: UICollectionViewCell {
     func bindData(_ text: String) {
         valueLabel.text = text
     }
+    
+    func bindData(_ data: CategoryInfo) {
+        valueLabel.text = data.name
+        containerView.backgroundColor = data.isSelected ? Constant.Color.color3D5BF6 : UIColor.white
+        valueLabel.textColor = data.isSelected ? UIColor.white : Constant.Color.color9CA4AB
+    }
 }

@@ -38,6 +38,10 @@ struct MoviesUpComing: Codable {
     let results: [MovieInfo]
 }
 
+struct MoviesCategory: Codable {
+    let results: [MovieInfo]
+}
+
 struct MovieDetailInfo: Codable {
     let id: Int
     let backdrop_path: String?

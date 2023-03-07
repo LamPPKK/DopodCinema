@@ -33,13 +33,13 @@ extension MovieViewController: UITableViewDataSource {
             return topHorizontalCell(for: tableView, indexPath: indexPath, movies: movies)
             
         case .headerCategory(let title):
-            return headerCell(for: tableView, headerTitle: title, bottom: 8)
+            return headerCell(for: tableView, headerTitle: title, bottom: 8, movieSection: section)
 
         case .category(let categories):
             return categoryHorizontalCell(for: tableView, indexPath: indexPath, categories: categories)
             
         case .headerPopular(let title):
-            return headerCell(for: tableView, headerTitle: title, bottom: 8)
+            return headerCell(for: tableView, headerTitle: title, bottom: 8, movieSection: section)
 
         case .popular(let movies):
             return popularCell(for: tableView, indexPath: indexPath, movies: movies)
@@ -48,19 +48,19 @@ extension MovieViewController: UITableViewDataSource {
             return timesCellFor(tableView)
             
         case .headerNew(let title):
-            return headerCell(for: tableView, headerTitle: title, bottom: 8)
+            return headerCell(for: tableView, headerTitle: title, bottom: 8, movieSection: section)
 
         case .new(let movies):
             return newHorizontallCell(for: tableView, indexPath: indexPath, movies: movies)
             
         case .headerComing(let title):
-            return headerCell(for: tableView, headerTitle: title, bottom: 8)
+            return headerCell(for: tableView, headerTitle: title, bottom: 8, movieSection: section)
 
         case .coming(let movies):
             return comingHorizontallCell(for: tableView, indexPath: indexPath, movies: movies)
             
         case .headerActor(let title):
-            return headerCell(for: tableView, headerTitle: title, bottom: 8)
+            return headerCell(for: tableView, headerTitle: title, bottom: 8, movieSection: section)
             
         case .actor(let actors):
             return actorHorizontallCell(for: tableView, indexPath: indexPath, actors: actors)
@@ -77,9 +77,10 @@ extension MovieViewController: UITableViewDataSource {
     
     private func headerCell(for tableView: UITableView,
                             headerTitle: String,
-                            bottom: CGFloat = 0) -> HeaderCell {
+                            bottom: CGFloat = 0,
+                            movieSection: MovieSectionType) -> HeaderCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCellIdentity) as! HeaderCell
-        headerCell.setTitle(headerTitle, bottom: bottom)
+        headerCell.setTitle(headerTitle, bottom: bottom, movieSection: movieSection)
         return headerCell
     }
     
@@ -87,6 +88,7 @@ extension MovieViewController: UITableViewDataSource {
                                         indexPath: IndexPath,
                                         categories: [GenreInfo]) -> CategoryHorizontalCell {
         let categoryHorizontalCell = tableView.dequeueReusableCell(withIdentifier: CategoryHorizontalCellIdentity) as! CategoryHorizontalCell
+        categoryHorizontalCell.delegate = self
         categoryHorizontalCell.categories = categories
         return categoryHorizontalCell
     }
@@ -161,6 +163,12 @@ extension MovieViewController: UITableViewDelegate {
         default:
             break
         }
+    }
+}
+
+extension MovieViewController: CategoryHorizontalCellDelgate {
+    func selectedCategory(selectedIndex: Int, id: Int) {
+        viewModel.gotoCategory(with: selectedIndex, id: id)
     }
 }
 

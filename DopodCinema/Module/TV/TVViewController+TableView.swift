@@ -35,7 +35,7 @@ extension TVViewController: UITableViewDataSource {
                                      tvShows: tvshows)
             
         case .headerCategory(let title):
-            return headerCell(for: tableView, headerTitle: title)
+            return headerCell(for: tableView, headerTitle: title, type: section)
 
         case .category(let categories):
             return categoryHorizontalCell(for: tableView,
@@ -43,7 +43,7 @@ extension TVViewController: UITableViewDataSource {
                                           categories: categories)
             
         case .headerPopular(let title):
-            return headerCell(for: tableView, headerTitle: title)
+            return headerCell(for: tableView, headerTitle: title, type: section)
 
         case .popular(let tvShows):
             return popularCell(for: tableView,
@@ -51,7 +51,7 @@ extension TVViewController: UITableViewDataSource {
                                tvShows: tvShows)
             
         case .headerOnAir(let title):
-            return headerCell(for: tableView, headerTitle: title)
+            return headerCell(for: tableView, headerTitle: title, type: section)
             
         case .onAir(let tvShows):
             return newHorizontallCell(for: tableView,
@@ -59,7 +59,7 @@ extension TVViewController: UITableViewDataSource {
                                       tvShows: tvShows)
             
         case .headerToprate(let title):
-            return headerCell(for: tableView, headerTitle: title)
+            return headerCell(for: tableView, headerTitle: title, type: section)
             
         case .toprate(let tvShows):
             return comingHorizontallCell(for: tableView,
@@ -67,15 +67,12 @@ extension TVViewController: UITableViewDataSource {
                                          tvShows: tvShows)
             
         case .headerActor(let title):
-            return headerCell(for: tableView, headerTitle: title)
+            return headerCell(for: tableView, headerTitle: title, type: section)
 
         case .actor(let actors):
             return actorHorizontallCell(for: tableView,
                                         indexPath: indexPath,
                                         actors: actors)
-            
-        default:
-            return UITableViewCell()
         }
     }
     
@@ -89,9 +86,10 @@ extension TVViewController: UITableViewDataSource {
     
     private func headerCell(for tableView: UITableView,
                             headerTitle: String,
-                            bottom: CGFloat = 0) -> HeaderCell {
+                            bottom: CGFloat = 0,
+                            type: TVSectionType) -> HeaderCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCellIdentity) as! HeaderCell
-        headerCell.setTitle(headerTitle, bottom: bottom)
+        headerCell.setTitle(headerTitle, bottom: bottom, tvSection: type)
         return headerCell
     }
     

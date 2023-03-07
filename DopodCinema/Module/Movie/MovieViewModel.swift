@@ -30,6 +30,7 @@ enum CollectionViewTag: Int {
     case similarmovies = 903
     case movies = 904
     case tvShows = 905
+    case category = 906
 }
 
 class MovieViewModel: ViewModelType {
@@ -211,5 +212,9 @@ class MovieViewModel: ViewModelType {
         } error: { error in
             LoadingView.shared.endLoading()
         }
+    }
+    
+    func gotoCategory(with selectedIndex: Int, id: Int) {
+        self.navigator.gotoCategory(with: selectedIndex, categories: categories, id: id)
     }
 }
