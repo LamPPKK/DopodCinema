@@ -80,7 +80,9 @@ extension TVViewController: UITableViewDataSource {
                                       indexPath: IndexPath,
                                       tvShows: [TVShowInfo]) -> TopHorizontalCell {
         let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
-        topHorizontallCell.bindData(type: .tv, tvShows: tvShows)
+        topHorizontallCell.bindData(type: .tv,
+                                    tvShows: tvShows,
+                                    categories: viewModel.getCategories())
         return topHorizontallCell
     }
     

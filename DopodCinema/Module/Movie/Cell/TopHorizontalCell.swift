@@ -17,6 +17,7 @@ class TopHorizontalCell: UITableViewCell {
     private var screenType: ScreenType!
     private var movies: [MovieInfo]!
     private var tvShows: [TVShowInfo]!
+    private var categories: [GenreInfo]!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,10 +27,12 @@ class TopHorizontalCell: UITableViewCell {
     
     func bindData(type: ScreenType,
                   movies: [MovieInfo] = [],
-                  tvShows: [TVShowInfo] = []) {
+                  tvShows: [TVShowInfo] = [],
+                  categories: [GenreInfo]) {
         self.screenType = type
         self.movies = movies
         self.tvShows = tvShows
+        self.categories = categories
     }
     
     // MARK: - Private functions
@@ -38,6 +41,15 @@ class TopHorizontalCell: UITableViewCell {
         collectionView.register(UINib(nibName: TopCellIdentity, bundle: nil), forCellWithReuseIdentifier: TopCellIdentity)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let customizeLayout = CustomizeCollectionFlowLayout()
+        collectionView.collectionViewLayout = customizeLayout
+        
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0),
+                                        at: .centeredHorizontally,
+                                        animated: true)
+        })
     }
 }
 
@@ -49,21 +61,31 @@ extension TopHorizontalCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCellIdentity, for: indexPath) as! TopCell
-        let posterPath: String?
+        var posterPath: String?
+        var category: String = .empty
+        var name: String = .empty
         
         if screenType == .movie {
             posterPath = movies[indexPath.row].poster_path
+            category = Utils.getFirstNameCategory(from: movies[indexPath.row].genre_ids.first,
+                                                  categories: self.categories)
+            name = movies[indexPath.row].original_title ?? .empty
         } else {
             posterPath = tvShows[indexPath.row].poster_path
+            category = Utils.getFirstNameCategory(from: tvShows[indexPath.row].genre_ids.first,
+                                                  categories: self.categories)
+            name = tvShows[indexPath.row].name
         }
         
-        cell.bindData(posterPath)
+        cell.bindData(posterPath, category: category, name: name)
         return cell
     }
 }
 
 extension TopHorizontalCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }
 
 extension TopHorizontalCell: UICollectionViewDelegateFlowLayout {

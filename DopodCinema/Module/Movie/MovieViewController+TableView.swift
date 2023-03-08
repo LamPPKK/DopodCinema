@@ -71,7 +71,9 @@ extension MovieViewController: UITableViewDataSource {
                                       indexPath: IndexPath,
                                       movies: [MovieInfo]) -> TopHorizontalCell {
         let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
-        topHorizontallCell.bindData(type: .movie, movies: movies)
+        topHorizontallCell.bindData(type: .movie,
+                                    movies: movies,
+                                    categories: viewModel.getCategories())
         return topHorizontallCell
     }
     
