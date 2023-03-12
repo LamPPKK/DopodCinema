@@ -153,4 +153,17 @@ class TVViewModel: NSObject {
             LoadingView.shared.endLoading()
         }
     }
+    
+    func showTVDetail(with id: Int) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getTVShowDetail(with: id) { [weak self] tvDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoTVDetail(tvDetailInfo)
+            LoadingView.shared.endLoading()
+        } error: { error in
+            LoadingView.shared.endLoading()
+        }
+    }
 }

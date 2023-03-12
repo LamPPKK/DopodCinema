@@ -14,6 +14,8 @@ target 'DopodCinema' do
     
     # Animation
     pod 'lottie-ios'
+    
+    pod "MXParallaxHeader"
 end
 
 post_install do |installer|

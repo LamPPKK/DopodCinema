@@ -874,3 +874,18 @@ Pods/Target Support Files/lottie-ios/lottie-ios-umbrella.h
 Pods/Target Support Files/lottie-ios/lottie-ios.debug.xcconfig
 Pods/Target Support Files/lottie-ios/lottie-ios.modulemap
 Pods/Target Support Files/lottie-ios/lottie-ios.release.xcconfig
+Pods/MXParallaxHeader/README.md
+Pods/MXParallaxHeader/Sources/MXParallaxHeader.h
+Pods/MXParallaxHeader/Sources/MXParallaxHeader.m
+Pods/MXParallaxHeader/Sources/MXScrollView.h
+Pods/MXParallaxHeader/Sources/MXScrollView.m
+Pods/MXParallaxHeader/Sources/MXScrollViewController.h
+Pods/MXParallaxHeader/Sources/MXScrollViewController.m
+Pods/Pods.xcodeproj/xcuserdata/thengoc.xcuserdatad/xcschemes/MXParallaxHeader.xcscheme
+Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader-dummy.m
+Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader-Info.plist
+Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader-prefix.pch
+Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader-umbrella.h
+Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader.debug.xcconfig
+Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader.modulemap
+Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader.release.xcconfig

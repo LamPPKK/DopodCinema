@@ -71,6 +71,7 @@ extension MovieViewController: UITableViewDataSource {
                                       indexPath: IndexPath,
                                       movies: [MovieInfo]) -> TopHorizontalCell {
         let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
+        topHorizontallCell.delegate = self
         topHorizontallCell.bindData(type: .movie,
                                     movies: movies,
                                     categories: viewModel.getCategories())
@@ -165,6 +166,12 @@ extension MovieViewController: UITableViewDelegate {
         default:
             break
         }
+    }
+}
+
+extension MovieViewController: TopHorizontalCellDelegate {
+    func didSelectMovie(with id: Int) {
+        viewModel.showMovieDetailInfo(with: id)
     }
 }
 

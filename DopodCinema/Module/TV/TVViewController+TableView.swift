@@ -80,6 +80,7 @@ extension TVViewController: UITableViewDataSource {
                                       indexPath: IndexPath,
                                       tvShows: [TVShowInfo]) -> TopHorizontalCell {
         let topHorizontallCell = tableView.dequeueReusableCell(withIdentifier: TopHorizontalCellIdentity) as! TopHorizontalCell
+        topHorizontallCell.delegate = self
         topHorizontallCell.bindData(type: .tv,
                                     tvShows: tvShows,
                                     categories: viewModel.getCategories())
@@ -155,6 +156,12 @@ extension TVViewController: UITableViewDelegate {
         default:
             return 0
         }
+    }
+}
+
+extension TVViewController: TopHorizontalCellDelegate {
+    func didSelectTV(with id: Int) {
+        viewModel.showTVDetail(with: id)
     }
 }
 

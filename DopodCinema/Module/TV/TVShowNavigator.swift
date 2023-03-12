@@ -11,6 +11,7 @@ protocol TVShowNavigator {
     func start()
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo:  ActorDetailInfo)
+    func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo)
 }
 
 class DefaultTVShowNavigator: TVShowNavigator {
@@ -36,5 +37,10 @@ class DefaultTVShowNavigator: TVShowNavigator {
     func gotoActorDetail(_ actorDetailInfo:  ActorDetailInfo) {
         let navigator = DefaultActorDetailNavigator(navigationController: navigationController)
         navigator.start(actorDetailInfo)
+    }
+    
+    func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo) {
+        let navigator = DefaultTVDetailNavigator(navigationController: navigationController)
+        navigator.start(tvDetailInfo)
     }
 }

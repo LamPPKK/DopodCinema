@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class BaseViewController<ViewModel>: UIViewController {
     
     // MARK: - Property
+    let disposeBag = DisposeBag()
     var viewModel: ViewModel!
     var headerView: BaseHeaderView?
     var subHeaderView: BaseHeaderSubView?

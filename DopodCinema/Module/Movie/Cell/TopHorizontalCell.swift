@@ -7,10 +7,17 @@
 
 import UIKit
 
+@objc
+protocol TopHorizontalCellDelegate {
+    @objc optional func didSelectMovie(with id: Int)
+    @objc optional func didSelectTV(with id: Int)
+}
+
 class TopHorizontalCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var pageControl: CustomPageControl!
     
     // MARK: - Properties
     private let TopCellIdentity: String = "TopCell"
@@ -18,6 +25,8 @@ class TopHorizontalCell: UITableViewCell {
     private var movies: [MovieInfo]!
     private var tvShows: [TVShowInfo]!
     private var categories: [GenreInfo]!
+    
+    weak var delegate: TopHorizontalCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -84,7 +93,11 @@ extension TopHorizontalCell: UICollectionViewDataSource {
 
 extension TopHorizontalCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if screenType == .movie {
+            delegate?.didSelectMovie?(with: movies[indexPath.row].id)
+        } else {
+            delegate?.didSelectTV?(with: tvShows[indexPath.row].id)
+        }
     }
 }
 

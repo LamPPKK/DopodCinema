@@ -157,26 +157,20 @@ class API {
     }
     
     // MARK: - Get tv detail
-    /**
-     - parameter id: id of tv
-     - parameter language:
-     - parameter api_key:
-     - parameter append_to_response:
-     */
-//    func getTVShowDetail(withID id: Int, completion: @escaping (TVShowDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "api_key": Constant.Network.API_KEY,
-//            "language": "en-US",
-//            "append_to_response": "videos,credits,recommendations,images,reviews"
-//        ]
-//
-//        Network.get(URLPath.TVShowPath.tvShowPath + "/\(id)",
-//                    parameters: parametters,
-//                    responseType: TVShowDetailInfo.self,
-//                    completionHandler: { response in
-//            completion(response)
-//        }, errorHandler: error)
-//    }
+    func getTVShowDetail(with id: Int, completion: @escaping (TVShowDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "append_to_response": "videos,credits,recommendations,images,reviews"
+        ]
+
+        Network.get(URLPath.TVShowPath.tvShowPath + "/\(id)",
+                    parameters: parametters,
+                    responseType: TVShowDetailInfo.self,
+                    completionHandler: { response in
+            completion(response)
+        }, errorHandler: error)
+    }
     
     // MARK: - Get actor detail
     func getActorDetail(with id: Int, completion: @escaping (ActorDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {

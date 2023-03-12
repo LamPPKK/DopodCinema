@@ -35,6 +35,7 @@ struct TVShowDetailInfo: Codable {
     let images: MovieImagesInfo
 //    let seasons: [SeasonInfo]
     let videos: VideosContainerInfo
+    let vote_average: Float
 }
 
 struct TVShowsPopularInfo: Codable {
