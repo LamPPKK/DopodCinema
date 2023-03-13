@@ -233,6 +233,31 @@ class API {
         }, errorHandler: error)
     }
     
+    func getSeasonDetail(with id: Int, season: String, completion: @escaping (SeasonDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "append_to_response": "videos,credits,recommendations,images,reviews"
+        ]
+        
+        var seasonValue: String = .empty
+        if season.lowercased().contains("season") {
+            let values = season.lowercased().components(separatedBy: "season ")
+            if values.count > 1 {
+                seasonValue = values[1]
+            }
+        } else {
+            seasonValue = season
+        }
+        
+        Network.get(URLPath.TVShowPath.tvShowPath + "/\(id)/season/\(seasonValue)",
+                    parameters: parametters,
+                    responseType: SeasonDetailInfo.self,
+                    completionHandler: { response in
+            completion(response)
+        }, errorHandler: error)
+    }
+    
     // MARK: - SHOW TIME
     /**
      - parameter appId:

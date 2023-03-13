@@ -24,6 +24,8 @@ class TVDetailContentViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     private var tvGeneralVC: TVGeneralViewController!
+    private var tvSeasonVC: TVDetailSeasonViewController!
+    
     var tvDetailInfo: TVShowDetailInfo!
     
     override func viewDidLoad() {
@@ -63,16 +65,33 @@ class TVDetailContentViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        setupScreen()
+        addTVGeneralVC()
     }
     
-    private func setupScreen() {
+    private func addTVGeneralVC() {
+        if tvSeasonVC != nil {
+            tvSeasonVC.view.removeFromSuperview()
+        }
+        
         tvGeneralVC = TVGeneralViewController(nibName: "TVGeneralViewController", bundle: nil)
         tvGeneralVC.tvDetailInfo = tvDetailInfo
         tvGeneralVC.view.frame = containerView.bounds
         addChild(tvGeneralVC)
         containerView.addSubview(tvGeneralVC.view)
         tvGeneralVC.didMove(toParent: self)
+    }
+    
+    private func addSeasonVC() {
+        if tvGeneralVC != nil {
+            tvGeneralVC.view.removeFromSuperview()
+        }
+        
+        tvSeasonVC = TVDetailSeasonViewController(nibName: "TVDetailSeasonViewController", bundle: nil)
+        tvSeasonVC.viewModel = TVDetailSeasonViewModel(tvDetailInfo: tvDetailInfo)
+        tvSeasonVC.view.frame = containerView.bounds
+        addChild(tvSeasonVC)
+        containerView.addSubview(tvSeasonVC.view)
+        tvSeasonVC.didMove(toParent: self)
     }
     
     // MARK: - Action
@@ -82,6 +101,8 @@ class TVDetailContentViewController: UIViewController {
         
         seasonDot.isHidden = true
         setInactive(forLabel: seasonLabel)
+        
+        addTVGeneralVC()
     }
     
     private func tapToSeason() {
@@ -90,6 +111,8 @@ class TVDetailContentViewController: UIViewController {
         
         seasonDot.isHidden = false
         setInactive(forLabel: generalLabel)
+        
+        addSeasonVC()
     }
     
     private func setActive(forLabel label: UILabel) {

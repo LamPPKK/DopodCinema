@@ -25,17 +25,45 @@ struct TVShowDetailInfo: Codable {
     let poster_path: String?
     let overview: String
     let original_name: String
-//    let networks: [NetworkInfo]
-//    let reviews: ReviewsInfo
     let recommendations: RecommendationsInfo
     let credits: CreditsInfo
     let genres: [GenreInfo]
     let last_air_date: String
     let number_of_seasons: Int
     let images: MovieImagesInfo
-//    let seasons: [SeasonInfo]
+    let seasons: [SeasonInfo]
     let videos: VideosContainerInfo
     let vote_average: Float
+}
+
+// MARK: - Seasons Info
+struct SeasonInfo: Codable {
+    let id: Int
+    let episode_count: Int
+    let name: String
+    let overview: String
+    let poster_path: String?
+    let season_number: Int
+}
+
+struct SeasonDetailInfo: Codable {
+    let id: Int
+    let air_date: String?
+    let name: String
+    let overview: String
+    let poster_path: String?
+    let episodes: [EpiscodeInfo]
+}
+
+// MARK: - Episcode Info
+struct EpiscodeInfo: Codable {
+    let id: Int
+    let episode_number: Int
+    let name: String
+    let overview: String
+    let still_path: String?
+    let air_date: String?
+    let runtime: Int?
 }
 
 struct TVShowsPopularInfo: Codable {
