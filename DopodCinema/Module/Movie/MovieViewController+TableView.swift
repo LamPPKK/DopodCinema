@@ -83,6 +83,7 @@ extension MovieViewController: UITableViewDataSource {
                             bottom: CGFloat = 0,
                             movieSection: MovieSectionType) -> HeaderCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCellIdentity) as! HeaderCell
+        headerCell.delegate = self
         headerCell.setTitle(headerTitle, bottom: bottom, movieSection: movieSection)
         return headerCell
     }
@@ -166,6 +167,24 @@ extension MovieViewController: UITableViewDelegate {
         default:
             break
         }
+    }
+}
+
+extension MovieViewController: HeaderCellDelegate {
+    func didSelectedSeeAllMovie(section: MovieSectionType) {
+        switch section {
+        case .headerCategory:
+            viewModel.gotoCategory()
+            
+        default:
+            break
+        }
+        
+        NSLog("TAP - \(section)")
+    }
+    
+    func didSelectedSeeAllTV(section: TVSectionType) {
+        NSLog("TAP - \(section)")
     }
 }
 

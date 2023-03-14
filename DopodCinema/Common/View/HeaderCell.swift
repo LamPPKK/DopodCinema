@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol HeaderCellDelegate: NSObjectProtocol {
+    func didSelectedSeeAllMovie(section: MovieSectionType)
+    func didSelectedSeeAllTV(section: TVSectionType)
+}
+
 class HeaderCell: UITableViewCell {
 
     // MARK: - IBOutlets
@@ -14,6 +19,8 @@ class HeaderCell: UITableViewCell {
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet private weak var seeAllButton: UIButton!
         
+    weak var delegate: HeaderCellDelegate?
+    
     private var movieSection: MovieSectionType?
     private var tvSection: TVSectionType?
     
@@ -38,6 +45,10 @@ class HeaderCell: UITableViewCell {
     }
     
     @IBAction func didToSeeAll() {
-        
+        if let movieSection = movieSection {
+            delegate?.didSelectedSeeAllMovie(section: movieSection)
+        } else if let tvSection = tvSection {
+            delegate?.didSelectedSeeAllTV(section: tvSection)
+        }
     }
 }
