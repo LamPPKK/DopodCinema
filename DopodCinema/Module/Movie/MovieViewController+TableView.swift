@@ -176,11 +176,18 @@ extension MovieViewController: HeaderCellDelegate {
         case .headerCategory:
             viewModel.gotoCategory()
             
+        case .headerPopular(let title):
+            viewModel.gotoMovieList(with: title, movieList: viewModel.getMoviesPopular(), categories: viewModel.getCategories())
+            
+        case .headerNew(let title):
+            viewModel.gotoMovieList(with: title, movieList: viewModel.getMoviesNew(), categories: viewModel.getCategories())
+            
+        case .headerComing(let title):
+            viewModel.gotoMovieList(with: title, movieList: viewModel.getMoviesComing(), categories: viewModel.getCategories())
+            
         default:
             break
         }
-        
-        NSLog("TAP - \(section)")
     }
     
     func didSelectedSeeAllTV(section: TVSectionType) {

@@ -114,6 +114,10 @@
 		99D884B929A7AD970091DF91 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D884B829A7AD970091DF91 /* Genre.swift */; };
 		99D884BD29A7B4DA0091DF91 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D884BB29A7B4DA0091DF91 /* MovieDetailViewController.swift */; };
 		99D884BE29A7B4DA0091DF91 /* MovieDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99D884BC29A7B4DA0091DF91 /* MovieDetailViewController.xib */; };
+		99DA603929C0BC9900164F0A /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA603729C0BC9900164F0A /* MovieListViewController.swift */; };
+		99DA603A29C0BC9900164F0A /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99DA603829C0BC9900164F0A /* MovieListViewController.xib */; };
+		99DA603C29C0BCCB00164F0A /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA603B29C0BCCB00164F0A /* MovieListViewModel.swift */; };
+		99DA603E29C0BD5A00164F0A /* MovieListNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DA603D29C0BD5A00164F0A /* MovieListNavigator.swift */; };
 		99E340DA29AA7AE8004917B4 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99E340D929AA7AE8004917B4 /* Poppins-Regular.ttf */; };
 		99E340DC29AA7C45004917B4 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E340DB29AA7C45004917B4 /* UILabel+Extension.swift */; };
 		99E6BE4129BE334E00234C3E /* TVDetailContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99E6BE3F29BE334E00234C3E /* TVDetailContentViewController.swift */; };
@@ -245,6 +249,10 @@
 		99D884B829A7AD970091DF91 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		99D884BB29A7B4DA0091DF91 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		99D884BC29A7B4DA0091DF91 /* MovieDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailViewController.xib; sourceTree = "<group>"; };
+		99DA603729C0BC9900164F0A /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		99DA603829C0BC9900164F0A /* MovieListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
+		99DA603B29C0BCCB00164F0A /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
+		99DA603D29C0BD5A00164F0A /* MovieListNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListNavigator.swift; sourceTree = "<group>"; };
 		99E340D929AA7AE8004917B4 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		99E340DB29AA7C45004917B4 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		99E6BE3F29BE334E00234C3E /* TVDetailContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailContentViewController.swift; sourceTree = "<group>"; };
@@ -491,6 +499,7 @@
 		99A6A9F52992935A00D3EEEF /* Movie */ = {
 			isa = PBXGroup;
 			children = (
+				99DA603629C0BC8300164F0A /* MovieList */,
 				99B3E89029A9F75B00BC4483 /* MovieNavigator.swift */,
 				99142F9B299A779D00E7BA3D /* MovieViewModel.swift */,
 				99D884BA29A7B4A00091DF91 /* MovieDetail */,
@@ -613,6 +622,17 @@
 			path = MovieDetail;
 			sourceTree = "<group>";
 		};
+		99DA603629C0BC8300164F0A /* MovieList */ = {
+			isa = PBXGroup;
+			children = (
+				99DA603729C0BC9900164F0A /* MovieListViewController.swift */,
+				99DA603829C0BC9900164F0A /* MovieListViewController.xib */,
+				99DA603B29C0BCCB00164F0A /* MovieListViewModel.swift */,
+				99DA603D29C0BD5A00164F0A /* MovieListNavigator.swift */,
+			);
+			path = MovieList;
+			sourceTree = "<group>";
+		};
 		99E6BE3A29BE2DA600234C3E /* TVDetailPager */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,6 +750,7 @@
 				998C15D029ABB49F0027C3BF /* ImageCell.xib in Resources */,
 				998B53D929AF9A0500822525 /* StartingCell.xib in Resources */,
 				99313228299B674600AA9E2C /* PopularCell.xib in Resources */,
+				99DA603A29C0BC9900164F0A /* MovieListViewController.xib in Resources */,
 				9944483629B8D2CF00BB7380 /* TVDetailViewController.xib in Resources */,
 				99BACD63299543C500762A3E /* BaseHeaderView.xib in Resources */,
 				99E340DA29AA7AE8004917B4 /* Poppins-Regular.ttf in Resources */,
@@ -830,11 +851,13 @@
 				9915F8C329AB1A3700B6B6FC /* Float+Extension.swift in Sources */,
 				99B3E88E29A9F67B00BC4483 /* MovieDetailViewModel.swift in Sources */,
 				998B53E429B30B4200822525 /* ActorDetailViewController+CollectionView.swift in Sources */,
+				99DA603E29C0BD5A00164F0A /* MovieListNavigator.swift in Sources */,
 				9956659B299D28270068B78F /* Network.swift in Sources */,
 				991C9A1729A5C2EF004FE5D5 /* TopCell.swift in Sources */,
 				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
 				99E6BE4F29BE3C1E00234C3E /* SeasonCell.swift in Sources */,
 				998B53E629B33FA800822525 /* TVShow.swift in Sources */,
+				99DA603C29C0BCCB00164F0A /* MovieListViewModel.swift in Sources */,
 				99B3E89129A9F75B00BC4483 /* MovieNavigator.swift in Sources */,
 				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
 				991C9A1A29A5C803004FE5D5 /* URLPath.swift in Sources */,
@@ -869,6 +892,7 @@
 				993EA19E29A1F6D000C5470B /* BaseHeaderSubView.swift in Sources */,
 				999EA25929BF744D00B38382 /* EpisodeCell.swift in Sources */,
 				991C9A1C29A5C8A5004FE5D5 /* API.swift in Sources */,
+				99DA603929C0BC9900164F0A /* MovieListViewController.swift in Sources */,
 				998C15CF29ABB49F0027C3BF /* ImageCell.swift in Sources */,
 				998B53D829AF9A0500822525 /* StartingCell.swift in Sources */,
 				998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */,

@@ -188,6 +188,26 @@ class MovieViewModel: ViewModelType {
         categories
     }
     
+    func getMoviesPopular() -> [MovieInfo] {
+        self.moviesPopular
+    }
+    
+    func getMoviesToprate() -> [MovieInfo] {
+        self.moviesToprated
+    }
+    
+    func getMoviesComing() -> [MovieInfo] {
+        self.moviesUpcoming
+    }
+    
+    func getMoviesNew() -> [MovieInfo] {
+        self.moviesNowPlaying
+    }
+    
+    func getActors() -> [ActorInfo] {
+        self.actorsPopular
+    }
+    
     func showMovieDetailInfo(with id: Int) {
         LoadingView.shared.startLoading()
         
@@ -220,5 +240,11 @@ class MovieViewModel: ViewModelType {
     
     func gotoCategory(with selectedIndex: Int, id: Int) {
         self.navigator.gotoCategory(with: selectedIndex, categories: categories, id: id)
+    }
+    
+    func gotoMovieList(with title: String,
+                       movieList: [MovieInfo],
+                       categories: [GenreInfo]) {
+        self.navigator.gotoMovieList(with: title, movieList: movieList, categories: categories)
     }
 }
