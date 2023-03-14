@@ -247,4 +247,8 @@ class MovieViewModel: ViewModelType {
                        categories: [GenreInfo]) {
         self.navigator.gotoMovieList(with: title, movieList: movieList, categories: categories)
     }
+    
+    func gotoActorList(with title: String) {
+        self.navigator.gotoActorList(with: title, actorList: self.actorsPopular)
+    }
 }

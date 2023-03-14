@@ -14,6 +14,7 @@ protocol MovieNavigator {
     func gotoCategory(with categories: [GenreInfo])
     func gotoCategory(with selectedIndex: Int?, categories: [GenreInfo], id: Int)
     func gotoMovieList(with title: String, movieList: [MovieInfo], categories: [GenreInfo])
+    func gotoActorList(with title: String, actorList: [ActorInfo])
 }
 
 class DefaultMovieNavigator: MovieNavigator {
@@ -56,5 +57,10 @@ class DefaultMovieNavigator: MovieNavigator {
                        categories: [GenreInfo]) {
         let navigator = DefaultMovieListNavigator(navigationController: navigationController)
         navigator.start(with: title, movieList: movieList, categories: categories)
+    }
+    
+    func gotoActorList(with title: String, actorList: [ActorInfo]) {
+        let navigator = DefaultActorListNavigator(navigationController: navigationController)
+        navigator.start(with: title, actorList: actorList)
     }
 }

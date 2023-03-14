@@ -185,6 +185,9 @@ extension MovieViewController: HeaderCellDelegate {
         case .headerComing(let title):
             viewModel.gotoMovieList(with: title, movieList: viewModel.getMoviesComing(), categories: viewModel.getCategories())
             
+        case .headerActor(let title):
+            viewModel.gotoActorList(with: title)
+            
         default:
             break
         }
