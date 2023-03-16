@@ -9,6 +9,7 @@ import UIKit
 
 protocol MovieNavigator {
     func start()
+    func gotoSearch()
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
     func gotoCategory(with categories: [GenreInfo])
@@ -30,6 +31,11 @@ class DefaultMovieNavigator: MovieNavigator {
         let movieVC = MovieViewController(nibName: "MovieViewController", bundle: nil)
         movieVC.viewModel = MovieViewModel(navigator: self)
         navigationController.pushViewController(movieVC, animated: true)
+    }
+    
+    func gotoSearch() {
+        let navigator = DefaultSearchNavigator(navigationController: navigationController)
+        navigator.start()
     }
     
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {

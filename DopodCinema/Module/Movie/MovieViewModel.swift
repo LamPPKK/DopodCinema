@@ -251,4 +251,8 @@ class MovieViewModel: ViewModelType {
     func gotoActorList(with title: String) {
         self.navigator.gotoActorList(with: title, actorList: self.actorsPopular)
     }
+    
+    func gotoSearch() {
+        self.navigator.gotoSearch()
+    }
 }

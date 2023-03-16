@@ -18,6 +18,10 @@ struct ActorPopular: Codable {
     let results: [ActorInfo]
 }
 
+struct PersonSearchInfo: Codable {
+    let results: [ActorInfo]
+}
+
 struct ActorDetailInfo: Codable {
     let id: Int
     let name: String

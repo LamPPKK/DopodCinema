@@ -258,6 +258,57 @@ class API {
         }, errorHandler: error)
     }
     
+    // MARK: - SEARCH MOVIE
+    func searchMovie(with query: String, completion: @escaping ([MovieInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parameters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "page": 1,
+            "query": query
+        ]
+        
+        Network.get(URLPath.SearchPath.SEARCH_MOVIE,
+                    parameters: parameters,
+                    responseType: MovieSearchInfo.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
+    
+    // MARK: - SEARCH TV SHOW
+    func searchTVShow(with query: String, completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parameters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "page": 1,
+            "query": query
+        ]
+        
+        Network.get(URLPath.SearchPath.SEARCH_TVSHOW,
+                    parameters: parameters,
+                    responseType: TVSearchInfo.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
+    
+    // MARK: - SEARCH PERSON
+    func searchPerson(with query: String, completion: @escaping ([ActorInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parameters: [String: Any] = [
+            "api_key": Constant.Network.API_KEY,
+            "language": "en-US",
+            "page": 1,
+            "query": query
+        ]
+        
+        Network.get(URLPath.SearchPath.SEARCH_PERSON,
+                    parameters: parameters,
+                    responseType: PersonSearchInfo.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
+    
     // MARK: - SHOW TIME
     /**
      - parameter appId:

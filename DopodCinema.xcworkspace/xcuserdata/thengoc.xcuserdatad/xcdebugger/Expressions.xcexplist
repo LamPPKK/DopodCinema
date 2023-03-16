@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "SearchPagerViewController.moveToScreen(at:):SearchPagerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.searchObjects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

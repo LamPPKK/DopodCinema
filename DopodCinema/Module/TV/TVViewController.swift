@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxGesture
 
 class TVViewController: BaseViewController<TVViewModel> {
 
@@ -33,6 +34,8 @@ class TVViewController: BaseViewController<TVViewModel> {
         viewModel.getAllData {
             self.tableView.reloadData()
         }
+        
+        bindAction()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,5 +70,16 @@ class TVViewController: BaseViewController<TVViewModel> {
         tableView.register(UINib(nibName: ActorHorizontallCellIdentity, bundle: nil), forCellReuseIdentifier: ActorHorizontallCellIdentity)
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.BOTTOM_SAFE_AREA, right: 0)
+    }
+    
+    private func bindAction() {
+        searchView
+            .rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.gotoSearch()
+            })
+            .disposed(by: disposeBag)
     }
 }

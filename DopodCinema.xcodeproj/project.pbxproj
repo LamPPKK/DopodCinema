@@ -56,6 +56,14 @@
 		993EA1A229A1F99500C5470B /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 993EA1A029A1F99500C5470B /* SettingViewController.xib */; };
 		993EA1A629A1F9C500C5470B /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA1A529A1F9C500C5470B /* SettingViewModel.swift */; };
 		993EA1A829A209A600C5470B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 993EA1A729A209A600C5470B /* Utils.swift */; };
+		9940829629C20FE800B44A8E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940829429C20FE800B44A8E /* SearchViewController.swift */; };
+		9940829729C20FE800B44A8E /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9940829529C20FE800B44A8E /* SearchViewController.xib */; };
+		9940829929C20FF900B44A8E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940829829C20FF900B44A8E /* SearchViewModel.swift */; };
+		9940829B29C2100400B44A8E /* SearchNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940829A29C2100400B44A8E /* SearchNavigator.swift */; };
+		9940829E29C21BA600B44A8E /* SearchPagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940829D29C21BA600B44A8E /* SearchPagerViewController.swift */; };
+		994082A129C21C0D00B44A8E /* SearchDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9940829F29C21C0D00B44A8E /* SearchDataViewController.swift */; };
+		994082A229C21C0D00B44A8E /* SearchDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994082A029C21C0D00B44A8E /* SearchDataViewController.xib */; };
+		994082A529C21FD700B44A8E /* SearchDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994082A429C21FD700B44A8E /* SearchDataViewModel.swift */; };
 		9944483129B8B7F400BB7380 /* CustomizePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9944483029B8B7F400BB7380 /* CustomizePageControl.swift */; };
 		9944483529B8D2CF00BB7380 /* TVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9944483329B8D2CE00BB7380 /* TVDetailViewController.swift */; };
 		9944483629B8D2CF00BB7380 /* TVDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9944483429B8D2CF00BB7380 /* TVDetailViewController.xib */; };
@@ -66,6 +74,9 @@
 		9944484329BCDC2000BB7380 /* ScrollTVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */; };
 		9944484429BCDC2000BB7380 /* ScrollTVDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
+		99751B1E29C36C0C00292419 /* SearchActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99751B1C29C36C0C00292419 /* SearchActorViewController.swift */; };
+		99751B1F29C36C0C00292419 /* SearchActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99751B1D29C36C0C00292419 /* SearchActorViewController.xib */; };
+		99751B2129C36C6E00292419 /* SearchActorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99751B2029C36C6E00292419 /* SearchActorViewModel.swift */; };
 		998B53D829AF9A0500822525 /* StartingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53D629AF9A0500822525 /* StartingCell.swift */; };
 		998B53D929AF9A0500822525 /* StartingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998B53D729AF9A0500822525 /* StartingCell.xib */; };
 		998B53DD29B2EE9500822525 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */; };
@@ -193,6 +204,14 @@
 		993EA1A029A1F99500C5470B /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		993EA1A529A1F9C500C5470B /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		993EA1A729A209A600C5470B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		9940829429C20FE800B44A8E /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9940829529C20FE800B44A8E /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		9940829829C20FF900B44A8E /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		9940829A29C2100400B44A8E /* SearchNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigator.swift; sourceTree = "<group>"; };
+		9940829D29C21BA600B44A8E /* SearchPagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPagerViewController.swift; sourceTree = "<group>"; };
+		9940829F29C21C0D00B44A8E /* SearchDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataViewController.swift; sourceTree = "<group>"; };
+		994082A029C21C0D00B44A8E /* SearchDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDataViewController.xib; sourceTree = "<group>"; };
+		994082A429C21FD700B44A8E /* SearchDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataViewModel.swift; sourceTree = "<group>"; };
 		9944483029B8B7F400BB7380 /* CustomizePageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizePageControl.swift; sourceTree = "<group>"; };
 		9944483329B8D2CE00BB7380 /* TVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVDetailViewController.swift; sourceTree = "<group>"; };
 		9944483429B8D2CF00BB7380 /* TVDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVDetailViewController.xib; sourceTree = "<group>"; };
@@ -203,6 +222,9 @@
 		9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTVDetailViewController.swift; sourceTree = "<group>"; };
 		9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollTVDetailViewController.xib; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		99751B1C29C36C0C00292419 /* SearchActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchActorViewController.swift; sourceTree = "<group>"; };
+		99751B1D29C36C0C00292419 /* SearchActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchActorViewController.xib; sourceTree = "<group>"; };
+		99751B2029C36C6E00292419 /* SearchActorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchActorViewModel.swift; sourceTree = "<group>"; };
 		998B53D629AF9A0500822525 /* StartingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingCell.swift; sourceTree = "<group>"; };
 		998B53D729AF9A0500822525 /* StartingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartingCell.xib; sourceTree = "<group>"; };
 		998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
@@ -381,6 +403,29 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		9940829329C20FD200B44A8E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9940829C29C219CF00B44A8E /* SubView */,
+				9940829429C20FE800B44A8E /* SearchViewController.swift */,
+				9940829529C20FE800B44A8E /* SearchViewController.xib */,
+				9940829829C20FF900B44A8E /* SearchViewModel.swift */,
+				9940829A29C2100400B44A8E /* SearchNavigator.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		9940829C29C219CF00B44A8E /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				9940829D29C21BA600B44A8E /* SearchPagerViewController.swift */,
+				9940829F29C21C0D00B44A8E /* SearchDataViewController.swift */,
+				994082A029C21C0D00B44A8E /* SearchDataViewController.xib */,
+				994082A429C21FD700B44A8E /* SearchDataViewModel.swift */,
+			);
+			path = SubView;
+			sourceTree = "<group>";
+		};
 		9944483229B8D2BC00BB7380 /* TVDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,9 +448,20 @@
 			path = TVGeneral;
 			sourceTree = "<group>";
 		};
+		99751B1B29C36BF000292419 /* SearchActor */ = {
+			isa = PBXGroup;
+			children = (
+				99751B1C29C36C0C00292419 /* SearchActorViewController.swift */,
+				99751B1D29C36C0C00292419 /* SearchActorViewController.xib */,
+				99751B2029C36C6E00292419 /* SearchActorViewModel.swift */,
+			);
+			path = SearchActor;
+			sourceTree = "<group>";
+		};
 		998B53DA29B2EE7A00822525 /* Actor */ = {
 			isa = PBXGroup;
 			children = (
+				99751B1B29C36BF000292419 /* SearchActor */,
 				99DA603F29C0CC2B00164F0A /* ActorList */,
 				998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */,
 				998B53DC29B2EE9500822525 /* ActorDetailViewController.xib */,
@@ -444,6 +500,7 @@
 		998CCD2729912C8100AE6283 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				9940829329C20FD200B44A8E /* Search */,
 				99CB78E029B6424B001DFCF3 /* Category */,
 				998B53DA29B2EE7A00822525 /* Actor */,
 				993EA1A329A1F99F00C5470B /* Setting */,
@@ -785,6 +842,7 @@
 				993EA18029A1A7E100C5470B /* NewHorizontallCell.xib in Resources */,
 				9931325D299D186F00AA9E2C /* CategoryHorizontalCell.xib in Resources */,
 				998B53DE29B2EE9500822525 /* ActorDetailViewController.xib in Resources */,
+				994082A229C21C0D00B44A8E /* SearchDataViewController.xib in Resources */,
 				99E6BE4729BE387300234C3E /* TVDetailSeasonViewController.xib in Resources */,
 				99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */,
 				993EA19129A1B1EC00C5470B /* ActorHorizontallCell.xib in Resources */,
@@ -803,8 +861,10 @@
 				99CB78E829B64284001DFCF3 /* CategoryViewController.xib in Resources */,
 				993EA18D29A1AEBC00C5470B /* ComingHorizontalCell.xib in Resources */,
 				99DA604329C0CC3F00164F0A /* ActorListViewController.xib in Resources */,
+				9940829729C20FE800B44A8E /* SearchViewController.xib in Resources */,
 				9931324D299B7A0700AA9E2C /* Poppins-Bold.otf in Resources */,
 				993EA18929A1AE9600C5470B /* ComingCell.xib in Resources */,
+				99751B1F29C36C0C00292419 /* SearchActorViewController.xib in Resources */,
 				99BACD702995489500762A3E /* TVViewController.xib in Resources */,
 				991C9A1829A5C2EF004FE5D5 /* TopCell.xib in Resources */,
 				99A6A9FC2992953600D3EEEF /* MovieViewController.xib in Resources */,
@@ -872,12 +932,14 @@
 				9915F8C329AB1A3700B6B6FC /* Float+Extension.swift in Sources */,
 				99B3E88E29A9F67B00BC4483 /* MovieDetailViewModel.swift in Sources */,
 				998B53E429B30B4200822525 /* ActorDetailViewController+CollectionView.swift in Sources */,
+				99751B1E29C36C0C00292419 /* SearchActorViewController.swift in Sources */,
 				99DA603E29C0BD5A00164F0A /* MovieListNavigator.swift in Sources */,
 				9956659B299D28270068B78F /* Network.swift in Sources */,
 				991C9A1729A5C2EF004FE5D5 /* TopCell.swift in Sources */,
 				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
 				99E6BE4F29BE3C1E00234C3E /* SeasonCell.swift in Sources */,
 				998B53E629B33FA800822525 /* TVShow.swift in Sources */,
+				9940829929C20FF900B44A8E /* SearchViewModel.swift in Sources */,
 				99DA603C29C0BCCB00164F0A /* MovieListViewModel.swift in Sources */,
 				99B3E89129A9F75B00BC4483 /* MovieNavigator.swift in Sources */,
 				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
@@ -892,6 +954,8 @@
 				998C15D229ABB6540027C3BF /* MovieDetailViewController+CollectionView.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
 				999EA25629BF5E5600B38382 /* TVDetailSeasonViewModel.swift in Sources */,
+				9940829B29C2100400B44A8E /* SearchNavigator.swift in Sources */,
+				994082A129C21C0D00B44A8E /* SearchDataViewController.swift in Sources */,
 				99E340DC29AA7C45004917B4 /* UILabel+Extension.swift in Sources */,
 				9931322D299B6CA200AA9E2C /* HeaderCell.swift in Sources */,
 				99B3E89529AA02A600BC4483 /* ViewModelType.swift in Sources */,
@@ -913,11 +977,13 @@
 				9931322A299B67DE00AA9E2C /* MovieViewController+TableView.swift in Sources */,
 				991C9A2129A5D0A9004FE5D5 /* Image.swift in Sources */,
 				993EA19E29A1F6D000C5470B /* BaseHeaderSubView.swift in Sources */,
+				994082A529C21FD700B44A8E /* SearchDataViewModel.swift in Sources */,
 				999EA25929BF744D00B38382 /* EpisodeCell.swift in Sources */,
 				991C9A1C29A5C8A5004FE5D5 /* API.swift in Sources */,
 				99DA603929C0BC9900164F0A /* MovieListViewController.swift in Sources */,
 				998C15CF29ABB49F0027C3BF /* ImageCell.swift in Sources */,
 				998B53D829AF9A0500822525 /* StartingCell.swift in Sources */,
+				9940829629C20FE800B44A8E /* SearchViewController.swift in Sources */,
 				998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */,
 				99BACD6C299547B500762A3E /* UIColor+Extension.swift in Sources */,
 				9931325F299D1DB600AA9E2C /* String+Extension.swift in Sources */,
@@ -927,6 +993,7 @@
 				998B53E029B2F45D00822525 /* ActorDetailNavigator.swift in Sources */,
 				99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */,
 				993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */,
+				99751B2129C36C6E00292419 /* SearchActorViewModel.swift in Sources */,
 				99313231299B703000AA9E2C /* TimesCell.swift in Sources */,
 				99E6BE4B29BE39C700234C3E /* SeasonHorizontalCell.swift in Sources */,
 				993EA19729A1F4A600C5470B /* TVViewController+TableView.swift in Sources */,
@@ -934,6 +1001,7 @@
 				9944483529B8D2CF00BB7380 /* TVDetailViewController.swift in Sources */,
 				993EA19429A1B27300C5470B /* ActorCell.swift in Sources */,
 				993EA18829A1AE9600C5470B /* ComingCell.swift in Sources */,
+				9940829E29C21BA600B44A8E /* SearchPagerViewController.swift in Sources */,
 				99BACD7729954A0300762A3E /* ShowTimeViewController.swift in Sources */,
 				99313258299B904900AA9E2C /* CategoryCell.swift in Sources */,
 				9944483829B8D34100BB7380 /* TVDetailViewModel.swift in Sources */,

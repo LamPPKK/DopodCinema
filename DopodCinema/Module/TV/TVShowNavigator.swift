@@ -9,6 +9,7 @@ import UIKit
 
 protocol TVShowNavigator {
     func start()
+    func gotoSearch()
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo:  ActorDetailInfo)
     func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo)
@@ -27,6 +28,11 @@ class DefaultTVShowNavigator: TVShowNavigator {
         let tvShowVC = TVViewController(nibName: "TVViewController", bundle: nil)
         tvShowVC.viewModel = TVViewModel(navigator: self)
         navigationController.pushViewController(tvShowVC, animated: true)
+    }
+    
+    func gotoSearch() {
+        let navigator = DefaultSearchNavigator(navigationController: navigationController)
+        navigator.start()
     }
     
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {

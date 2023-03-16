@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import RxRelay
+import RxGesture
 
 class MovieViewController: BaseViewController<MovieViewModel> {
 
@@ -54,6 +54,8 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         searchLabel.textColor = Constant.Color.color97999B
         
         setupTableView()
+        
+        bindAction()
     }
     
     private func setupTableView() {
@@ -70,6 +72,18 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         tableView.register(UINib(nibName: ActorHorizontallCellIdentity, bundle: nil), forCellReuseIdentifier: ActorHorizontallCellIdentity)
         
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.BOTTOM_SAFE_AREA, right: 0)
+    }
+    
+    // MARK: - Action
+    private func bindAction() {
+       searchView
+            .rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.gotoSearch()
+            })
+            .disposed(by: disposeBag)
     }
 }
 

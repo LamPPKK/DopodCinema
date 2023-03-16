@@ -166,4 +166,8 @@ class TVViewModel: NSObject {
             LoadingView.shared.endLoading()
         }
     }
+    
+    func gotoSearch() {
+        self.navigator.gotoSearch()
+    }
 }
