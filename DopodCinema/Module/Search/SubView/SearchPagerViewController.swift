@@ -13,12 +13,19 @@ enum SearchPagerTag {
     case kActor
 }
 
+protocol SearchPagerViewDelegate: NSObjectProtocol {
+    func didSelectedObject(id: Int, isMovie: Bool)
+    func didSelectedActor(id: Int)
+}
+
 class SearchPagerViewController: UIPageViewController {
 
     // MARK: - Properties
     private var moviesSearchVC: SearchDataViewController!
     private var tvShowsSearchVC: SearchDataViewController!
     private var actorSearchVC: SearchActorViewController!
+    
+    weak var delegatePager: SearchPagerViewDelegate?
     
     private var searchObjects: [SearchObject] = []
     private var actors: [ActorInfo] = []
@@ -32,10 +39,13 @@ class SearchPagerViewController: UIPageViewController {
     private func setupScreen() {
         moviesSearchVC = SearchDataViewController(nibName: "SearchDataViewController", bundle: nil)
         moviesSearchVC.viewModel = SearchDataViewModel(searchObjects: self.searchObjects)
-        
+        moviesSearchVC.delegate = self
+
         tvShowsSearchVC = SearchDataViewController(nibName: "SearchDataViewController", bundle: nil)
+        tvShowsSearchVC.delegate = self
 
         actorSearchVC = SearchActorViewController(nibName: "SearchActorViewController", bundle: nil)
+        actorSearchVC.delegate = self
         
         setViewControllers([moviesSearchVC], direction: .forward, animated: true)
     }
@@ -64,5 +74,15 @@ class SearchPagerViewController: UIPageViewController {
         }
         
         setViewControllers([selectedVC], direction: .forward, animated: false)
+    }
+}
+
+extension SearchPagerViewController: SearchDataViewDelegate, SearchActorViewDelegate {
+    func didSelectedObject(id: Int, isMovie: Bool) {
+        delegatePager?.didSelectedObject(id: id, isMovie: isMovie)
+    }
+    
+    func didSelected(id: Int) {
+        delegatePager?.didSelectedActor(id: id)
     }
 }

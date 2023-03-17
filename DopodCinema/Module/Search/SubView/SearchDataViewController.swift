@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SearchDataViewDelegate: NSObjectProtocol {
+    func didSelectedObject(id: Int, isMovie: Bool)
+}
+
 class SearchDataViewController: BaseViewController<SearchDataViewModel> {
 
     // MARK: - IBOutlets
@@ -17,6 +21,8 @@ class SearchDataViewController: BaseViewController<SearchDataViewModel> {
     private let itemsPerRow: CGFloat = 3
     private let lineSpacing: CGFloat = 5
     private let heightPerItem: CGFloat = 165
+    
+    weak var delegate: SearchDataViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +53,8 @@ extension SearchDataViewController: UICollectionViewDataSource {
 
 extension SearchDataViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let object = viewModel.getSearchObjects()[indexPath.row]
+        delegate?.didSelectedObject(id: object.id, isMovie: object.isMovieObject)
     }
 }
 

@@ -75,6 +75,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     private func setupPager() {
         searchPagerView = SearchPagerViewController()
         searchPagerView.setupData(with: viewModel.getSearchObjects(isMovie: true))
+        searchPagerView.delegatePager = self
         searchPagerView.view.frame = containerView.bounds
         addChild(searchPagerView)
         containerView.addSubview(searchPagerView.view)
@@ -166,5 +167,19 @@ extension SearchViewController: UITextFieldDelegate {
     
     private func handleResponseSearch() {
         setupPager()
+    }
+}
+
+extension SearchViewController: SearchPagerViewDelegate {
+    func didSelectedObject(id: Int, isMovie: Bool) {
+        if isMovie {
+            viewModel.gotoMovieDetail(with: id)
+        } else {
+            viewModel.gotoTVDetail(with: id)
+        }
+    }
+    
+    func didSelectedActor(id: Int) {
+        viewModel.gotoActorDetail(with: id)
     }
 }

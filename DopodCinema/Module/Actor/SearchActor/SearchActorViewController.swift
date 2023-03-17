@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol SearchActorViewDelegate: NSObjectProtocol {
+    func didSelected(id: Int)
+}
+
 class SearchActorViewController: BaseViewController<SearchActorViewModel> {
 
     @IBOutlet private weak var collectionView: UICollectionView!
     
     // MARK: - Properties
+    weak var delegate: SearchActorViewDelegate?
+    
     private let ActorCellIdentity: String = "ActorCell"
     private let itemsPerRow: CGFloat = 3
     private let heightPerItem: CGFloat = 175
@@ -47,7 +53,7 @@ extension SearchActorViewController: UICollectionViewDataSource {
 
 extension SearchActorViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        viewModel.gotoActorDetail(with: viewModel.getActorList()[indexPath.row].id)
+        delegate?.didSelected(id: viewModel.getActorList()[indexPath.row].id)
     }
 }
 
