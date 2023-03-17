@@ -332,25 +332,24 @@ class API {
 //    }
     
     // MARK: - GET MOVIE IN CURRENT POSITION RADIUS = 10km2
-    
-//    func getMovieTheaters(at location: Location, completion: @escaping ([MovieTheaterSearchInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
-//
-//        let parametters: [String: Any] = [
-//            "location": "\(location.lat),\(location.lng)",
-//            "radius": 10000,
-//            "types": "movie_theater",
-//            "key": Constant.MAP_KEY
-//        ]
-//
-//        // https://demo0481328.mockable.io/map
-//        Network.get(URLPath.GET_MOVIE_THEATER,
-//                    parameters: parametters,
-//                    responseType: MovieTheaterSearchContainerInfo.self,
-//                    completionHandler: { response in
-//            completion(response.results)
-//        }, errorHandler: error)
-//    }
-//
+    func getMovieTheaters(at location: Location, completion: @escaping ([MovieTheaterSearchInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+
+        let parametters: [String: Any] = [
+            "location": "\(location.lat),\(location.lng)",
+            "radius": 10000,
+            "types": "movie_theater",
+            "key": Constant.Network.MAP_KEY
+        ]
+
+        // https://demo0481328.mockable.io/map
+        Network.get(URLPath.GET_MOVIE_THEATER,
+                    parameters: parametters,
+                    responseType: MovieTheaterSearchContainerInfo.self,
+                    completionHandler: { response in
+            completion(response.results)
+        }, errorHandler: error)
+    }
+
     // MARK: - GET SHOW TIME OF THEATER
 //    func getShowTimesCinema(with name: String, completion: @escaping ([TimeInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
 //        let parametters: [String: Any] = [

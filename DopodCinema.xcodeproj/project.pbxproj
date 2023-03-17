@@ -74,6 +74,11 @@
 		9944484329BCDC2000BB7380 /* ScrollTVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */; };
 		9944484429BCDC2000BB7380 /* ScrollTVDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
+		997274D029C4B96E0043940B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997274CF29C4B96E0043940B /* Location.swift */; };
+		997274D229C4BEAF0043940B /* ShowTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997274D129C4BEAF0043940B /* ShowTimeViewModel.swift */; };
+		997274D629C4C0340043940B /* TheaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997274D429C4C0340043940B /* TheaterCell.swift */; };
+		997274D729C4C0340043940B /* TheaterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997274D529C4C0340043940B /* TheaterCell.xib */; };
+		997274D929C4C1810043940B /* ShowTimeViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997274D829C4C1810043940B /* ShowTimeViewController+CollectionView.swift */; };
 		99751B1E29C36C0C00292419 /* SearchActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99751B1C29C36C0C00292419 /* SearchActorViewController.swift */; };
 		99751B1F29C36C0C00292419 /* SearchActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99751B1D29C36C0C00292419 /* SearchActorViewController.xib */; };
 		99751B2129C36C6E00292419 /* SearchActorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99751B2029C36C6E00292419 /* SearchActorViewModel.swift */; };
@@ -222,6 +227,11 @@
 		9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTVDetailViewController.swift; sourceTree = "<group>"; };
 		9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollTVDetailViewController.xib; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		997274CF29C4B96E0043940B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		997274D129C4BEAF0043940B /* ShowTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeViewModel.swift; sourceTree = "<group>"; };
+		997274D429C4C0340043940B /* TheaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterCell.swift; sourceTree = "<group>"; };
+		997274D529C4C0340043940B /* TheaterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TheaterCell.xib; sourceTree = "<group>"; };
+		997274D829C4C1810043940B /* ShowTimeViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShowTimeViewController+CollectionView.swift"; sourceTree = "<group>"; };
 		99751B1C29C36C0C00292419 /* SearchActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchActorViewController.swift; sourceTree = "<group>"; };
 		99751B1D29C36C0C00292419 /* SearchActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchActorViewController.xib; sourceTree = "<group>"; };
 		99751B2029C36C6E00292419 /* SearchActorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchActorViewModel.swift; sourceTree = "<group>"; };
@@ -328,6 +338,7 @@
 				991C9A2029A5D0A9004FE5D5 /* Image.swift */,
 				991C9A2229A68060004FE5D5 /* Actor.swift */,
 				99D884B829A7AD970091DF91 /* Genre.swift */,
+				997274CF29C4B96E0043940B /* Location.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -446,6 +457,15 @@
 				9944483D29BB88E600BB7380 /* TVGeneralViewController.xib */,
 			);
 			path = TVGeneral;
+			sourceTree = "<group>";
+		};
+		997274D329C4C01F0043940B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				997274D429C4C0340043940B /* TheaterCell.swift */,
+				997274D529C4C0340043940B /* TheaterCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		99751B1B29C36BF000292419 /* SearchActor */ = {
@@ -605,8 +625,11 @@
 		99A6A9F82992936F00D3EEEF /* ShowTime */ = {
 			isa = PBXGroup;
 			children = (
+				997274D329C4C01F0043940B /* Cell */,
 				99BACD7529954A0300762A3E /* ShowTimeViewController.swift */,
 				99BACD7629954A0300762A3E /* ShowTimeViewController.xib */,
+				997274D129C4BEAF0043940B /* ShowTimeViewModel.swift */,
+				997274D829C4C1810043940B /* ShowTimeViewController+CollectionView.swift */,
 			);
 			path = ShowTime;
 			sourceTree = "<group>";
@@ -823,6 +846,7 @@
 				99D884BE29A7B4DA0091DF91 /* MovieDetailViewController.xib in Resources */,
 				99EB6EDC29ACFCB90075F29D /* loading.json in Resources */,
 				9931322E299B6CA200AA9E2C /* HeaderCell.xib in Resources */,
+				997274D729C4C0340043940B /* TheaterCell.xib in Resources */,
 				991C9A1429A5C095004FE5D5 /* TopHorizontalCell.xib in Resources */,
 				998C15D029ABB49F0027C3BF /* ImageCell.xib in Resources */,
 				998B53D929AF9A0500822525 /* StartingCell.xib in Resources */,
@@ -930,6 +954,7 @@
 				99D884BD29A7B4DA0091DF91 /* MovieDetailViewController.swift in Sources */,
 				99EB6EDF29AD04CA0075F29D /* TrailerCell.swift in Sources */,
 				9915F8C329AB1A3700B6B6FC /* Float+Extension.swift in Sources */,
+				997274D229C4BEAF0043940B /* ShowTimeViewModel.swift in Sources */,
 				99B3E88E29A9F67B00BC4483 /* MovieDetailViewModel.swift in Sources */,
 				998B53E429B30B4200822525 /* ActorDetailViewController+CollectionView.swift in Sources */,
 				99751B1E29C36C0C00292419 /* SearchActorViewController.swift in Sources */,
@@ -944,6 +969,7 @@
 				99B3E89129A9F75B00BC4483 /* MovieNavigator.swift in Sources */,
 				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
 				991C9A1A29A5C803004FE5D5 /* URLPath.swift in Sources */,
+				997274D629C4C0340043940B /* TheaterCell.swift in Sources */,
 				99D884B929A7AD970091DF91 /* Genre.swift in Sources */,
 				99DA604229C0CC3F00164F0A /* ActorListViewController.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
@@ -971,11 +997,13 @@
 				99B3E89329A9FE3A00BC4483 /* MovieDetailNavigator.swift in Sources */,
 				99142F9C299A779D00E7BA3D /* MovieViewModel.swift in Sources */,
 				993EA18C29A1AEBC00C5470B /* ComingHorizontalCell.swift in Sources */,
+				997274D929C4C1810043940B /* ShowTimeViewController+CollectionView.swift in Sources */,
 				9944483E29BB88E600BB7380 /* TVGeneralViewController.swift in Sources */,
 				9944483129B8B7F400BB7380 /* CustomizePageControl.swift in Sources */,
 				993EA1A629A1F9C500C5470B /* SettingViewModel.swift in Sources */,
 				9931322A299B67DE00AA9E2C /* MovieViewController+TableView.swift in Sources */,
 				991C9A2129A5D0A9004FE5D5 /* Image.swift in Sources */,
+				997274D029C4B96E0043940B /* Location.swift in Sources */,
 				993EA19E29A1F6D000C5470B /* BaseHeaderSubView.swift in Sources */,
 				994082A529C21FD700B44A8E /* SearchDataViewModel.swift in Sources */,
 				999EA25929BF744D00B38382 /* EpisodeCell.swift in Sources */,
@@ -1155,6 +1183,8 @@
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to request location permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to request location permission";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1186,6 +1216,8 @@
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to request location permission";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to request location permission";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -11,28 +11,92 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShowTimeViewController" customModule="DopodCinema" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="9by-n5-826" id="hBw-kf-eJQ"/>
                 <outlet property="containerView" destination="lsJ-WP-01X" id="QJl-s1-fcj"/>
-                <outlet property="topConstrait" destination="vYk-KR-rOq" id="l52-7F-EMq"/>
+                <outlet property="currentLocationName" destination="dFX-JP-OG1" id="wDx-vG-14d"/>
+                <outlet property="locationTitle" destination="gx1-x3-7n8" id="4Fh-tQ-nQq"/>
+                <outlet property="locationView" destination="5vQ-WA-I8Y" id="Yd3-Cs-r8h"/>
+                <outlet property="topConstrait" destination="UAd-ty-d3O" id="njg-oz-P6k"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lsJ-WP-01X">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yvb-mA-YhD">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5vQ-WA-I8Y">
+                                    <rect key="frame" x="16" y="16" width="382" height="67"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your current location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gx1-x3-7n8">
+                                            <rect key="frame" x="13" y="13" width="356" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFX-JP-OG1">
+                                            <rect key="frame" x="13" y="42" width="356" height="0.0"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="dFX-JP-OG1" firstAttribute="top" secondItem="gx1-x3-7n8" secondAttribute="bottom" constant="8" id="3qO-xA-Sgz"/>
+                                        <constraint firstItem="dFX-JP-OG1" firstAttribute="trailing" secondItem="gx1-x3-7n8" secondAttribute="trailing" id="5di-Pl-ggf"/>
+                                        <constraint firstItem="dFX-JP-OG1" firstAttribute="leading" secondItem="gx1-x3-7n8" secondAttribute="leading" id="9fp-Fl-gse"/>
+                                        <constraint firstItem="gx1-x3-7n8" firstAttribute="leading" secondItem="5vQ-WA-I8Y" secondAttribute="leading" constant="13" id="VOI-MS-aie"/>
+                                        <constraint firstItem="gx1-x3-7n8" firstAttribute="top" secondItem="5vQ-WA-I8Y" secondAttribute="top" constant="13" id="X7Y-W7-s2R"/>
+                                        <constraint firstAttribute="height" constant="67" id="l1z-6h-JU6"/>
+                                        <constraint firstAttribute="trailing" secondItem="gx1-x3-7n8" secondAttribute="trailing" constant="13" id="uzW-qr-kM8"/>
+                                    </constraints>
+                                </view>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="9by-n5-826">
+                                    <rect key="frame" x="0.0" y="99" width="414" height="637"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Rm-Kc-aYw">
+                                        <size key="itemSize" width="128" height="128"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="9by-n5-826" firstAttribute="top" secondItem="5vQ-WA-I8Y" secondAttribute="bottom" constant="16" id="F93-2M-wNT"/>
+                                <constraint firstAttribute="trailing" secondItem="5vQ-WA-I8Y" secondAttribute="trailing" constant="16" id="YpJ-Ft-ofZ"/>
+                                <constraint firstItem="5vQ-WA-I8Y" firstAttribute="top" secondItem="Yvb-mA-YhD" secondAttribute="top" constant="16" id="bNT-Ou-Bpa"/>
+                                <constraint firstAttribute="trailing" secondItem="9by-n5-826" secondAttribute="trailing" id="ftk-KB-Jr2"/>
+                                <constraint firstItem="9by-n5-826" firstAttribute="leading" secondItem="Yvb-mA-YhD" secondAttribute="leading" id="qsh-gi-6wU"/>
+                                <constraint firstItem="5vQ-WA-I8Y" firstAttribute="leading" secondItem="Yvb-mA-YhD" secondAttribute="leading" constant="16" id="sRH-JG-XZ9"/>
+                                <constraint firstAttribute="bottom" secondItem="9by-n5-826" secondAttribute="bottom" id="x4r-JJ-hDL"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Yvb-mA-YhD" firstAttribute="top" secondItem="lsJ-WP-01X" secondAttribute="top" id="UAd-ty-d3O"/>
+                        <constraint firstItem="Yvb-mA-YhD" firstAttribute="leading" secondItem="lsJ-WP-01X" secondAttribute="leading" id="cwJ-M4-3NR"/>
+                        <constraint firstAttribute="bottom" secondItem="Yvb-mA-YhD" secondAttribute="bottom" id="kCr-rx-cVE"/>
+                        <constraint firstAttribute="trailing" secondItem="Yvb-mA-YhD" secondAttribute="trailing" id="zAy-1l-t6c"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="lsJ-WP-01X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bi0-7H-8bC"/>
+                <constraint firstItem="lsJ-WP-01X" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Wnw-Eb-yIw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lsJ-WP-01X" secondAttribute="trailing" id="bYo-6O-k4f"/>
-                <constraint firstAttribute="bottom" secondItem="lsJ-WP-01X" secondAttribute="bottom" id="md6-bj-v6q"/>
-                <constraint firstItem="lsJ-WP-01X" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vYk-KR-rOq"/>
+                <constraint firstItem="lsJ-WP-01X" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="hN7-CR-XKK"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-11"/>
         </view>

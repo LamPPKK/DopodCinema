@@ -40,6 +40,7 @@ class HomePageViewController: UIPageViewController {
         
         favoriteVC = FavoriteViewController(nibName: "FavoriteViewController", bundle: nil)
         showtimeVC = ShowTimeViewController(nibName: "ShowTimeViewController", bundle: nil)
+        showtimeVC.viewModel = ShowTimeViewModel()
         
         setViewControllers([movieNavigationController], direction: .forward, animated: false)
     }
