@@ -164,6 +164,9 @@ extension MovieViewController: UITableViewDelegate {
             let id = movies[indexPath.row].id
             viewModel.showMovieDetailInfo(with: id)
             
+        case .times:
+            NotificationCenter.default.post(name: Notification.Name("Open_ShowTime"), object: nil)
+            
         default:
             break
         }

@@ -37,7 +37,7 @@ class HomeScreen: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(hideTabbar), name: Notification.Name("hide_tabbar"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showTabbar), name: Notification.Name("show_tabbar"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(openShowTimeScreen), name: Notification.Name("Open_ShowTime"), object: nil)
         navigationController?.setNavigationBarHidden(true, animated: true)
 
         setupUI()
@@ -154,5 +154,10 @@ extension HomeScreen {
     @objc
     private func showTabbar() {
         tabbarView.isHidden = false
+    }
+    
+    @objc
+    private func openShowTimeScreen() {
+        handleTapDiscovery()
     }
 }
