@@ -135,6 +135,8 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            posterImageView.image = UIImage(named: "ic_loading")
         }
         
         nameLabel.text = movieDetailInfo.original_title

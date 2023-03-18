@@ -86,6 +86,8 @@ class ActorDetailViewController: BaseViewController<ActorDetailViewModel> {
         if let url = URL(string: Utils.getPosterPath(actorDetailInfo.profile_path, size: .w342)) {
             profileImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            profileImageView.image = UIImage(named: "ic_loading")
         }
         
         nameLabel.text = actorDetailInfo.name

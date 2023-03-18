@@ -45,6 +45,8 @@ class PopularCell: UITableViewCell {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
             iconImageView.sd_setImage(with: url,
                                       placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            iconImageView.image = UIImage(named: "ic_loading")
         }
         
         categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
@@ -57,6 +59,8 @@ class PopularCell: UITableViewCell {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
             iconImageView.sd_setImage(with: url,
                                       placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            iconImageView.image = UIImage(named: "ic_loading")
         }
         
         categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)

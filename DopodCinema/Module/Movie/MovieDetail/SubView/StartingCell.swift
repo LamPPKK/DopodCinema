@@ -27,6 +27,8 @@ class StartingCell: UICollectionViewCell {
         if let url = URL(string: Utils.getPosterPath(data.profile_path)) {
             profileImageView.sd_setImage(with: url,
                                          placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            profileImageView.image = UIImage(named: "ic_loading")
         }
         
         nameLabel.text = data.name

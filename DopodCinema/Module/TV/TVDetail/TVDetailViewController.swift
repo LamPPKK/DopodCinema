@@ -78,6 +78,8 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
         if let url = URL(string: Utils.getPosterPath(viewModel.getTVDetailInfo().poster_path)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            posterImageView.image = UIImage(named: "ic_loading")
         }
         
         genresLabel.text = Utils.getGenresString(from: viewModel.getTVDetailInfo().genres, separator: " • ")

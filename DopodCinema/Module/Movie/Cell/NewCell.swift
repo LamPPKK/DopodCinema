@@ -24,6 +24,8 @@ class NewCell: UICollectionViewCell {
         if let url = URL(string: Utils.getPosterPath(poster)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            posterImageView.image = UIImage(named: "ic_loading")
         }
     }
 }

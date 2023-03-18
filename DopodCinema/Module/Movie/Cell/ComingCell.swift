@@ -46,6 +46,8 @@ class ComingCell: UICollectionViewCell {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            posterImageView.image = UIImage(named: "ic_loading")
         }
         
         categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
@@ -59,6 +61,8 @@ class ComingCell: UICollectionViewCell {
         if let url = URL(string: Utils.getPosterPath(data.poster_path)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            posterImageView.image = UIImage(named: "ic_loading")
         }
         
         categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
