@@ -92,6 +92,7 @@ extension TVViewController: UITableViewDataSource {
                             bottom: CGFloat = 0,
                             type: TVSectionType) -> HeaderCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCellIdentity) as! HeaderCell
+        headerCell.delegate = self
         headerCell.setTitle(headerTitle, bottom: bottom, tvSection: type)
         return headerCell
     }
@@ -147,14 +148,27 @@ extension TVViewController: UITableViewDelegate {
         let section = viewModel.getSections()[indexPath.section]
         
         switch section {
-        case .top, .headerCategory, .category, .headerOnAir, .onAir, .headerToprate, .toprate, .headerActor, .actor:
+        case .top, .headerCategory, .category, .headerPopular, .headerOnAir, .onAir, .headerToprate, .toprate, .headerActor, .actor:
             return UITableView.automaticDimension
             
         case .popular:
             return 100
+        }
+    }
+}
+
+extension TVViewController: HeaderCellDelegate {
+    func didSelectedSeeAllMovie(section: MovieSectionType) {
+        
+    }
+    
+    func didSelectedSeeAllTV(section: TVSectionType) {
+        switch section {
+        case .headerActor(let title):
+            viewModel.gotoActorList(with: title)
             
         default:
-            return 0
+            break
         }
     }
 }

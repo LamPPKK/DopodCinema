@@ -48,6 +48,22 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         bindData()
     }
     
+    override func didToFavorite() {
+        super.didToFavorite()
+        
+        guard let subHeaderView = self.subHeaderView else {
+            return
+        }
+        
+        if subHeaderView.isSave {
+            viewModel.saveMovieToLocal()
+        } else {
+            viewModel.remove(viewModel.movieDetailInfo.id)
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name("Did_change_list_favorite"), object: nil)
+    }
+    
     // MARK: - Private functions
     private func setupUI() {
         topConstraint.constant = Constant.HEIGHT_NAV
@@ -130,7 +146,8 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         let movieDetailInfo = viewModel.movieDetailInfo
         
         setupSubHeader(with: movieDetailInfo.original_title,
-                       isDetail: true)
+                       isDetail: true,
+                       isSave: viewModel.isFavourite(movieDetailInfo.id))
         
         if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path)) {
             posterImageView.sd_setImage(with: url,

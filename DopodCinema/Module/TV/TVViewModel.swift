@@ -170,4 +170,8 @@ class TVViewModel: NSObject {
     func gotoSearch() {
         self.navigator.gotoSearch()
     }
+    
+    func gotoActorList(with title: String) {
+        self.navigator.gotoActorList(with: title, actorList: self.actors)
+    }
 }

@@ -212,7 +212,7 @@
                 <constraint firstAttribute="bottom" secondItem="6uc-Us-Q6p" secondAttribute="bottom" id="omz-un-0F5"/>
                 <constraint firstItem="6uc-Us-Q6p" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="yyx-1k-Faq"/>
             </constraints>
-            <point key="canvasLocation" x="131" y="-11"/>
+            <point key="canvasLocation" x="130.43478260869566" y="-11.413043478260871"/>
         </view>
     </objects>
     <resources>

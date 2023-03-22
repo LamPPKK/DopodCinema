@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class BaseViewController<ViewModel>: UIViewController {
+class BaseViewController<ViewModel>: UIViewController, BaseHeaderSubViewDelegate {
     
     // MARK: - Property
     let disposeBag = DisposeBag()
@@ -48,7 +48,8 @@ class BaseViewController<ViewModel>: UIViewController {
     }
     
     func setupSubHeader(with title: String,
-                        isDetail: Bool = false) {
+                        isDetail: Bool = false,
+                        isSave: Bool = false) {
         NotificationCenter.default.post(name: Notification.Name("hide_tabbar"), object: nil)
         
         if subHeaderView == nil {
@@ -60,12 +61,43 @@ class BaseViewController<ViewModel>: UIViewController {
                 $0.delegate = self
                 $0.moveTo(parentViewController: self)
                 $0.setupHeader(withTitle: title,
-                               isDetail: isDetail)
+                               isDetail: isDetail,
+                               isSave: isSave)
                 
             }
             
             view.addSubview(headerView)
             view.bringSubviewToFront(headerView)
+        }
+    }
+    
+    func didBackToViewController() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc
+    func didToFavorite() {
+        guard let subHeaderView = subHeaderView else {
+            return
+        }
+        
+        if subHeaderView.isSave {
+            let alert: FavoriteAlertView = FavoriteAlertView(frame: CGRect(x: 0,
+                                                                           y: 0,
+                                                                           width: UIScreen.main.bounds.width,
+                                                                           height: 92))
+            
+            // Add animation
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: .easeIn)
+            transition.type = .moveIn
+            transition.subtype = .fromBottom
+            alert.layer.add(transition, forKey: nil)
+            
+            // Add to subview
+            view.addSubview(alert)
+            view.bringSubviewToFront(alert)
         }
     }
 }
@@ -77,11 +109,5 @@ extension BaseViewController: BaseHeaderViewDelegate {
         settingViewController.viewModel = SettingViewModel()
         settingViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(settingViewController, animated: true)
-    }
-}
-
-extension BaseViewController: BaseHeaderSubViewDelegate {
-    func didBackToViewController() {
-        self.navigationController?.popViewController(animated: true)
     }
 }

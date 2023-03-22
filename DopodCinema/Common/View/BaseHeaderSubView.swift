@@ -9,6 +9,7 @@ import UIKit
 
 protocol BaseHeaderSubViewDelegate: NSObjectProtocol {
     func didBackToViewController()
+    func didToFavorite()
 }
 
 class BaseHeaderSubView: UIView {
@@ -101,10 +102,13 @@ class BaseHeaderSubView: UIView {
     }
     
     func setupHeader(withTitle title: String,
-                     isDetail: Bool) {
+                     isDetail: Bool,
+                     isSave: Bool) {
         setupUI()
         titleLabel.text = title
         saveButton.isHidden = !isDetail
+        self.isSave = isSave
+        setupFavouriteIcon()
     }
     
     private func setupFavouriteIcon() {
@@ -119,5 +123,6 @@ class BaseHeaderSubView: UIView {
     @IBAction func didSave() {
         isSave = !isSave
         setupFavouriteIcon()
+        delegate?.didToFavorite()
     }
 }
