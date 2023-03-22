@@ -7,10 +7,17 @@
 
 import UIKit
 
+protocol FavoritePagerViewDelegate: NSObjectProtocol {
+    func didSelectedObject(id: Int, isMovie: Bool)
+}
+
 class FavoritePagerViewController: UIPageViewController {
     
     // MARK: - Properties
     private var movieFavVC: FavoriteDataViewController!
+    private var tvShowFavVC: FavoriteDataViewController!
+    
+    weak var pagerDelegate: FavoritePagerViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +27,12 @@ class FavoritePagerViewController: UIPageViewController {
     
     private func setupScreen() {
         movieFavVC = FavoriteDataViewController(nibName: "FavoriteDataViewController", bundle: nil)
-        movieFavVC.viewModel = FavoriteDataViewModel()
+        movieFavVC.delegate = self
+        movieFavVC.viewModel = FavoriteDataViewModel(tag: .kMovie)
         
+        tvShowFavVC = FavoriteDataViewController(nibName: "FavoriteDataViewController", bundle: nil)
+        tvShowFavVC.delegate = self
+        tvShowFavVC.viewModel = FavoriteDataViewModel(tag: .kTV)
         setViewControllers([movieFavVC], direction: .forward, animated: true)
     }
     
@@ -33,12 +44,18 @@ class FavoritePagerViewController: UIPageViewController {
             selectedVC = movieFavVC
             
         case .kTV:
-            break
+            selectedVC = tvShowFavVC
             
         case .kActor:
             break
         }
         
         setViewControllers([selectedVC], direction: .forward, animated: false)
+    }
+}
+
+extension FavoritePagerViewController: FavoriteDataViewDelegate {
+    func didSelectedObject(id: Int, isMovie: Bool) {
+        pagerDelegate?.didSelectedObject(id: id, isMovie: isMovie)
     }
 }

@@ -80,6 +80,8 @@
 		9962A54629CB3BAB00CF20CA /* FavoriteDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */; };
 		9962A54729CB3BAB00CF20CA /* FavoriteDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */; };
 		9962A54929CB3C7000CF20CA /* FavoriteDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54829CB3C7000CF20CA /* FavoriteDataViewModel.swift */; };
+		9962A54B29CB49B900CF20CA /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54A29CB49B900CF20CA /* FavoriteViewModel.swift */; };
+		9962A54D29CB4AF000CF20CA /* FavoriteNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54C29CB4AF000CF20CA /* FavoriteNavigator.swift */; };
 		997274D029C4B96E0043940B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997274CF29C4B96E0043940B /* Location.swift */; };
 		997274D229C4BEAF0043940B /* ShowTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997274D129C4BEAF0043940B /* ShowTimeViewModel.swift */; };
 		997274D629C4C0340043940B /* TheaterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997274D429C4C0340043940B /* TheaterCell.swift */; };
@@ -239,6 +241,8 @@
 		9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataViewController.swift; sourceTree = "<group>"; };
 		9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteDataViewController.xib; sourceTree = "<group>"; };
 		9962A54829CB3C7000CF20CA /* FavoriteDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataViewModel.swift; sourceTree = "<group>"; };
+		9962A54A29CB49B900CF20CA /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
+		9962A54C29CB4AF000CF20CA /* FavoriteNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteNavigator.swift; sourceTree = "<group>"; };
 		997274CF29C4B96E0043940B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		997274D129C4BEAF0043940B /* ShowTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeViewModel.swift; sourceTree = "<group>"; };
 		997274D429C4C0340043940B /* TheaterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheaterCell.swift; sourceTree = "<group>"; };
@@ -642,6 +646,8 @@
 				9962A54129CB3B2E00CF20CA /* SubView */,
 				99BACD712995495200762A3E /* FavoriteViewController.swift */,
 				99BACD722995495200762A3E /* FavoriteViewController.xib */,
+				9962A54A29CB49B900CF20CA /* FavoriteViewModel.swift */,
+				9962A54C29CB4AF000CF20CA /* FavoriteNavigator.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -1008,7 +1014,9 @@
 				998C15D229ABB6540027C3BF /* MovieDetailViewController+CollectionView.swift in Sources */,
 				998CCD2A29912CDD00AE6283 /* HomeScreen.swift in Sources */,
 				999EA25629BF5E5600B38382 /* TVDetailSeasonViewModel.swift in Sources */,
+				9962A54D29CB4AF000CF20CA /* FavoriteNavigator.swift in Sources */,
 				9940829B29C2100400B44A8E /* SearchNavigator.swift in Sources */,
+				9962A54B29CB49B900CF20CA /* FavoriteViewModel.swift in Sources */,
 				9962A54629CB3BAB00CF20CA /* FavoriteDataViewController.swift in Sources */,
 				994082A129C21C0D00B44A8E /* SearchDataViewController.swift in Sources */,
 				99E340DC29AA7C45004917B4 /* UILabel+Extension.swift in Sources */,

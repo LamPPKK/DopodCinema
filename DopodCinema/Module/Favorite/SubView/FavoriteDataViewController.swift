@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol FavoriteDataViewDelegate: NSObjectProtocol {
+    func didSelectedObject(id: Int, isMovie: Bool)
+}
+
 class FavoriteDataViewController: BaseViewController<FavoriteDataViewModel> {
 
     // MARK: - IBOutlets
@@ -18,7 +22,7 @@ class FavoriteDataViewController: BaseViewController<FavoriteDataViewModel> {
     private let lineSpacing: CGFloat = 5
     private let heightPerItem: CGFloat = 165
     
-    weak var delegate: SearchDataViewDelegate?
+    weak var delegate: FavoriteDataViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +65,7 @@ extension FavoriteDataViewController: UICollectionViewDataSource {
 extension FavoriteDataViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let object = viewModel.getListFavorite()[indexPath.row]
-//        delegate?.didSelectedObject(id: object.id, isMovie: object.isMovieObject)
+        delegate?.didSelectedObject(id: object.id, isMovie: viewModel.isMovie())
     }
 }
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FavoriteViewController: BaseViewController<MovieViewModel> {
+class FavoriteViewController: BaseViewController<FavoriteViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
@@ -69,6 +69,7 @@ class FavoriteViewController: BaseViewController<MovieViewModel> {
     private func setupPager() {
         favoritePagerVC = FavoritePagerViewController()
         favoritePagerVC.view.frame = containerView.bounds
+        favoritePagerVC.pagerDelegate = self
         addChild(favoritePagerVC)
         containerView.addSubview(favoritePagerVC.view)
         favoritePagerVC.didMove(toParent: self)
@@ -133,6 +134,16 @@ class FavoriteViewController: BaseViewController<MovieViewModel> {
     private func moveToScreen(_ tag: SearchPagerTag) {
         if favoritePagerVC != nil {
             favoritePagerVC.moveToScreen(at: tag)
+        }
+    }
+}
+
+extension FavoriteViewController: FavoritePagerViewDelegate {
+    func didSelectedObject(id: Int, isMovie: Bool) {
+        if isMovie {
+            viewModel.gotoMovieDetail(with: id)
+        } else {
+            viewModel.gotoTVDetail(with: id)
         }
     }
 }

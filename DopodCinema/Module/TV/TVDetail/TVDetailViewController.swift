@@ -20,16 +20,28 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
     @IBOutlet private weak var genresLabel: UILabel!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
-//    @IBOutlet private weak var checkoutView: UIView!
-//    @IBOutlet private weak var checkoutLabel: UILabel!
-//    @IBOutlet private weak var arrowButton: UIButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         bindingData()
+    }
+    
+    override func didToFavorite() {
+        super.didToFavorite()
+        
+        guard let subHeaderView = self.subHeaderView else {
+            return
+        }
+        
+        if subHeaderView.isSave {
+            viewModel.save()
+        } else {
+            viewModel.remove(viewModel.getTVDetailInfo().id)
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name("Did_change_list_favorite"), object: nil)
     }
 
     // MARK: - Private functions
@@ -57,23 +69,12 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
         
         timeLabel.font = .fontPoppinsRegular(withSize: 13)
         timeLabel.textColor = Constant.Color.color2B2F31
-        
-//        checkoutView.backgroundColor = Constant.Color.color3D5BF6
-//        checkoutView.roundCorners(corners: [.topLeft, .bottomLeft], radius: 100)
-//
-//        checkoutLabel.text = "Check out\nmovie showtime"
-//        checkoutLabel.textColor = .white
-//        checkoutLabel.font = .fontPoppinsSemiBold(withSize: 13)
-        
-        
-        
-//        containerView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
-        
     }
 
     private func bindingData() {
         setupSubHeader(with: viewModel.getTVDetailInfo().original_name,
-                       isDetail: true)
+                       isDetail: true,
+                       isSave: viewModel.isFavourite(viewModel.getTVDetailInfo().id))
         
         if let url = URL(string: Utils.getPosterPath(viewModel.getTVDetailInfo().poster_path)) {
             posterImageView.sd_setImage(with: url,

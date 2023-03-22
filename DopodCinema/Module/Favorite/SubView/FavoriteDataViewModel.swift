@@ -8,13 +8,22 @@
 import Foundation
 
 class FavoriteDataViewModel {
-    private var listFavorite: [SavedInfo]
     
-    init() {
-        self.listFavorite = UserDataDefaults.shared.getListMovie()
+    private var tag: SearchPagerTag
+    
+    init(tag: SearchPagerTag) {
+        self.tag = tag
+    }
+    
+    func isMovie() -> Bool {
+        return self.tag == .kMovie
     }
     
     func getListFavorite() -> [SavedInfo] {
-        UserDataDefaults.shared.getListMovie()
+        if tag == .kMovie {
+            return UserDataDefaults.shared.getListMovie()
+        } else {
+            return UserDataDefaults.shared.getListTV()
+        }
     }
 }

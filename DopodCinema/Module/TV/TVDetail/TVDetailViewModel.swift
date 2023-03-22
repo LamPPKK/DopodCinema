@@ -21,4 +21,42 @@ class TVDetailViewModel {
     func getTVDetailInfo() -> TVShowDetailInfo {
         tvDetailInfo
     }
+    
+    // MARK: - Check exist favorite
+    func isFavourite(_ id: Int) -> Bool {
+        let listLocal: [SavedInfo] = UserDataDefaults.shared.getListTV()
+        let listExits = listLocal.filter { $0.id == id }
+        return !listExits.isEmpty
+    }
+    
+    // MARK: - Save movie to local
+    func save() {
+        var list: [SavedInfo] = UserDataDefaults.shared.getListTV()
+        
+        let tvInfo: SavedInfo = SavedInfo(id: tvDetailInfo.id,
+                                          path: tvDetailInfo.poster_path ?? String.empty,
+                                          name: tvDetailInfo.original_name)
+        list.insert(tvInfo, at: 0)
+        
+        // Save
+        UserDataDefaults.shared.setListTV(list)
+    }
+    
+    func remove(_ id: Int) {
+        var list: [SavedInfo] = UserDataDefaults.shared.getListTV()
+        
+        var listIndex: [Int] = []
+        
+        for index in 0..<list.count where list[index].id == id {
+            listIndex.append(index)
+        }
+        
+        // Remove in local list
+        for index in listIndex {
+            list.remove(at: index)
+        }
+        
+        // Save
+        UserDataDefaults.shared.setListTV(list)
+    }
 }
