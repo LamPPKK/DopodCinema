@@ -79,6 +79,10 @@
 		995B265E29CE7F0C0020C584 /* FavoriteActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */; };
 		995B265F29CE7F0C0020C584 /* FavoriteActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */; };
 		995B266129CE7F290020C584 /* FavoriteActorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266029CE7F290020C584 /* FavoriteActorViewModel.swift */; };
+		995B266529CE876B0020C584 /* TVListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266329CE876B0020C584 /* TVListViewController.swift */; };
+		995B266629CE876B0020C584 /* TVListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995B266429CE876B0020C584 /* TVListViewController.xib */; };
+		995B266829CE87790020C584 /* TVListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266729CE87790020C584 /* TVListViewModel.swift */; };
+		995B266A29CE87870020C584 /* TVListNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266929CE87870020C584 /* TVListNavigator.swift */; };
 		9962A54329CB3B6500CF20CA /* FavoritePagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54229CB3B6500CF20CA /* FavoritePagerViewController.swift */; };
 		9962A54629CB3BAB00CF20CA /* FavoriteDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */; };
 		9962A54729CB3BAB00CF20CA /* FavoriteDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */; };
@@ -243,6 +247,10 @@
 		995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActorViewController.swift; sourceTree = "<group>"; };
 		995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteActorViewController.xib; sourceTree = "<group>"; };
 		995B266029CE7F290020C584 /* FavoriteActorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActorViewModel.swift; sourceTree = "<group>"; };
+		995B266329CE876B0020C584 /* TVListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListViewController.swift; sourceTree = "<group>"; };
+		995B266429CE876B0020C584 /* TVListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVListViewController.xib; sourceTree = "<group>"; };
+		995B266729CE87790020C584 /* TVListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListViewModel.swift; sourceTree = "<group>"; };
+		995B266929CE87870020C584 /* TVListNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVListNavigator.swift; sourceTree = "<group>"; };
 		9962A54229CB3B6500CF20CA /* FavoritePagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePagerViewController.swift; sourceTree = "<group>"; };
 		9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataViewController.swift; sourceTree = "<group>"; };
 		9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteDataViewController.xib; sourceTree = "<group>"; };
@@ -481,6 +489,17 @@
 			path = TVGeneral;
 			sourceTree = "<group>";
 		};
+		995B266229CE87580020C584 /* TVList */ = {
+			isa = PBXGroup;
+			children = (
+				995B266329CE876B0020C584 /* TVListViewController.swift */,
+				995B266429CE876B0020C584 /* TVListViewController.xib */,
+				995B266729CE87790020C584 /* TVListViewModel.swift */,
+				995B266929CE87870020C584 /* TVListNavigator.swift */,
+			);
+			path = TVList;
+			sourceTree = "<group>";
+		};
 		9962A54129CB3B2E00CF20CA /* SubView */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +655,7 @@
 		99A6A9F62992935F00D3EEEF /* TV */ = {
 			isa = PBXGroup;
 			children = (
+				995B266229CE87580020C584 /* TVList */,
 				99E6BE4329BE385800234C3E /* TVDetailSeason */,
 				99E6BE3A29BE2DA600234C3E /* TVDetailPager */,
 				9944483B29BB88C600BB7380 /* TVGeneral */,
@@ -898,6 +918,7 @@
 				9944483629B8D2CF00BB7380 /* TVDetailViewController.xib in Resources */,
 				99BACD63299543C500762A3E /* BaseHeaderView.xib in Resources */,
 				99E340DA29AA7AE8004917B4 /* Poppins-Regular.ttf in Resources */,
+				995B266629CE876B0020C584 /* TVListViewController.xib in Resources */,
 				993EA1A229A1F99500C5470B /* SettingViewController.xib in Resources */,
 				99E6BE4229BE334E00234C3E /* TVDetailContentViewController.xib in Resources */,
 				99313232299B703000AA9E2C /* TimesCell.xib in Resources */,
@@ -988,6 +1009,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9944484329BCDC2000BB7380 /* ScrollTVDetailViewController.swift in Sources */,
+				995B266A29CE87870020C584 /* TVListNavigator.swift in Sources */,
 				99F6471329A9A80900603272 /* CustomizeCollectionFlowLayout.swift in Sources */,
 				99BACD732995495200762A3E /* FavoriteViewController.swift in Sources */,
 				991C9A1329A5C095004FE5D5 /* TopHorizontalCell.swift in Sources */,
@@ -1013,6 +1035,7 @@
 				99B3E89129A9F75B00BC4483 /* MovieNavigator.swift in Sources */,
 				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
 				991C9A1A29A5C803004FE5D5 /* URLPath.swift in Sources */,
+				995B266529CE876B0020C584 /* TVListViewController.swift in Sources */,
 				997274D629C4C0340043940B /* TheaterCell.swift in Sources */,
 				99D884B929A7AD970091DF91 /* Genre.swift in Sources */,
 				99DA604229C0CC3F00164F0A /* ActorListViewController.swift in Sources */,
@@ -1092,6 +1115,7 @@
 				99313251299B7A4B00AA9E2C /* UIFont+Extension.swift in Sources */,
 				99CB78E729B64284001DFCF3 /* CategoryViewController.swift in Sources */,
 				99CB78EA29B64587001DFCF3 /* CategoryViewController+CollectionView.swift in Sources */,
+				995B266829CE87790020C584 /* TVListViewModel.swift in Sources */,
 				99313227299B674600AA9E2C /* PopularCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

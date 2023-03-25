@@ -137,6 +137,18 @@ class TVViewModel: NSObject {
         return sections
     }
     
+    func getPopularList() -> [TVShowInfo] {
+        tvShowsPopular
+    }
+    
+    func getOnAirList() -> [TVShowInfo] {
+        tvShowsOnair
+    }
+    
+    func getToprateList() -> [TVShowInfo] {
+        tvShowsToprate
+    }
+    
     func getCategories() -> [GenreInfo] {
         categories
     }
@@ -169,6 +181,12 @@ class TVViewModel: NSObject {
     
     func gotoSearch() {
         self.navigator.gotoSearch()
+    }
+    
+    func gotoTVList(with title: String,
+                       list: [TVShowInfo],
+                       categories: [GenreInfo]) {
+        self.navigator.gotoTVList(with: title, list: list, categories: categories)
     }
     
     func gotoActorList(with title: String) {

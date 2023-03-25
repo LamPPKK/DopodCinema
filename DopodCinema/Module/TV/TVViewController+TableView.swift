@@ -176,6 +176,21 @@ extension TVViewController: HeaderCellDelegate {
     
     func didSelectedSeeAllTV(section: TVSectionType) {
         switch section {
+        case .headerPopular(let title):
+            viewModel.gotoTVList(with: title,
+                                 list: viewModel.getPopularList(),
+                                 categories: viewModel.getCategories())
+
+        case .headerOnAir(let title):
+            viewModel.gotoTVList(with: title,
+                                 list: viewModel.getOnAirList(),
+                                 categories: viewModel.getCategories())
+            
+        case .headerToprate(let title):
+            viewModel.gotoTVList(with: title,
+                                 list: viewModel.getToprateList(),
+                                 categories: viewModel.getCategories())
+            
         case .headerActor(let title):
             viewModel.gotoActorList(with: title)
             
