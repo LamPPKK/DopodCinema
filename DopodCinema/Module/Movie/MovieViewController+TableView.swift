@@ -217,6 +217,10 @@ extension MovieViewController: NewHorizontallCellDelegate, ComingHorizontalCellD
     func selectedMovie(_ id: Int) {
         viewModel.showMovieDetailInfo(with: id)
     }
+    
+    func selectedTV(_ id: Int) {
+        
+    }
 }
 
 extension MovieViewController: ActorHorizontallCellDelegate {

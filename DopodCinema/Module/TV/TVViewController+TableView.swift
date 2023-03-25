@@ -155,6 +155,18 @@ extension TVViewController: UITableViewDelegate {
             return 100
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let section = viewModel.getSections()[indexPath.section]
+        
+        switch section {
+        case .popular(let tvShows):
+            viewModel.showTVDetail(with: tvShows[indexPath.row].id)
+            
+        default:
+            break
+        }
+    }
 }
 
 extension TVViewController: HeaderCellDelegate {
@@ -182,6 +194,10 @@ extension TVViewController: TopHorizontalCellDelegate {
 extension TVViewController: NewHorizontallCellDelegate, ComingHorizontalCellDelegate {
     func selectedMovie(_ id: Int) {
         
+    }
+    
+    func selectedTV(_ id: Int) {
+        viewModel.showTVDetail(with: id)
     }
 }
 

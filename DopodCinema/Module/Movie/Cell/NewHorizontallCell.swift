@@ -14,6 +14,7 @@ enum ScreenType {
 
 protocol NewHorizontallCellDelegate: NSObjectProtocol {
     func selectedMovie(_ id: Int)
+    func selectedTV(_ id: Int)
 }
 
 class NewHorizontallCell: UITableViewCell {
@@ -87,7 +88,11 @@ extension NewHorizontallCell: UICollectionViewDataSource {
 
 extension NewHorizontallCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.selectedMovie(movies[indexPath.row + startIndexDisplay].id)
+        if screenType == .movie {
+            delegate?.selectedMovie(movies[indexPath.row + startIndexDisplay].id)
+        } else {
+            delegate?.selectedTV(tvShows[indexPath.row + startIndexDisplay].id)
+        }
     }
 }
 

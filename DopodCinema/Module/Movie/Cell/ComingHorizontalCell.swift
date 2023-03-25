@@ -9,6 +9,7 @@ import UIKit
 
 protocol ComingHorizontalCellDelegate: NSObjectProtocol {
     func selectedMovie(_ id: Int)
+    func selectedTV(_ id: Int)
 }
 
 class ComingHorizontalCell: UITableViewCell {
@@ -75,7 +76,11 @@ extension ComingHorizontalCell: UICollectionViewDataSource {
 
 extension ComingHorizontalCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.selectedMovie(movies[indexPath.row].id)
+        if screenType == .movie {
+            delegate?.selectedMovie(movies[indexPath.row].id)
+        } else {
+            delegate?.selectedTV(tvShows[indexPath.row].id)
+        }
     }
 }
 
