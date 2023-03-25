@@ -16,6 +16,7 @@ class FavoritePagerViewController: UIPageViewController {
     // MARK: - Properties
     private var movieFavVC: FavoriteDataViewController!
     private var tvShowFavVC: FavoriteDataViewController!
+    private var actorFavVC: FavoriteActorViewController!
     
     weak var pagerDelegate: FavoritePagerViewDelegate?
     
@@ -33,6 +34,10 @@ class FavoritePagerViewController: UIPageViewController {
         tvShowFavVC = FavoriteDataViewController(nibName: "FavoriteDataViewController", bundle: nil)
         tvShowFavVC.delegate = self
         tvShowFavVC.viewModel = FavoriteDataViewModel(tag: .kTV)
+        
+        actorFavVC = FavoriteActorViewController(nibName: "FavoriteActorViewController", bundle: nil)
+        actorFavVC.viewModel = FavoriteActorViewModel()
+        
         setViewControllers([movieFavVC], direction: .forward, animated: true)
     }
     
@@ -47,7 +52,7 @@ class FavoritePagerViewController: UIPageViewController {
             selectedVC = tvShowFavVC
             
         case .kActor:
-            break
+            selectedVC = actorFavVC
         }
         
         setViewControllers([selectedVC], direction: .forward, animated: false)

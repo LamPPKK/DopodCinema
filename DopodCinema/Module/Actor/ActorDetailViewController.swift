@@ -35,6 +35,22 @@ class ActorDetailViewController: BaseViewController<ActorDetailViewModel> {
         bindData()
     }
     
+    override func didToFavorite() {
+        super.didToFavorite()
+        
+        guard let subHeaderView = self.subHeaderView else {
+            return
+        }
+        
+        if subHeaderView.isSave {
+            viewModel.save()
+        } else {
+            viewModel.remove()
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name("Did_change_list_favorite"), object: nil)
+    }
+    
     // MARK: - Private functions
     private func setupUI() {
         topConstraint.constant = Constant.HEIGHT_NAV

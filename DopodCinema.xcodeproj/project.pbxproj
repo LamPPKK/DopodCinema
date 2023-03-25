@@ -76,6 +76,9 @@
 		9944484329BCDC2000BB7380 /* ScrollTVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */; };
 		9944484429BCDC2000BB7380 /* ScrollTVDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
+		995B265E29CE7F0C0020C584 /* FavoriteActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */; };
+		995B265F29CE7F0C0020C584 /* FavoriteActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */; };
+		995B266129CE7F290020C584 /* FavoriteActorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266029CE7F290020C584 /* FavoriteActorViewModel.swift */; };
 		9962A54329CB3B6500CF20CA /* FavoritePagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54229CB3B6500CF20CA /* FavoritePagerViewController.swift */; };
 		9962A54629CB3BAB00CF20CA /* FavoriteDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */; };
 		9962A54729CB3BAB00CF20CA /* FavoriteDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */; };
@@ -237,6 +240,9 @@
 		9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTVDetailViewController.swift; sourceTree = "<group>"; };
 		9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollTVDetailViewController.xib; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActorViewController.swift; sourceTree = "<group>"; };
+		995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteActorViewController.xib; sourceTree = "<group>"; };
+		995B266029CE7F290020C584 /* FavoriteActorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActorViewModel.swift; sourceTree = "<group>"; };
 		9962A54229CB3B6500CF20CA /* FavoritePagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePagerViewController.swift; sourceTree = "<group>"; };
 		9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataViewController.swift; sourceTree = "<group>"; };
 		9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteDataViewController.xib; sourceTree = "<group>"; };
@@ -482,6 +488,9 @@
 				9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */,
 				9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */,
 				9962A54829CB3C7000CF20CA /* FavoriteDataViewModel.swift */,
+				995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */,
+				995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */,
+				995B266029CE7F290020C584 /* FavoriteActorViewModel.swift */,
 			);
 			path = SubView;
 			sourceTree = "<group>";
@@ -877,6 +886,7 @@
 			files = (
 				9962A54729CB3BAB00CF20CA /* FavoriteDataViewController.xib in Resources */,
 				99D884BE29A7B4DA0091DF91 /* MovieDetailViewController.xib in Resources */,
+				995B265F29CE7F0C0020C584 /* FavoriteActorViewController.xib in Resources */,
 				99EB6EDC29ACFCB90075F29D /* loading.json in Resources */,
 				9931322E299B6CA200AA9E2C /* HeaderCell.xib in Resources */,
 				997274D729C4C0340043940B /* TheaterCell.xib in Resources */,
@@ -1043,6 +1053,7 @@
 				997274D029C4B96E0043940B /* Location.swift in Sources */,
 				9962A54929CB3C7000CF20CA /* FavoriteDataViewModel.swift in Sources */,
 				993EA19E29A1F6D000C5470B /* BaseHeaderSubView.swift in Sources */,
+				995B265E29CE7F0C0020C584 /* FavoriteActorViewController.swift in Sources */,
 				994082A529C21FD700B44A8E /* SearchDataViewModel.swift in Sources */,
 				999EA25929BF744D00B38382 /* EpisodeCell.swift in Sources */,
 				991C9A1C29A5C8A5004FE5D5 /* API.swift in Sources */,
@@ -1052,6 +1063,7 @@
 				9940829629C20FE800B44A8E /* SearchViewController.swift in Sources */,
 				998D4335298F54F800B3C5BF /* AppDelegate.swift in Sources */,
 				99BACD6C299547B500762A3E /* UIColor+Extension.swift in Sources */,
+				995B266129CE7F290020C584 /* FavoriteActorViewModel.swift in Sources */,
 				9931325F299D1DB600AA9E2C /* String+Extension.swift in Sources */,
 				99A6A9FB2992953600D3EEEF /* MovieViewController.swift in Sources */,
 				998B53E229B301BD00822525 /* ActorDetailViewModel.swift in Sources */,

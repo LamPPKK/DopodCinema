@@ -32,5 +32,15 @@ class ActorCell: UICollectionViewCell {
         
         nameLabel.text = data.name
     }
-
+    
+    func bindData(_ saveInfo: SavedInfo) {
+        if let url = URL(string: Utils.getProfilePath(saveInfo.path)) {
+            actorImageView.sd_setImage(with: url,
+                                       placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            actorImageView.image = UIImage(named: "ic_loading")
+        }
+        
+        nameLabel.text = saveInfo.name
+    }
 }
