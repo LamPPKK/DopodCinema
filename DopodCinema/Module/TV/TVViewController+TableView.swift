@@ -101,6 +101,7 @@ extension TVViewController: UITableViewDataSource {
                                         indexPath: IndexPath,
                                         categories: [GenreInfo]) -> CategoryHorizontalCell {
         let categoryHorizontalCell = tableView.dequeueReusableCell(withIdentifier: CategoryHorizontalCellIdentity) as! CategoryHorizontalCell
+        categoryHorizontalCell.delegate = self
         categoryHorizontalCell.categories = categories
         return categoryHorizontalCell
     }
@@ -176,6 +177,9 @@ extension TVViewController: HeaderCellDelegate {
     
     func didSelectedSeeAllTV(section: TVSectionType) {
         switch section {
+        case .headerCategory:
+            viewModel.gotoCategory()
+            
         case .headerPopular(let title):
             viewModel.gotoTVList(with: title,
                                  list: viewModel.getPopularList(),
@@ -219,5 +223,11 @@ extension TVViewController: NewHorizontallCellDelegate, ComingHorizontalCellDele
 extension TVViewController: ActorHorizontallCellDelegate {
     func didSelectedActor(id: Int) {
         viewModel.showActorDetail(with: id)
+    }
+}
+
+extension TVViewController: CategoryHorizontalCellDelgate {
+    func selectedCategory(selectedIndex: Int, id: Int) {
+        viewModel.gotoCategory(with: selectedIndex, id: id)
     }
 }

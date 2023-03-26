@@ -15,6 +15,8 @@ protocol TVShowNavigator {
     func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo)
     func gotoActorList(with title: String, actorList: [ActorInfo])
     func gotoTVList(with title: String, list: [TVShowInfo], categories: [GenreInfo])
+    func gotoCategory(with categories: [GenreInfo])
+    func gotoCategory(with selectedIndex: Int?, categories: [GenreInfo], id: Int)
 }
 
 class DefaultTVShowNavigator: TVShowNavigator {
@@ -62,5 +64,15 @@ class DefaultTVShowNavigator: TVShowNavigator {
                        categories: [GenreInfo]) {
         let navigator = DefaultTVListNavigator(navigationController: navigationController)
         navigator.start(with: title, list: list, categories: categories)
+    }
+    
+    func gotoCategory(with categories: [GenreInfo]) {
+        let navigator = DefaultCategoryNavigator(navigationController: navigationController)
+        navigator.start(with: categories, screenType: .tv)
+    }
+    
+    func gotoCategory(with selectedIndex: Int?, categories: [GenreInfo], id: Int) {
+        let navigator = DefaultCategoryNavigator(navigationController: navigationController)
+        navigator.start(with: selectedIndex, categories: categories, id: id, screenType: .tv)
     }
 }

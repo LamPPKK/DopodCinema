@@ -50,12 +50,12 @@ class DefaultMovieNavigator: MovieNavigator {
     
     func gotoCategory(with categories: [GenreInfo]) {
         let navigator = DefaultCategoryNavigator(navigationController: navigationController)
-        navigator.start(with: categories)
+        navigator.start(with: categories, screenType: .movie)
     }
     
     func gotoCategory(with selectedIndex: Int?, categories: [GenreInfo], id: Int) {
         let navigator = DefaultCategoryNavigator(navigationController: navigationController)
-        navigator.start(with: selectedIndex, categories: categories, id: id)
+        navigator.start(with: selectedIndex, categories: categories, id: id, screenType: .movie)
     }
     
     func gotoMovieList(with title: String,

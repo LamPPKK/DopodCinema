@@ -8,9 +8,10 @@
 import UIKit
 
 protocol CategoryNavigator {
-    func start(with categories: [GenreInfo])
-    func start(with selectedIndex: Int?, categories: [GenreInfo], id: Int)
+    func start(with categories: [GenreInfo], screenType: ScreenType)
+    func start(with selectedIndex: Int?, categories: [GenreInfo], id: Int, screenType: ScreenType)
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
+    func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo)
 }
 
 class DefaultCategoryNavigator: CategoryNavigator {
@@ -21,15 +22,21 @@ class DefaultCategoryNavigator: CategoryNavigator {
         self.navigationController = navigationController
     }
     
-    func start(with categories: [GenreInfo]) {
-        let viewModel = CategoryViewModel(navigator: self, categories: categories, idCategory: categories.first?.id ?? 0)
+    func start(with categories: [GenreInfo], screenType: ScreenType) {
+        let viewModel = CategoryViewModel(navigator: self,
+                                          screenType: screenType,
+                                          categories: categories, idCategory: categories.first?.id ?? 0)
         let categoryViewController = CategoryViewController(nibName: "CategoryViewController", bundle: nil)
         categoryViewController.viewModel = viewModel
         self.navigationController.pushViewController(categoryViewController, animated: true)
     }
     
-    func start(with selectedIndex: Int?, categories: [GenreInfo], id: Int) {
+    func start(with selectedIndex: Int?,
+               categories: [GenreInfo],
+               id: Int,
+               screenType: ScreenType) {
         let viewModel = CategoryViewModel(navigator: self,
+                                          screenType: screenType,
                                           categories: categories,
                                           idCategory: id)
         let categoryViewController = CategoryViewController(nibName: "CategoryViewController", bundle: nil)
@@ -43,4 +50,8 @@ class DefaultCategoryNavigator: CategoryNavigator {
         navigator.start(movieDetailInfo)
     }
     
+    func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo) {
+        let navigator = DefaultTVDetailNavigator(navigationController: navigationController)
+        navigator.start(tvDetailInfo)
+    }
 }

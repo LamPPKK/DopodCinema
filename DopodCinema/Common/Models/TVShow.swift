@@ -81,3 +81,7 @@ struct TVShowsTopRateInfo: Codable {
 struct TVSearchInfo: Codable {
     let results: [TVShowInfo]
 }
+
+struct TVGenreInfo: Codable {
+    let results: [TVShowInfo]
+}

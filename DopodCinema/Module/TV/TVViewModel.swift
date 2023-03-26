@@ -192,4 +192,12 @@ class TVViewModel: NSObject {
     func gotoActorList(with title: String) {
         self.navigator.gotoActorList(with: title, actorList: self.actors)
     }
+    
+    func gotoCategory() {
+        self.navigator.gotoCategory(with: categories)
+    }
+    
+    func gotoCategory(with selectedIndex: Int, id: Int) {
+        self.navigator.gotoCategory(with: selectedIndex, categories: categories, id: id)
+    }
 }

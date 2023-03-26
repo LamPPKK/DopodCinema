@@ -25,16 +25,25 @@ class CategoryViewModel {
     private var categories: [GenreInfo]
     private var categoriesInfo: [CategoryInfo] = []
     private var moviesCategory: [MovieInfo] = []
+    private var tvShowsCategory:  [TVShowInfo] = []
+    private var screenType: ScreenType
+    
     var idCategory: Int
     
     init(navigator: CategoryNavigator,
+         screenType: ScreenType,
          categories: [GenreInfo],
          idCategory: Int) {
         self.navigator = navigator
         self.categories = categories
         self.idCategory = idCategory
+        self.screenType = screenType
         
         handleCategories()
+    }
+    
+    func getScreenType() -> ScreenType {
+        screenType
     }
     
     func getCategories() -> [CategoryInfo] {
@@ -73,7 +82,15 @@ class CategoryViewModel {
                  completion: @escaping (() -> Void)) {
         LoadingView.shared.startLoading()
         
-        API.shared.getMovies(with: categoryID,
+        if screenType == .movie {
+            getDataMovie(with: categoryID, completion: completion)
+        } else {
+            getDataTV(with: categoryID, completion: completion)
+        }
+    }
+    
+    private func getDataMovie(with id: Int, completion: @escaping (() -> Void)) {
+        API.shared.getMovies(with: id,
                              completion: { [weak self] moviesCategory in
             guard let self = self else { return }
             
@@ -86,8 +103,26 @@ class CategoryViewModel {
         })
     }
     
+    private func getDataTV(with id: Int, completion: @escaping (() -> Void)) {
+        API.shared.getTVShow(with: id,
+                             completion: { [weak self] tvShowsCategory in
+            guard let self = self else { return }
+            
+            self.tvShowsCategory = tvShowsCategory
+            LoadingView.shared.endLoading()
+            completion()
+        }, error: { _ in
+            LoadingView.shared.endLoading()
+            completion()
+        })
+    }
+    
     func getMoviesCategory() -> [MovieInfo] {
         moviesCategory
+    }
+    
+    func getTVShowsCategory() -> [TVShowInfo] {
+        tvShowsCategory
     }
     
     func showMovieDetailInfo(with id: Int) {
@@ -102,4 +137,18 @@ class CategoryViewModel {
             LoadingView.shared.endLoading()
         }
     }
+    
+    func gotoTVShowDetail(with id: Int) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getTVShowDetail(with: id) { [weak self] tvDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoTVDetail(tvDetailInfo)
+            LoadingView.shared.endLoading()
+        } error: { _ in
+            LoadingView.shared.endLoading()
+        }
+    }
+        
 }

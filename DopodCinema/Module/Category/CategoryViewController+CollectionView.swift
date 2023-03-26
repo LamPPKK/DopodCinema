@@ -14,7 +14,11 @@ extension CategoryViewController: UICollectionViewDataSource {
         if tag == .category {
             return viewModel.getCategories().count
         } else {
-            return viewModel.getMoviesCategory().count
+            if viewModel.getScreenType() == .movie {
+                return viewModel.getMoviesCategory().count
+            } else {
+                return viewModel.getTVShowsCategory().count
+            }
         }
     }
     
@@ -38,7 +42,14 @@ extension CategoryViewController: UICollectionViewDataSource {
     private func imageCell(for collectionView: UICollectionView,
                            indexPath: IndexPath) -> ImageCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCellIdentity, for: indexPath) as! ImageCell
-        cell.bindData(viewModel.getMoviesCategory()[indexPath.row].poster_path)
+        var posterPath: String?
+        if viewModel.getScreenType() == .movie {
+            posterPath = viewModel.getMoviesCategory()[indexPath.row].poster_path
+        } else {
+            posterPath = viewModel.getTVShowsCategory()[indexPath.row].poster_path
+        }
+        
+        cell.bindData(posterPath)
         return cell
     }
 }
@@ -56,8 +67,12 @@ extension CategoryViewController: UICollectionViewDelegate {
                 self.collectionView.reloadData()
             }
         } else {
-            let id = viewModel.getMoviesCategory()[indexPath.row].id
-            viewModel.showMovieDetailInfo(with: id)
+            if viewModel.getScreenType() == .movie {
+                let id = viewModel.getMoviesCategory()[indexPath.row].id
+                viewModel.showMovieDetailInfo(with: id)
+            } else {
+                viewModel.gotoTVShowDetail(with: viewModel.getTVShowsCategory()[indexPath.row].id)
+            }
         }
     }
 }
