@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import RxGesture
 
 class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
 
@@ -22,6 +23,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var checkoutView: UIView!
+    @IBOutlet private weak var clickCheckoutView: UIView!
     @IBOutlet private weak var checkoutLabel: UILabel!
     @IBOutlet private weak var arrowButton: UIButton!
     @IBOutlet private weak var trailerLabel: UILabel!
@@ -114,6 +116,15 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         
         similarLabel.font = .fontPoppinsSemiBold(withSize: 16)
         similarLabel.textColor = Constant.Color.color2B2F31
+        
+        clickCheckoutView
+            .rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.gotoDetailShowTime()
+            })
+            .disposed(by: disposeBag)
     }
     
     private func setupCollectionView() {

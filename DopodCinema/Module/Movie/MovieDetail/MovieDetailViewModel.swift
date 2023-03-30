@@ -80,4 +80,8 @@ class MovieDetailViewModel {
         // Save
         UserDataDefaults.shared.setListMovie(list)
     }
+    
+    func gotoDetailShowTime() {
+        self.navigator.gotoDetailShowTime(self.movieDetailInfo)
+    }
 }

@@ -18,5 +18,21 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "ShowTimeDetailViewController.tableView(_:numberOfRowsInSection:):ShowTimeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewModel.getShowTimes().first?.theaters.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ShowTimeDetailViewModel.getShowTimes():ShowTimeDetailViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listTransform">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

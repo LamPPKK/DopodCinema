@@ -326,26 +326,21 @@ class API {
     }
     
     // MARK: - SHOW TIME
-    /**
-     - parameter appId:
-     - parameter appKey:
-     - parameter movie:
-     */
-//    func getShowTimes(withMovieName name: String, completion: @escaping (ShowTimesContainerInfo) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "appId": Constant.APP_ID,
-//            "appKey": Constant.APP_KEY,
-//            "movie": name
-//        ]
-//
-//        // https://demo0481328.mockable.io/test
-//        Network.get(URLPath.GET_SHOW_TIME,
-//                    parameters: parametters,
-//                    responseType: ShowTimesContainerInfo.self,
-//                    completionHandler: { response in
-//            completion(response)
-//        }, errorHandler: error)
-//    }
+    func getShowTimes(with name: String, completion: @escaping (ShowTimesContainerInfo) -> Void, error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "appId": Constant.Network.APP_ID,
+            "appKey": Constant.Network.APP_KEY,
+            "movie": name
+        ]
+
+        // https://demo0481328.mockable.io/test
+        Network.get(URLPath.GET_SHOW_TIME,
+                    parameters: parametters,
+                    responseType: ShowTimesContainerInfo.self,
+                    completionHandler: { response in
+            completion(response)
+        }, errorHandler: error)
+    }
     
     // MARK: - GET MOVIE IN CURRENT POSITION RADIUS = 10km2
     func getMovieTheaters(at location: Location, completion: @escaping ([MovieTheaterSearchInfo]) -> Void, error: @escaping (NetworkError) -> Void) {

@@ -31,6 +31,8 @@ enum CollectionViewTag: Int {
     case movies = 904
     case tvShows = 905
     case category = 906
+    case date = 907
+    case time = 908
 }
 
 class MovieViewModel: ViewModelType {

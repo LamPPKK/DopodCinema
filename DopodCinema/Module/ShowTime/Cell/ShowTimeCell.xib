@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="259" id="KGk-i7-Jjw" customClass="ShowTimeCell" customModule="DopodCinema" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="259"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="259"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsg-jC-rfd">
+                        <rect key="frame" x="16" y="16.000000000000004" width="288" height="58.333333333333343"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="LFW-C2-HTK">
+                        <rect key="frame" x="16" y="82.333333333333329" width="258" height="176.66666666666669"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="176.66666666666669" id="gwo-A0-gQs"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kLL-q8-p6A">
+                            <size key="itemSize" width="128" height="128"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="LFW-C2-HTK" secondAttribute="trailing" constant="46" id="4qU-gv-f6t"/>
+                    <constraint firstItem="LFW-C2-HTK" firstAttribute="top" secondItem="Gsg-jC-rfd" secondAttribute="bottom" constant="8" id="GaR-8A-Xli"/>
+                    <constraint firstItem="Gsg-jC-rfd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="JQn-Tc-dnR"/>
+                    <constraint firstItem="LFW-C2-HTK" firstAttribute="leading" secondItem="Gsg-jC-rfd" secondAttribute="leading" id="VXE-D3-7gb"/>
+                    <constraint firstItem="Gsg-jC-rfd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="sc7-BQ-vga"/>
+                    <constraint firstAttribute="trailing" secondItem="Gsg-jC-rfd" secondAttribute="trailing" constant="16" id="tBv-Hu-4lN"/>
+                    <constraint firstAttribute="bottom" secondItem="LFW-C2-HTK" secondAttribute="bottom" id="xYx-qG-VPd"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="collectionView" destination="LFW-C2-HTK" id="4wC-qI-s9s"/>
+                <outlet property="heightOfCollectionView" destination="gwo-A0-gQs" id="UZ5-kc-eEM"/>
+                <outlet property="theaterNameLabel" destination="Gsg-jC-rfd" id="Ohj-Rw-NCZ"/>
+                <outlet property="trailingCollectionView" destination="4qU-gv-f6t" id="BRk-wl-fjd"/>
+            </connections>
+            <point key="canvasLocation" x="129.7709923664122" y="64.436619718309856"/>
+        </tableViewCell>
+    </objects>
+</document>
