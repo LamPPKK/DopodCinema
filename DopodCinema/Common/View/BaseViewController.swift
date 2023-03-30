@@ -111,3 +111,16 @@ extension BaseViewController: BaseHeaderViewDelegate {
         self.navigationController?.pushViewController(settingViewController, animated: true)
     }
 }
+
+extension BaseViewController {
+    
+    /// SHOW ALERT
+    func showAlert(with title: String = .empty, msg: String = .empty) {
+        let alertVC = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        
+        alertVC.addAction(okAction)
+        self.present(alertVC, animated: true)
+    }
+}

@@ -17,7 +17,7 @@ class ShowTimeDetailViewModel {
         self.movieName = movieName
     }
 
-    func getData(completion: @escaping (() -> Void)) {
+    func getData(completion: @escaping ((String) -> Void)) {
         LoadingView.shared.startLoading()
         
         API.shared.getShowTimes(with: movieName,
@@ -26,10 +26,10 @@ class ShowTimeDetailViewModel {
             
             self.transform(showTime.showtimes)
             LoadingView.shared.endLoading()
-            completion()
-        }, error: { _ in
+            completion(.empty)
+        }, error: { error in
             LoadingView.shared.endLoading()
-            completion()
+            completion(error.localizedDescription)
         })
     }
     

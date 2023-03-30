@@ -24,9 +24,15 @@ class ShowTimeDetailViewController: BaseViewController<ShowTimeDetailViewModel> 
 
         setupUI()
         
-        viewModel.getData(completion: {
-            self.dateCollectionView.reloadData()
-            self.tableView.reloadData()
+        viewModel.getData(completion: { [weak self] msg in
+            guard let self = self else { return }
+            
+            if msg.isEmpty {
+                self.dateCollectionView.reloadData()
+                self.tableView.reloadData()
+            } else {
+                self.showAlert(with: "Notifaction", msg: "This movie currently do not have any showtimes")
+            }
         })
     }
     
