@@ -28,12 +28,16 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     @IBOutlet private weak var arrowButton: UIButton!
     @IBOutlet private weak var trailerLabel: UILabel!
     @IBOutlet private weak var trailerCollectionView: UICollectionView!
+    @IBOutlet private weak var heightTrailerView: NSLayoutConstraint!
     @IBOutlet private weak var movieScreenShotsLabel: UILabel!
     @IBOutlet private weak var imageCollectionView: UICollectionView!
+    @IBOutlet private weak var heightImageView: NSLayoutConstraint!
     @IBOutlet private weak var startingLabel: UILabel!
     @IBOutlet private weak var startingCollectionView: UICollectionView!
+    @IBOutlet private weak var heightStartingView: NSLayoutConstraint!
     @IBOutlet private weak var similarLabel: UILabel!
     @IBOutlet private weak var similarCollectionView: UICollectionView!
+    @IBOutlet private weak var heightSimilarView: NSLayoutConstraint!
     @IBOutlet private weak var seeAllButton: UIButton!
     
     // MARK: - Properties
@@ -132,29 +136,47 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     }
     
     private func setupCollectionView() {
-        trailerCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        trailerCollectionView.dataSource = self
-        trailerCollectionView.delegate = self
-        trailerCollectionView.register(UINib(nibName: TrailerCellIdentity, bundle: nil), forCellWithReuseIdentifier: TrailerCellIdentity)
-        trailerCollectionView.tag = CollectionViewTag.trailer.rawValue
+        if viewModel.movieDetailInfo.videos.results.isEmpty {
+            heightTrailerView.constant = 0
+            seeAllButton.isHidden = true
+        } else {
+            seeAllButton.isHidden = false
+            trailerCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            trailerCollectionView.dataSource = self
+            trailerCollectionView.delegate = self
+            trailerCollectionView.register(UINib(nibName: TrailerCellIdentity, bundle: nil), forCellWithReuseIdentifier: TrailerCellIdentity)
+            trailerCollectionView.tag = CollectionViewTag.trailer.rawValue
+        }
         
-        imageCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
-        imageCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
-        imageCollectionView.tag = CollectionViewTag.screenshots.rawValue
+        if viewModel.movieDetailInfo.images.posters.isEmpty {
+            heightImageView.constant = 0
+        } else {
+            imageCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            imageCollectionView.dataSource = self
+            imageCollectionView.delegate = self
+            imageCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
+            imageCollectionView.tag = CollectionViewTag.screenshots.rawValue
+        }
         
-        startingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        startingCollectionView.dataSource = self
-        startingCollectionView.delegate = self
-        startingCollectionView.register(UINib(nibName: StartingCellIdentity, bundle: nil), forCellWithReuseIdentifier: StartingCellIdentity)
-        startingCollectionView.tag = CollectionViewTag.starting.rawValue
+        if viewModel.movieDetailInfo.credits.cast.isEmpty {
+            heightStartingView.constant = 0
+        } else {
+            startingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            startingCollectionView.dataSource = self
+            startingCollectionView.delegate = self
+            startingCollectionView.register(UINib(nibName: StartingCellIdentity, bundle: nil), forCellWithReuseIdentifier: StartingCellIdentity)
+            startingCollectionView.tag = CollectionViewTag.starting.rawValue
+        }
         
-        similarCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        similarCollectionView.dataSource = self
-        similarCollectionView.delegate = self
-        similarCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
-        similarCollectionView.tag = CollectionViewTag.similarmovies.rawValue
+        if viewModel.movieDetailInfo.recommendations.results.isEmpty {
+            heightSimilarView.constant = 0
+        } else {
+            similarCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            similarCollectionView.dataSource = self
+            similarCollectionView.delegate = self
+            similarCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
+            similarCollectionView.tag = CollectionViewTag.similarmovies.rawValue
+        }
     }
     
     private func bindData() {
