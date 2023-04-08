@@ -84,4 +84,8 @@ class MovieDetailViewModel {
     func gotoDetailShowTime() {
         self.navigator.gotoDetailShowTime(self.movieDetailInfo)
     }
+    
+    func gotoTrailerScreen() {
+        self.navigator.gotoTrailerScreen(with: movieDetailInfo.videos.results)
+    }
 }

@@ -34,10 +34,11 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     @IBOutlet private weak var startingCollectionView: UICollectionView!
     @IBOutlet private weak var similarLabel: UILabel!
     @IBOutlet private weak var similarCollectionView: UICollectionView!
+    @IBOutlet private weak var seeAllButton: UIButton!
     
     // MARK: - Properties
     let ImageCellIdentity: String = "ImageCell"
-    let TrailerCellIdentity: String = "TrailerCell"
+    let TrailerCellIdentity: String = "MovieTrailerCell"
     let StartingCellIdentity: String = "StartingCell"
     
     private var isCloseTime: Bool = false
@@ -125,6 +126,9 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
                 self?.viewModel.gotoDetailShowTime()
             })
             .disposed(by: disposeBag)
+        
+        seeAllButton.setTitleColor(Constant.Color.color9CA4AB, for: .normal)
+        seeAllButton.titleLabel?.font = UIFont.fontInterRegular(withSize: 13)
     }
     
     private func setupCollectionView() {
@@ -194,5 +198,9 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
                 self.arrowButton.setImage(UIImage(named: "ic_ar_right_white"), for: .normal)
             })
         }
+    }
+    
+    @IBAction func didToSeeAll() {
+        viewModel.gotoTrailerScreen()
     }
 }

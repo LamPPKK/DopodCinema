@@ -11,6 +11,7 @@ protocol MovieDetailNavigator {
     func start(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
     func gotoDetailShowTime(_ movieDetailInfo: MovieDetailInfo)
+    func gotoTrailerScreen(with list: [VideoInfo])
 }
 
 class DefaultMovieDetailNavigator: MovieDetailNavigator {
@@ -37,6 +38,11 @@ class DefaultMovieDetailNavigator: MovieDetailNavigator {
     func gotoDetailShowTime(_ movieDetailInfo: MovieDetailInfo) {
         let navigator = DefaultShowTimeDetailNavigator(navigationController: self.navigationController)
         navigator.start(with: movieDetailInfo)
+    }
+    
+    func gotoTrailerScreen(with list: [VideoInfo]) {
+        let navigator = DefaultTrailerNavigator(navigationController: self.navigationController)
+        navigator.start(with: list)
     }
 }
 

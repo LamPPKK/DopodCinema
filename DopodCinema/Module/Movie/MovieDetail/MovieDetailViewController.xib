@@ -24,6 +24,7 @@
                 <outlet property="playView" destination="JLi-cB-g7r" id="Ii4-aE-Ah8"/>
                 <outlet property="posterImageView" destination="rA3-1N-T16" id="IXQ-lv-yX3"/>
                 <outlet property="ratingLabel" destination="Kyh-Rm-bIB" id="MXK-KK-e30"/>
+                <outlet property="seeAllButton" destination="XaS-iw-bWP" id="YGZ-0z-UJu"/>
                 <outlet property="similarCollectionView" destination="fxY-nZ-PlN" id="NEj-EA-X1Y"/>
                 <outlet property="similarLabel" destination="zxI-2y-2bF" id="2nk-5e-9gP"/>
                 <outlet property="startingCollectionView" destination="s6W-xw-0T3" id="vlX-uh-pJD"/>
@@ -167,6 +168,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XaS-iw-bWP">
+                                                    <rect key="frame" x="338" y="20.333333333333371" width="60" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="eOq-LT-Axq"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="See all"/>
+                                                    <connections>
+                                                        <action selector="didToSeeAll" destination="-1" eventType="touchUpInside" id="ang-1E-ZI0"/>
+                                                    </connections>
+                                                </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="aXE-hi-cEp">
                                                     <rect key="frame" x="0.0" y="54.333333333333371" width="414" height="117"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -186,6 +199,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="aXE-hi-cEp" secondAttribute="trailing" id="7vN-4a-ZXa"/>
                                                 <constraint firstItem="ItZ-ma-KCB" firstAttribute="leading" secondItem="ydM-Hj-454" secondAttribute="leading" constant="16" id="E0A-9q-KRC"/>
                                                 <constraint firstAttribute="bottom" secondItem="aXE-hi-cEp" secondAttribute="bottom" constant="24" id="JAn-gd-o7Q"/>
+                                                <constraint firstAttribute="trailing" secondItem="XaS-iw-bWP" secondAttribute="trailing" constant="16" id="Pii-GR-FP5"/>
+                                                <constraint firstItem="XaS-iw-bWP" firstAttribute="centerY" secondItem="ItZ-ma-KCB" secondAttribute="centerY" id="YDk-fj-5Qh"/>
                                                 <constraint firstItem="aXE-hi-cEp" firstAttribute="leading" secondItem="ydM-Hj-454" secondAttribute="leading" id="hYV-CJ-xk1"/>
                                                 <constraint firstItem="ItZ-ma-KCB" firstAttribute="top" secondItem="ydM-Hj-454" secondAttribute="top" constant="24" id="m2f-8R-48d"/>
                                                 <constraint firstItem="aXE-hi-cEp" firstAttribute="top" secondItem="ItZ-ma-KCB" secondAttribute="bottom" constant="10" id="m6e-jV-Qj7"/>

@@ -63,8 +63,8 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     
     private func trailerCell(for collectionView: UICollectionView,
                              indexPath: IndexPath,
-                             videos: [VideoInfo]) -> TrailerCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrailerCellIdentity, for: indexPath) as! TrailerCell
+                             videos: [VideoInfo]) -> MovieTrailerCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrailerCellIdentity, for: indexPath) as! MovieTrailerCell
         cell.bindData(videos[indexPath.row])
         return cell
     }
