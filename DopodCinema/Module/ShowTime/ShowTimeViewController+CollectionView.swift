@@ -20,7 +20,18 @@ extension ShowTimeViewController: UICollectionViewDataSource {
 }
 
 extension ShowTimeViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let name = viewModel.getTheaters()[indexPath.row].name
+        viewModel.gotoCinemaDetail(with: name,
+                                   completion: { [weak self] msg in
+            guard let self = self else { return }
+            
+            if !msg.isEmpty {
+                self.showAlert(with: "Notifaction",
+                               msg: "This cinema currently do not have any showtimes")
+            }
+        })
+    }
 }
 
 extension ShowTimeViewController: UICollectionViewDelegateFlowLayout {

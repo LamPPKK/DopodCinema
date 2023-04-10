@@ -362,20 +362,22 @@ class API {
     }
 
     // MARK: - GET SHOW TIME OF THEATER
-//    func getShowTimesCinema(with name: String, completion: @escaping ([TimeInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "appId": Constant.APP_ID,
-//            "appKey": Constant.APP_KEY,
-//            "cinema": name
-//        ]
-//
-//        Network.get(URLPath.GET_SHOW_TIME,
-//                    parameters: parametters,
-//                    responseType: CinemaTimeInfo.self,
-//                    completionHandler: { response in
-//            completion(response.showtimes)
-//        }, errorHandler: error)
-//    }
+    func getShowTimesCinema(with name: String,
+                            completion: @escaping ([TimeInfo]) -> Void,
+                            error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "appId": Constant.Network.APP_ID,
+            "appKey": Constant.Network.APP_KEY,
+            "cinema": name
+        ]
+
+        Network.get(URLPath.GET_SHOW_TIME,
+                    parameters: parametters,
+                    responseType: CinemaTimeInfo.self,
+                    completionHandler: { response in
+            completion(response.showtimes)
+        }, errorHandler: error)
+    }
 
     // MARK: - GET LINK FULL
 //    func getLinkMovie(withName name: String, completion: @escaping (LinkContainerInfo) -> Void, error: @escaping (NetworkError) -> Void) {

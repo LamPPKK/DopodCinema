@@ -119,6 +119,15 @@
 		99751B1E29C36C0C00292419 /* SearchActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99751B1C29C36C0C00292419 /* SearchActorViewController.swift */; };
 		99751B1F29C36C0C00292419 /* SearchActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99751B1D29C36C0C00292419 /* SearchActorViewController.xib */; };
 		99751B2129C36C6E00292419 /* SearchActorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99751B2029C36C6E00292419 /* SearchActorViewModel.swift */; };
+		997F360A29E45B3A00D4EBC0 /* CinemaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F360829E45B3A00D4EBC0 /* CinemaDetailViewController.swift */; };
+		997F360B29E45B3A00D4EBC0 /* CinemaDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997F360929E45B3A00D4EBC0 /* CinemaDetailViewController.xib */; };
+		997F360E29E45B5C00D4EBC0 /* ScrollCinemaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F360C29E45B5C00D4EBC0 /* ScrollCinemaViewController.swift */; };
+		997F360F29E45B5C00D4EBC0 /* ScrollCinemaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997F360D29E45B5C00D4EBC0 /* ScrollCinemaViewController.xib */; };
+		997F361229E45C0200D4EBC0 /* CinemaHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F361029E45C0200D4EBC0 /* CinemaHeaderViewController.swift */; };
+		997F361329E45C0200D4EBC0 /* CinemaHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997F361129E45C0200D4EBC0 /* CinemaHeaderViewController.xib */; };
+		997F361529E45C2000D4EBC0 /* CinemaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F361429E45C2000D4EBC0 /* CinemaViewModel.swift */; };
+		997F361729E45D4600D4EBC0 /* CinemaNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F361629E45D4600D4EBC0 /* CinemaNavigator.swift */; };
+		997F361929E45DD500D4EBC0 /* ShowTimeNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997F361829E45DD500D4EBC0 /* ShowTimeNavigator.swift */; };
 		998B53D829AF9A0500822525 /* StartingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53D629AF9A0500822525 /* StartingCell.swift */; };
 		998B53D929AF9A0500822525 /* StartingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 998B53D729AF9A0500822525 /* StartingCell.xib */; };
 		998B53DD29B2EE9500822525 /* ActorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */; };
@@ -309,6 +318,15 @@
 		99751B1C29C36C0C00292419 /* SearchActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchActorViewController.swift; sourceTree = "<group>"; };
 		99751B1D29C36C0C00292419 /* SearchActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchActorViewController.xib; sourceTree = "<group>"; };
 		99751B2029C36C6E00292419 /* SearchActorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchActorViewModel.swift; sourceTree = "<group>"; };
+		997F360829E45B3A00D4EBC0 /* CinemaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaDetailViewController.swift; sourceTree = "<group>"; };
+		997F360929E45B3A00D4EBC0 /* CinemaDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CinemaDetailViewController.xib; sourceTree = "<group>"; };
+		997F360C29E45B5C00D4EBC0 /* ScrollCinemaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollCinemaViewController.swift; sourceTree = "<group>"; };
+		997F360D29E45B5C00D4EBC0 /* ScrollCinemaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollCinemaViewController.xib; sourceTree = "<group>"; };
+		997F361029E45C0200D4EBC0 /* CinemaHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaHeaderViewController.swift; sourceTree = "<group>"; };
+		997F361129E45C0200D4EBC0 /* CinemaHeaderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CinemaHeaderViewController.xib; sourceTree = "<group>"; };
+		997F361429E45C2000D4EBC0 /* CinemaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaViewModel.swift; sourceTree = "<group>"; };
+		997F361629E45D4600D4EBC0 /* CinemaNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaNavigator.swift; sourceTree = "<group>"; };
+		997F361829E45DD500D4EBC0 /* ShowTimeNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeNavigator.swift; sourceTree = "<group>"; };
 		998B53D629AF9A0500822525 /* StartingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingCell.swift; sourceTree = "<group>"; };
 		998B53D729AF9A0500822525 /* StartingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartingCell.xib; sourceTree = "<group>"; };
 		998B53DB29B2EE9500822525 /* ActorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorDetailViewController.swift; sourceTree = "<group>"; };
@@ -622,6 +640,21 @@
 			path = SearchActor;
 			sourceTree = "<group>";
 		};
+		997F360729E45B1200D4EBC0 /* Cinema */ = {
+			isa = PBXGroup;
+			children = (
+				997F360829E45B3A00D4EBC0 /* CinemaDetailViewController.swift */,
+				997F360929E45B3A00D4EBC0 /* CinemaDetailViewController.xib */,
+				997F360C29E45B5C00D4EBC0 /* ScrollCinemaViewController.swift */,
+				997F360D29E45B5C00D4EBC0 /* ScrollCinemaViewController.xib */,
+				997F361029E45C0200D4EBC0 /* CinemaHeaderViewController.swift */,
+				997F361129E45C0200D4EBC0 /* CinemaHeaderViewController.xib */,
+				997F361429E45C2000D4EBC0 /* CinemaViewModel.swift */,
+				997F361629E45D4600D4EBC0 /* CinemaNavigator.swift */,
+			);
+			path = Cinema;
+			sourceTree = "<group>";
+		};
 		998B53DA29B2EE7A00822525 /* Actor */ = {
 			isa = PBXGroup;
 			children = (
@@ -774,12 +807,14 @@
 		99A6A9F82992936F00D3EEEF /* ShowTime */ = {
 			isa = PBXGroup;
 			children = (
+				997F360729E45B1200D4EBC0 /* Cinema */,
 				997274DA29C566960043940B /* ShowTimeDetail */,
 				997274D329C4C01F0043940B /* Cell */,
 				99BACD7529954A0300762A3E /* ShowTimeViewController.swift */,
 				99BACD7629954A0300762A3E /* ShowTimeViewController.xib */,
 				997274D129C4BEAF0043940B /* ShowTimeViewModel.swift */,
 				997274D829C4C1810043940B /* ShowTimeViewController+CollectionView.swift */,
+				997F361829E45DD500D4EBC0 /* ShowTimeNavigator.swift */,
 			);
 			path = ShowTime;
 			sourceTree = "<group>";
@@ -995,6 +1030,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				997F360F29E45B5C00D4EBC0 /* ScrollCinemaViewController.xib in Resources */,
 				9962A54729CB3BAB00CF20CA /* FavoriteDataViewController.xib in Resources */,
 				99D884BE29A7B4DA0091DF91 /* MovieDetailViewController.xib in Resources */,
 				995B267229D0894A0020C584 /* DayCell.xib in Resources */,
@@ -1023,6 +1059,7 @@
 				990E975829D14BB1000BC1B5 /* TimeCell.xib in Resources */,
 				99313247299B7A0700AA9E2C /* Poppins-Medium.otf in Resources */,
 				993EA18029A1A7E100C5470B /* NewHorizontallCell.xib in Resources */,
+				997F361329E45C0200D4EBC0 /* CinemaHeaderViewController.xib in Resources */,
 				9931325D299D186F00AA9E2C /* CategoryHorizontalCell.xib in Resources */,
 				998B53DE29B2EE9500822525 /* ActorDetailViewController.xib in Resources */,
 				994082A229C21C0D00B44A8E /* SearchDataViewController.xib in Resources */,
@@ -1044,6 +1081,7 @@
 				998D433E298F54FA00B3C5BF /* Assets.xcassets in Resources */,
 				997274DE29C59D660043940B /* ScrollShowTimeViewController.xib in Resources */,
 				999EA25A29BF744D00B38382 /* EpisodeCell.xib in Resources */,
+				997F360B29E45B3A00D4EBC0 /* CinemaDetailViewController.xib in Resources */,
 				99CB78E829B64284001DFCF3 /* CategoryViewController.xib in Resources */,
 				993EA18D29A1AEBC00C5470B /* ComingHorizontalCell.xib in Resources */,
 				99DA604329C0CC3F00164F0A /* ActorListViewController.xib in Resources */,
@@ -1130,9 +1168,11 @@
 				9956659B299D28270068B78F /* Network.swift in Sources */,
 				991C9A1729A5C2EF004FE5D5 /* TopCell.swift in Sources */,
 				993EA17F29A1A7E100C5470B /* NewHorizontallCell.swift in Sources */,
+				997F361529E45C2000D4EBC0 /* CinemaViewModel.swift in Sources */,
 				99E6BE4F29BE3C1E00234C3E /* SeasonCell.swift in Sources */,
 				998B53E629B33FA800822525 /* TVShow.swift in Sources */,
 				9940829929C20FF900B44A8E /* SearchViewModel.swift in Sources */,
+				997F361229E45C0200D4EBC0 /* CinemaHeaderViewController.swift in Sources */,
 				99DA603C29C0BCCB00164F0A /* MovieListViewModel.swift in Sources */,
 				99B3E89129A9F75B00BC4483 /* MovieNavigator.swift in Sources */,
 				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
@@ -1159,6 +1199,7 @@
 				9931322D299B6CA200AA9E2C /* HeaderCell.swift in Sources */,
 				99B3E89529AA02A600BC4483 /* ViewModelType.swift in Sources */,
 				99CB78E229B6425E001DFCF3 /* CategoryNavigator.swift in Sources */,
+				997F360A29E45B3A00D4EBC0 /* CinemaDetailViewController.swift in Sources */,
 				99142F9F299A867E00E7BA3D /* HomeRoute.swift in Sources */,
 				997274E629C5A0640043940B /* HeaderShowTimeViewModel.swift in Sources */,
 				9944483A29B8D3BA00BB7380 /* TVDetailNavigator.swift in Sources */,
@@ -1176,6 +1217,7 @@
 				990E975B29D56D06000BC1B5 /* ShowTimeCell.swift in Sources */,
 				9944483E29BB88E600BB7380 /* TVGeneralViewController.swift in Sources */,
 				9944483129B8B7F400BB7380 /* CustomizePageControl.swift in Sources */,
+				997F360E29E45B5C00D4EBC0 /* ScrollCinemaViewController.swift in Sources */,
 				993EA1A629A1F9C500C5470B /* SettingViewModel.swift in Sources */,
 				9931322A299B67DE00AA9E2C /* MovieViewController+TableView.swift in Sources */,
 				991C9A2129A5D0A9004FE5D5 /* Image.swift in Sources */,
@@ -1207,6 +1249,7 @@
 				993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */,
 				99751B2129C36C6E00292419 /* SearchActorViewModel.swift in Sources */,
 				99313231299B703000AA9E2C /* TimesCell.swift in Sources */,
+				997F361729E45D4600D4EBC0 /* CinemaNavigator.swift in Sources */,
 				99E6BE4B29BE39C700234C3E /* SeasonHorizontalCell.swift in Sources */,
 				993EA19729A1F4A600C5470B /* TVViewController+TableView.swift in Sources */,
 				991127CD29C8482900C27AED /* FavoriteAlertView.swift in Sources */,
@@ -1223,6 +1266,7 @@
 				998B53E829B340C800822525 /* TVShowNavigator.swift in Sources */,
 				99BACD682995452000762A3E /* Then.swift in Sources */,
 				9962A54329CB3B6500CF20CA /* FavoritePagerViewController.swift in Sources */,
+				997F361929E45DD500D4EBC0 /* ShowTimeNavigator.swift in Sources */,
 				99E6BE4629BE387300234C3E /* TVDetailSeasonViewController.swift in Sources */,
 				99313251299B7A4B00AA9E2C /* UIFont+Extension.swift in Sources */,
 				997274E329C59F3F0043940B /* HeaderShowTime.swift in Sources */,

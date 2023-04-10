@@ -24,3 +24,19 @@ struct Geometry: Codable {
 struct Location: Codable {
     let lat, lng: Double
 }
+
+struct CinemaTimeInfo: Codable {
+    let showtimes: [TimeInfo]
+}
+
+struct TimeInfo: Codable {
+    let day: String
+    let date: String
+    let movies: [MovieCinemaInfo]
+}
+
+struct MovieCinemaInfo: Codable {
+    let name: String
+    let link: String
+    let showing: [ShowingInfo]
+}

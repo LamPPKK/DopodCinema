@@ -20,7 +20,7 @@ class HomePageViewController: UIPageViewController {
     private var movieNavigationController: UINavigationController!
     private var tvNavigationController: UINavigationController!
     private var favNavigationController: UINavigationController!
-    private var showtimeVC: ShowTimeViewController!
+    private var showTimeNavigationController: UINavigationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,9 @@ class HomePageViewController: UIPageViewController {
         let favNavigator = DefaultFavoriteNavigator(navigationController: favNavigationController)
         favNavigator.start()
         
-        showtimeVC = ShowTimeViewController(nibName: "ShowTimeViewController", bundle: nil)
-        showtimeVC.viewModel = ShowTimeViewModel()
+        showTimeNavigationController = UINavigationController()
+        let showTimeNavigator = DefaultShowTimeNavigator(navigationController: showTimeNavigationController)
+        showTimeNavigator.start()
         
         setViewControllers([movieNavigationController], direction: .forward, animated: false)
     }
@@ -62,7 +63,7 @@ class HomePageViewController: UIPageViewController {
             selectedVC = favNavigationController
             
         case .kDiscovery:
-            selectedVC = showtimeVC
+            selectedVC = showTimeNavigationController
         }
         
         setViewControllers([selectedVC], direction: .forward, animated: false)
