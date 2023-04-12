@@ -7,19 +7,23 @@
 
 import Foundation
 
-class ListMovieByDate {
-    var date: String
+class MovieCinema {
+    var id: Int
     
-    var day: String
+    var name: String?
     
-    var movies: [MovieInfo]
+    var posterPath: String?
     
-    init(date: String,
-         day: String,
-         movies: [MovieInfo]) {
-        self.date = date
-        self.day = day
-        self.movies = movies
+    var categories: [Int]
+    
+    init(id: Int,
+         name: String?,
+         posterPath: String?,
+         categories: [Int]) {
+        self.id = id
+        self.name = name
+        self.posterPath = posterPath
+        self.categories = categories
     }
 }
 
@@ -28,6 +32,7 @@ class ShowTimeViewModel {
     // MARK: - Properties
     private var theaters: [MovieTheaterSearchInfo] = []
     private var navigator: ShowTimeNavigator
+    private var listMovieCinema: [MovieCinema] = []
     
     init(navigator: ShowTimeNavigator) {
         self.navigator = navigator
@@ -63,12 +68,47 @@ class ShowTimeViewModel {
                 return
             }
             
-            self.navigator.gotoCinemaScreen()
-            completion(.empty)
-            LoadingView.shared.endLoading()
+            
+            let movies: [MovieCinemaInfo] = time.first?.movies ?? []
+            self.handleListCinema(with: movies,
+                                  completion: {
+                self.navigator.gotoCinemaScreen(with: self.listMovieCinema)
+                completion(.empty)
+                LoadingView.shared.endLoading()
+            })
         }, error: { error in
             completion(error.localizedDescription)
             LoadingView.shared.endLoading()
+        })
+    }
+    
+    private func handleListCinema(with movies: [MovieCinemaInfo],
+                                  completion: @escaping () -> Void) {
+       
+        self.listMovieCinema.removeAll()
+        
+        let group = DispatchGroup()
+        
+        for movie in movies {
+            group.enter()
+            self.getMovie(with: movie.name,
+                          completion: { [weak self] movieInfo in
+                guard let self = self else { return }
+                
+                if let movieInfo = movieInfo {
+                    let movieCinema = MovieCinema(id: movieInfo.id,
+                                                  name: movieInfo.original_title,
+                                                  posterPath: movieInfo.poster_path,
+                                                  categories: movieInfo.genre_ids)
+                    self.listMovieCinema.append(movieCinema)
+                }
+                
+                group.leave()
+            })
+        }
+        
+        group.notify(queue: .main, execute: {
+            completion()
         })
     }
     

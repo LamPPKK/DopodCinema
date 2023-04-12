@@ -371,7 +371,8 @@ class API {
             "cinema": name
         ]
 
-        Network.get(URLPath.GET_SHOW_TIME,
+        // https://demo0481328.mockable.io/test1
+        Network.get(/*URLPath.GET_SHOW_TIME*/ "https://demo0481328.mockable.io/test1",
                     parameters: parametters,
                     responseType: CinemaTimeInfo.self,
                     completionHandler: { response in

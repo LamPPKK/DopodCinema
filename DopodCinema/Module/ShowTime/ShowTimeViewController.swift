@@ -40,6 +40,8 @@ class ShowTimeViewController: BaseViewController<ShowTimeViewModel> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        NotificationCenter.default.post(name: Notification.Name("show_tabbar"), object: nil)
+        
         locationManager.requestWhenInUseAuthorization()
         checkEnbleServiceLocation()
     }

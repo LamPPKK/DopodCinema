@@ -96,7 +96,7 @@
                 <constraint firstItem="lsJ-WP-01X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bi0-7H-8bC"/>
                 <constraint firstItem="lsJ-WP-01X" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Wnw-Eb-yIw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lsJ-WP-01X" secondAttribute="trailing" id="bYo-6O-k4f"/>
-                <constraint firstItem="lsJ-WP-01X" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="hN7-CR-XKK"/>
+                <constraint firstItem="lsJ-WP-01X" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="hN7-CR-XKK"/>
             </constraints>
             <point key="canvasLocation" x="132" y="-11"/>
         </view>

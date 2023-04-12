@@ -5,12 +5,12 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CinemaHeaderViewController" customModule="DopodCinema" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="7Fa-BJ-gEE" id="Vg6-zg-7jA"/>
                 <outlet property="topConstraint" destination="K9H-6M-0YK" id="FYk-8H-TQn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,7 +22,25 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3GC-DW-dii">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="7Fa-BJ-gEE">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U8D-GQ-vJ4">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="7Fa-BJ-gEE" firstAttribute="leading" secondItem="3GC-DW-dii" secondAttribute="leading" id="6yD-iL-aEK"/>
+                        <constraint firstAttribute="bottom" secondItem="7Fa-BJ-gEE" secondAttribute="bottom" constant="150" id="BS1-su-9dG"/>
+                        <constraint firstItem="7Fa-BJ-gEE" firstAttribute="top" secondItem="3GC-DW-dii" secondAttribute="top" id="UN1-Xr-EiP"/>
+                        <constraint firstAttribute="trailing" secondItem="7Fa-BJ-gEE" secondAttribute="trailing" id="qLo-Kh-YUM"/>
+                    </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -37,9 +55,4 @@
             <point key="canvasLocation" x="132" y="-11"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
