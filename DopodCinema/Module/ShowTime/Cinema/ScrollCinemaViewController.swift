@@ -27,6 +27,6 @@ class ScrollCinemaViewController: MXScrollViewController {
         cinemaHeaderView = CinemaHeaderViewController(nibName: "CinemaHeaderViewController", bundle: nil)
         cinemaHeaderView.viewModel = CinemaViewModel(moviesCinema: moviesCinema)
         headerViewController = cinemaHeaderView
-        headerViewController?.parallaxHeader?.height = (UIScreen.main.bounds.width / 0.75) + Constant.HEIGHT_NAV + 65
+        headerViewController?.parallaxHeader?.height = 550
     }
 }

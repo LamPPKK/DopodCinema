@@ -18,4 +18,10 @@ class CinemaViewModel {
     func getMoviesCinema() -> [MovieCinema] {
         self.moviesCinema
     }
+    
+    func getCategories() -> [GenreInfo] {
+        return UserDataDefaults.shared.getCategories().map {
+            return GenreInfo(id: $0.id, name: $0.name)
+        }
+    }
 }

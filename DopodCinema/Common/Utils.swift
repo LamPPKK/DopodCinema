@@ -32,14 +32,16 @@ struct Utils {
         }
     }
     
-    static func getNameGenres(from ids: [Int], genres: [GenreInfo]) -> String {
+    static func getNameGenres(from ids: [Int],
+                              genres: [GenreInfo],
+                              separator: String) -> String {
         var listName: [String] = []
         for genre in genres {
             for id in ids where id == genre.id {
                 listName.append(genre.name)
             }
         }
-        return listName.joined(separator: ", ")
+        return listName.joined(separator: separator)
     }
     
     static func getFirstNameCategory(from id: Int?,

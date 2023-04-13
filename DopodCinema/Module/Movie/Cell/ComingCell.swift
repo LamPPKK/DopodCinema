@@ -50,7 +50,7 @@ class ComingCell: UICollectionViewCell {
             posterImageView.image = UIImage(named: "ic_loading")
         }
         
-        categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
+        categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres, separator: ", ")
         nameLabel.text = data.original_title
         averageLabel.text = "\(data.vote_average)"
         countLabel.text = "(\(data.vote_count))"
@@ -65,7 +65,7 @@ class ComingCell: UICollectionViewCell {
             posterImageView.image = UIImage(named: "ic_loading")
         }
         
-        categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres)
+        categoryLabel.text = Utils.getNameGenres(from: data.genre_ids, genres: genres, separator: ", ")
         nameLabel.text = data.name
         averageLabel.text = "\(data.vote_average)"
         countLabel.text = "(\(data.vote_count))"

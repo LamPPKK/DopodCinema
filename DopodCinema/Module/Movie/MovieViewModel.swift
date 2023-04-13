@@ -133,6 +133,7 @@ class MovieViewModel: ViewModelType {
             guard let self = self else { return }
             
             self.categories = listGenre
+            self.saveCategories(self.categories)
             group.leave()
         } , error: { [weak self] error in
             
@@ -256,5 +257,13 @@ class MovieViewModel: ViewModelType {
     
     func gotoSearch() {
         self.navigator.gotoSearch()
+    }
+    
+    func saveCategories(_ categories: [GenreInfo]) {
+        let listSaveCategory = categories.map {
+            return SaveCategoryInfo(id: $0.id, name: $0.name)
+        }
+        
+        UserDataDefaults.shared.setCategories(listSaveCategory)
     }
 }

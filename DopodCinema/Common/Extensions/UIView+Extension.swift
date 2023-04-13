@@ -31,4 +31,20 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    
+    // For add layer in background
+    func addBlackGradientLayerInForeground(frame: CGRect, colors:[UIColor]) {
+        let gradient = CAGradientLayer()
+        gradient.frame = frame
+        gradient.colors = colors.map { $0.cgColor }
+        self.layer.addSublayer(gradient)
+    }
+    
+    // For insert layer in background
+    func insertGradient(frame: CGRect, colors: [UIColor]) {
+        let gradient = CAGradientLayer()
+        gradient.frame = frame
+        gradient.colors = colors.map{ $0.cgColor }
+        self.layer.insertSublayer(gradient, at: 0)
+    }
 }

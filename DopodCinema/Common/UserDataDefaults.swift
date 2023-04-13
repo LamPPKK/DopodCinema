@@ -33,6 +33,29 @@ class SavedInfo: NSObject, NSCoding {
     }
 }
 
+class SaveCategoryInfo: NSObject, NSCoding {
+    let id: Int
+    
+    let name: String
+    
+    init(id: Int, name: String) {
+        self.id = id
+        self.name = name
+    }
+    
+    required convenience init?(coder: NSCoder) {
+        let id = coder.decodeInteger(forKey: "id")
+        let name = coder.decodeObject(forKey: "name") as! String
+        
+        self.init(id: id, name: name)
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(id, forKey: "id")
+        coder.encode(name, forKey: "name")
+    }
+}
+
 class UserDataDefaults {
     
     static let shared = UserDataDefaults()
@@ -40,6 +63,7 @@ class UserDataDefaults {
     static private let keySavedMovies: String = "keySavedMovies"
     static private let keySavedTVs: String = "keySavedTVs"
     static private let keySavedActors: String = "keySavedActors"
+    static private let keySaveCategories: String = "keySavedCategories"
     
     // Movie
     func setListMovie(_ movies: [SavedInfo]) {
@@ -76,6 +100,20 @@ class UserDataDefaults {
     private func getListFav(_ key: String) -> [SavedInfo] {
         if let decoded = UserDefaults.standard.data(forKey: key) {
             let list = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [SavedInfo]
+            return list
+        } else {
+            return []
+        }
+    }
+    
+    func setCategories(_ categories: [SaveCategoryInfo]) {
+        let encodeData: Data = NSKeyedArchiver.archivedData(withRootObject: categories)
+        UserDefaults.standard.set(encodeData, forKey: UserDataDefaults.keySaveCategories)
+    }
+    
+    func getCategories() -> [SaveCategoryInfo] {
+        if let decoded = UserDefaults.standard.data(forKey: UserDataDefaults.keySaveCategories) {
+            let list = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [SaveCategoryInfo]
             return list
         } else {
             return []

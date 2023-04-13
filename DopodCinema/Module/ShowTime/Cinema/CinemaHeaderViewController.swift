@@ -12,6 +12,10 @@ class CinemaHeaderViewController: BaseViewController<CinemaViewModel> {
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var backdropImageView: UIImageView!
+    @IBOutlet private weak var gradientView: UIView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var categoriesLabel: UILabel!
     
     // MARK: - Properties
     private let TopCellIdentity: String = "TopCell"
@@ -31,6 +35,12 @@ class CinemaHeaderViewController: BaseViewController<CinemaViewModel> {
         topConstraint.constant = Constant.HEIGHT_NAV
         
         setupCollectionView()
+        
+        nameLabel.font = .fontPoppinsSemiBold(withSize: 24)
+        nameLabel.textColor = Constant.Color.color2B2F31
+        
+        categoriesLabel.font = .fontPoppinsRegular(withSize: 13)
+        categoriesLabel.textColor = Constant.Color.color2B2F31
     }
     
     private func setupCollectionView() {
@@ -46,7 +56,26 @@ class CinemaHeaderViewController: BaseViewController<CinemaViewModel> {
             self.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0),
                                         at: .centeredHorizontally,
                                         animated: true)
+            
+            self.setMovieInfo(self.viewModel.getMoviesCinema()[2])
         })
+    }
+    
+    private func setMovieInfo(_ movieInfo: MovieCinema) {
+        nameLabel.text = movieInfo.name
+        categoriesLabel.text = Utils.getNameGenres(from: movieInfo.categories,
+                                                   genres: viewModel.getCategories(),
+                                                   separator: " • ")
+        setBackdrop(with: movieInfo.posterPath)
+    }
+    
+    private func setBackdrop(with posterPath: String?) {
+        if let url = URL(string: Utils.getPosterPath(posterPath)) {
+            self.backdropImageView.sd_setImage(with: url,
+                                               placeholderImage: UIImage(named: "ic_loading"))
+        }
+        
+        self.backdropImageView.isHidden = true
     }
 }
 
@@ -58,8 +87,10 @@ extension CinemaHeaderViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCellIdentity, for: indexPath) as! TopCell
-        var category: String = .empty
         let movie: MovieCinema = viewModel.getMoviesCinema()[indexPath.row]
+        
+        let category: String = Utils.getFirstNameCategory(from: movie.categories.first,
+                                                          categories: viewModel.getCategories())
         
         cell.bindData(movie.posterPath,
                       category: category,
@@ -70,6 +101,13 @@ extension CinemaHeaderViewController: UICollectionViewDataSource {
 
 extension CinemaHeaderViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.collectionView.scrollToItem(at: indexPath,
+                                        at: .centeredHorizontally,
+                                        animated: true)
+        })
+        
+        setMovieInfo(viewModel.getMoviesCinema()[indexPath.row])
     }
 }
 
