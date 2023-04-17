@@ -122,7 +122,10 @@ class ShowTimeViewModel {
                                                   posterPath: movieInfo.poster_path,
                                                   categories: movieInfo.genre_ids,
                                                   showTimes: self.showTimes)
-                    self.listMovieCinema.append(movieCinema)
+                    
+                    if movieCinema.name == movie.name {
+                        self.listMovieCinema.append(movieCinema)
+                    }
                 }
                 
                 group.leave()

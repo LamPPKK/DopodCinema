@@ -53,11 +53,12 @@ class CinemaHeaderViewController: BaseViewController<CinemaViewModel> {
         collectionView.collectionViewLayout = customizeLayout
         
         DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-            self.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0),
+            let index = Int(self.viewModel.getMoviesCinema().count / 2)
+            self.collectionView.scrollToItem(at: IndexPath(row: index, section: 0),
                                         at: .centeredHorizontally,
                                         animated: true)
             NotificationCenter.default.post(name: Notification.Name("cinema_reload"), object: 2)
-            self.setMovieInfo(self.viewModel.getMoviesCinema()[2])
+            self.setMovieInfo(self.viewModel.getMoviesCinema()[index])
         })
     }
     
