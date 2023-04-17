@@ -14,6 +14,7 @@ class ScrollShowTimeViewController: MXScrollViewController {
     var viewModel: HeaderShowTimeViewModel!
     private var headerView: HeaderShowTime!
     private var showTimeDetailViewController: ShowTimeDetailViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

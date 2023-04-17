@@ -14,7 +14,7 @@ class ScrollCinemaViewController: MXScrollViewController {
     var moviesCinema: [MovieCinema] = []
     
     private var cinemaHeaderView: CinemaHeaderViewController!
-    private var tvDetailPagerVC: TVDetailContentViewController!
+    private var cinemaDetailVC: CinemaDetailViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,5 +28,9 @@ class ScrollCinemaViewController: MXScrollViewController {
         cinemaHeaderView.viewModel = CinemaViewModel(moviesCinema: moviesCinema)
         headerViewController = cinemaHeaderView
         headerViewController?.parallaxHeader?.height = 550
+        
+        cinemaDetailVC = CinemaDetailViewController(nibName: "CinemaDetailViewController", bundle: nil)
+        cinemaDetailVC.viewModel = CinemaViewModel(moviesCinema: moviesCinema)
+        childViewController = cinemaDetailVC
     }
 }

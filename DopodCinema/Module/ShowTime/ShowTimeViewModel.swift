@@ -16,14 +16,34 @@ class MovieCinema {
     
     var categories: [Int]
     
+    private var showtimes: [TimeInfo]
+    
     init(id: Int,
          name: String?,
          posterPath: String?,
-         categories: [Int]) {
+         categories: [Int],
+         showTimes: [TimeInfo]) {
         self.id = id
         self.name = name
         self.posterPath = posterPath
         self.categories = categories
+        self.showtimes = showTimes
+    }
+    
+    func getDays() -> [TransformShowTime] {
+        var listDay: [TransformShowTime] = []
+        
+        for showtime in showtimes {
+            for movie in showtime.movies where movie.name == self.name {
+                let time = TransformShowTime(day: showtime.day,
+                                             date: showtime.date,
+                                             isSelected: false,
+                                             theaters: [])
+                listDay.append(time)
+            }
+        }
+        
+        return listDay
     }
 }
 
@@ -33,6 +53,7 @@ class ShowTimeViewModel {
     private var theaters: [MovieTheaterSearchInfo] = []
     private var navigator: ShowTimeNavigator
     private var listMovieCinema: [MovieCinema] = []
+    private var showTimes: [TimeInfo] = []
     
     init(navigator: ShowTimeNavigator) {
         self.navigator = navigator
@@ -63,13 +84,13 @@ class ShowTimeViewModel {
         LoadingView.shared.startLoading()
         
         API.shared.getShowTimesCinema(with: name,
-                                      completion: { [weak self] time in
+                                      completion: { [weak self] times in
             guard let self = self else {
                 return
             }
             
-            
-            let movies: [MovieCinemaInfo] = time.first?.movies ?? []
+            self.showTimes = times
+            let movies: [MovieCinemaInfo] = times.first?.movies ?? []
             self.handleListCinema(with: movies,
                                   completion: {
                 self.navigator.gotoCinemaScreen(with: self.listMovieCinema)
@@ -99,7 +120,8 @@ class ShowTimeViewModel {
                     let movieCinema = MovieCinema(id: movieInfo.id,
                                                   name: movieInfo.original_title,
                                                   posterPath: movieInfo.poster_path,
-                                                  categories: movieInfo.genre_ids)
+                                                  categories: movieInfo.genre_ids,
+                                                  showTimes: self.showTimes)
                     self.listMovieCinema.append(movieCinema)
                 }
                 

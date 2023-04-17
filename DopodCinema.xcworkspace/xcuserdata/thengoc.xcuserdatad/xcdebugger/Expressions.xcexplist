@@ -34,5 +34,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "CinemaViewModel.getShowTimes():CinemaViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.moviesCinema[selectedIndex].getDays()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
