@@ -11,11 +11,18 @@ class CinemaDetailViewController: BaseViewController<CinemaViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var dateCollectionView: UICollectionView!
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var timeCollectionView: UICollectionView!
     
     // MARK: - Properties
     private let DayCellIdentity: String = "DayCell"
-    private let ShowTimeCellIdentity: String = "ShowTimeCell"
+    private let TimeCellIdentity: String = "TimeCell"
+    private let itemsPerRow: CGFloat = 4
+    private let widthItem: CGFloat = 78
+    private let heightItem: CGFloat = 32
+    private let spacing: CGFloat = 12
+    private let leading: CGFloat = 16
+    
+    private var selectedIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +44,15 @@ class CinemaDetailViewController: BaseViewController<CinemaViewModel> {
                                 forCellWithReuseIdentifier: DayCellIdentity)
         dateCollectionView.delegate = self
         dateCollectionView.dataSource = self
+        dateCollectionView.tag = CollectionViewTag.date.rawValue
+        dateCollectionView.contentInset = UIEdgeInsets(top: 0, left: leading, bottom: 0, right: leading)
         
-//        tableView.register(UINib(nibName: ShowTimeCellIdentity, bundle: nil), forCellReuseIdentifier: ShowTimeCellIdentity)
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        
-//        tableView.corner(radius: 10)
+        timeCollectionView.register(UINib(nibName: TimeCellIdentity, bundle: nil),
+                                forCellWithReuseIdentifier: TimeCellIdentity)
+        timeCollectionView.delegate = self
+        timeCollectionView.dataSource = self
+        timeCollectionView.tag = CollectionViewTag.time.rawValue
+        timeCollectionView.contentInset = UIEdgeInsets(top: leading, left: leading, bottom: 0, right: leading)
     }
     
     @objc
@@ -51,30 +61,74 @@ class CinemaDetailViewController: BaseViewController<CinemaViewModel> {
             return
         }
         
+        selectedIndex = 0
+        viewModel.setEmptyShowTimes()
         viewModel.getData(index: index) {
             self.dateCollectionView.reloadData()
+            self.timeCollectionView.reloadData()
         }
     }
 }
 
 extension CinemaDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getShowTimes().count
+        let tag = CollectionViewTag(rawValue: collectionView.tag)
+        
+        switch tag {
+        case .date:
+            return viewModel.getShowTimes().count
+            
+        case .time:
+            if viewModel.getShowTimes().isEmpty {
+                return 0
+            } else {
+                return viewModel.getShowTimes()[selectedIndex].times.count
+            }
+            
+        default:
+            return 0
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCellIdentity, for: indexPath) as! DayCell
-        cell.bindData(viewModel.getShowTimes()[indexPath.row])
-        return cell
+        let tag = CollectionViewTag(rawValue: collectionView.tag)
+        
+        switch tag {
+        case .date:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCellIdentity, for: indexPath) as! DayCell
+            cell.bindData(viewModel.getShowTimes()[indexPath.row])
+            return cell
+            
+        case .time:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimeCellIdentity, for: indexPath) as! TimeCell
+            let times = viewModel.getShowTimes()[selectedIndex].times
+            let time = times[indexPath.row]
+            cell.bindData(time)
+            return cell
+            
+        default:
+            return UICollectionViewCell()
+        }
     }
 }
 
 extension CinemaDetailViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        self.selectedIndex = indexPath.row
-        viewModel.didSelectedDate(viewModel.getShowTimes()[indexPath.row].date) {
-            self.dateCollectionView.reloadData()
-//            self.tableView.reloadData()
+        let tag = CollectionViewTag(rawValue: collectionView.tag)
+        
+        switch tag {
+        case .date:
+            self.selectedIndex = indexPath.row
+            viewModel.didSelectedDate(viewModel.getShowTimes()[indexPath.row].date) {
+                self.dateCollectionView.reloadData()
+                self.timeCollectionView.reloadData()
+            }
+            
+        case .time:
+            break
+            
+        default:
+            break
         }
     }
 }
@@ -82,8 +136,19 @@ extension CinemaDetailViewController: UICollectionViewDelegate {
 extension CinemaDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let widthPerItem: CGFloat = (collectionView.frame.width - 32) / CGFloat(viewModel.getShowTimes().count)
-        return CGSize(width: widthPerItem, height: 100)
+        let tag = CollectionViewTag(rawValue: collectionView.tag)
+        
+        switch tag {
+        case .date:
+            let widthPerItem: CGFloat = (collectionView.frame.width - 32) / CGFloat(viewModel.getShowTimes().count)
+            return CGSize(width: widthPerItem, height: 80)
+            
+        case .time:
+            return CGSize(width: widthItem, height: heightItem)
+            
+        default:
+            return .zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

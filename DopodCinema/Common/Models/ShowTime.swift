@@ -32,11 +32,17 @@ class TransformShowTime {
     let date: String
     let theaters: [TheaterInfo]
     var isSelected: Bool = false
+    var times: [String]
     
-    init(day: String, date: String, isSelected: Bool, theaters: [TheaterInfo]) {
+    init(day: String,
+         date: String,
+         isSelected: Bool,
+         theaters: [TheaterInfo],
+         times: [String] = []) {
         self.day = day
         self.date = date
         self.isSelected = isSelected
         self.theaters = theaters
+        self.times = times
     }
 }

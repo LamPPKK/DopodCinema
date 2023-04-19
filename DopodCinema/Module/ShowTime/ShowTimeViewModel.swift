@@ -38,7 +38,8 @@ class MovieCinema {
                 let time = TransformShowTime(day: showtime.day,
                                              date: showtime.date,
                                              isSelected: false,
-                                             theaters: [])
+                                             theaters: [],
+                                             times: movie.showing.first?.time ?? [])
                 listDay.append(time)
             }
         }
@@ -116,16 +117,14 @@ class ShowTimeViewModel {
                           completion: { [weak self] movieInfo in
                 guard let self = self else { return }
                 
-                if let movieInfo = movieInfo {
+                if let movieInfo = movieInfo,
+                   movieInfo.original_title == movie.name {
                     let movieCinema = MovieCinema(id: movieInfo.id,
                                                   name: movieInfo.original_title,
                                                   posterPath: movieInfo.poster_path,
                                                   categories: movieInfo.genre_ids,
                                                   showTimes: self.showTimes)
-                    
-                    if movieCinema.name == movie.name {
-                        self.listMovieCinema.append(movieCinema)
-                    }
+                    self.listMovieCinema.append(movieCinema)
                 }
                 
                 group.leave()

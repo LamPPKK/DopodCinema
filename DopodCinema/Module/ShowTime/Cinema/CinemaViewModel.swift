@@ -45,6 +45,10 @@ class CinemaViewModel {
         })
     }
     
+    func setEmptyShowTimes() {
+        self.listDate = []
+    }
+    
     func getShowTimes() -> [TransformShowTime] {
         let listContainsSelected = self.listDate.filter { $0.isSelected == true }
         if listContainsSelected.isEmpty && !self.listDate.isEmpty {

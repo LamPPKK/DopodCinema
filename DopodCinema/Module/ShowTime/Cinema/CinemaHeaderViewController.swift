@@ -57,7 +57,7 @@ class CinemaHeaderViewController: BaseViewController<CinemaViewModel> {
             self.collectionView.scrollToItem(at: IndexPath(row: index, section: 0),
                                         at: .centeredHorizontally,
                                         animated: true)
-            NotificationCenter.default.post(name: Notification.Name("cinema_reload"), object: 2)
+            NotificationCenter.default.post(name: Notification.Name("cinema_reload"), object: index)
             self.setMovieInfo(self.viewModel.getMoviesCinema()[index])
         })
     }
