@@ -12,6 +12,7 @@ protocol MovieDetailNavigator {
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
     func gotoDetailShowTime(_ movieDetailInfo: MovieDetailInfo)
     func gotoTrailerScreen(with list: [VideoInfo])
+    func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo])
 }
 
 class DefaultMovieDetailNavigator: MovieDetailNavigator {
@@ -43,6 +44,11 @@ class DefaultMovieDetailNavigator: MovieDetailNavigator {
     func gotoTrailerScreen(with list: [VideoInfo]) {
         let navigator = DefaultTrailerNavigator(navigationController: self.navigationController)
         navigator.start(with: list)
+    }
+    
+    func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo]) {
+        let imageDetailViewController = ImageDetailScreen(selectedIndex: selectedIndex, images: images)
+        navigationController.pushViewController(imageDetailViewController, animated: true)
     }
 }
 

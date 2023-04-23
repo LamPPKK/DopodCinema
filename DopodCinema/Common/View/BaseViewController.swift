@@ -112,7 +112,7 @@ extension BaseViewController: BaseHeaderViewDelegate {
     }
 }
 
-extension BaseViewController {
+extension UIViewController {
     
     /// SHOW ALERT
     func showAlert(with title: String = .empty, msg: String = .empty) {

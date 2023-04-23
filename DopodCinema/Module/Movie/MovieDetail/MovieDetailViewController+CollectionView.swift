@@ -121,7 +121,7 @@ extension MovieDetailViewController: UICollectionViewDelegate {
             break
             
         case .screenshots:
-            break
+            viewModel.gotoScreenShot(at: indexPath.row)
             
         case .starting:
             let id = viewModel.movieDetailInfo.credits.cast[indexPath.row].id

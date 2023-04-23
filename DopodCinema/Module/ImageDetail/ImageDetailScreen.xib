@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageDetailScreen" customModule="DopodCinema" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="som-aK-3jf" id="5zW-1e-L8s"/>
+                <outlet property="view" destination="iN0-l3-epB" id="uz1-BJ-ndK"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="som-aK-3jf">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CoE-5v-ovf">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrf-3V-2Sl">
+                    <rect key="frame" x="16" y="16" width="24" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="24" id="qdQ-9Y-CVg"/>
+                        <constraint firstAttribute="width" constant="24" id="uh8-g0-K2D"/>
+                    </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="ic_close_white"/>
+                    <connections>
+                        <action selector="didMoveToClose" destination="-1" eventType="touchUpInside" id="CBP-Mg-DqU"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="som-aK-3jf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4Tp-cc-2gp"/>
+                <constraint firstAttribute="bottom" secondItem="som-aK-3jf" secondAttribute="bottom" id="8vK-fz-2gp"/>
+                <constraint firstItem="Yrf-3V-2Sl" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="K3D-wh-Bsf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="som-aK-3jf" secondAttribute="trailing" id="LcP-Jg-UvF"/>
+                <constraint firstItem="Yrf-3V-2Sl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="glR-lM-e0x"/>
+                <constraint firstItem="som-aK-3jf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uiw-pp-joo"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_close_white" width="50" height="50"/>
+    </resources>
+</document>

@@ -88,4 +88,8 @@ class MovieDetailViewModel {
     func gotoTrailerScreen() {
         self.navigator.gotoTrailerScreen(with: movieDetailInfo.videos.results)
     }
+    
+    func gotoScreenShot(at selectedIndex: Int) {
+        self.navigator.gotoScreenShots(with: selectedIndex, images: movieDetailInfo.images.posters)
+    }
 }
