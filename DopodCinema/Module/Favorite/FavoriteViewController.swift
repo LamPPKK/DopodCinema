@@ -146,4 +146,8 @@ extension FavoriteViewController: FavoritePagerViewDelegate {
             viewModel.gotoTVDetail(with: id)
         }
     }
+    
+    func didSelectedActor(id: Int) {
+        viewModel.gotoActorDetail(with: id)
+    }
 }

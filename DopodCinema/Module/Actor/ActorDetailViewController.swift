@@ -54,8 +54,6 @@ class ActorDetailViewController: BaseViewController<ActorDetailViewModel> {
     // MARK: - Private functions
     private func setupUI() {
         topConstraint.constant = Constant.HEIGHT_NAV
-        setupSubHeader(with: .empty,
-                       isDetail: true)
         
         profileImageView.corner(radius: 8)
         profileImageView.contentMode = .scaleAspectFill
@@ -98,6 +96,10 @@ class ActorDetailViewController: BaseViewController<ActorDetailViewModel> {
     
     private func bindData() {
         let actorDetailInfo = viewModel.actorDetailInfo
+        
+        setupSubHeader(with: .empty,
+                       isDetail: true,
+                       isSave: viewModel.isFavourite(viewModel.actorDetailInfo.id))
         
         if let url = URL(string: Utils.getPosterPath(actorDetailInfo.profile_path, size: .w342)) {
             profileImageView.sd_setImage(with: url,

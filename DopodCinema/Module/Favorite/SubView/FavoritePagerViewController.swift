@@ -9,6 +9,7 @@ import UIKit
 
 protocol FavoritePagerViewDelegate: NSObjectProtocol {
     func didSelectedObject(id: Int, isMovie: Bool)
+    func didSelectedActor(id: Int)
 }
 
 class FavoritePagerViewController: UIPageViewController {
@@ -36,6 +37,7 @@ class FavoritePagerViewController: UIPageViewController {
         tvShowFavVC.viewModel = FavoriteDataViewModel(tag: .kTV)
         
         actorFavVC = FavoriteActorViewController(nibName: "FavoriteActorViewController", bundle: nil)
+        actorFavVC.delegate = self
         actorFavVC.viewModel = FavoriteActorViewModel()
         
         setViewControllers([movieFavVC], direction: .forward, animated: true)
@@ -62,5 +64,11 @@ class FavoritePagerViewController: UIPageViewController {
 extension FavoritePagerViewController: FavoriteDataViewDelegate {
     func didSelectedObject(id: Int, isMovie: Bool) {
         pagerDelegate?.didSelectedObject(id: id, isMovie: isMovie)
+    }
+}
+
+extension FavoritePagerViewController: FavoriteActorViewDelegate {
+    func didSelected(id: Int) {
+        pagerDelegate?.didSelectedActor(id: id)
     }
 }

@@ -41,4 +41,17 @@ class FavoriteViewModel {
             LoadingView.shared.endLoading()
         }
     }
+    
+    func gotoActorDetail(with id: Int) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getActorDetail(with: id) { [weak self] actorDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoActorDetail(actorDetailInfo)
+            LoadingView.shared.endLoading()
+        } error: { error in
+            LoadingView.shared.endLoading()
+        }
+    }
 }
