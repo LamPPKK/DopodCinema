@@ -21,8 +21,6 @@ class FavoriteViewController: BaseViewController<FavoriteViewModel> {
     @IBOutlet private weak var actorLabel: UILabel!
     @IBOutlet private weak var actorDot: UIImageView!
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var emptySearchView: UIView!
-    @IBOutlet private weak var emptySearchLabel: UILabel!
     
     // MARK: - Properties
     var favoritePagerVC: FavoritePagerViewController!
@@ -45,9 +43,6 @@ class FavoriteViewController: BaseViewController<FavoriteViewModel> {
         setupHeader(withTitle: "Favorite")
         topConstraint.constant = Constant.HEIGHT_NAV
         containerView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
-        
-        emptySearchLabel.font = .fontPoppinsSemiBold(withSize: 16)
-        emptySearchLabel.textColor = .black
         
         setActive(forLabel: movielLabel)
         setInactive(forLabel: tvLabel)

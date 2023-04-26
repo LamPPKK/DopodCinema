@@ -15,6 +15,8 @@ class FavoriteActorViewController: BaseViewController<FavoriteActorViewModel> {
    
     // MARK: - IBOutlet
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var emptyView: UIView!
+    @IBOutlet private weak var emptyLabel: UILabel!
     
     // MARK: - Properties
     weak var delegate: FavoriteActorViewDelegate?
@@ -29,6 +31,8 @@ class FavoriteActorViewController: BaseViewController<FavoriteActorViewModel> {
 
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("Did_change_list_favorite"), object: nil)
         
+        emptyLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        emptyView.isHidden = !viewModel.getListFavorite().isEmpty
         setupCollectionView()
     }
 
@@ -42,6 +46,7 @@ class FavoriteActorViewController: BaseViewController<FavoriteActorViewModel> {
     
     @objc
     private func reloadData() {
+        emptyView.isHidden = !viewModel.getListFavorite().isEmpty
         collectionView.reloadData()
     }
     
