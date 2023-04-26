@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,8 +12,6 @@
             <connections>
                 <outlet property="genresLabel" destination="jY4-NF-a9P" id="5a7-3C-b4j"/>
                 <outlet property="nameLabel" destination="I4a-dV-Aus" id="T08-IV-AZf"/>
-                <outlet property="playLabel" destination="Cjc-P9-ei7" id="QNL-Rs-mTh"/>
-                <outlet property="playView" destination="JLi-cB-g7r" id="Ii4-aE-Ah8"/>
                 <outlet property="posterImageView" destination="rA3-1N-T16" id="IXQ-lv-yX3"/>
                 <outlet property="ratingLabel" destination="Kyh-Rm-bIB" id="MXK-KK-e30"/>
                 <outlet property="timeLabel" destination="tIB-2N-vhc" id="oIT-zn-E6Q"/>
@@ -39,24 +36,6 @@
                                         <constraint firstAttribute="width" secondItem="rA3-1N-T16" secondAttribute="height" multiplier="3:4" id="fpn-hr-tVq"/>
                                     </constraints>
                                 </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JLi-cB-g7r">
-                                    <rect key="frame" x="140" y="396.66666666666669" width="134" height="36"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjc-P9-ei7">
-                                            <rect key="frame" x="46.333333333333343" y="7.9999999999999982" width="41.333333333333343" height="20.333333333333329"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    <constraints>
-                                        <constraint firstItem="Cjc-P9-ei7" firstAttribute="centerX" secondItem="JLi-cB-g7r" secondAttribute="centerX" id="JCm-hq-O4U"/>
-                                        <constraint firstItem="Cjc-P9-ei7" firstAttribute="centerY" secondItem="JLi-cB-g7r" secondAttribute="centerY" id="Prb-Mt-m4H"/>
-                                        <constraint firstAttribute="height" constant="36" id="QGP-Nz-dUg"/>
-                                        <constraint firstAttribute="width" constant="134" id="w5p-6b-pef"/>
-                                    </constraints>
-                                </view>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4a-dV-Aus">
                                     <rect key="frame" x="16" y="466.66666666666669" width="382" height="20.333333333333314"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -135,10 +114,8 @@
                                 <constraint firstAttribute="trailing" secondItem="rA3-1N-T16" secondAttribute="trailing" constant="44" id="1Ut-2n-WhS"/>
                                 <constraint firstItem="jY4-NF-a9P" firstAttribute="top" secondItem="I4a-dV-Aus" secondAttribute="bottom" constant="8" id="4h6-sQ-ZOv"/>
                                 <constraint firstAttribute="trailing" secondItem="I4a-dV-Aus" secondAttribute="trailing" constant="16" id="AcO-Ye-BUL"/>
-                                <constraint firstItem="JLi-cB-g7r" firstAttribute="centerX" secondItem="rA3-1N-T16" secondAttribute="centerX" id="CWJ-kF-W91"/>
                                 <constraint firstItem="6bg-se-emK" firstAttribute="centerX" secondItem="PWi-br-6Qf" secondAttribute="centerX" id="HPF-gP-2mk"/>
                                 <constraint firstItem="rA3-1N-T16" firstAttribute="leading" secondItem="PWi-br-6Qf" secondAttribute="leading" constant="44" id="OsT-Gp-CXA"/>
-                                <constraint firstItem="JLi-cB-g7r" firstAttribute="bottom" secondItem="rA3-1N-T16" secondAttribute="bottom" constant="-18" id="StG-dO-tbv"/>
                                 <constraint firstItem="rA3-1N-T16" firstAttribute="top" secondItem="PWi-br-6Qf" secondAttribute="top" constant="16" id="c0Q-jY-bDP"/>
                                 <constraint firstItem="6bg-se-emK" firstAttribute="top" secondItem="jY4-NF-a9P" secondAttribute="bottom" constant="8" id="f07-DX-u0r"/>
                                 <constraint firstItem="jY4-NF-a9P" firstAttribute="trailing" secondItem="I4a-dV-Aus" secondAttribute="trailing" id="hOU-7J-rSg"/>
@@ -173,8 +150,5 @@
     <resources>
         <image name="ic_star" width="16" height="16"/>
         <image name="ic_time" width="16" height="16"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

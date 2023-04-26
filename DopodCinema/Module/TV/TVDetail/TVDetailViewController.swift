@@ -15,8 +15,6 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
     @IBOutlet private weak var posterImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var playView: UIView!
-    @IBOutlet private weak var playLabel: UILabel!
     @IBOutlet private weak var genresLabel: UILabel!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
@@ -53,13 +51,6 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
         
         nameLabel.font = .fontPoppinsSemiBold(withSize: 24)
         nameLabel.textColor = Constant.Color.color2B2F31
-        
-        playView.layer.cornerRadius = playView.frame.height / 2
-        playView.backgroundColor = Constant.Color.color3D5BF6
-        
-        playLabel.text = "Play movie"
-        playLabel.font = .fontPoppinsMedium(withSize: 13)
-        playLabel.textColor = .white
         
         genresLabel.font = .fontPoppinsRegular(withSize: 13)
         genresLabel.textColor = Constant.Color.color2B2F31
