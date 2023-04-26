@@ -14,6 +14,7 @@ protocol MovieDetailNavigator {
     func gotoTrailerScreen(with list: [VideoInfo])
     func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo])
     func gotoWatchScreen(posterPath: String, linkContainerInfo: LinkContainerInfo)
+    func gotoYoutubeScreen(_ key: String)
 }
 
 class DefaultMovieDetailNavigator: MovieDetailNavigator {
@@ -56,6 +57,12 @@ class DefaultMovieDetailNavigator: MovieDetailNavigator {
         let watchScreen = WatchScreen(posterPath: posterPath,
                                       linkContainerInfo: linkContainerInfo)
         navigationController.pushViewController(watchScreen, animated: true)
+    }
+    
+    func gotoYoutubeScreen(_ key: String) {
+        let youtubeScreen = YoutubeViewController(key: key)
+        youtubeScreen.viewModel = BaseViewModel()
+        navigationController.pushViewController(youtubeScreen, animated: true)
     }
 }
 

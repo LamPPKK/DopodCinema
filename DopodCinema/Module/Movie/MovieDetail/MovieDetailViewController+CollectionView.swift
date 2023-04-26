@@ -118,7 +118,7 @@ extension MovieDetailViewController: UICollectionViewDelegate {
         
         switch tag {
         case .trailer:
-            break
+            viewModel.gotoYoutubeScreen(viewModel.movieDetailInfo.videos.results[indexPath.row].key)
             
         case .screenshots:
             viewModel.gotoScreenShot(at: indexPath.row)

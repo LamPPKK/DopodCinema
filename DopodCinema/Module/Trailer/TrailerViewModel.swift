@@ -10,12 +10,19 @@ import Foundation
 class TrailerViewModel {
     // MARK: - Properties
     private var listTrailer: [VideoInfo]
+    private var navigator: TrailerNavigator
     
-    init(listTrailer: [VideoInfo]) {
+    init(listTrailer: [VideoInfo],
+         navigator: TrailerNavigator) {
         self.listTrailer = listTrailer
+        self.navigator = navigator
     }
     
     func getListTrailer() -> [VideoInfo] {
         self.listTrailer
+    }
+    
+    func gotoYoutubeScreen(_ key: String) {
+        self.navigator.gotoYoutubeScreen(key)
     }
 }

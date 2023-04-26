@@ -106,4 +106,8 @@ class MovieDetailViewModel {
             LoadingView.shared.endLoading()
         })
     }
+    
+    func gotoYoutubeScreen(_ key: String) {
+        navigator.gotoYoutubeScreen(key)
+    }
 }
