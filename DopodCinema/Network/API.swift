@@ -381,20 +381,22 @@ class API {
     }
 
     // MARK: - GET LINK FULL
-//    func getLinkMovie(withName name: String, completion: @escaping (LinkContainerInfo) -> Void, error: @escaping (NetworkError) -> Void) {
-//        let parametters: [String: Any] = [
-//            "appId": Constant.APP_ID,
-//            "name": name
-//        ]
-//
-//        Network.get(URLPath.PreviewPath.LINK_MOVIE,
-//                    parameters: parametters,
-//                    isEncrypte: true,
-//                    responseType: LinkContainerInfo.self,
-//                    completionHandler: { response in
-//            completion(response)
-//        }, errorHandler: error)
-//    }
+    func getLinkMovie(with name: String,
+                      completion: @escaping (LinkContainerInfo) -> Void,
+                      error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "appId": Constant.Network.APP_ID,
+            "name": name
+        ]
+
+        Network.get(URLPath.PreviewPath.LINK_MOVIE,
+                    parameters: parametters,
+                    isEncrypte: true,
+                    responseType: LinkContainerInfo.self,
+                    completionHandler: { response in
+            completion(response)
+        }, errorHandler: error)
+    }
     
 //    func getLinkTVShow(with tvShowName: String,
 //                       seasonName: String,

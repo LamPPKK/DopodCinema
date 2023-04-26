@@ -131,6 +131,15 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             })
             .disposed(by: disposeBag)
         
+        playView
+            .rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.viewModel.gotoPlayScreen()
+            })
+            .disposed(by: disposeBag)
+        
         seeAllButton.setTitleColor(Constant.Color.color9CA4AB, for: .normal)
         seeAllButton.titleLabel?.font = UIFont.fontInterRegular(withSize: 13)
     }

@@ -95,3 +95,13 @@ struct CastInfo: Codable {
     let name: String
     let profile_path: String?
 }
+
+struct LinkContainerInfo: Codable {
+    let time: Int
+    let data: [LinkInfo]
+}
+
+struct LinkInfo: Codable {
+    let website: String
+    let links: [String]
+}

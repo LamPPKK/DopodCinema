@@ -89,6 +89,9 @@
 		9944483F29BB88E600BB7380 /* TVGeneralViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9944483D29BB88E600BB7380 /* TVGeneralViewController.xib */; };
 		9944484329BCDC2000BB7380 /* ScrollTVDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */; };
 		9944484429BCDC2000BB7380 /* ScrollTVDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */; };
+		994A8ED529F6C2280052143A /* WebViewScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994A8ED329F6C2280052143A /* WebViewScreen.xib */; };
+		994A8ED629F6C2280052143A /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994A8ED429F6C2280052143A /* WebViewScreen.swift */; };
+		994A8ED829F6C2B00052143A /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994A8ED729F6C2B00052143A /* WebViewModel.swift */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
 		995B265E29CE7F0C0020C584 /* FavoriteActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */; };
 		995B265F29CE7F0C0020C584 /* FavoriteActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */; };
@@ -101,6 +104,15 @@
 		995B266E29D0876B0020C584 /* ShowTimeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266D29D0876B0020C584 /* ShowTimeDetailViewModel.swift */; };
 		995B267129D0894A0020C584 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266F29D0894A0020C584 /* DayCell.swift */; };
 		995B267229D0894A0020C584 /* DayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995B267029D0894A0020C584 /* DayCell.xib */; };
+		995DEB9829F9670100B34F6C /* WatchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995DEB8F29F9670100B34F6C /* WatchHeaderView.swift */; };
+		995DEB9929F9670100B34F6C /* WatchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995DEB9029F9670100B34F6C /* WatchScreen.xib */; };
+		995DEB9A29F9670200B34F6C /* WatchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995DEB9129F9670100B34F6C /* WatchScreen.swift */; };
+		995DEB9B29F9670200B34F6C /* WatchLinkScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995DEB9229F9670100B34F6C /* WatchLinkScreen.swift */; };
+		995DEB9C29F9670200B34F6C /* WatchHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995DEB9329F9670100B34F6C /* WatchHeaderView.xib */; };
+		995DEB9D29F9670200B34F6C /* WatchLinkScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995DEB9429F9670100B34F6C /* WatchLinkScreen.xib */; };
+		995DEB9E29F9670200B34F6C /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995DEB9629F9670100B34F6C /* ServerCell.swift */; };
+		995DEB9F29F9670200B34F6C /* ServerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995DEB9729F9670100B34F6C /* ServerCell.xib */; };
+		995DEBA129F9674A00B34F6C /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995DEBA029F9674A00B34F6C /* BaseViewModel.swift */; };
 		9962A54329CB3B6500CF20CA /* FavoritePagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54229CB3B6500CF20CA /* FavoritePagerViewController.swift */; };
 		9962A54629CB3BAB00CF20CA /* FavoriteDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */; };
 		9962A54729CB3BAB00CF20CA /* FavoriteDataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */; };
@@ -292,6 +304,9 @@
 		9944483D29BB88E600BB7380 /* TVGeneralViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVGeneralViewController.xib; sourceTree = "<group>"; };
 		9944484129BCDC2000BB7380 /* ScrollTVDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollTVDetailViewController.swift; sourceTree = "<group>"; };
 		9944484229BCDC2000BB7380 /* ScrollTVDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScrollTVDetailViewController.xib; sourceTree = "<group>"; };
+		994A8ED329F6C2280052143A /* WebViewScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewScreen.xib; sourceTree = "<group>"; };
+		994A8ED429F6C2280052143A /* WebViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewScreen.swift; sourceTree = "<group>"; };
+		994A8ED729F6C2B00052143A /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActorViewController.swift; sourceTree = "<group>"; };
 		995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteActorViewController.xib; sourceTree = "<group>"; };
@@ -304,6 +319,15 @@
 		995B266D29D0876B0020C584 /* ShowTimeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeDetailViewModel.swift; sourceTree = "<group>"; };
 		995B266F29D0894A0020C584 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		995B267029D0894A0020C584 /* DayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayCell.xib; sourceTree = "<group>"; };
+		995DEB8F29F9670100B34F6C /* WatchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchHeaderView.swift; sourceTree = "<group>"; };
+		995DEB9029F9670100B34F6C /* WatchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchScreen.xib; sourceTree = "<group>"; };
+		995DEB9129F9670100B34F6C /* WatchScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchScreen.swift; sourceTree = "<group>"; };
+		995DEB9229F9670100B34F6C /* WatchLinkScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchLinkScreen.swift; sourceTree = "<group>"; };
+		995DEB9329F9670100B34F6C /* WatchHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchHeaderView.xib; sourceTree = "<group>"; };
+		995DEB9429F9670100B34F6C /* WatchLinkScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchLinkScreen.xib; sourceTree = "<group>"; };
+		995DEB9629F9670100B34F6C /* ServerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
+		995DEB9729F9670100B34F6C /* ServerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServerCell.xib; sourceTree = "<group>"; };
+		995DEBA029F9674A00B34F6C /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		9962A54229CB3B6500CF20CA /* FavoritePagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePagerViewController.swift; sourceTree = "<group>"; };
 		9962A54429CB3BAB00CF20CA /* FavoriteDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDataViewController.swift; sourceTree = "<group>"; };
 		9962A54529CB3BAB00CF20CA /* FavoriteDataViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteDataViewController.xib; sourceTree = "<group>"; };
@@ -444,10 +468,10 @@
 		9913D95029F54230009467E0 /* Trailer */ = {
 			isa = PBXGroup;
 			children = (
-				9913D95129F54230009467E0 /* TrailerNavigator.swift */,
-				9913D95229F54230009467E0 /* TrailerViewController.xib */,
 				9913D95329F54230009467E0 /* Cell */,
+				9913D95129F54230009467E0 /* TrailerNavigator.swift */,
 				9913D95629F54230009467E0 /* TrailerViewModel.swift */,
+				9913D95229F54230009467E0 /* TrailerViewController.xib */,
 				9913D95729F54230009467E0 /* TrailerViewController.swift */,
 			);
 			path = Trailer;
@@ -600,6 +624,16 @@
 			path = TVGeneral;
 			sourceTree = "<group>";
 		};
+		994A8ED229F6C2280052143A /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				994A8ED329F6C2280052143A /* WebViewScreen.xib */,
+				994A8ED429F6C2280052143A /* WebViewScreen.swift */,
+				994A8ED729F6C2B00052143A /* WebViewModel.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
 		995B266229CE87580020C584 /* TVList */ = {
 			isa = PBXGroup;
 			children = (
@@ -609,6 +643,29 @@
 				995B266929CE87870020C584 /* TVListNavigator.swift */,
 			);
 			path = TVList;
+			sourceTree = "<group>";
+		};
+		995DEB8E29F9670100B34F6C /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				995DEB8F29F9670100B34F6C /* WatchHeaderView.swift */,
+				995DEB9029F9670100B34F6C /* WatchScreen.xib */,
+				995DEB9129F9670100B34F6C /* WatchScreen.swift */,
+				995DEB9229F9670100B34F6C /* WatchLinkScreen.swift */,
+				995DEB9329F9670100B34F6C /* WatchHeaderView.xib */,
+				995DEB9429F9670100B34F6C /* WatchLinkScreen.xib */,
+				995DEB9529F9670100B34F6C /* SubView */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
+		995DEB9529F9670100B34F6C /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				995DEB9629F9670100B34F6C /* ServerCell.swift */,
+				995DEB9729F9670100B34F6C /* ServerCell.xib */,
+			);
+			path = SubView;
 			sourceTree = "<group>";
 		};
 		9962A54129CB3B2E00CF20CA /* SubView */ = {
@@ -723,6 +780,8 @@
 		998CCD2729912C8100AE6283 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				995DEB8E29F9670100B34F6C /* Watch */,
+				994A8ED229F6C2280052143A /* WebView */,
 				9913D95029F54230009467E0 /* Trailer */,
 				9913D94829F541C1009467E0 /* ImageDetail */,
 				9940829329C20FD200B44A8E /* Search */,
@@ -882,6 +941,7 @@
 				99EB6ED929ACFBCD0075F29D /* LoadingView.swift */,
 				9944483029B8B7F400BB7380 /* CustomizePageControl.swift */,
 				991127CC29C8482900C27AED /* FavoriteAlertView.swift */,
+				995DEBA029F9674A00B34F6C /* BaseViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1069,6 +1129,7 @@
 				997274D729C4C0340043940B /* TheaterCell.xib in Resources */,
 				991C9A1429A5C095004FE5D5 /* TopHorizontalCell.xib in Resources */,
 				998C15D029ABB49F0027C3BF /* ImageCell.xib in Resources */,
+				995DEB9F29F9670200B34F6C /* ServerCell.xib in Resources */,
 				998B53D929AF9A0500822525 /* StartingCell.xib in Resources */,
 				99313228299B674600AA9E2C /* PopularCell.xib in Resources */,
 				99DA603A29C0BC9900164F0A /* MovieListViewController.xib in Resources */,
@@ -1094,10 +1155,13 @@
 				994082A229C21C0D00B44A8E /* SearchDataViewController.xib in Resources */,
 				99E6BE4729BE387300234C3E /* TVDetailSeasonViewController.xib in Resources */,
 				99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */,
+				995DEB9929F9670100B34F6C /* WatchScreen.xib in Resources */,
 				993EA19129A1B1EC00C5470B /* ActorHorizontallCell.xib in Resources */,
+				995DEB9C29F9670200B34F6C /* WatchHeaderView.xib in Resources */,
 				99313259299B904900AA9E2C /* CategoryCell.xib in Resources */,
 				99EB6EE029AD04CA0075F29D /* MovieTrailerCell.xib in Resources */,
 				993EA19C29A1F6B700C5470B /* BaseHeaderSubView.xib in Resources */,
+				994A8ED529F6C2280052143A /* WebViewScreen.xib in Resources */,
 				993EA19529A1B27300C5470B /* ActorCell.xib in Resources */,
 				998D4341298F54FA00B3C5BF /* LaunchScreen.storyboard in Resources */,
 				9944484429BCDC2000BB7380 /* ScrollTVDetailViewController.xib in Resources */,
@@ -1120,6 +1184,7 @@
 				99751B1F29C36C0C00292419 /* SearchActorViewController.xib in Resources */,
 				99BACD702995489500762A3E /* TVViewController.xib in Resources */,
 				991C9A1829A5C2EF004FE5D5 /* TopCell.xib in Resources */,
+				995DEB9D29F9670200B34F6C /* WatchLinkScreen.xib in Resources */,
 				99A6A9FC2992953600D3EEEF /* MovieViewController.xib in Resources */,
 				990E975C29D56D06000BC1B5 /* ShowTimeCell.xib in Resources */,
 			);
@@ -1201,6 +1266,7 @@
 				9940829929C20FF900B44A8E /* SearchViewModel.swift in Sources */,
 				997F361229E45C0200D4EBC0 /* CinemaHeaderViewController.swift in Sources */,
 				99DA603C29C0BCCB00164F0A /* MovieListViewModel.swift in Sources */,
+				994A8ED829F6C2B00052143A /* WebViewModel.swift in Sources */,
 				99B3E89129A9F75B00BC4483 /* MovieNavigator.swift in Sources */,
 				993EA1A129A1F99500C5470B /* SettingViewController.swift in Sources */,
 				991C9A1A29A5C803004FE5D5 /* URLPath.swift in Sources */,
@@ -1208,6 +1274,7 @@
 				997274D629C4C0340043940B /* TheaterCell.swift in Sources */,
 				99D884B929A7AD970091DF91 /* Genre.swift in Sources */,
 				99DA604229C0CC3F00164F0A /* ActorListViewController.swift in Sources */,
+				995DEB9829F9670100B34F6C /* WatchHeaderView.swift in Sources */,
 				9913D95C29F54230009467E0 /* TrailerViewModel.swift in Sources */,
 				99BACD7B29954B1400762A3E /* UIView+Extension.swift in Sources */,
 				99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */,
@@ -1249,11 +1316,13 @@
 				993EA1A629A1F9C500C5470B /* SettingViewModel.swift in Sources */,
 				9931322A299B67DE00AA9E2C /* MovieViewController+TableView.swift in Sources */,
 				991C9A2129A5D0A9004FE5D5 /* Image.swift in Sources */,
+				995DEB9B29F9670200B34F6C /* WatchLinkScreen.swift in Sources */,
 				997274D029C4B96E0043940B /* Location.swift in Sources */,
 				9962A54929CB3C7000CF20CA /* FavoriteDataViewModel.swift in Sources */,
 				993EA19E29A1F6D000C5470B /* BaseHeaderSubView.swift in Sources */,
 				995B266E29D0876B0020C584 /* ShowTimeDetailViewModel.swift in Sources */,
 				995B265E29CE7F0C0020C584 /* FavoriteActorViewController.swift in Sources */,
+				995DEBA129F9674A00B34F6C /* BaseViewModel.swift in Sources */,
 				994082A529C21FD700B44A8E /* SearchDataViewModel.swift in Sources */,
 				999EA25929BF744D00B38382 /* EpisodeCell.swift in Sources */,
 				991C9A1C29A5C8A5004FE5D5 /* API.swift in Sources */,
@@ -1261,6 +1330,7 @@
 				998C15CF29ABB49F0027C3BF /* ImageCell.swift in Sources */,
 				9913D94F29F541C1009467E0 /* ImageDetailCell.swift in Sources */,
 				990E975729D14BB1000BC1B5 /* TimeCell.swift in Sources */,
+				994A8ED629F6C2280052143A /* WebViewScreen.swift in Sources */,
 				998B53D829AF9A0500822525 /* StartingCell.swift in Sources */,
 				9940829629C20FE800B44A8E /* SearchViewController.swift in Sources */,
 				9913D94D29F541C1009467E0 /* ImageDetailScreen.swift in Sources */,
@@ -1276,6 +1346,7 @@
 				99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */,
 				997274E029C59E460043940B /* ShowTimeDetailNavigator.swift in Sources */,
 				993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */,
+				995DEB9A29F9670200B34F6C /* WatchScreen.swift in Sources */,
 				9913D95D29F54230009467E0 /* TrailerViewController.swift in Sources */,
 				99751B2129C36C6E00292419 /* SearchActorViewModel.swift in Sources */,
 				99313231299B703000AA9E2C /* TimesCell.swift in Sources */,
@@ -1287,6 +1358,7 @@
 				9944483529B8D2CF00BB7380 /* TVDetailViewController.swift in Sources */,
 				993EA19429A1B27300C5470B /* ActorCell.swift in Sources */,
 				997274E929C5A5E10043940B /* ShowTimeDetailViewController.swift in Sources */,
+				995DEB9E29F9670200B34F6C /* ServerCell.swift in Sources */,
 				993EA18829A1AE9600C5470B /* ComingCell.swift in Sources */,
 				9913D95829F54230009467E0 /* TrailerNavigator.swift in Sources */,
 				9940829E29C21BA600B44A8E /* SearchPagerViewController.swift in Sources */,

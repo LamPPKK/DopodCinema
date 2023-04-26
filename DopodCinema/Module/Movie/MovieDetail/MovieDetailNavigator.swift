@@ -13,6 +13,7 @@ protocol MovieDetailNavigator {
     func gotoDetailShowTime(_ movieDetailInfo: MovieDetailInfo)
     func gotoTrailerScreen(with list: [VideoInfo])
     func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo])
+    func gotoWatchScreen(posterPath: String, linkContainerInfo: LinkContainerInfo)
 }
 
 class DefaultMovieDetailNavigator: MovieDetailNavigator {
@@ -49,6 +50,12 @@ class DefaultMovieDetailNavigator: MovieDetailNavigator {
     func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo]) {
         let imageDetailViewController = ImageDetailScreen(selectedIndex: selectedIndex, images: images)
         navigationController.pushViewController(imageDetailViewController, animated: true)
+    }
+    
+    func gotoWatchScreen(posterPath: String, linkContainerInfo: LinkContainerInfo) {
+        let watchScreen = WatchScreen(posterPath: posterPath,
+                                      linkContainerInfo: linkContainerInfo)
+        navigationController.pushViewController(watchScreen, animated: true)
     }
 }
 

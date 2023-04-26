@@ -889,3 +889,14 @@ Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader-umbrella.h
 Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader.debug.xcconfig
 Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader.modulemap
 Pods/Target Support Files/MXParallaxHeader/MXParallaxHeader.release.xcconfig
+Pods/Pods.xcodeproj/xcuserdata/thengoc.xcuserdatad/xcschemes/YouTubePlayer.xcscheme
+Pods/Target Support Files/YouTubePlayer/YouTubePlayer-dummy.m
+Pods/Target Support Files/YouTubePlayer/YouTubePlayer-Info.plist
+Pods/Target Support Files/YouTubePlayer/YouTubePlayer-prefix.pch
+Pods/Target Support Files/YouTubePlayer/YouTubePlayer-umbrella.h
+Pods/Target Support Files/YouTubePlayer/YouTubePlayer.debug.xcconfig
+Pods/Target Support Files/YouTubePlayer/YouTubePlayer.modulemap
+Pods/Target Support Files/YouTubePlayer/YouTubePlayer.release.xcconfig
+Pods/YouTubePlayer/README.md
+Pods/YouTubePlayer/YouTubePlayer/YouTubePlayer/YouTubePlayer.swift
+Pods/YouTubePlayer/YouTubePlayer/YouTubePlayer/YTPlayer.html

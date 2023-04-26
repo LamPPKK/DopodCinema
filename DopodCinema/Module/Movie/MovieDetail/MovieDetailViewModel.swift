@@ -92,4 +92,18 @@ class MovieDetailViewModel {
     func gotoScreenShot(at selectedIndex: Int) {
         self.navigator.gotoScreenShots(with: selectedIndex, images: movieDetailInfo.images.posters)
     }
+    
+    func gotoPlayScreen() {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getLinkMovie(with: self.movieDetailInfo.original_title,
+                                completion: { [weak self] linkInfo in
+            guard let self = self else { return }
+            self.navigator.gotoWatchScreen(posterPath: self.movieDetailInfo.poster_path ?? .empty,
+                                           linkContainerInfo: linkInfo)
+            LoadingView.shared.endLoading()
+        }, error: { _ in
+            LoadingView.shared.endLoading()
+        })
+    }
 }

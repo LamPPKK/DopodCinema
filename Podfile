@@ -16,6 +16,8 @@ target 'DopodCinema' do
     pod 'lottie-ios'
     
     pod "MXParallaxHeader"
+    
+    pod 'YouTubePlayer'
 end
 
 post_install do |installer|
