@@ -10,11 +10,11 @@ import Foundation
 class TVDetailViewModel {
     
     // MARK: - Properties
-    private var navigation: TVDetailNavigator
+    private var navigator: TVDetailNavigator
     private var tvDetailInfo: TVShowDetailInfo
     
-    init(navigation: TVDetailNavigator, tvDetailInfo: TVShowDetailInfo) {
-        self.navigation = navigation
+    init(navigator: TVDetailNavigator, tvDetailInfo: TVShowDetailInfo) {
+        self.navigator = navigator
         self.tvDetailInfo = tvDetailInfo
     }
     
@@ -58,5 +58,43 @@ class TVDetailViewModel {
         
         // Save
         UserDataDefaults.shared.setListTV(list)
+    }
+    
+    func gotoTrailerScreen() {
+        self.navigator.gotoTrailerScreen(with: tvDetailInfo.videos.results)
+    }
+    
+    func gotoScreenShot(at selectedIndex: Int) {
+        self.navigator.gotoScreenShots(with: selectedIndex, images: tvDetailInfo.images.posters)
+    }
+    
+    func gotoYoutubeScreen(_ key: String) {
+        navigator.gotoYoutubeScreen(key)
+    }
+    
+    func gotoActorDetail(_ id: Int) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getActorDetail(with: id) { [weak self] actorDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoActorDetail(actorDetailInfo)
+            LoadingView.shared.endLoading()
+        } error: { error in
+            LoadingView.shared.endLoading()
+        }
+    }
+    
+    func gotoMovieDetail(_ id: Int) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getMovieDetail(with: id) { [weak self] movieDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoMovieDetail(movieDetailInfo)
+            LoadingView.shared.endLoading()
+        } error: { error in
+            LoadingView.shared.endLoading()
+        }
     }
 }

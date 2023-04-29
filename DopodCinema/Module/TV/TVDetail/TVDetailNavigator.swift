@@ -9,6 +9,11 @@ import UIKit
 
 protocol TVDetailNavigator {
     func start(_ tvDetailInfo: TVShowDetailInfo)
+    func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
+    func gotoTrailerScreen(with list: [VideoInfo])
+    func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo])
+    func gotoYoutubeScreen(_ key: String)
+    func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
 }
 
 class DefaultTVDetailNavigator: TVDetailNavigator {
@@ -21,10 +26,35 @@ class DefaultTVDetailNavigator: TVDetailNavigator {
     }
     
     func start(_ tvDetailInfo: TVShowDetailInfo) {
-        let viewModel = TVDetailViewModel(navigation: self,
-                                                       tvDetailInfo: tvDetailInfo)
+        let viewModel = TVDetailViewModel(navigator: self, tvDetailInfo: tvDetailInfo)
         let scrollTVDetailVC = ScrollTVDetailViewController(nibName: "ScrollTVDetailViewController", bundle: nil)
         scrollTVDetailVC.viewModel = viewModel
         navigationController.pushViewController(scrollTVDetailVC, animated: true)
+    }
+    
+    func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo) {
+        let navigator = DefaultActorDetailNavigator(navigationController: self.navigationController)
+        navigator.start(actorDetailInfo)
+    }
+    
+    func gotoTrailerScreen(with list: [VideoInfo]) {
+        let navigator = DefaultTrailerNavigator(navigationController: self.navigationController)
+        navigator.start(with: list)
+    }
+    
+    func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo]) {
+        let imageDetailViewController = ImageDetailScreen(selectedIndex: selectedIndex, images: images)
+        navigationController.pushViewController(imageDetailViewController, animated: true)
+    }
+    
+    func gotoYoutubeScreen(_ key: String) {
+        let youtubeScreen = YoutubeViewController(key: key)
+        youtubeScreen.viewModel = BaseViewModel()
+        navigationController.pushViewController(youtubeScreen, animated: true)
+    }
+    
+    func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {
+        let navigator = DefaultMovieDetailNavigator(navigationController: navigationController)
+        navigator.start(movieDetailInfo)
     }
 }

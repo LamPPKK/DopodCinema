@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol TVGeneralViewControllerDelegate: NSObjectProtocol {
+    func gotoYoutubeScreen(_ key: String)
+    func gotoScreenShot(_ index: Int)
+    func gotoActorDetailScreen(_ id: Int)
+    func gotoMovieDetailScreen(_ id: Int)
+}
+
 class TVGeneralViewController: UIViewController {
 
     // MARK: - IBOutlets
@@ -16,17 +23,23 @@ class TVGeneralViewController: UIViewController {
     @IBOutlet private weak var overViewLabel: UILabel!
     @IBOutlet private weak var trailerLabel: UILabel!
     @IBOutlet private weak var trailerCollectionView: UICollectionView!
+    @IBOutlet private weak var heightTrailerView: NSLayoutConstraint!
     @IBOutlet private weak var movieScreenShotsLabel: UILabel!
     @IBOutlet private weak var imageCollectionView: UICollectionView!
+    @IBOutlet private weak var heightImageView: NSLayoutConstraint!
     @IBOutlet private weak var startingLabel: UILabel!
     @IBOutlet private weak var startingCollectionView: UICollectionView!
+    @IBOutlet private weak var heightStartingView: NSLayoutConstraint!
     @IBOutlet private weak var similarLabel: UILabel!
     @IBOutlet private weak var similarCollectionView: UICollectionView!
+    @IBOutlet private weak var heightSimilarView: NSLayoutConstraint!
     
     // MARK: - Properties
     let ImageCellIdentity: String = "ImageCell"
     let TrailerCellIdentity: String = "MovieTrailerCell"
     let StartingCellIdentity: String = "StartingCell"
+    
+    weak var delegate: TVGeneralViewControllerDelegate?
     
     var tvDetailInfo: TVShowDetailInfo!
     
@@ -60,29 +73,45 @@ class TVGeneralViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        trailerCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        trailerCollectionView.dataSource = self
-        trailerCollectionView.delegate = self
-        trailerCollectionView.register(UINib(nibName: TrailerCellIdentity, bundle: nil), forCellWithReuseIdentifier: TrailerCellIdentity)
-        trailerCollectionView.tag = CollectionViewTag.trailer.rawValue
+        if tvDetailInfo.videos.results.isEmpty {
+            heightTrailerView.constant = 0
+        } else {
+            trailerCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            trailerCollectionView.dataSource = self
+            trailerCollectionView.delegate = self
+            trailerCollectionView.register(UINib(nibName: TrailerCellIdentity, bundle: nil), forCellWithReuseIdentifier: TrailerCellIdentity)
+            trailerCollectionView.tag = CollectionViewTag.trailer.rawValue
+        }
         
-        imageCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        imageCollectionView.dataSource = self
-        imageCollectionView.delegate = self
-        imageCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
-        imageCollectionView.tag = CollectionViewTag.screenshots.rawValue
+        if tvDetailInfo.images.posters.isEmpty {
+            heightImageView.constant = 0
+        } else {
+            imageCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            imageCollectionView.dataSource = self
+            imageCollectionView.delegate = self
+            imageCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
+            imageCollectionView.tag = CollectionViewTag.screenshots.rawValue
+        }
         
-        startingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        startingCollectionView.dataSource = self
-        startingCollectionView.delegate = self
-        startingCollectionView.register(UINib(nibName: StartingCellIdentity, bundle: nil), forCellWithReuseIdentifier: StartingCellIdentity)
-        startingCollectionView.tag = CollectionViewTag.starting.rawValue
+        if tvDetailInfo.credits.cast.isEmpty {
+            heightStartingView.constant = 0
+        } else {
+            startingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            startingCollectionView.dataSource = self
+            startingCollectionView.delegate = self
+            startingCollectionView.register(UINib(nibName: StartingCellIdentity, bundle: nil), forCellWithReuseIdentifier: StartingCellIdentity)
+            startingCollectionView.tag = CollectionViewTag.starting.rawValue
+        }
         
-        similarCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        similarCollectionView.dataSource = self
-        similarCollectionView.delegate = self
-        similarCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
-        similarCollectionView.tag = CollectionViewTag.similarmovies.rawValue
+        if tvDetailInfo.recommendations.results.isEmpty {
+            heightSimilarView.constant = 0
+        } else {
+            similarCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            similarCollectionView.dataSource = self
+            similarCollectionView.delegate = self
+            similarCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
+            similarCollectionView.tag = CollectionViewTag.similarmovies.rawValue
+        }
     }
     
     private func bindData() {
@@ -169,6 +198,32 @@ extension TVGeneralViewController: UICollectionViewDataSource {
         let acting = tvDetailInfo.credits.cast[indexPath.row]
         cell.bindData(acting)
         return cell
+    }
+}
+
+extension TVGeneralViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let tag = CollectionViewTag(rawValue: collectionView.tag)
+        
+        switch tag {
+        case .trailer:
+            let key = tvDetailInfo.videos.results[indexPath.row].key
+            delegate?.gotoYoutubeScreen(key)
+            
+        case .screenshots:
+            delegate?.gotoScreenShot(indexPath.row)
+            
+        case .starting:
+            let id = tvDetailInfo.credits.cast[indexPath.row].id
+            delegate?.gotoActorDetailScreen(id)
+            
+        case .similarmovies:
+            let id = tvDetailInfo.recommendations.results[indexPath.row].id
+            delegate?.gotoMovieDetailScreen(id)
+            
+        default:
+            break
+        }
     }
 }
 

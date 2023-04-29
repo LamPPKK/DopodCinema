@@ -29,7 +29,26 @@ class ScrollTVDetailViewController: MXScrollViewController {
         headerViewController?.parallaxHeader?.height = (UIScreen.main.bounds.width / 0.75) + Constant.HEIGHT_NAV + 65
         
         tvDetailPagerVC = TVDetailContentViewController(nibName: "TVDetailContentViewController", bundle: nil)
+        tvDetailPagerVC.delegate = self
         tvDetailPagerVC.tvDetailInfo = viewModel.getTVDetailInfo()
         childViewController = tvDetailPagerVC
+    }
+}
+
+extension ScrollTVDetailViewController: TVDetailContentViewControllerDelegate {
+    func gotoYoutubeScreen(_ key: String) {
+        viewModel.gotoYoutubeScreen(key)
+    }
+    
+    func gotoScreenShot(_ index: Int) {
+        viewModel.gotoScreenShot(at: index)
+    }
+    
+    func gotoActorDetailScreen(_ id: Int) {
+        viewModel.gotoActorDetail(id)
+    }
+    
+    func gotoMovieDetailScreen(_ id: Int) {
+        viewModel.gotoMovieDetail(id)
     }
 }

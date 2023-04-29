@@ -9,6 +9,13 @@ import UIKit
 import RxSwift
 import RxGesture
 
+protocol TVDetailContentViewControllerDelegate: NSObjectProtocol {
+    func gotoYoutubeScreen(_ key: String)
+    func gotoScreenShot(_ index: Int)
+    func gotoActorDetailScreen(_ id: Int)
+    func gotoMovieDetailScreen(_ id: Int)
+}
+
 class TVDetailContentViewController: UIViewController {
 
     // MARK: - IBOutlets
@@ -25,6 +32,8 @@ class TVDetailContentViewController: UIViewController {
 
     private var tvGeneralVC: TVGeneralViewController!
     private var tvSeasonVC: TVDetailSeasonViewController!
+    
+    weak var delegate: TVDetailContentViewControllerDelegate?
     
     var tvDetailInfo: TVShowDetailInfo!
     
@@ -74,6 +83,7 @@ class TVDetailContentViewController: UIViewController {
         }
         
         tvGeneralVC = TVGeneralViewController(nibName: "TVGeneralViewController", bundle: nil)
+        tvGeneralVC.delegate = self
         tvGeneralVC.tvDetailInfo = tvDetailInfo
         tvGeneralVC.view.frame = containerView.bounds
         addChild(tvGeneralVC)
@@ -125,4 +135,22 @@ class TVDetailContentViewController: UIViewController {
         label.font = .fontPoppinsSemiBold(withSize: 16)
     }
 
+}
+
+extension TVDetailContentViewController: TVGeneralViewControllerDelegate {
+    func gotoYoutubeScreen(_ key: String) {
+        delegate?.gotoYoutubeScreen(key)
+    }
+    
+    func gotoScreenShot(_ index: Int) {
+        delegate?.gotoScreenShot(index)
+    }
+    
+    func gotoActorDetailScreen(_ id: Int) {
+        delegate?.gotoActorDetailScreen(id)
+    }
+    
+    func gotoMovieDetailScreen(_ id: Int) {
+        delegate?.gotoMovieDetailScreen(id)
+    }
 }
