@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TVDetailViewModel {
     
@@ -95,6 +96,9 @@ class TVDetailViewModel {
             LoadingView.shared.endLoading()
         } error: { error in
             LoadingView.shared.endLoading()
+            if let topVC = UIApplication.getTopViewController() {
+                topVC.showAlert(with: "Notification", msg: "The resource you requested could not be found.")
+            }
         }
     }
 }

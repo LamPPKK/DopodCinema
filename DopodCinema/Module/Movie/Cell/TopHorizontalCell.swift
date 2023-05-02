@@ -42,6 +42,19 @@ class TopHorizontalCell: UITableViewCell {
         self.movies = movies
         self.tvShows = tvShows
         self.categories = categories
+        
+        var centerIndex: Int = 0
+        if screenType == .movie {
+            centerIndex = movies.count > 10 ? 5 : movies.count / 2
+        } else {
+            centerIndex = tvShows.count > 10 ? 5 : tvShows.count / 2
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.collectionView.scrollToItem(at: IndexPath(row: centerIndex, section: 0),
+                                        at: .centeredHorizontally,
+                                        animated: true)
+        })
     }
     
     // MARK: - Private functions
@@ -53,19 +66,13 @@ class TopHorizontalCell: UITableViewCell {
         
         let customizeLayout = CustomizeCollectionFlowLayout()
         collectionView.collectionViewLayout = customizeLayout
-        
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
-            self.collectionView.scrollToItem(at: IndexPath(row: 2, section: 0),
-                                        at: .centeredHorizontally,
-                                        animated: true)
-        })
     }
 }
 
 // MARK: - Extension UICollectionView
 extension TopHorizontalCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

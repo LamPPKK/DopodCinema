@@ -24,7 +24,7 @@ class NewHorizontallCell: UITableViewCell {
     
     // MARK: - Properties
     private let NewCellIdentity: String = "NewCell"
-    private let startIndexDisplay: Int = 5
+    private let startIndexDisplay: Int = 10
     
     weak var delegate: NewHorizontallCellDelegate?
     private var screenType: ScreenType!
