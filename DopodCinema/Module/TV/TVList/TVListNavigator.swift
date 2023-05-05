@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TVListNavigator {
-    func start(with title: String, list: [TVShowInfo], categories: [GenreInfo])
+    func start(with title: String, type: TVShowType, list: [TVShowInfo], categories: [GenreInfo])
     func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo)
 }
 
@@ -20,10 +20,11 @@ class DefaultTVListNavigator: TVListNavigator {
         self.navigationController = navigationController
     }
     
-    func start(with title: String, list: [TVShowInfo], categories: [GenreInfo]) {
+    func start(with title: String, type: TVShowType, list: [TVShowInfo], categories: [GenreInfo]) {
         let tvListVC = TVListViewController(nibName: "TVListViewController", bundle: nil)
         tvListVC.viewModel = TVListViewModel(navigator: self,
                                              title: title,
+                                             type: type,
                                              list: list,
                                              categories: categories)
         navigationController.pushViewController(tvListVC, animated: true)

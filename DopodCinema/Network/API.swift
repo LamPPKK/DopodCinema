@@ -112,12 +112,14 @@ class API {
     }
     
     // MARK: - Get list tv show top rate
-    func getTVShowsTopRate(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+    func getTVShowsTopRate(at page: Int = 1,
+                           completion: @escaping ([TVShowInfo]) -> Void,
+                           error: @escaping (NetworkError) -> Void) {
 
         let parametters: [String: Any] = [
             "api_key": Constant.Network.API_KEY,
             "language": "en-US",
-            "page": 1
+            "page": page
         ]
 
         Network.get(URLPath.TVShowPath.GET_TV_SHOW_TOPRATED,
@@ -129,12 +131,14 @@ class API {
     }
     
     // MARK: - Get list tv show popular
-    func getTVShowsPopular(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+    func getTVShowsPopular(at page: Int = 1,
+                           completion: @escaping ([TVShowInfo]) -> Void,
+                           error: @escaping (NetworkError) -> Void) {
 
         let parametters: [String: Any] = [
             "api_key": Constant.Network.API_KEY,
             "language": "en-US",
-            "page": 1
+            "page": page
         ]
 
         Network.get(URLPath.TVShowPath.GET_TV_SHOW_POPULAR,
@@ -146,12 +150,14 @@ class API {
     }
     
     // MARK: - Get list tv show on the air
-    func getTVShowOnAir(completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+    func getTVShowOnAir(at page: Int = 1,
+                        completion: @escaping ([TVShowInfo]) -> Void,
+                        error: @escaping (NetworkError) -> Void) {
         
         let parametters: [String: Any] = [
             "api_key": Constant.Network.API_KEY,
             "language": "en-US",
-            "page": 1
+            "page": page
         ]
         
         Network.get(URLPath.TVShowPath.GET_TV_SHOW_ON_AIR,

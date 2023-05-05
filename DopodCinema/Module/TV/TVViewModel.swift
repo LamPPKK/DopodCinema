@@ -184,9 +184,10 @@ class TVViewModel: NSObject {
     }
     
     func gotoTVList(with title: String,
-                       list: [TVShowInfo],
-                       categories: [GenreInfo]) {
-        self.navigator.gotoTVList(with: title, list: list, categories: categories)
+                    type: TVShowType,
+                    list: [TVShowInfo],
+                    categories: [GenreInfo]) {
+        self.navigator.gotoTVList(with: title, type: type, list: list, categories: categories)
     }
     
     func gotoActorList(with title: String) {

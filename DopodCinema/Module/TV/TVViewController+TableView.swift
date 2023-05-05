@@ -182,16 +182,19 @@ extension TVViewController: HeaderCellDelegate {
             
         case .headerPopular(let title):
             viewModel.gotoTVList(with: title,
+                                 type: .popular,
                                  list: viewModel.getPopularList(),
                                  categories: viewModel.getCategories())
 
         case .headerOnAir(let title):
             viewModel.gotoTVList(with: title,
+                                 type: .onAir,
                                  list: viewModel.getOnAirList(),
                                  categories: viewModel.getCategories())
             
         case .headerToprate(let title):
             viewModel.gotoTVList(with: title,
+                                 type: .topRate,
                                  list: viewModel.getToprateList(),
                                  categories: viewModel.getCategories())
             
