@@ -180,13 +180,22 @@ extension MovieViewController: HeaderCellDelegate {
             viewModel.gotoCategory()
             
         case .headerPopular(let title):
-            viewModel.gotoMovieList(with: title, movieList: viewModel.getMoviesPopular(), categories: viewModel.getCategories())
+            viewModel.gotoMovieList(with: title,
+                                    type: .popular,
+                                    movieList: viewModel.getMoviesPopular(),
+                                    categories: viewModel.getCategories())
             
         case .headerNew(let title):
-            viewModel.gotoMovieList(with: title, movieList: viewModel.getMoviesNew(), categories: viewModel.getCategories())
+            viewModel.gotoMovieList(with: title,
+                                    type: .new,
+                                    movieList: viewModel.getMoviesNew(),
+                                    categories: viewModel.getCategories())
             
         case .headerComing(let title):
-            viewModel.gotoMovieList(with: title, movieList: viewModel.getMoviesComing(), categories: viewModel.getCategories())
+            viewModel.gotoMovieList(with: title,
+                                    type: .upcoming,
+                                    movieList: viewModel.getMoviesComing(),
+                                    categories: viewModel.getCategories())
             
         case .headerActor(let title):
             viewModel.gotoActorList(with: title)

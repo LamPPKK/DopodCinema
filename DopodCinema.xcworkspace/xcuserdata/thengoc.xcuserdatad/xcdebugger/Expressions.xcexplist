@@ -3,15 +3,7 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "CinemaDetailViewController.collectionView(_:numberOfItemsInSection:):CinemaDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "selectedIndex">
-            </PersistentString>
-            <PersistentString
-               value = "viewModel.getShowTimes()">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #1 in ShowTimeViewModel.handleListCinema(with:completion:):ShowTimeViewModel.swift">
       </ContextState>
       <ContextState
          contextName = "TVDetailSeasonViewController.seasonHorizontalCell(for:indexPath:):TVDetailSeasonViewController.swift">
@@ -46,6 +38,25 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "TVGeneralViewController.collectionView(_:cellForItemAt:):TVGeneralViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tvDetailInfo.recommendations.results">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CinemaDetailViewController.collectionView(_:numberOfItemsInSection:):CinemaDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedIndex">
+            </PersistentString>
+            <PersistentString
+               value = "viewModel.getShowTimes()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ShowTimeDetailViewController.tableView(_:numberOfRowsInSection:):ShowTimeDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -60,9 +71,6 @@
                value = "self.searchObjects">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ShowTimeViewModel.handleListCinema(with:completion:):ShowTimeViewModel.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

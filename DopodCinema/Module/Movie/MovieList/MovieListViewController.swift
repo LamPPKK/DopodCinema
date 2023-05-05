@@ -12,9 +12,11 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var loadingView: UIActivityIndicatorView!
     
     // MARK: - Properties
     private let ComingCellIdentity: String = "ComingCell"
+    private var page: Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
         setupSubHeader(with: viewModel.getNavigationTitle())
         topConstraint.constant = Constant.HEIGHT_NAV
         
+        loadingView.isHidden = true
         setupCollectionView()
     }
     
@@ -62,6 +65,26 @@ extension MovieListViewController: UICollectionViewDataSource {
 extension MovieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.gotoMovieDetail(with: viewModel.getMovieList()[indexPath.row].id)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.getMovieList().count - 1 {
+            loadingView.startAnimating()
+            loadingView.isHidden = false
+            loadMoreData(at: page)
+        } else {
+            loadingView.stopAnimating()
+            loadingView.isHidden = true
+        }
+    }
+    
+    private func loadMoreData(at page: Int) {
+        viewModel.loadMore(at: page) { [weak self] isSucceeded in
+            if isSucceeded {
+                self?.collectionView.reloadData()
+                self?.page += 1
+            }
+        }
     }
 }
 
