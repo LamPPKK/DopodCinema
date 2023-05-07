@@ -90,7 +90,7 @@ class CategoryViewModel {
     }
     
     private func getDataMovie(with id: Int, completion: @escaping (() -> Void)) {
-        API.shared.getMovies(with: id,
+        API.shared.getMovies(categoryId: id,
                              completion: { [weak self] moviesCategory in
             guard let self = self else { return }
             
@@ -151,4 +151,16 @@ class CategoryViewModel {
         }
     }
         
+    func getDataMovie(at page: Int, categoryId: Int, completion: @escaping (() -> Void)) {
+        API.shared.getMovies(at: page,
+                             categoryId: categoryId,
+                             completion: { [weak self] moviesCategory in
+            guard let self = self else { return }
+            
+            self.moviesCategory.append(contentsOf: moviesCategory)
+            completion()
+        }, error: { _ in
+            completion()
+        })
+    }
 }

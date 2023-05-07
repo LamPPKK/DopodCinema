@@ -95,12 +95,15 @@ class API {
     }
     
     // MARK: - Get movie by Category ID
-    func getMovies(with categoryId: Int, completion: @escaping ([MovieInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+    func getMovies(at page: Int = 1,
+                   categoryId: Int,
+                   completion: @escaping ([MovieInfo]) -> Void,
+                   error: @escaping (NetworkError) -> Void) {
         let parametters: [String: Any] = [
             "api_key": Constant.Network.API_KEY,
             "language": "en-US",
             "with_genres": categoryId,
-            "page": 1
+            "page": page
         ]
         
         Network.get(URLPath.GET_MOVIES_BY_GENRE_ID,

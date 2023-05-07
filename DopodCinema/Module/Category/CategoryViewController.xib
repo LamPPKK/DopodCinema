@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="categoryCollectionView" destination="vqi-Tv-DwI" id="Rlk-6Y-LYQ"/>
                 <outlet property="collectionView" destination="cGR-yH-52B" id="YlL-lE-HwH"/>
+                <outlet property="loadingView" destination="fau-Q8-JfU" id="Rzt-qu-yPw"/>
                 <outlet property="topConstraint" destination="4k8-FW-3Vf" id="V0e-hB-5yP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -47,9 +48,13 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="fau-Q8-JfU">
+                            <rect key="frame" x="197" y="686" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="fau-Q8-JfU" firstAttribute="centerX" secondItem="cGR-yH-52B" secondAttribute="centerX" id="Ed1-kd-jLv"/>
                         <constraint firstAttribute="trailing" secondItem="vqi-Tv-DwI" secondAttribute="trailing" id="Jl8-u7-4eV"/>
                         <constraint firstItem="vqi-Tv-DwI" firstAttribute="leading" secondItem="w37-Cr-AfB" secondAttribute="leading" id="NEo-e6-dbv"/>
                         <constraint firstAttribute="bottom" secondItem="cGR-yH-52B" secondAttribute="bottom" id="Q6d-SU-FX6"/>
@@ -57,6 +62,7 @@
                         <constraint firstItem="cGR-yH-52B" firstAttribute="leading" secondItem="w37-Cr-AfB" secondAttribute="leading" id="j5X-Ke-JK1"/>
                         <constraint firstItem="vqi-Tv-DwI" firstAttribute="top" secondItem="w37-Cr-AfB" secondAttribute="top" id="rfl-pe-e2J"/>
                         <constraint firstAttribute="trailing" secondItem="cGR-yH-52B" secondAttribute="trailing" id="u3H-Wg-SLm"/>
+                        <constraint firstAttribute="bottom" secondItem="fau-Q8-JfU" secondAttribute="bottom" constant="30" id="v0S-HJ-yR3"/>
                     </constraints>
                 </view>
             </subviews>

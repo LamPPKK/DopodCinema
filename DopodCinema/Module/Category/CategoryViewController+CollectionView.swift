@@ -75,6 +75,24 @@ extension CategoryViewController: UICollectionViewDelegate {
             }
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.getMoviesCategory().count - 1 {
+            loadingView.isHidden = false
+            loadingView.startAnimating()
+            loadMore(at: page)
+        } else {
+            loadingView.isHidden = true
+            loadingView.stopAnimating()
+        }
+    }
+    
+    private func loadMore(at page: Int) {
+        viewModel.getDataMovie(at: page, categoryId: viewModel.idCategory) {
+            self.page += 1
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 extension CategoryViewController: UICollectionViewDelegateFlowLayout {

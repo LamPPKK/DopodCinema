@@ -13,6 +13,7 @@ class CategoryViewController: BaseViewController<CategoryViewModel> {
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
     // MARK: - Properties
     let CategoryCellIdentity: String = "CategoryCell"
@@ -21,6 +22,7 @@ class CategoryViewController: BaseViewController<CategoryViewModel> {
     let heightPerItem: CGFloat = 158
     let lineSpacing: CGFloat = 16
     var selectedIndex: Int?
+    var page: Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,7 @@ class CategoryViewController: BaseViewController<CategoryViewModel> {
         topConstraint.constant = Constant.HEIGHT_NAV
         setupSubHeader(with: "Category")
         
+        loadingView.isHidden = true
         setupCollectionView()
     }
     
