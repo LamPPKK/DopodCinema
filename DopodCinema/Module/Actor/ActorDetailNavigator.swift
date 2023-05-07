@@ -10,6 +10,7 @@ import UIKit
 protocol ActorDetailNavigator {
     func start(_ actorDetailInfo: ActorDetailInfo)
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
+    func gotoTVShowDetail(_ tvDetailInfo: TVShowDetailInfo)
 }
 
 class DefaultActorDetailNavigator: ActorDetailNavigator {
@@ -29,5 +30,10 @@ class DefaultActorDetailNavigator: ActorDetailNavigator {
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {
         let navigator = DefaultMovieDetailNavigator(navigationController: self.navigationController)
         navigator.start(movieDetailInfo)
+    }
+    
+    func gotoTVShowDetail(_ tvDetailInfo: TVShowDetailInfo) {
+        let navigator = DefaultTVDetailNavigator(navigationController: navigationController)
+        navigator.start(tvDetailInfo)
     }
 }

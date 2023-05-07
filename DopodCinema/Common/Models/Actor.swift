@@ -31,6 +31,7 @@ struct ActorDetailInfo: Codable {
     let place_of_birth: String?
     let biography: String?
     let movie_credits: MovieCredits
+    let tv_credits: TVCreditsInfo
 }
 
 // MARK: - Movie Credits Info
@@ -39,6 +40,6 @@ struct MovieCredits: Codable {
 }
 
 // MARK: - TV Credits Info
-//struct TVCreditsInfo: Codable {
-//    let cast: [TVShowInfo]
-//}
+struct TVCreditsInfo: Codable {
+    let cast: [TVShowInfo]
+}

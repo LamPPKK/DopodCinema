@@ -92,6 +92,12 @@ class ActorDetailViewController: BaseViewController<ActorDetailViewModel> {
         movieCollectionView.dataSource = self
         movieCollectionView.tag = CollectionViewTag.movies.rawValue
         movieCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        
+        tvCollectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageCellIdentity)
+        tvCollectionView.delegate = self
+        tvCollectionView.dataSource = self
+        tvCollectionView.tag = CollectionViewTag.tvShows.rawValue
+        tvCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     private func bindData() {

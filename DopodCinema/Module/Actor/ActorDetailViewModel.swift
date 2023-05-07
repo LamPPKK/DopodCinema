@@ -30,6 +30,19 @@ class ActorDetailViewModel {
         }
     }
     
+    func showTVDetailInfo(with id: Int) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getTVShowDetail(with: id) { [weak self] tvDetailInfo in
+            guard let self = self else { return }
+            
+            self.navigator.gotoTVShowDetail(tvDetailInfo)
+            LoadingView.shared.endLoading()
+        } error: { error in
+            LoadingView.shared.endLoading()
+        }
+    }
+    
     // MARK: - Check exist favorite
     func isFavourite(_ id: Int) -> Bool {
         let listLocal: [SavedInfo] = UserDataDefaults.shared.getListActor()

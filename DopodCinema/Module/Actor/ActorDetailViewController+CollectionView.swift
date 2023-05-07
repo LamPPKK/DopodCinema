@@ -16,6 +16,10 @@ extension ActorDetailViewController: UICollectionViewDataSource {
             let numberItemOfMovie = viewModel.actorDetailInfo.movie_credits.cast.count
             return numberItemOfMovie > 10 ? 10 : numberItemOfMovie
             
+        case .tvShows:
+            let numberItemOfTV = viewModel.actorDetailInfo.tv_credits.cast.count
+            return numberItemOfTV > 10 ? 10 : numberItemOfTV
+            
         default:
             return 0
         }
@@ -27,6 +31,10 @@ extension ActorDetailViewController: UICollectionViewDataSource {
         switch tag {
         case .movies:
             let path = viewModel.actorDetailInfo.movie_credits.cast[indexPath.row].poster_path
+            return imageCell(for: collectionView, indexPath: indexPath, path: path)
+            
+        case .tvShows:
+            let path = viewModel.actorDetailInfo.tv_credits.cast[indexPath.row].poster_path
             return imageCell(for: collectionView, indexPath: indexPath, path: path)
             
         default:
@@ -49,7 +57,7 @@ extension ActorDetailViewController: UICollectionViewDelegateFlowLayout {
         let tag = CollectionViewTag(rawValue: collectionView.tag)
         
         switch tag {
-        case .movies:
+        case .movies, .tvShows:
             return CGSize(width: 136, height: 202)
 
         default:
@@ -70,6 +78,10 @@ extension ActorDetailViewController: UICollectionViewDelegate {
         case .movies:
             let id = viewModel.actorDetailInfo.movie_credits.cast[indexPath.row].id
             viewModel.showMovieDetailInfo(with: id)
+            
+        case .tvShows:
+            let id = viewModel.actorDetailInfo.tv_credits.cast[indexPath.row].id
+            viewModel.showTVDetailInfo(with: id)
             
         default:
             break
