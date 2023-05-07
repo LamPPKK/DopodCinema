@@ -248,12 +248,15 @@ class API {
         }, errorHandler: error)
     }
     
-    func getTVShow(with id: Int, completion: @escaping ([TVShowInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+    func getTVShow(at page: Int = 1,
+                   categoryId: Int,
+                   completion: @escaping ([TVShowInfo]) -> Void,
+                   error: @escaping (NetworkError) -> Void) {
         let parametters: [String: Any] = [
             "api_key": Constant.Network.API_KEY,
             "language": "en-US",
-            "with_genres": id,
-            "page": 1
+            "with_genres": categoryId,
+            "page": page
         ]
         
         Network.get(URLPath.GET_TV_BY_GENRE_ID,

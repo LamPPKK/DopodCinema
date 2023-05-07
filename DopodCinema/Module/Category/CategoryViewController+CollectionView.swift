@@ -77,7 +77,13 @@ extension CategoryViewController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.getMoviesCategory().count - 1 {
+        var lastIndex = 0
+        if viewModel.getScreenType() == .movie {
+            lastIndex = viewModel.getMoviesCategory().count - 1
+        } else {
+            lastIndex = viewModel.getTVShowsCategory().count - 1
+        }
+        if indexPath.row == lastIndex {
             loadingView.isHidden = false
             loadingView.startAnimating()
             loadMore(at: page)
@@ -88,9 +94,16 @@ extension CategoryViewController: UICollectionViewDelegate {
     }
     
     private func loadMore(at page: Int) {
-        viewModel.getDataMovie(at: page, categoryId: viewModel.idCategory) {
-            self.page += 1
-            self.collectionView.reloadData()
+        if viewModel.getScreenType() == .movie {
+            viewModel.getDataMovie(at: page, categoryId: viewModel.idCategory) {
+                self.page += 1
+                self.collectionView.reloadData()
+            }
+        } else {
+            viewModel.getDataTV(at: page, categoryId: viewModel.idCategory) {
+                self.page += 1
+                self.collectionView.reloadData()
+            }
         }
     }
 }

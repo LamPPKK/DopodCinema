@@ -104,7 +104,7 @@ class CategoryViewModel {
     }
     
     private func getDataTV(with id: Int, completion: @escaping (() -> Void)) {
-        API.shared.getTVShow(with: id,
+        API.shared.getTVShow(categoryId: id,
                              completion: { [weak self] tvShowsCategory in
             guard let self = self else { return }
             
@@ -158,6 +158,19 @@ class CategoryViewModel {
             guard let self = self else { return }
             
             self.moviesCategory.append(contentsOf: moviesCategory)
+            completion()
+        }, error: { _ in
+            completion()
+        })
+    }
+    
+    func getDataTV(at page: Int, categoryId: Int, completion: @escaping (() -> Void)) {
+        API.shared.getTVShow(at: page,
+                             categoryId: categoryId,
+                             completion: { [weak self] tvShowsCategory in
+            guard let self = self else { return }
+            
+            self.tvShowsCategory.append(contentsOf: tvShowsCategory)
             completion()
         }, error: { _ in
             completion()
