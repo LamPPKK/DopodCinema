@@ -9,6 +9,7 @@ import UIKit
 
 protocol FavoriteDataViewDelegate: NSObjectProtocol {
     func didSelectedObject(id: Int, isMovie: Bool)
+    func removeObject(type: SearchPagerTag, selectedObject: SavedInfo)
 }
 
 class FavoriteDataViewController: BaseViewController<FavoriteDataViewModel> {
@@ -42,12 +43,33 @@ class FavoriteDataViewController: BaseViewController<FavoriteDataViewModel> {
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressToItem(gesture:)))
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        collectionView?.addGestureRecognizer(longPressedGesture)
     }
     
     @objc
     private func reloadData() {
         emptyView.isHidden = !viewModel.getListFavorite().isEmpty
         collectionView.reloadData()
+    }
+    
+    @objc
+    private func longPressToItem(gesture: UILongPressGestureRecognizer) {
+        if (gesture.state != .began) {
+            return
+        }
+
+        let point = gesture.location(in: collectionView)
+
+        if let indexPath = collectionView?.indexPathForItem(at: point) {
+            let object = viewModel.getListFavorite()[indexPath.row]
+            delegate?.removeObject(type: viewModel.isMovie() ? .kMovie : .kTV,
+                                   selectedObject: object)
+        }
     }
     
     deinit {
@@ -85,4 +107,8 @@ extension FavoriteDataViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         lineSpacing
     }
+}
+
+extension FavoriteDataViewController: UIGestureRecognizerDelegate {
+    
 }

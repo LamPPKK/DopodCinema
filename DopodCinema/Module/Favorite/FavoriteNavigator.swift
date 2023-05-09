@@ -12,6 +12,7 @@ protocol FavoriteNavigator {
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
     func gotoTVDetail(_ tvDetailInfo: TVShowDetailInfo)
+    func gotoRemoveFavoritePopup(_ type:  SearchPagerTag, object: SavedInfo)
 }
 
 class DefaultFavoriteNavigator: FavoriteNavigator {
@@ -42,5 +43,11 @@ class DefaultFavoriteNavigator: FavoriteNavigator {
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo) {
         let navigator = DefaultActorDetailNavigator(navigationController: navigationController)
         navigator.start(actorDetailInfo)
+    }
+    
+    func gotoRemoveFavoritePopup(_ type: SearchPagerTag, object: SavedInfo) {
+        let removeFavoritePopup = FavoritePopup(type: type, object: object)
+        removeFavoritePopup.modalPresentationStyle = .overFullScreen
+        navigationController.present(removeFavoritePopup, animated: false)
     }
 }

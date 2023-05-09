@@ -54,4 +54,8 @@ class FavoriteViewModel {
             LoadingView.shared.endLoading()
         }
     }
+    
+    func gotoRemoveFavoritePopup(_ type: SearchPagerTag, object: SavedInfo) {
+        navigator.gotoRemoveFavoritePopup(type, object: object)
+    }
 }

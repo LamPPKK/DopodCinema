@@ -145,4 +145,8 @@ extension FavoriteViewController: FavoritePagerViewDelegate {
     func didSelectedActor(id: Int) {
         viewModel.gotoActorDetail(with: id)
     }
+    
+    func removeObject(_ type: SearchPagerTag, selectedObject: SavedInfo) {
+        viewModel.gotoRemoveFavoritePopup(type, object: selectedObject)
+    }
 }

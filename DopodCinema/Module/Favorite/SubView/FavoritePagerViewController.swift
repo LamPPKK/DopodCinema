@@ -10,6 +10,7 @@ import UIKit
 protocol FavoritePagerViewDelegate: NSObjectProtocol {
     func didSelectedObject(id: Int, isMovie: Bool)
     func didSelectedActor(id: Int)
+    func removeObject(_ type: SearchPagerTag, selectedObject: SavedInfo)
 }
 
 class FavoritePagerViewController: UIPageViewController {
@@ -62,6 +63,10 @@ class FavoritePagerViewController: UIPageViewController {
 }
 
 extension FavoritePagerViewController: FavoriteDataViewDelegate {
+    func removeObject(type: SearchPagerTag, selectedObject: SavedInfo) {
+        pagerDelegate?.removeObject(type, selectedObject: selectedObject)
+    }
+    
     func didSelectedObject(id: Int, isMovie: Bool) {
         pagerDelegate?.didSelectedObject(id: id, isMovie: isMovie)
     }

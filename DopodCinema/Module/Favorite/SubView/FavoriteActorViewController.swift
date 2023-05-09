@@ -9,6 +9,7 @@ import UIKit
 
 protocol FavoriteActorViewDelegate: NSObjectProtocol {
     func didSelected(id: Int)
+    func removeObject(type: SearchPagerTag, selectedObject: SavedInfo)
 }
 
 class FavoriteActorViewController: BaseViewController<FavoriteActorViewModel> {
@@ -42,12 +43,32 @@ class FavoriteActorViewController: BaseViewController<FavoriteActorViewModel> {
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPressToItem(gesture:)))
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        collectionView?.addGestureRecognizer(longPressedGesture)
     }
     
     @objc
     private func reloadData() {
         emptyView.isHidden = !viewModel.getListFavorite().isEmpty
         collectionView.reloadData()
+    }
+    
+    @objc
+    private func longPressToItem(gesture: UILongPressGestureRecognizer) {
+        if (gesture.state != .began) {
+            return
+        }
+
+        let point = gesture.location(in: collectionView)
+
+        if let indexPath = collectionView?.indexPathForItem(at: point) {
+            let object = viewModel.getListFavorite()[indexPath.row]
+            delegate?.removeObject(type: .kActor, selectedObject: object)
+        }
     }
     
     deinit {
@@ -81,4 +102,8 @@ extension FavoriteActorViewController: UICollectionViewDelegateFlowLayout {
         let widthPerItem: CGFloat = availableWidth / itemsPerRow
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
+}
+
+extension FavoriteActorViewController: UIGestureRecognizerDelegate {
+    
 }
