@@ -93,6 +93,16 @@ class MovieDetailViewModel {
         self.navigator.gotoScreenShots(with: selectedIndex, images: movieDetailInfo.images.posters)
     }
     
+    func actionPlay() {
+        RemoteConfigManager.shared.fetchCloudValues()
+        
+        if Utils.isShowFull() {
+            gotoPlayScreen()
+        } else {
+            gotoTrailerScreen()
+        }
+    }
+    
     func gotoPlayScreen() {
         LoadingView.shared.startLoading()
         

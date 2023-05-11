@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseCore
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Fallback on earlier versions
         }
 
+        FirebaseApp.configure()
+        _ = RemoteConfigManager.shared
+        
         let navigationViewController = UINavigationController(rootViewController: HomeScreen())
         window?.rootViewController = navigationViewController
         window?.makeKeyAndVisible()

@@ -77,4 +77,18 @@ struct Utils {
             UIApplication.shared.openURL(url)
         }
     }
+    
+    static func isShowFull() -> Bool {
+        let timeShowFull = RemoteConfigManager.shared.string(forKey: .timeShowFull)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd"
+        formatter.timeZone = .current
+        if let someDateTime = formatter.date(from: timeShowFull) {
+            if Date().timeIntervalSince(someDateTime) < 0 {
+                return true
+            }
+        }
+
+        return false
+    }
 }

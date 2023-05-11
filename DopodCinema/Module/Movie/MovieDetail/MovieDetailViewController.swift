@@ -136,7 +136,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.gotoPlayScreen()
+                self?.viewModel.actionPlay()
             })
             .disposed(by: disposeBag)
         
