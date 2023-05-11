@@ -20,6 +20,7 @@
                 <outlet property="movieScreenShotsLabel" destination="9cM-HY-LYe" id="YxM-4t-gCr"/>
                 <outlet property="overViewLabel" destination="pw3-ni-C14" id="1do-Em-1Bq"/>
                 <outlet property="scrollView" destination="iUD-ZX-Y8u" id="NQf-Js-Gdt"/>
+                <outlet property="seeAllButton" destination="Hsg-Ix-FF0" id="INf-ba-fnT"/>
                 <outlet property="similarCollectionView" destination="Tqz-do-UXS" id="8C8-Ah-Ct9"/>
                 <outlet property="similarLabel" destination="4MU-JD-65s" id="rew-vy-aBN"/>
                 <outlet property="startingCollectionView" destination="0Yi-gO-uyZ" id="K1g-OW-TQv"/>
@@ -62,6 +63,18 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsg-Ix-FF0">
+                                            <rect key="frame" x="338" y="20.333333333333336" width="60" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="60" id="i9g-Fc-ect"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="See all"/>
+                                            <connections>
+                                                <action selector="didToSeeAll" destination="-1" eventType="touchUpInside" id="roG-HQ-0Ik"/>
+                                            </connections>
+                                        </button>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="oGl-KW-EU8">
                                             <rect key="frame" x="0.0" y="54.333333333333343" width="414" height="117"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -78,7 +91,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstItem="Hsg-Ix-FF0" firstAttribute="centerY" secondItem="ZdD-U0-J9F" secondAttribute="centerY" id="CUI-R4-UI6"/>
                                         <constraint firstAttribute="height" constant="171.33333333333337" id="LMs-ek-E64"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hsg-Ix-FF0" secondAttribute="trailing" constant="16" id="Ygf-pX-wBL"/>
                                         <constraint firstItem="oGl-KW-EU8" firstAttribute="leading" secondItem="l78-rJ-wZR" secondAttribute="leading" id="fPP-bT-z0f"/>
                                         <constraint firstAttribute="bottom" secondItem="oGl-KW-EU8" secondAttribute="bottom" id="g8o-8Q-piV"/>
                                         <constraint firstItem="oGl-KW-EU8" firstAttribute="top" secondItem="ZdD-U0-J9F" secondAttribute="bottom" constant="10" id="j5U-Z7-4hy"/>

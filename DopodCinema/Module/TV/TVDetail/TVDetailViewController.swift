@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 import RxGesture
 
+protocol TVDetailViewControllerDelegate: NSObjectProtocol {
+    func gotoTrailerScreen()
+}
+
 class TVDetailViewController: BaseViewController<TVDetailViewModel> {
 
     // MARK: - IBOutlets
@@ -18,6 +22,10 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
     @IBOutlet private weak var genresLabel: UILabel!
     @IBOutlet private weak var ratingLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var playView: UIView!
+    @IBOutlet private weak var playLabel: UILabel!
+        
+    weak var delegate: TVDetailViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +68,22 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
         
         timeLabel.font = .fontPoppinsRegular(withSize: 13)
         timeLabel.textColor = Constant.Color.color2B2F31
+        
+        playView.layer.cornerRadius = playView.frame.height / 2
+        playView.backgroundColor = Constant.Color.color3D5BF6
+        
+        playLabel.text = "Play"
+        playLabel.font = .fontPoppinsMedium(withSize: 13)
+        playLabel.textColor = .white
+        
+        playView
+            .rx
+            .tapGesture()
+            .when(.recognized)
+            .subscribe(onNext: { [weak self] _ in
+                self?.actionPlay()
+            })
+            .disposed(by: disposeBag)
     }
 
     private func bindingData() {
@@ -78,5 +102,13 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
         ratingLabel.text = "\(viewModel.getTVDetailInfo().vote_average.format(f: 1))/10"
         nameLabel.text = viewModel.getTVDetailInfo().original_name
         timeLabel.text = "\(viewModel.getTVDetailInfo().number_of_seasons) seasons"
+    }
+    
+    private func actionPlay() {
+//        if Utils.isShowFull() {
+//
+//        } else {
+            delegate?.gotoTrailerScreen()
+//        }
     }
 }

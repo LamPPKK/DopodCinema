@@ -416,25 +416,25 @@ class API {
         }, errorHandler: error)
     }
     
-//    func getLinkTVShow(with tvShowName: String,
-//                       seasonName: String,
-//                       episode: Int,
-//                       completion: @escaping (LinkContainerInfo) -> Void,
-//                       error: @escaping (NetworkError) -> Void) {
-//        
-//        let parametters: [String: Any] = [
-//            "appId": Constant.APP_ID,
-//            "name": tvShowName + " - " + seasonName,
-//            "episode": episode
-//        ]
-//        
-//        Network.get(URLPath.PreviewPath.LINK_TV,
-//                    parameters: parametters,
-//                    isEncrypte: true,
-//                    responseType: LinkContainerInfo.self,
-//                    completionHandler: { response in
-//            completion(response)
-//        }, errorHandler: error)
-//    }
+    func getLinkTVShow(with tvShowName: String,
+                       seasonName: String,
+                       episode: Int,
+                       completion: @escaping (LinkContainerInfo) -> Void,
+                       error: @escaping (NetworkError) -> Void) {
+        
+        let parametters: [String: Any] = [
+            "appId": Constant.Network.APP_ID,
+            "name": tvShowName + " - " + seasonName,
+            "episode": episode
+        ]
+        
+        Network.get(URLPath.PreviewPath.LINK_TV,
+                    parameters: parametters,
+                    isEncrypte: true,
+                    responseType: LinkContainerInfo.self,
+                    completionHandler: { response in
+            completion(response)
+        }, errorHandler: error)
+    }
 }
 

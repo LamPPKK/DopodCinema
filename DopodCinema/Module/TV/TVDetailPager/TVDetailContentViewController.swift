@@ -14,6 +14,7 @@ protocol TVDetailContentViewControllerDelegate: NSObjectProtocol {
     func gotoScreenShot(_ index: Int)
     func gotoActorDetailScreen(_ id: Int)
     func gotoMovieDetailScreen(_ id: Int)
+    func gotoTrailerScreen()
 }
 
 class TVDetailContentViewController: UIViewController {
@@ -152,5 +153,9 @@ extension TVDetailContentViewController: TVGeneralViewControllerDelegate {
     
     func gotoMovieDetailScreen(_ id: Int) {
         delegate?.gotoMovieDetailScreen(id)
+    }
+    
+    func gotoTrailerScreen() {
+        delegate?.gotoTrailerScreen()
     }
 }

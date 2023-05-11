@@ -12,6 +12,7 @@ protocol TVGeneralViewControllerDelegate: NSObjectProtocol {
     func gotoScreenShot(_ index: Int)
     func gotoActorDetailScreen(_ id: Int)
     func gotoMovieDetailScreen(_ id: Int)
+    func gotoTrailerScreen()
 }
 
 class TVGeneralViewController: UIViewController {
@@ -33,6 +34,7 @@ class TVGeneralViewController: UIViewController {
     @IBOutlet private weak var similarLabel: UILabel!
     @IBOutlet private weak var similarCollectionView: UICollectionView!
     @IBOutlet private weak var heightSimilarView: NSLayoutConstraint!
+    @IBOutlet private weak var seeAllButton: UIButton!
     
     // MARK: - Properties
     let ImageCellIdentity: String = "ImageCell"
@@ -70,17 +72,22 @@ class TVGeneralViewController: UIViewController {
         
         similarLabel.font = .fontPoppinsSemiBold(withSize: 16)
         similarLabel.textColor = Constant.Color.color2B2F31
+        
+        seeAllButton.setTitleColor(Constant.Color.color9CA4AB, for: .normal)
+        seeAllButton.titleLabel?.font = UIFont.fontInterRegular(withSize: 13)
     }
     
     private func setupCollectionView() {
         if tvDetailInfo.videos.results.isEmpty {
             heightTrailerView.constant = 0
+            seeAllButton.isHidden = true
         } else {
             trailerCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
             trailerCollectionView.dataSource = self
             trailerCollectionView.delegate = self
             trailerCollectionView.register(UINib(nibName: TrailerCellIdentity, bundle: nil), forCellWithReuseIdentifier: TrailerCellIdentity)
             trailerCollectionView.tag = CollectionViewTag.trailer.rawValue
+            seeAllButton.isHidden = false
         }
         
         if tvDetailInfo.images.posters.isEmpty {
@@ -119,6 +126,11 @@ class TVGeneralViewController: UIViewController {
         scrollView.resizeScrollViewContentSize()
 
     }
+    
+    @IBAction func didToSeeAll() {
+        delegate?.gotoTrailerScreen()
+    }
+    
 }
 
 extension TVGeneralViewController: UICollectionViewDataSource {
