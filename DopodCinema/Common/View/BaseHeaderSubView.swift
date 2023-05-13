@@ -15,6 +15,7 @@ protocol BaseHeaderSubViewDelegate: NSObjectProtocol {
 class BaseHeaderSubView: UIView {
 
     // MARK: - IBOutlet
+    @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var saveButton: UIButton!
     
@@ -99,14 +100,18 @@ class BaseHeaderSubView: UIView {
         self.backgroundColor = .clear
         titleLabel.textColor = .black
         titleLabel.font = UIFont.fontPoppinsBold(withSize: 16)
+        backButton.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backButton.tintColor = Constant.Color.color2B2F31
     }
     
     func setupHeader(withTitle title: String,
                      isDetail: Bool,
-                     isSave: Bool) {
+                     isSave: Bool,
+                     isBackWhite: Bool) {
         setupUI()
         titleLabel.text = title
         saveButton.isHidden = !isDetail
+        backButton.tintColor = isBackWhite ? .white : Constant.Color.color2B2F31
         self.isSave = isSave
         setupFavouriteIcon()
     }

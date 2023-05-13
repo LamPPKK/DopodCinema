@@ -49,7 +49,8 @@ class BaseViewController<ViewModel>: UIViewController, BaseHeaderSubViewDelegate
     
     func setupSubHeader(with title: String,
                         isDetail: Bool = false,
-                        isSave: Bool = false) {
+                        isSave: Bool = false,
+                        isBackWhite: Bool = false) {
         NotificationCenter.default.post(name: Notification.Name("hide_tabbar"), object: nil)
         
         if subHeaderView == nil {
@@ -62,7 +63,8 @@ class BaseViewController<ViewModel>: UIViewController, BaseHeaderSubViewDelegate
                 $0.moveTo(parentViewController: self)
                 $0.setupHeader(withTitle: title,
                                isDetail: isDetail,
-                               isSave: isSave)
+                               isSave: isSave,
+                               isBackWhite: isBackWhite)
                 
             }
             

@@ -83,6 +83,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="backButton" destination="JvT-fs-4F6" id="uBe-Y2-EBZ"/>
                 <outlet property="saveButton" destination="a1Z-BN-Con" id="O3l-Cc-JbA"/>
                 <outlet property="titleLabel" destination="gjg-1R-3m9" id="MRf-dz-1Wn"/>
             </connections>

@@ -37,6 +37,6 @@ class YoutubeViewController: BaseViewController<BaseViewModel> {
     private func setupUI() {
         topConstraint.constant = Constant.HEIGHT_NAV
         self.view.backgroundColor = .black
-        setupSubHeader(with: .empty)
+        setupSubHeader(with: .empty, isBackWhite: true)
     }
 }
