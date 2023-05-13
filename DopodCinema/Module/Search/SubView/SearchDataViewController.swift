@@ -15,6 +15,8 @@ class SearchDataViewController: BaseViewController<SearchDataViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var emptySearchView: UIView!
+    @IBOutlet private weak var emptySearchLabel: UILabel!
     
     // MARK: - Properties
     private let ImageCellIdentity: String = "ImageCell"
@@ -27,15 +29,35 @@ class SearchDataViewController: BaseViewController<SearchDataViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("Did_change_list_search"), object: nil)
+        
+        setupUI()
         setupCollectionView()
     }
 
+    private func setupUI() {
+        emptySearchLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        emptySearchLabel.textColor = .black
+        
+        emptySearchView.isHidden = !viewModel.getSearchObjects().isEmpty
+    }
+    
     private func setupCollectionView() {
         collectionView.register(UINib(nibName: ImageCellIdentity, bundle: nil),
                                 forCellWithReuseIdentifier: ImageCellIdentity)
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    @objc
+    private func reloadData() {
+        emptySearchView.isHidden = !viewModel.getSearchObjects().isEmpty
+        collectionView.reloadData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

@@ -24,8 +24,6 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     @IBOutlet private weak var actorLabel: UILabel!
     @IBOutlet private weak var actorDot: UIImageView!
     @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private weak var emptySearchView: UIView!
-    @IBOutlet private weak var emptySearchLabel: UILabel!
     
     // MARK: - Properties
     var searchPagerView: SearchPagerViewController!
@@ -54,12 +52,11 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         
         containerView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
         
-        emptySearchLabel.font = .fontPoppinsSemiBold(withSize: 16)
-        emptySearchLabel.textColor = .black
-        
         setActive(forLabel: movielLabel)
         setInactive(forLabel: tvLabel)
         setInactive(forLabel: actorLabel)
+        
+        setupPager()
     }
     
     private func setActive(forLabel label: UILabel) {
@@ -74,7 +71,6 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     
     private func setupPager() {
         searchPagerView = SearchPagerViewController()
-        searchPagerView.setupData(with: viewModel.getSearchObjects(isMovie: true))
         searchPagerView.delegatePager = self
         searchPagerView.view.frame = containerView.bounds
         addChild(searchPagerView)
@@ -95,12 +91,6 @@ class SearchViewController: BaseViewController<SearchViewModel> {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.movieDot.isHidden = false
-                self.tvDot.isHidden = true
-                self.actorDot.isHidden = true
-                self.setActive(forLabel: self.movielLabel)
-                self.setInactive(forLabel: self.tvLabel)
-                self.setInactive(forLabel: self.actorLabel)
                 self.moveToScreen(.kMovie)
             })
             .disposed(by: disposeBag)
@@ -111,12 +101,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.movieDot.isHidden = true
-                self.tvDot.isHidden = false
-                self.actorDot.isHidden = true
-                self.setInactive(forLabel: self.movielLabel)
-                self.setActive(forLabel: self.tvLabel)
-                self.setInactive(forLabel: self.actorLabel)
+                
                 self.moveToScreen(.kTV)
             })
             .disposed(by: disposeBag)
@@ -127,22 +112,43 @@ class SearchViewController: BaseViewController<SearchViewModel> {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                self.movieDot.isHidden = true
-                self.tvDot.isHidden = true
-                self.actorDot.isHidden = false
-                self.setInactive(forLabel: self.movielLabel)
-                self.setInactive(forLabel: self.tvLabel)
-                self.setActive(forLabel: self.actorLabel)
                 self.moveToScreen(.kActor)
             })
             .disposed(by: disposeBag)
     }
     
     private func moveToScreen(_ tag: SearchPagerTag) {
+        switch tag {
+        case .kMovie:
+            self.movieDot.isHidden = false
+            self.tvDot.isHidden = true
+            self.actorDot.isHidden = true
+            self.setActive(forLabel: self.movielLabel)
+            self.setInactive(forLabel: self.tvLabel)
+            self.setInactive(forLabel: self.actorLabel)
+            
+        case .kTV:
+            self.movieDot.isHidden = true
+            self.tvDot.isHidden = false
+            self.actorDot.isHidden = true
+            self.setInactive(forLabel: self.movielLabel)
+            self.setActive(forLabel: self.tvLabel)
+            self.setInactive(forLabel: self.actorLabel)
+            
+        case .kActor:
+            self.movieDot.isHidden = true
+            self.tvDot.isHidden = true
+            self.actorDot.isHidden = false
+            self.setInactive(forLabel: self.movielLabel)
+            self.setInactive(forLabel: self.tvLabel)
+            self.setActive(forLabel: self.actorLabel)
+        }
+        
         if searchPagerView != nil {
             searchPagerView.setupData(with: viewModel.getSearchObjects(isMovie: tag == .kMovie ? true : false),
                                       actors: viewModel.getSearchActors())
             searchPagerView.moveToScreen(at: tag)
+            NotificationCenter.default.post(name: Notification.Name("Did_change_list_search"), object: nil)
         }
     }
 }
@@ -158,15 +164,11 @@ extension SearchViewController: UITextFieldDelegate {
         }
         
         viewModel.searchAll(searchString, completion: {
-            self.handleResponseSearch()
+            self.moveToScreen(.kMovie)
         })
         
         textField.resignFirstResponder()
         return true
-    }
-    
-    private func handleResponseSearch() {
-        setupPager()
     }
 }
 

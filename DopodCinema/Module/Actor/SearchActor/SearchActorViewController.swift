@@ -14,6 +14,8 @@ protocol SearchActorViewDelegate: NSObjectProtocol {
 class SearchActorViewController: BaseViewController<SearchActorViewModel> {
 
     @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var emptySearchView: UIView!
+    @IBOutlet private weak var emptySearchLabel: UILabel!
     
     // MARK: - Properties
     weak var delegate: SearchActorViewDelegate?
@@ -26,15 +28,35 @@ class SearchActorViewController: BaseViewController<SearchActorViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name("Did_change_list_search"), object: nil)
+        
+        setupUI()
         setupCollectionView()
     }
 
+    private func setupUI() {
+        emptySearchLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        emptySearchLabel.textColor = .black
+        
+        emptySearchView.isHidden = !viewModel.getActorList().isEmpty
+    }
+    
     private func setupCollectionView() {
         collectionView.register(UINib(nibName: ActorCellIdentity, bundle: nil),
                                 forCellWithReuseIdentifier: ActorCellIdentity)
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 0, right: 16)
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+    
+    @objc
+    private func reloadData() {
+        emptySearchView.isHidden = !viewModel.getActorList().isEmpty
+        collectionView.reloadData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

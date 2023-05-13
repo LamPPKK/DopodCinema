@@ -15,8 +15,6 @@
                 <outlet property="actorLabel" destination="Kbm-1d-TWi" id="mld-3s-IE2"/>
                 <outlet property="actorView" destination="RaP-5x-PSD" id="9zE-sK-Dqq"/>
                 <outlet property="containerView" destination="Zp1-2G-rxZ" id="i08-fk-oaJ"/>
-                <outlet property="emptySearchLabel" destination="6se-5q-zgf" id="135-GZ-Vk7"/>
-                <outlet property="emptySearchView" destination="5Zd-tu-VCU" id="oOk-Od-27W"/>
                 <outlet property="movieDot" destination="ChD-1H-ezv" id="59e-by-cTv"/>
                 <outlet property="movieView" destination="D8B-9F-bg1" id="8gT-pf-GVJ"/>
                 <outlet property="movielLabel" destination="jdH-DC-wgx" id="YPg-y0-1MN"/>
@@ -150,43 +148,7 @@
                         </stackView>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zp1-2G-rxZ">
                             <rect key="frame" x="0.0" y="123" width="414" height="613"/>
-                            <subviews>
-                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Zd-tu-VCU">
-                                    <rect key="frame" x="97.666666666666686" y="172.66666666666666" width="219" height="267.66666666666674"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_round-saved-search" translatesAutoresizingMaskIntoConstraints="NO" id="8n4-qc-sa4">
-                                            <rect key="frame" x="16" y="8" width="187" height="187"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="187" id="FwD-hw-xbL"/>
-                                                <constraint firstAttribute="width" constant="187" id="y0C-mM-f8b"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search your Movie, TV Show or Actor" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6se-5q-zgf">
-                                            <rect key="frame" x="16" y="211" width="187" height="40.666666666666657"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="6se-5q-zgf" secondAttribute="bottom" constant="16" id="DaL-Qa-E2w"/>
-                                        <constraint firstItem="6se-5q-zgf" firstAttribute="top" secondItem="8n4-qc-sa4" secondAttribute="bottom" constant="16" id="GoG-I1-PhH"/>
-                                        <constraint firstItem="6se-5q-zgf" firstAttribute="leading" secondItem="8n4-qc-sa4" secondAttribute="leading" id="Gx2-4D-eLX"/>
-                                        <constraint firstItem="8n4-qc-sa4" firstAttribute="leading" secondItem="5Zd-tu-VCU" secondAttribute="leading" constant="16" id="PUJ-1u-p6H"/>
-                                        <constraint firstItem="8n4-qc-sa4" firstAttribute="centerX" secondItem="5Zd-tu-VCU" secondAttribute="centerX" id="ZqC-7g-8cq"/>
-                                        <constraint firstItem="8n4-qc-sa4" firstAttribute="top" secondItem="5Zd-tu-VCU" secondAttribute="top" constant="8" id="ciZ-zS-sjU"/>
-                                        <constraint firstItem="6se-5q-zgf" firstAttribute="trailing" secondItem="8n4-qc-sa4" secondAttribute="trailing" id="fOF-ae-yf7"/>
-                                        <constraint firstItem="6se-5q-zgf" firstAttribute="centerX" secondItem="8n4-qc-sa4" secondAttribute="centerX" id="gBQ-0H-dKh"/>
-                                        <constraint firstAttribute="trailing" secondItem="8n4-qc-sa4" secondAttribute="trailing" constant="16" id="hRc-yZ-iA3"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="5Zd-tu-VCU" firstAttribute="centerX" secondItem="Zp1-2G-rxZ" secondAttribute="centerX" id="VmY-DK-6kX"/>
-                                <constraint firstItem="5Zd-tu-VCU" firstAttribute="centerY" secondItem="Zp1-2G-rxZ" secondAttribute="centerY" id="lf4-JZ-K8a"/>
-                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -217,7 +179,6 @@
     </objects>
     <resources>
         <image name="ic_dot_nav" width="5" height="5"/>
-        <image name="ic_round-saved-search" width="187" height="187"/>
         <image name="ic_search" width="20.333333969116211" height="21"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
