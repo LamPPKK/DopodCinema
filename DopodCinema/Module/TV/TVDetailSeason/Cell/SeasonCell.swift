@@ -15,6 +15,8 @@ class SeasonCell: UICollectionViewCell {
     @IBOutlet private weak var posterImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     
+    let gradientLayer: CAGradientLayer = CAGradientLayer()
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -22,6 +24,7 @@ class SeasonCell: UICollectionViewCell {
         containerView.corner(radius: 8)
         nameLabel.textColor = .white
         nameLabel.font = .fontPoppinsRegular(withSize: 13)
+        
     }
     
     func bindData(_ data: SeasonObject) {
@@ -39,13 +42,24 @@ class SeasonCell: UICollectionViewCell {
         } else {
             deSelectedSeason()
         }
+        
+        gradientLayer.frame = self.bounds
+        posterImageView.layer.addSublayer(gradientLayer)
     }
     
     private func selectedSeason() {
         containerView.layer.borderWidth = 3
+        gradientLayer.colors = [
+            Constant.Color.color3D5BF6.withAlphaComponent(0).cgColor,
+            Constant.Color.color3D5BF6.cgColor
+        ]
     }
     
     private func deSelectedSeason() {
         containerView.layer.borderWidth = 0
+        gradientLayer.colors = [
+            UIColor.black.withAlphaComponent(0).cgColor,
+            UIColor.black.cgColor
+        ]
     }
 }
