@@ -49,8 +49,8 @@ extension ScrollTVDetailViewController: TVDetailContentViewControllerDelegate, T
         viewModel.gotoActorDetail(id)
     }
     
-    func gotoMovieDetailScreen(_ id: Int) {
-        viewModel.gotoMovieDetail(id)
+    func gotoTVDetailScreen(_ id: Int) {
+        viewModel.gotoTVDetail(id)
     }
     
     func gotoTrailerScreen() {

@@ -11,7 +11,7 @@ protocol TVGeneralViewControllerDelegate: NSObjectProtocol {
     func gotoYoutubeScreen(_ key: String)
     func gotoScreenShot(_ index: Int)
     func gotoActorDetailScreen(_ id: Int)
-    func gotoMovieDetailScreen(_ id: Int)
+    func gotoTVDetailScreen(_ id: Int)
     func gotoTrailerScreen()
 }
 
@@ -231,7 +231,7 @@ extension TVGeneralViewController: UICollectionViewDelegate {
             
         case .similarmovies:
             let id = tvDetailInfo.recommendations.results[indexPath.row].id
-            delegate?.gotoMovieDetailScreen(id)
+            delegate?.gotoTVDetailScreen(id)
             
         default:
             break

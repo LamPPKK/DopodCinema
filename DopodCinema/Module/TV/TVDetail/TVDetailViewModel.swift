@@ -86,13 +86,13 @@ class TVDetailViewModel {
         }
     }
     
-    func gotoMovieDetail(_ id: Int) {
+    func gotoTVDetail(_ id: Int) {
         LoadingView.shared.startLoading()
         
-        API.shared.getMovieDetail(with: id) { [weak self] movieDetailInfo in
+        API.shared.getTVShowDetail(with: id) { [weak self] tvShowDetail in
             guard let self = self else { return }
             
-            self.navigator.gotoMovieDetail(movieDetailInfo)
+            self.navigator.start(tvShowDetail)
             LoadingView.shared.endLoading()
         } error: { error in
             LoadingView.shared.endLoading()

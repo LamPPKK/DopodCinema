@@ -13,7 +13,6 @@ protocol TVDetailNavigator {
     func gotoTrailerScreen(with list: [VideoInfo])
     func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo])
     func gotoYoutubeScreen(_ key: String)
-    func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
 }
 
 class DefaultTVDetailNavigator: TVDetailNavigator {
@@ -51,10 +50,5 @@ class DefaultTVDetailNavigator: TVDetailNavigator {
         let youtubeScreen = YoutubeViewController(key: key)
         youtubeScreen.viewModel = BaseViewModel()
         navigationController.pushViewController(youtubeScreen, animated: true)
-    }
-    
-    func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {
-        let navigator = DefaultMovieDetailNavigator(navigationController: navigationController)
-        navigator.start(movieDetailInfo)
     }
 }
