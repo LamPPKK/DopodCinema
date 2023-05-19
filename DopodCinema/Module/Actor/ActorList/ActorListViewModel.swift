@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ActorListViewModel {
     // MARK: - Properties
@@ -39,6 +40,22 @@ class ActorListViewModel {
             LoadingView.shared.endLoading()
         } error: { error in
             LoadingView.shared.endLoading()
+        }
+    }
+    
+    func getActors(at page: Int, completion: @escaping (Bool) -> Void) {
+        API.shared.getActors(at: page) { [weak self] actors in
+            guard let self = self else {
+                return
+            }
+            
+            self.actorList.append(contentsOf: actors)
+            completion(true)
+        } error: { error in
+            if let topVC = UIApplication.getTopViewController() {
+                topVC.showAlert(msg: error.localizedDescription)
+            }
+            completion(false)
         }
     }
 }

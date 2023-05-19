@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActorListViewController" customModule="DopodCinema" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="JJ8-uB-pIQ" id="htr-1r-gzk"/>
+                <outlet property="loadingView" destination="dxb-6F-wSZ" id="QCR-2Z-q5f"/>
                 <outlet property="topConstraint" destination="k6t-UR-5VI" id="xPL-AW-cLb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,6 +34,9 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dxb-6F-wSZ">
+                            <rect key="frame" x="197" y="686" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -40,6 +44,8 @@
                         <constraint firstAttribute="bottom" secondItem="JJ8-uB-pIQ" secondAttribute="bottom" id="6D6-GK-y6x"/>
                         <constraint firstAttribute="trailing" secondItem="JJ8-uB-pIQ" secondAttribute="trailing" id="FyD-VE-FQs"/>
                         <constraint firstItem="JJ8-uB-pIQ" firstAttribute="leading" secondItem="mER-zu-GSV" secondAttribute="leading" id="kFY-eo-R2R"/>
+                        <constraint firstItem="dxb-6F-wSZ" firstAttribute="centerX" secondItem="mER-zu-GSV" secondAttribute="centerX" id="n83-a7-YL8"/>
+                        <constraint firstAttribute="bottom" secondItem="dxb-6F-wSZ" secondAttribute="bottom" constant="30" id="vPp-d4-Umn"/>
                     </constraints>
                 </view>
             </subviews>

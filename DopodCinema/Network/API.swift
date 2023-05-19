@@ -203,11 +203,13 @@ class API {
     }
     
     // MARK: - Get actors
-    func getActors(completion: @escaping ([ActorInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
+    func getActors(at page: Int = 1,
+                   completion: @escaping ([ActorInfo]) -> Void,
+                   error: @escaping (NetworkError) -> Void) {
         let parametters: [String: Any] = [
             "api_key": Constant.Network.API_KEY,
             "language": "en-US",
-            "page": 1
+            "page": page
         ]
 
         Network.get(URLPath.PersonPath.GET_PERSONS_POPULAR,

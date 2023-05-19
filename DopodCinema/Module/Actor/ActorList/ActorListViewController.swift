@@ -12,12 +12,14 @@ class ActorListViewController: BaseViewController<ActorListViewModel> {
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
     @IBOutlet private weak var collectionView: UICollectionView!
-    
+    @IBOutlet private weak var loadingView: UIActivityIndicatorView!
+
     // MARK: - Properties
     private let ActorCellIdentity: String = "ActorCell"
     private let itemsPerRow: CGFloat = 3
     private let heightPerItem: CGFloat = 175
     private let lineSpacing: CGFloat = 16
+    private var page: Int = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class ActorListViewController: BaseViewController<ActorListViewModel> {
         topConstraint.constant = Constant.HEIGHT_NAV
         setupSubHeader(with: viewModel.getNavigationTitle())
         
+        loadingView.isHidden = true
         setupCollectionView()
     }
     
@@ -58,6 +61,26 @@ extension ActorListViewController: UICollectionViewDataSource {
 extension ActorListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.gotoActorDetail(with: viewModel.getActorList()[indexPath.row].id)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == viewModel.getActorList().count - 1 {
+            loadingView.startAnimating()
+            loadingView.isHidden = false
+            loadMoreData(at: page)
+        } else {
+            loadingView.stopAnimating()
+            loadingView.isHidden = true
+        }
+    }
+    
+    private func loadMoreData(at page: Int) {
+        viewModel.getActors(at: page) { [weak self] isSucceeded in
+            if isSucceeded {
+                self?.collectionView.reloadData()
+                self?.page += 1
+            }
+        }
     }
 }
 
