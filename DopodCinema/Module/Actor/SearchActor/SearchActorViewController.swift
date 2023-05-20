@@ -50,7 +50,11 @@ class SearchActorViewController: BaseViewController<SearchActorViewModel> {
     }
     
     @objc
-    private func reloadData() {
+    private func reloadData(_ notification: Notification) {
+        if let keySearch = notification.userInfo?["key_search"] as? String {
+            emptySearchLabel.text = "No results for \"\(keySearch)\""
+        }
+        
         emptySearchView.isHidden = !viewModel.getActorList().isEmpty
         collectionView.reloadData()
     }

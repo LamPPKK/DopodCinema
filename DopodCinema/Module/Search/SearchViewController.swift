@@ -28,6 +28,8 @@ class SearchViewController: BaseViewController<SearchViewModel> {
     // MARK: - Properties
     var searchPagerView: SearchPagerViewController!
     
+    private var searchString: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -148,7 +150,12 @@ class SearchViewController: BaseViewController<SearchViewModel> {
             searchPagerView.setupData(with: viewModel.getSearchObjects(isMovie: tag == .kMovie ? true : false),
                                       actors: viewModel.getSearchActors())
             searchPagerView.moveToScreen(at: tag)
-            NotificationCenter.default.post(name: Notification.Name("Did_change_list_search"), object: nil)
+            
+            let searchDict: [String: String] = [
+                "key_search": searchString
+            ]
+            
+            NotificationCenter.default.post(name: Notification.Name("Did_change_list_search"), object: nil, userInfo: searchDict)
         }
     }
 }
@@ -156,7 +163,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
 extension SearchViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        let searchString: String = textField.text ?? String.empty
+        searchString = textField.text ?? String.empty
         
         if searchString.isEmpty {
             textField.resignFirstResponder()
