@@ -28,13 +28,13 @@ class LoadingView {
         blurView.effect = UIBlurEffect(style: .dark)
         setupLoadingView()
         setupAnimationView()
-        setupLoadingLabel(loadingText: loadingText)
+//        setupLoadingLabel(loadingText: loadingText)
     }
    
     private func setupLoadingView() {
         blurView.contentView.addSubview(loadingView)
         loadingView.translatesAutoresizingMaskIntoConstraints = false
-        loadingView.backgroundColor = .white
+//        loadingView.backgroundColor = .white
         loadingView.layer.cornerRadius = 75
         loadingView.layer.masksToBounds = true
         let constraints = [
