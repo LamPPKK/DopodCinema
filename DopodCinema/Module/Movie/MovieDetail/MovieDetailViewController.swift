@@ -84,7 +84,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         playView.layer.cornerRadius = playView.frame.height / 2
         playView.backgroundColor = Constant.Color.color3D5BF6
         
-        playLabel.text = "Play movie"
+        playLabel.text = "Play trailers"
         playLabel.font = .fontPoppinsMedium(withSize: 13)
         playLabel.textColor = .white
         
