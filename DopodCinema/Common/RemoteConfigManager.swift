@@ -22,7 +22,7 @@ class RemoteConfigManager {
     
     func loadDefaultValues() {
         let appDefaults: [String: Any?] = [
-            RemoteConfigKey.timeShowFull.rawValue: "2023-1-1"
+            RemoteConfigKey.timeShowFull.rawValue: 1684729650
         ]
         
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
@@ -54,5 +54,10 @@ class RemoteConfigManager {
 
     func string(forKey key: RemoteConfigKey) -> String {
       RemoteConfig.remoteConfig()[key.rawValue].stringValue ?? ""
+    }
+    
+    func double(forKey key: RemoteConfigKey) -> Double {
+        let numberValue = RemoteConfig.remoteConfig()[key.rawValue].numberValue
+        return numberValue.doubleValue
     }
 }

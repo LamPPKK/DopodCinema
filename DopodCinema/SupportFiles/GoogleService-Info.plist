@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>995915567682-k8390ca4n60b983tck2isaevho8br999.apps.googleusercontent.com</string>
+	<string>628349232930-cb9n681rj0jb6n1ek8vk2d1hu160djd5.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.995915567682-k8390ca4n60b983tck2isaevho8br999</string>
+	<string>com.googleusercontent.apps.628349232930-cb9n681rj0jb6n1ek8vk2d1hu160djd5</string>
 	<key>API_KEY</key>
-	<string>AIzaSyA2G_HPpFZvgfg6OYLgkNxQKKGj0xpaFNc</string>
+	<string>AIzaSyCs_px0vkZggD--fblixv4mxuZGpyzNSV0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>995915567682</string>
+	<string>628349232930</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.uxim.ehtmovies.box</string>
+	<string>com.dopod.shows.cinema</string>
 	<key>PROJECT_ID</key>
-	<string>uxim-box-tsa-the</string>
+	<string>dopodcinema-tsa-theln</string>
 	<key>STORAGE_BUCKET</key>
-	<string>uxim-box-tsa-the.appspot.com</string>
+	<string>dopodcinema-tsa-theln.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:995915567682:ios:ff251ce2e011209efed3db</string>
+	<string>1:628349232930:ios:19884701dbaa81e305677b</string>
 </dict>
 </plist>

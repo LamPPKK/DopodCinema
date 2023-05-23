@@ -94,8 +94,6 @@ class MovieDetailViewModel {
     }
     
     func actionPlay() {
-        RemoteConfigManager.shared.fetchCloudValues()
-        
         if Utils.isShowFull() {
             gotoPlayScreen()
         } else {

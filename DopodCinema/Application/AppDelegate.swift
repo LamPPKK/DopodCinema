@@ -25,7 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         FirebaseApp.configure()
-        _ = RemoteConfigManager.shared
+        let remoteConfig = RemoteConfigManager.shared
+        remoteConfig.fetchCloudValues()
         
         let navigationViewController = UINavigationController(rootViewController: HomeScreen())
         window?.rootViewController = navigationViewController
