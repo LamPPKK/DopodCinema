@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class SeasonObject {
     let id: Int
@@ -90,5 +91,24 @@ class TVDetailSeasonViewModel {
             completion()
             LoadingView.shared.endLoading()
         }
+    }
+    
+    func getFullEpisode(_ seasonName: String,
+                        episode: Int,
+                        completion: @escaping (LinkContainerInfo) -> Void) {
+        LoadingView.shared.startLoading()
+        
+        API.shared.getLinkTVShow(with: self.tvDetailInfo.original_name,
+                                 seasonName: seasonName,
+                                 episode: episode,
+                                 completion: { linkInfo in
+            completion(linkInfo)
+            LoadingView.shared.endLoading()
+        }, error: { _ in
+            if let topVC = UIApplication.getTopViewController() {
+                topVC.showAlert(with: "Notification", msg: "The resource you requested could not be found.")
+            }
+            LoadingView.shared.endLoading()
+        })
     }
 }

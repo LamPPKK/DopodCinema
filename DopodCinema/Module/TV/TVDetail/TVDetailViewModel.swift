@@ -101,4 +101,9 @@ class TVDetailViewModel {
             }
         }
     }
+    
+    func showFullEpisode(_ linkInfo: LinkContainerInfo) {
+        navigator.gotoWatchScreen(posterPath: tvDetailInfo.poster_path ?? .empty,
+                                  linkContainerInfo: linkInfo)
+    }
 }

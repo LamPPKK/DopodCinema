@@ -195,7 +195,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
                        isDetail: true,
                        isSave: viewModel.isFavourite(movieDetailInfo.id))
         
-        if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path)) {
+        if let url = URL(string: Utils.getPosterPath(movieDetailInfo.poster_path, size: .w342)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
         } else {

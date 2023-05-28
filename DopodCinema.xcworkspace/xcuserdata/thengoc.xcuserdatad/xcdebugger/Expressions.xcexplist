@@ -3,7 +3,23 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "closure #1 in ShowTimeViewModel.handleListCinema(with:completion:):ShowTimeViewModel.swift">
+         contextName = "SearchPagerViewController.moveToScreen(at:):SearchPagerViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.searchObjects">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TVDetailSeasonViewModel.getFullEpisode(_:episode:):TVDetailSeasonViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tvDetailInfo">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TVDetailViewModel.gotoTrailerScreen():TVDetailViewModel.swift">
       </ContextState>
       <ContextState
          contextName = "TVDetailSeasonViewController.seasonHorizontalCell(for:indexPath:):TVDetailSeasonViewController.swift">
@@ -65,12 +81,7 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "SearchPagerViewController.moveToScreen(at:):SearchPagerViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.searchObjects">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "closure #1 in ShowTimeViewModel.handleListCinema(with:completion:):ShowTimeViewModel.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

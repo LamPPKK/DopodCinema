@@ -91,7 +91,7 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
                        isDetail: true,
                        isSave: viewModel.isFavourite(viewModel.getTVDetailInfo().id))
         
-        if let url = URL(string: Utils.getPosterPath(viewModel.getTVDetailInfo().poster_path)) {
+        if let url = URL(string: Utils.getPosterPath(viewModel.getTVDetailInfo().poster_path, size: .w342)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
         } else {

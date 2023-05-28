@@ -15,6 +15,7 @@ protocol TVDetailContentViewControllerDelegate: NSObjectProtocol {
     func gotoActorDetailScreen(_ id: Int)
     func gotoTVDetailScreen(_ id: Int)
     func gotoTrailerScreen()
+    func showFullEpisode(_ linkInfo: LinkContainerInfo)
 }
 
 class TVDetailContentViewController: UIViewController {
@@ -98,6 +99,7 @@ class TVDetailContentViewController: UIViewController {
         }
         
         tvSeasonVC = TVDetailSeasonViewController(nibName: "TVDetailSeasonViewController", bundle: nil)
+        tvSeasonVC.delegate = self
         tvSeasonVC.viewModel = TVDetailSeasonViewModel(tvDetailInfo: tvDetailInfo)
         tvSeasonVC.view.frame = containerView.bounds
         addChild(tvSeasonVC)
@@ -157,5 +159,11 @@ extension TVDetailContentViewController: TVGeneralViewControllerDelegate {
     
     func gotoTVDetailScreen(_ id: Int) {
         delegate?.gotoTVDetailScreen(id)
+    }
+}
+
+extension TVDetailContentViewController: TVDetailSeasonViewControllerDelegate {
+    func showFullEpisode(_ linkInfo: LinkContainerInfo) {
+        delegate?.showFullEpisode(linkInfo)
     }
 }

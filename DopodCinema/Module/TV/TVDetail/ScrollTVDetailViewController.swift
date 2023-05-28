@@ -56,4 +56,8 @@ extension ScrollTVDetailViewController: TVDetailContentViewControllerDelegate, T
     func gotoTrailerScreen() {
         viewModel.gotoTrailerScreen()
     }
+    
+    func showFullEpisode(_ linkInfo: LinkContainerInfo) {
+        viewModel.showFullEpisode(linkInfo)
+    }
 }

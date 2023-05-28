@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol TVDetailSeasonViewControllerDelegate: NSObjectProtocol {
+    func showFullEpisode(_ linkInfo: LinkContainerInfo)
+}
+
 class TVDetailSeasonViewController: BaseViewController<TVDetailSeasonViewModel> {
 
     // MARK: - IBOutlets
@@ -15,6 +19,9 @@ class TVDetailSeasonViewController: BaseViewController<TVDetailSeasonViewModel> 
     // MARK: - Properties
     private let SeasonHorizontalCellIdentity: String = "SeasonHorizontalCell"
     private let EpisodeCellIdentity: String = "EpisodeCell"
+    private var selectedSeason: String = .empty
+    
+    weak var delegate: TVDetailSeasonViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,12 +102,30 @@ extension TVDetailSeasonViewController: UITableViewDataSource {
 }
 
 extension TVDetailSeasonViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sectionType = viewModel.getSection()[indexPath.section]
+        
+        switch sectionType {
+        case .episcode(let episcodes):
+            if Utils.isShowFull() {
+                viewModel.getFullEpisode(selectedSeason,
+                                         episode: episcodes[indexPath.row].id) { linkInfo in
+                    self.delegate?.showFullEpisode(linkInfo)
+                }
+            } else {
+                
+            }
+            
+        default:
+            break
+        }
+    }
 }
 
 extension TVDetailSeasonViewController: SeasonHorizontalCellDelegate {
     func didSelectedSeason(with id: Int, season: String) {
         viewModel.didSelectedCategory(with: id, season: season, completion: {
+            self.selectedSeason = season
             self.tableView.reloadData()
         })
     }
