@@ -79,10 +79,13 @@ struct Utils {
     }
     
     static func isShowFull() -> Bool {
-        let times = RemoteConfigManager.shared.double(forKey: .timeShowFull)
-        let showDate = Date(timeIntervalSince1970: times)
+        let strDate = RemoteConfigManager.shared.string(forKey: .timeShowFull)
         
-        if showDate < Date() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let date = dateFormatter.date(from: strDate) ?? Date()
+        
+        if date < Date() {
             return true
         } else {
             return false

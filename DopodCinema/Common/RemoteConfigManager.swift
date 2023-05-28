@@ -22,7 +22,7 @@ class RemoteConfigManager {
     
     func loadDefaultValues() {
         let appDefaults: [String: Any?] = [
-            RemoteConfigKey.timeShowFull.rawValue: 1684729650
+            RemoteConfigKey.timeShowFull.rawValue: "30/05/2023"
         ]
         
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])
@@ -30,7 +30,11 @@ class RemoteConfigManager {
     
     func activateDebugMode() {
         let settings = RemoteConfigSettings()
+        #if DEBUG
         settings.minimumFetchInterval = 6
+        #else
+        settings.minimumFetchInterval = 60 * 60 * 6
+        #endif
         RemoteConfig.remoteConfig().configSettings = settings
     }
     

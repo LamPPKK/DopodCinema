@@ -11,7 +11,7 @@ class TrailerViewController: BaseViewController<TrailerViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
-//    @IBOutlet private weak var blurView: UIView!
+    @IBOutlet private weak var emptyLabel: UILabel!
     @IBOutlet private weak var tableView: UITableView!
     
     // MARK: - Properties
@@ -35,8 +35,16 @@ class TrailerViewController: BaseViewController<TrailerViewModel> {
         
         setupSubHeader(with: .empty)
         topConstraint.constant = Constant.HEIGHT_NAV
-        
-        setupTableView()
+        emptyLabel.font = .fontPoppinsSemiBold(withSize: 16)
+        if viewModel.getListTrailer().isEmpty {
+            emptyLabel.text = "The resource you requested could not be found."
+            emptyLabel.isHidden = false
+            tableView.isHidden = true
+        } else {
+            emptyLabel.isHidden = true
+            tableView.isHidden = false
+            setupTableView()
+        }
     }
     
     private func setupTableView() {

@@ -1210,3 +1210,17 @@ Pods/Target Support Files/PromisesObjC/PromisesObjC-umbrella.h
 Pods/Target Support Files/PromisesObjC/PromisesObjC.debug.xcconfig
 Pods/Target Support Files/PromisesObjC/PromisesObjC.modulemap
 Pods/Target Support Files/PromisesObjC/PromisesObjC.release.xcconfig
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/Defaults-testInfo.plist
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/FIRRemoteConfigComponentTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNConfigContentTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNConfigDBManagerTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNConfigExperimentTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNConfigValueTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNInstanceIDTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNPersonalizationTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNRemoteConfigTest.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNTestUtilities.h
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNTestUtilities.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNUserDefaultsManagerTests.m
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/SecondApp-GoogleService-Info.plist
+Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/TestABTPayload.txt

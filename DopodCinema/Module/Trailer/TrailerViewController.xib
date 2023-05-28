@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TrailerViewController" customModule="DopodCinema" customModuleProvider="target">
             <connections>
+                <outlet property="emptyLabel" destination="NYq-8l-mxq" id="STo-fp-Htp"/>
                 <outlet property="tableView" destination="JKb-aa-ZMC" id="GRH-IX-Thq"/>
                 <outlet property="topConstraint" destination="bAh-qr-LDu" id="Y4n-2d-iJs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,6 +24,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mDQ-Hu-T5P">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYq-8l-mxq">
+                            <rect key="frame" x="36" y="358" width="342" height="20.333333333333314"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="JKb-aa-ZMC">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -31,9 +38,12 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="JKb-aa-ZMC" secondAttribute="trailing" id="9eJ-3e-nBD"/>
+                        <constraint firstItem="NYq-8l-mxq" firstAttribute="leading" secondItem="mDQ-Hu-T5P" secondAttribute="leading" constant="36" id="EIa-H0-F0r"/>
+                        <constraint firstAttribute="trailing" secondItem="NYq-8l-mxq" secondAttribute="trailing" constant="36" id="P0k-Rz-6AI"/>
                         <constraint firstAttribute="bottom" secondItem="JKb-aa-ZMC" secondAttribute="bottom" id="Q2e-oe-q4U"/>
                         <constraint firstItem="JKb-aa-ZMC" firstAttribute="leading" secondItem="mDQ-Hu-T5P" secondAttribute="leading" id="Qwg-eU-lPj"/>
                         <constraint firstItem="JKb-aa-ZMC" firstAttribute="top" secondItem="mDQ-Hu-T5P" secondAttribute="top" id="bAh-qr-LDu"/>
+                        <constraint firstItem="NYq-8l-mxq" firstAttribute="centerY" secondItem="mDQ-Hu-T5P" secondAttribute="centerY" id="oDA-GH-sgH"/>
                     </constraints>
                 </view>
             </subviews>

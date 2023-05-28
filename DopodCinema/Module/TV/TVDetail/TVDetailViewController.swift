@@ -105,10 +105,6 @@ class TVDetailViewController: BaseViewController<TVDetailViewModel> {
     }
     
     private func actionPlay() {
-//        if Utils.isShowFull() {
-//
-//        } else {
-            delegate?.gotoTrailerScreen()
-//        }
+        delegate?.gotoTrailerScreen()
     }
 }
