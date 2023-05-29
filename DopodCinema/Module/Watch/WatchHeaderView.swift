@@ -14,7 +14,7 @@ class WatchHeaderView: BaseViewController<BaseViewModel> {
     @IBOutlet private weak var posterMovie: UIImageView!
     @IBOutlet private weak var heightOfView: NSLayoutConstraint!
     
-    init(posterPath: String) {
+    init(posterPath: String?) {
         self.posterPath = posterPath
         super.init(nibName: "WatchHeaderView", bundle: nil)
     }
@@ -42,9 +42,9 @@ class WatchHeaderView: BaseViewController<BaseViewModel> {
     
     private func fillData() {
         if let url = URL(string: Utils.getPosterPath(self.posterPath, size: .w500)) {
-            posterMovie.sd_setImage(with: url, placeholderImage: UIImage(named: "ic_movie"))
+            posterMovie.sd_setImage(with: url, placeholderImage: UIImage(named: "ic_loading"))
         } else {
-            posterMovie.image = UIImage(named: "ic_movie")
+            posterMovie.image = UIImage(named: "ic_loading")
         }
     }
 }

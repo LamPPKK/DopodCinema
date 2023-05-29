@@ -9,6 +9,7 @@ import UIKit
 
 protocol TVDetailSeasonViewControllerDelegate: NSObjectProtocol {
     func showFullEpisode(_ linkInfo: LinkContainerInfo)
+    func showSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo)
 }
 
 class TVDetailSeasonViewController: BaseViewController<TVDetailSeasonViewModel> {
@@ -113,7 +114,7 @@ extension TVDetailSeasonViewController: UITableViewDelegate {
                     self.delegate?.showFullEpisode(linkInfo)
                 }
             } else {
-                
+                self.delegate?.showSeasonOverView(viewModel.getSeasonDetailInfo())
             }
             
         default:

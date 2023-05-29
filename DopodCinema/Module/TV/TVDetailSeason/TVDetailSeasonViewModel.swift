@@ -33,6 +33,13 @@ class TVDetailSeasonViewModel {
     private var tvDetailInfo: TVShowDetailInfo
     private var seasonsObject: [SeasonObject] = []
     private var episodes: [EpiscodeInfo] = []
+    private var seasonDetail: SeasonDetailInfo = .init(id: 0,
+                                                       air_date: "",
+                                                       name: "",
+                                                       overview: "",
+                                                       poster_path: "",
+                                                       episodes: [],
+                                                       credits: .init(cast: []))
     
     init(tvDetailInfo: TVShowDetailInfo) {
         self.tvDetailInfo = tvDetailInfo
@@ -84,6 +91,7 @@ class TVDetailSeasonViewModel {
                 return
             }
             
+            self.seasonDetail = seasonDetailInfo
             self.episodes = seasonDetailInfo.episodes
             completion()
             LoadingView.shared.endLoading()
@@ -110,5 +118,9 @@ class TVDetailSeasonViewModel {
             }
             LoadingView.shared.endLoading()
         })
+    }
+    
+    func getSeasonDetailInfo() -> SeasonDetailInfo {
+        self.seasonDetail
     }
 }

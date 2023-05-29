@@ -53,6 +53,7 @@ struct SeasonDetailInfo: Codable {
     let overview: String
     let poster_path: String?
     let episodes: [EpiscodeInfo]
+    let credits: CreditsInfo
 }
 
 // MARK: - Episcode Info

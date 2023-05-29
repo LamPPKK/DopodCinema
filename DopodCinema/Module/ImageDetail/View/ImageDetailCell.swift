@@ -34,9 +34,9 @@ class ImageDetailCell: UICollectionViewCell {
     
     func bindData(_ imageObject: ImageInfo) {
         if let url = URL(string: Utils.getPosterPath(imageObject.file_path, size: .w500)) {
-            detailImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "ic_movie"))
+            detailImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "ic_loading"))
         } else {
-            detailImageView.image = UIImage(named: "ic_movie")
+            detailImageView.image = UIImage(named: "ic_loading")
         }
     }
 }

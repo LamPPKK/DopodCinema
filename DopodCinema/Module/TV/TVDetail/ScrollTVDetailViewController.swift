@@ -60,4 +60,8 @@ extension ScrollTVDetailViewController: TVDetailContentViewControllerDelegate, T
     func showFullEpisode(_ linkInfo: LinkContainerInfo) {
         viewModel.showFullEpisode(linkInfo)
     }
+    
+    func showSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo) {
+        viewModel.showSeasonOverView(seasonDetailInfo)
+    }
 }

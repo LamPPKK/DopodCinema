@@ -106,4 +106,8 @@ class TVDetailViewModel {
         navigator.gotoWatchScreen(posterPath: tvDetailInfo.poster_path ?? .empty,
                                   linkContainerInfo: linkInfo)
     }
+    
+    func showSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo) {
+        navigator.gotoSeasonOverView(seasonDetailInfo)
+    }
 }

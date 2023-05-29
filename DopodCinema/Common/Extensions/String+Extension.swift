@@ -31,4 +31,19 @@ extension String {
             return String.empty
         }
     }
+    
+    // MARK: - Example 1999-04-05 -> 05/04/1999
+    func convertDateToDDMMYYYY() -> Self {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "dd/MM/yyyy"
+        
+        if let date = dateFormatterGet.date(from: self) {
+            return dateFormatterPrint.string(from: date)
+        } else {
+            return String.empty
+        }
+    }
 }
