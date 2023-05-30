@@ -1,5 +1,5 @@
 //
-//  TVSeasonOverViewScreen.swift
+//  EpisodeOverViewScreen.swift
 //  DopodCinema
 //
 //  Created by The Ngoc on 2023/05/29.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TVSeasonOverViewScreen: BaseViewController<TVSeasonOverViewModel> {
+class EpisodeOverViewScreen: BaseViewController<EpisodeOverViewModel> {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var topConstraint: NSLayoutConstraint!
@@ -54,20 +54,20 @@ class TVSeasonOverViewScreen: BaseViewController<TVSeasonOverViewModel> {
     }
     
     private func bindData() {
-        setupSubHeader(with: viewModel.getSeasonDetailInfo().name)
+        setupSubHeader(with: viewModel.getEpiscodeInfo().name)
         
-        if let url =  URL(string: Utils.getPosterPath(viewModel.getSeasonDetailInfo().poster_path, size: .w500)) {
+        if let url =  URL(string: Utils.getPosterPath(viewModel.getEpiscodeInfo().still_path, size: .w500)) {
             posterImageView.sd_setImage(with: url,
                                         placeholderImage: UIImage(named: "ic_loading"))
         } else {
             posterImageView.image = UIImage(named: "ic_loading")
         }
         
-        nameLabel.text = viewModel.getSeasonDetailInfo().name
-        timeLabel.text = viewModel.getSeasonDetailInfo().air_date?.convertDateToDDMMYYYY()
-        overViewLabel.text = viewModel.getSeasonDetailInfo().overview
+        nameLabel.text = viewModel.getEpiscodeInfo().name
+        timeLabel.text = viewModel.getEpiscodeInfo().air_date?.convertDateToDDMMYYYY()
+        overViewLabel.text = viewModel.getEpiscodeInfo().overview
         
-        if viewModel.getSeasonDetailInfo().credits.cast.isEmpty {
+        if viewModel.getEpiscodeInfo().guest_stars.isEmpty {
             heightStartingView.constant = 0
         } else {
             startingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
@@ -80,16 +80,16 @@ class TVSeasonOverViewScreen: BaseViewController<TVSeasonOverViewModel> {
     }
 }
 
-extension TVSeasonOverViewScreen: UICollectionViewDataSource {
+extension EpisodeOverViewScreen: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getSeasonDetailInfo().credits.cast.count
+        return viewModel.getEpiscodeInfo().guest_stars.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return startingCell(for: collectionView,
                             indexPath: indexPath,
-                            actings: viewModel.getSeasonDetailInfo().credits.cast)
+                            actings: viewModel.getEpiscodeInfo().guest_stars)
     }
     
     private func startingCell(for collectionView: UICollectionView,
@@ -102,7 +102,7 @@ extension TVSeasonOverViewScreen: UICollectionViewDataSource {
     }
 }
 
-extension TVSeasonOverViewScreen: UICollectionViewDelegateFlowLayout {
+extension EpisodeOverViewScreen: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 80, height: 76)
     }
@@ -112,9 +112,9 @@ extension TVSeasonOverViewScreen: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension TVSeasonOverViewScreen: UICollectionViewDelegate {
+extension EpisodeOverViewScreen: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let id = viewModel.getSeasonDetailInfo().credits.cast[indexPath.row].id
+        let id = viewModel.getEpiscodeInfo().guest_stars[indexPath.row].id
         viewModel.showActorDetailInfo(with: id)
     }
 }

@@ -65,6 +65,17 @@ struct EpiscodeInfo: Codable {
     let still_path: String?
     let air_date: String?
     let runtime: Int?
+    let guest_stars: [CastInfo]
+}
+
+// MARK: - Crew
+struct Crew: Codable {
+    let credit_id: String
+    let id: Int
+    let name: String
+    let originalName: String
+    let popularity: Double
+    let profilePath: String?
 }
 
 struct TVShowsPopularInfo: Codable {

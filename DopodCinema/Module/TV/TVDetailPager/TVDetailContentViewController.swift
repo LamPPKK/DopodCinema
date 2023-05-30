@@ -16,7 +16,7 @@ protocol TVDetailContentViewControllerDelegate: NSObjectProtocol {
     func gotoTVDetailScreen(_ id: Int)
     func gotoTrailerScreen()
     func showFullEpisode(_ linkInfo: LinkContainerInfo)
-    func showSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo)
+    func showEpisodeOverView(_ episcodeInfo: EpiscodeInfo)
 }
 
 class TVDetailContentViewController: UIViewController {
@@ -168,7 +168,7 @@ extension TVDetailContentViewController: TVDetailSeasonViewControllerDelegate {
         delegate?.showFullEpisode(linkInfo)
     }
     
-    func showSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo) {
-        delegate?.showSeasonOverView(seasonDetailInfo)
+    func showEpisodeOverView(_ episcodeInfo: EpiscodeInfo) {
+        delegate?.showEpisodeOverView(episcodeInfo)
     }
 }

@@ -14,7 +14,7 @@ protocol TVDetailNavigator {
     func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo])
     func gotoYoutubeScreen(_ key: String)
     func gotoWatchScreen(posterPath: String, linkContainerInfo: LinkContainerInfo)
-    func gotoSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo)
+    func gotoEpisodeOverView(_ episcodeInfo: EpiscodeInfo)
 }
 
 class DefaultTVDetailNavigator: TVDetailNavigator {
@@ -60,8 +60,8 @@ class DefaultTVDetailNavigator: TVDetailNavigator {
         navigationController.pushViewController(watchScreen, animated: true)
     }
     
-    func gotoSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo) {
-        let navigator = DefaultTVSeasonOverViewNavigator(navigationController: navigationController)
-        navigator.start(seasonDetailInfo)
+    func gotoEpisodeOverView(_ episcodeInfo: EpiscodeInfo) {
+        let navigator = DefaultEpisodeOverViewNavigator(navigationController: navigationController)
+        navigator.start(episcodeInfo)
     }
 }

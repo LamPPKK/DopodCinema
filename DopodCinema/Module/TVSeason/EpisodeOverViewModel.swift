@@ -1,5 +1,5 @@
 //
-//  TVSeasonOverViewModel.swift
+//  EpisodeOverViewModel.swift
 //  DopodCinema
 //
 //  Created by The Ngoc on 2023/05/29.
@@ -7,19 +7,19 @@
 
 import Foundation
 
-class TVSeasonOverViewModel {
+class EpisodeOverViewModel {
     
-    private var navigator: TVSeasonOverViewNavigator
-    private var seasonDetailInfo: SeasonDetailInfo
+    private var navigator: EpisodeOverViewNavigator
+    private var episodeInfo: EpiscodeInfo
     
-    init(navigator: TVSeasonOverViewNavigator,
-         seasonDetailInfo: SeasonDetailInfo) {
+    init(navigator: EpisodeOverViewNavigator,
+         episodeInfo: EpiscodeInfo) {
         self.navigator = navigator
-        self.seasonDetailInfo = seasonDetailInfo
+        self.episodeInfo = episodeInfo
     }
     
-    func getSeasonDetailInfo() -> SeasonDetailInfo {
-        self.seasonDetailInfo
+    func getEpiscodeInfo() -> EpiscodeInfo {
+        self.episodeInfo
     }
     
     func showActorDetailInfo(with id: Int) {

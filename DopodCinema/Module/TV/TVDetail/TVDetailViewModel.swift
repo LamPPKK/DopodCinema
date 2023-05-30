@@ -107,7 +107,7 @@ class TVDetailViewModel {
                                   linkContainerInfo: linkInfo)
     }
     
-    func showSeasonOverView(_ seasonDetailInfo: SeasonDetailInfo) {
-        navigator.gotoSeasonOverView(seasonDetailInfo)
+    func showEpisodeOverView(_ episcodeInfo: EpiscodeInfo) {
+        navigator.gotoEpisodeOverView(episcodeInfo)
     }
 }
