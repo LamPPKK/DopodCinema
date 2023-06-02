@@ -24,7 +24,7 @@ class NewHorizontallCell: UITableViewCell {
     
     // MARK: - Properties
     private let NewCellIdentity: String = "NewCell"
-    private let startIndexDisplay: Int = 10
+    private let startIndexDisplay: Int = 15
     
     weak var delegate: NewHorizontallCellDelegate?
     private var screenType: ScreenType!
@@ -59,12 +59,12 @@ extension NewHorizontallCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch screenType {
         case .movie:
-            let numberItemDisplay: Int = movies.count - 5
-            return numberItemDisplay > 5 ? 5 : numberItemDisplay
+            let numberItemDisplay: Int = movies.count
+            return numberItemDisplay > 15 ? 15 : numberItemDisplay
             
         case .tv:
-            let numberItemDisplay: Int = tvShows.count - 5
-            return numberItemDisplay > 5 ? 5 : numberItemDisplay
+            let numberItemDisplay: Int = tvShows.count
+            return numberItemDisplay > 15 ? 15 : numberItemDisplay
             
         default:
             return 0
@@ -76,9 +76,9 @@ extension NewHorizontallCell: UICollectionViewDataSource {
         var posterPath: String?
         
         if screenType == .movie {
-            posterPath = movies[indexPath.row + startIndexDisplay].poster_path
+            posterPath = movies[indexPath.row].poster_path
         } else {
-            posterPath = tvShows[indexPath.row + startIndexDisplay].poster_path
+            posterPath = tvShows[indexPath.row].poster_path
         }
         
         cell.bindData(posterPath)
@@ -89,9 +89,9 @@ extension NewHorizontallCell: UICollectionViewDataSource {
 extension NewHorizontallCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if screenType == .movie {
-            delegate?.selectedMovie(movies[indexPath.row + startIndexDisplay].id)
+            delegate?.selectedMovie(movies[indexPath.row].id)
         } else {
-            delegate?.selectedTV(tvShows[indexPath.row + startIndexDisplay].id)
+            delegate?.selectedTV(tvShows[indexPath.row].id)
         }
     }
 }

@@ -40,7 +40,7 @@ class CategoryHorizontalCell: UITableViewCell {
 // MARK: - Extension UICollectionView
 extension CategoryHorizontalCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count > 5 ? 5 : categories.count
+        return categories.count > 15 ? 15 : categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

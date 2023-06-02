@@ -41,7 +41,7 @@ class ActorHorizontallCell: UITableViewCell {
 // MARK: - Extension UICollectionView
 extension ActorHorizontallCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return actors.count > 5 ? 5 : actors.count
+        return actors.count > 15 ? 15 : actors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

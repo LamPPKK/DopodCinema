@@ -18,6 +18,8 @@ class TopCell: UICollectionViewCell {
     @IBOutlet private weak var categoryView: UIView!
     @IBOutlet private weak var categoryLabel: UILabel!
     
+    let gradientLayer: CAGradientLayer = CAGradientLayer()
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -47,5 +49,13 @@ class TopCell: UICollectionViewCell {
         
         categoryLabel.text = category
         nameLabel.text = name
+        
+        gradientLayer.colors = [
+            Constant.Color.color3D5BF6.withAlphaComponent(0).cgColor,
+            Constant.Color.color3D5BF6.cgColor
+        ]
+        
+        gradientLayer.frame = self.bounds
+        posterImageView.layer.addSublayer(gradientLayer)
     }
 }
