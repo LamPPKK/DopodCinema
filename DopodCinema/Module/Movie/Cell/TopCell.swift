@@ -51,7 +51,7 @@ class TopCell: UICollectionViewCell {
         nameLabel.text = name
         
         gradientLayer.colors = [
-            Constant.Color.color3D5BF6.withAlphaComponent(0).cgColor,
+            UIColor.clear.cgColor,
             Constant.Color.color3D5BF6.cgColor
         ]
         
