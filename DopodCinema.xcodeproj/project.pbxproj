@@ -1575,8 +1575,8 @@
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "DopodCinema would like to request location permission";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DopodCinema would like to request location permission";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1608,8 +1608,8 @@
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
-				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "DopodCinema would like to request location permission";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DopodCinema would like to request location permission";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

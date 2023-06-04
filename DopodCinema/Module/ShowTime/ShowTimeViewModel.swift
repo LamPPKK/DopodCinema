@@ -94,7 +94,7 @@ class ShowTimeViewModel {
             let movies: [MovieCinemaInfo] = times.first?.movies ?? []
             self.handleListCinema(with: movies,
                                   completion: {
-                self.navigator.gotoCinemaScreen(with: self.listMovieCinema)
+                self.navigator.gotoCinemaScreen(with: name, movies: self.listMovieCinema)
                 completion(.empty)
                 LoadingView.shared.endLoading()
             })

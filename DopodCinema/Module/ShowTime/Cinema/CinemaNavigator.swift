@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol CinemaNavigator {
-    func start(with movies: [MovieCinema])
+    func start(with cinemaName: String, movies: [MovieCinema])
 }
 
 class DefaultCinemaNavigator: CinemaNavigator {
@@ -20,9 +20,10 @@ class DefaultCinemaNavigator: CinemaNavigator {
         self.navigationController = navigationController
     }
     
-    func start(with movies: [MovieCinema]) {
-        let scrollCinemaVC = ScrollCinemaViewController(nibName: "ScrollCinemaViewController", bundle: nil)
-        scrollCinemaVC.moviesCinema = movies
+    func start(with cinemaName: String,
+               movies: [MovieCinema]) {
+        let scrollCinemaVC = ScrollCinemaViewController(cinemaName: cinemaName,
+                                                        movies: movies)
         navigationController.pushViewController(scrollCinemaVC, animated: true)
     }
 }

@@ -38,11 +38,16 @@ class FavoriteViewController: BaseViewController<FavoriteViewModel> {
         NotificationCenter.default.post(name: Notification.Name("show_tabbar"), object: nil)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        containerView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
+    }
+    
     // MARK: - Private function
     private func setupUI() {
         setupHeader(withTitle: "Favorite")
         topConstraint.constant = Constant.HEIGHT_NAV
-        containerView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
         
         setActive(forLabel: movielLabel)
         setInactive(forLabel: tvLabel)

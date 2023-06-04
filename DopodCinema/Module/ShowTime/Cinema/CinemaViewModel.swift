@@ -9,12 +9,19 @@ import Foundation
 
 class CinemaViewModel {
     // MARK: - Properties
+    private var cinemaName: String
     private var moviesCinema: [MovieCinema]
     private var selectedIndex: Int = 2 // default value
     private var listDate: [TransformShowTime] = []
     
-    init(moviesCinema: [MovieCinema]) {
+    init(cinemaName: String,
+         moviesCinema: [MovieCinema]) {
+        self.cinemaName = cinemaName
         self.moviesCinema = moviesCinema
+    }
+    
+    func getCinemaName() -> String {
+        self.cinemaName
     }
     
     func getMoviesCinema() -> [MovieCinema] {

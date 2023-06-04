@@ -31,7 +31,7 @@ class CinemaHeaderViewController: BaseViewController<CinemaViewModel> {
     
     // MARK: - Private functions
     private func setupUI() {
-        setupSubHeader(with: .empty)
+        setupSubHeader(with: viewModel.getCinemaName())
         topConstraint.constant = Constant.HEIGHT_NAV
         
         setupCollectionView()

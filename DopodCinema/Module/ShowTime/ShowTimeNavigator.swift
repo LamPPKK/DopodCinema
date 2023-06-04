@@ -10,7 +10,7 @@ import UIKit
 
 protocol ShowTimeNavigator {
     func start()
-    func gotoCinemaScreen(with movies: [MovieCinema])
+    func gotoCinemaScreen(with cinemaName: String, movies: [MovieCinema])
 }
 
 class DefaultShowTimeNavigator: ShowTimeNavigator {
@@ -27,8 +27,9 @@ class DefaultShowTimeNavigator: ShowTimeNavigator {
         navigationController.pushViewController(showTimeViewController, animated: true)
     }
     
-    func gotoCinemaScreen(with movies: [MovieCinema]) {
+    func gotoCinemaScreen(with cinemaName: String,
+                          movies: [MovieCinema]) {
         let navigator = DefaultCinemaNavigator(navigationController: navigationController)
-        navigator.start(with: movies)
+        navigator.start(with: cinemaName, movies: movies)
     }
 }

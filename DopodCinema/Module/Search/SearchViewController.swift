@@ -37,6 +37,12 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         bindAction()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        containerView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
+    }
+    
     // MARK: - Private functions
     private func setupUI() {
         topConstraint.constant = Constant.HEIGHT_NAV
@@ -51,9 +57,7 @@ class SearchViewController: BaseViewController<SearchViewModel> {
         searchTf.returnKeyType = .search
         searchTf.font = .fontInterRegular(withSize: 14)
         searchTf.textColor = Constant.Color.color97999B
-        
-        containerView.roundCorners(corners: [.topLeft, .topRight], radius: 16)
-        
+                
         setActive(forLabel: movielLabel)
         setInactive(forLabel: tvLabel)
         setInactive(forLabel: actorLabel)
