@@ -24,7 +24,7 @@ class FavoriteActorViewController: BaseViewController<FavoriteActorViewModel> {
     
     private let ActorCellIdentity: String = "ActorCell"
     private let itemsPerRow: CGFloat = 3
-    private let heightPerItem: CGFloat = 175
+    private var heightPerItem: CGFloat = 175
     private let lineSpacing: CGFloat = 16
     
     override func viewDidLoad() {
@@ -100,6 +100,9 @@ extension FavoriteActorViewController: UICollectionViewDelegateFlowLayout {
         let paddingSpace: CGFloat = lineSpacing * (itemsPerRow + 1)
         let availableWidth: CGFloat = collectionView.frame.width - paddingSpace
         let widthPerItem: CGFloat = availableWidth / itemsPerRow
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            heightPerItem = widthPerItem / 0.75
+        }
         return CGSize(width: widthPerItem, height: heightPerItem)
     }
 }
