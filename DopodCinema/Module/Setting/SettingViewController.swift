@@ -25,6 +25,7 @@ class SettingViewController: BaseViewController<SettingViewModel> {
     @IBOutlet private weak var policyLabel: UILabel!
     @IBOutlet private weak var shareView: UIView!
     @IBOutlet private weak var shareLabel: UILabel!
+    @IBOutlet private weak var aboutAppLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,18 @@ class SettingViewController: BaseViewController<SettingViewModel> {
         
         shareView.corner(radius: 2)
         shareLabel.font = .fontPoppinsSemiBold(withSize: 14)
+        
+        notificationView.isHidden = true
+        aboutAppLabel.font = .fontPoppinsRegular(withSize: 14)
+        aboutAppLabel.textColor = Constant.Color.color2B2F31
+        
+        let appName: String = Bundle.main.infoDictionary?["CFBundleDisplayName"] as? String ?? .empty
+        let appVersion: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? .empty
+        if appName.isEmpty {
+            aboutAppLabel.text = "v\(appVersion)"
+        } else {
+            aboutAppLabel.text = "\(appName) - v\(appVersion)"
+        }
     }
     
     private func setAction() {

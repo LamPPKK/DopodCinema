@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="DopodCinema" customModuleProvider="target">
             <connections>
+                <outlet property="aboutAppLabel" destination="wnU-QZ-cnD" id="AOq-3T-67E"/>
                 <outlet property="feedbackLabel" destination="cbt-pB-hWh" id="CXe-41-u0Y"/>
                 <outlet property="feedbackView" destination="Lqk-8n-Yif" id="ddH-4F-kcc"/>
                 <outlet property="locationLabel" destination="Nxb-0j-Euo" id="Nkk-xS-t7W"/>
@@ -214,11 +215,19 @@
                                         </view>
                                     </subviews>
                                 </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnU-QZ-cnD">
+                                    <rect key="frame" x="186.33333333333334" y="685.66666666666663" width="41.333333333333343" height="20.333333333333371"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="fBQ-eH-lEd" secondAttribute="trailing" constant="16" id="8r0-hc-pke"/>
                                 <constraint firstItem="fBQ-eH-lEd" firstAttribute="leading" secondItem="eYy-XX-xXg" secondAttribute="leading" constant="16" id="FVW-el-Qwl"/>
+                                <constraint firstItem="wnU-QZ-cnD" firstAttribute="centerX" secondItem="eYy-XX-xXg" secondAttribute="centerX" id="KRd-jO-Lad"/>
+                                <constraint firstAttribute="bottom" secondItem="wnU-QZ-cnD" secondAttribute="bottom" constant="30" id="LCf-ic-3Te"/>
                                 <constraint firstItem="fBQ-eH-lEd" firstAttribute="top" secondItem="eYy-XX-xXg" secondAttribute="top" constant="24" id="xSh-FH-AXs"/>
                             </constraints>
                         </view>

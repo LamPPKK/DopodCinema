@@ -1575,6 +1575,7 @@
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dopod Cinema";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1608,6 +1609,7 @@
 				DEVELOPMENT_TEAM = 678Z7S5FB3;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DopodCinema/SupportFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Dopod Cinema";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
