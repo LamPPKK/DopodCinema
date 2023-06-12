@@ -10,6 +10,7 @@ import FirebaseRemoteConfig
 
 enum RemoteConfigKey: String {
     case timeShowFull = "time_show_full"
+    case mapKey = "map_key"
 }
 
 class RemoteConfigManager {
@@ -22,7 +23,8 @@ class RemoteConfigManager {
     
     func loadDefaultValues() {
         let appDefaults: [String: Any?] = [
-            RemoteConfigKey.timeShowFull.rawValue: "30/05/2023"
+            RemoteConfigKey.timeShowFull.rawValue: "30/05/2023",
+            RemoteConfigKey.mapKey.rawValue: "AIzaSyBuS_cAamH23bp3ASnwm6Dal5VZSHUc9Z8"
         ]
         
         RemoteConfig.remoteConfig().setDefaults(appDefaults as? [String: NSObject])

@@ -49,10 +49,7 @@ struct Constant {
         static let APP_KEY: String = "48cd3fa30464885ff111de6a1a24a0069e65906aa8fcc3be2c357c622cee5fe3"
         static let API_KEY: String = "79ddd61a309a60e0e6c81f6043bc051b"
         static let IMAGES_BASE_URL = "https://image.tmdb.org/t/p/"
-        static let MAP_KEY: String = "AIzaSyCuJs_7JjvSB_svpAuKaI2pbi_PTXy05x4"
         static let THUMBNAIL_YOUTUBE_URL = "https://img.youtube.com/vi/"
         static let THUMBNAIL_MAX_YOUTUBE = "/maxresdefault.jpg"
-        static let SECRET: String = "qZTaO5q5dXbx2H93"
-        static let IV: String = "rvXIufiBtBorrq4w"
     }
 }

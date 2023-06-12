@@ -369,7 +369,7 @@ class API {
             "location": "\(location.lat),\(location.lng)",
             "radius": 10000,
             "types": "movie_theater",
-            "key": Constant.Network.MAP_KEY
+            "key": RemoteConfigManager.shared.string(forKey: .mapKey)
         ]
 
         // https://demo0481328.mockable.io/map
@@ -392,7 +392,7 @@ class API {
         ]
 
         // https://demo0481328.mockable.io/test1
-        Network.get(/*URLPath.GET_SHOW_TIME*/ "https://demo0481328.mockable.io/test1",
+        Network.get(URLPath.GET_SHOW_TIME,
                     parameters: parametters,
                     responseType: CinemaTimeInfo.self,
                     completionHandler: { response in
