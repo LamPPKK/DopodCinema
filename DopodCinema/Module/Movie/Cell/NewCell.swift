@@ -28,4 +28,13 @@ class NewCell: UICollectionViewCell {
             posterImageView.image = UIImage(named: "ic_loading")
         }
     }
+    
+    func bindWallpaper(_ wallpaperURL: String) {
+        if let url = URL(string: wallpaperURL) {
+            posterImageView.sd_setImage(with: url,
+                                        placeholderImage: UIImage(named: "ic_loading"))
+        } else {
+            posterImageView.image = UIImage(named: "ic_loading")
+        }
+    }
 }

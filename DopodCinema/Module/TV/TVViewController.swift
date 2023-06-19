@@ -25,6 +25,7 @@ class TVViewController: BaseViewController<TVViewModel> {
     let NewHorizontallCellIdentity: String = "NewHorizontallCell"
     let ComingHorizontalCellIdentity: String = "ComingHorizontalCell"
     let ActorHorizontallCellIdentity: String = "ActorHorizontallCell"
+    let DiscoverWallpaperCellIdentity: String = "DiscoverWallpaperCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,8 @@ class TVViewController: BaseViewController<TVViewModel> {
         tableView.register(UINib(nibName: NewHorizontallCellIdentity, bundle: nil), forCellReuseIdentifier: NewHorizontallCellIdentity)
         tableView.register(UINib(nibName: ComingHorizontalCellIdentity, bundle: nil), forCellReuseIdentifier: ComingHorizontalCellIdentity)
         tableView.register(UINib(nibName: ActorHorizontallCellIdentity, bundle: nil), forCellReuseIdentifier: ActorHorizontallCellIdentity)
-        
+        tableView.register(UINib(nibName: DiscoverWallpaperCellIdentity, bundle: nil), forCellReuseIdentifier: DiscoverWallpaperCellIdentity)
+
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.BOTTOM_SAFE_AREA, right: 0)
     }
     

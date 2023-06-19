@@ -17,6 +17,7 @@ protocol TVShowNavigator {
     func gotoTVList(with title: String, type: TVShowType, list: [TVShowInfo], categories: [GenreInfo])
     func gotoCategory(with categories: [GenreInfo])
     func gotoCategory(with selectedIndex: Int?, categories: [GenreInfo], id: Int)
+    func gotoDiscoverWallpaper()
 }
 
 class DefaultTVShowNavigator: TVShowNavigator {
@@ -72,5 +73,10 @@ class DefaultTVShowNavigator: TVShowNavigator {
     func gotoCategory(with selectedIndex: Int?, categories: [GenreInfo], id: Int) {
         let navigator = DefaultCategoryNavigator(navigationController: navigationController)
         navigator.start(with: selectedIndex, categories: categories, id: id, screenType: .tv)
+    }
+    
+    func gotoDiscoverWallpaper() {
+        let navigator = DefaultDiscoverWallpaperNavigator(navigationController: navigationController)
+        navigator.start()
     }
 }

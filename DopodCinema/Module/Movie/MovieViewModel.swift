@@ -14,6 +14,7 @@ enum MovieSectionType {
     case category(categories: [GenreInfo])
     case headerPopular(title: String)
     case popular(movies: [MovieInfo])
+    case discoverWallpaper
     case times
     case headerNew(title: String)
     case new(movies: [MovieInfo])
@@ -70,9 +71,7 @@ class MovieViewModel: ViewModelType {
             
             self.moviesToprated = moviesToprate
             group.leave()
-        }, error: { [weak self] error in
-            guard let self = self else { return }
-            
+        }, error: { _ in
             group.leave()
         })
         
@@ -83,9 +82,7 @@ class MovieViewModel: ViewModelType {
             
             self.moviesPopular = moviesPopular
             group.leave()
-        }, error: { [weak self] error in
-            guard let self = self else { return }
-            
+        }, error: { _ in
             group.leave()
         })
         
@@ -96,9 +93,7 @@ class MovieViewModel: ViewModelType {
             
             self.moviesUpcoming = moviesUpcoming
             group.leave()
-        }, error: { [weak self] error in
-            guard let self = self else { return }
-            
+        }, error: { _ in
             group.leave()
         })
         
@@ -109,9 +104,7 @@ class MovieViewModel: ViewModelType {
             
             self.actorsPopular = actors
             group.leave()
-        }, error: { [weak self] error in
-            guard let self = self else { return }
-            
+        }, error: { _ in
             group.leave()
         })
         
@@ -122,8 +115,7 @@ class MovieViewModel: ViewModelType {
             
             self.moviesNowPlaying = moviesNowPlaying
             group.leave()
-        }, error: { [weak self] error in
-            
+        }, error: { _ in
             group.leave()
         })
         
@@ -135,8 +127,7 @@ class MovieViewModel: ViewModelType {
             self.categories = listGenre
             self.saveCategories(self.categories)
             group.leave()
-        } , error: { [weak self] error in
-            
+        } , error: { _ in
             group.leave()
         })
         
@@ -163,6 +154,7 @@ class MovieViewModel: ViewModelType {
             sections.append(.popular(movies: moviesPopular))
         }
         
+        sections.append(.discoverWallpaper)
         sections.append(.times)
         
         if moviesNowPlaying.count > 5 {
@@ -266,5 +258,9 @@ class MovieViewModel: ViewModelType {
         }
         
         UserDataDefaults.shared.setCategories(listSaveCategory)
+    }
+    
+    func gotoDiscoverWallpaper() {
+        self.navigator.gotoDiscoverWallpaper()
     }
 }

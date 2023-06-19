@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DiscoverWallpaperViewController" customModule="DopodCinema" customModuleProvider="target">
+            <connections>
+                <outlet property="tableView" destination="CTF-KT-XFC" id="7PF-ye-JSs"/>
+                <outlet property="topConstraint" destination="RaG-bf-pzK" id="8Tu-8E-8TW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUe-QH-ms5">
+                    <rect key="frame" x="0.0" y="59" width="393" height="793"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CTF-KT-XFC">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="CTF-KT-XFC" secondAttribute="bottom" id="6ra-oc-MM7"/>
+                        <constraint firstItem="CTF-KT-XFC" firstAttribute="top" secondItem="fUe-QH-ms5" secondAttribute="top" id="Cie-DG-zTY"/>
+                        <constraint firstItem="CTF-KT-XFC" firstAttribute="leading" secondItem="fUe-QH-ms5" secondAttribute="leading" id="RLm-H3-enO"/>
+                        <constraint firstAttribute="trailing" secondItem="CTF-KT-XFC" secondAttribute="trailing" id="y2E-XQ-fGQ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fUe-QH-ms5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Jl-fL-ET7"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fUe-QH-ms5" secondAttribute="trailing" id="GPR-qU-xBL"/>
+                <constraint firstItem="fUe-QH-ms5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RaG-bf-pzK"/>
+                <constraint firstAttribute="bottom" secondItem="fUe-QH-ms5" secondAttribute="bottom" id="kSm-OB-nED"/>
+            </constraints>
+            <point key="canvasLocation" x="131" y="-11"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

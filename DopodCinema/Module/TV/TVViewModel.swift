@@ -13,6 +13,7 @@ enum TVSectionType {
     case category(categories: [GenreInfo])
     case headerPopular(title: String)
     case popular(tvshows: [TVShowInfo])
+    case discoverWallpaper
     case headerOnAir(title: String)
     case onAir(tvshows: [TVShowInfo])
     case headerToprate(title: String)
@@ -119,6 +120,8 @@ class TVViewModel: NSObject {
             sections.append(.popular(tvshows: tvShowsPopular))
         }
         
+        sections.append(.discoverWallpaper)
+        
         if !tvShowsOnair.isEmpty {
             sections.append(.headerOnAir(title: "On Air"))
             sections.append(.onAir(tvshows: tvShowsOnair))
@@ -200,5 +203,9 @@ class TVViewModel: NSObject {
     
     func gotoCategory(with selectedIndex: Int, id: Int) {
         self.navigator.gotoCategory(with: selectedIndex, categories: categories, id: id)
+    }
+    
+    func gotoDiscoverWallpaper() {
+        self.navigator.gotoDiscoverWallpaper()
     }
 }

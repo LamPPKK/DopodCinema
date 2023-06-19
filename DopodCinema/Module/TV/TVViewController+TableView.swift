@@ -50,6 +50,9 @@ extension TVViewController: UITableViewDataSource {
                                indexPath: indexPath,
                                tvShows: tvShows)
             
+        case .discoverWallpaper:
+            return discoverWallPaperCell(for: tableView)
+            
         case .headerOnAir(let title):
             return headerCell(for: tableView, headerTitle: title, type: section)
             
@@ -141,6 +144,11 @@ extension TVViewController: UITableViewDataSource {
         actorHorizontallCell.actors = actors
         return actorHorizontallCell
     }
+    
+    private func discoverWallPaperCell(for tableView: UITableView) -> DiscoverWallpaperCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverWallpaperCellIdentity) as! DiscoverWallpaperCell
+        return cell
+    }
 }
 
 extension TVViewController: UITableViewDelegate {
@@ -149,7 +157,17 @@ extension TVViewController: UITableViewDelegate {
         let section = viewModel.getSections()[indexPath.section]
         
         switch section {
-        case .top, .headerCategory, .category, .headerPopular, .headerOnAir, .onAir, .headerToprate, .toprate, .headerActor, .actor:
+        case .top,
+                .headerCategory,
+                .category,
+                .headerPopular,
+                .headerOnAir,
+                .onAir,
+                .headerToprate,
+                .toprate,
+                .headerActor,
+                .actor,
+                .discoverWallpaper:
             return UITableView.automaticDimension
             
         case .popular:
@@ -164,6 +182,9 @@ extension TVViewController: UITableViewDelegate {
         case .popular(let tvShows):
             viewModel.showTVDetail(with: tvShows[indexPath.row].id)
             
+        case .discoverWallpaper:
+            viewModel.gotoDiscoverWallpaper()
+            
         default:
             break
         }
@@ -171,9 +192,9 @@ extension TVViewController: UITableViewDelegate {
 }
 
 extension TVViewController: HeaderCellDelegate {
-    func didSelectedSeeAllMovie(section: MovieSectionType) {
-        
-    }
+    func didSelectedSeeAllMovie(section: MovieSectionType) {}
+    
+    func didSelectedSeeAllDiscover(section: DiscoverSectionType) {}
     
     func didSelectedSeeAllTV(section: TVSectionType) {
         switch section {

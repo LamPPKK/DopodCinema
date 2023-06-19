@@ -44,6 +44,9 @@ extension MovieViewController: UITableViewDataSource {
         case .popular(let movies):
             return popularCell(for: tableView, indexPath: indexPath, movies: movies)
             
+        case .discoverWallpaper:
+            return discoverWallPaperCell(for: tableView)
+            
         case .times:
             return timesCellFor(tableView)
             
@@ -137,6 +140,11 @@ extension MovieViewController: UITableViewDataSource {
         actorHorizontallCell.actors = actors
         return actorHorizontallCell
     }
+    
+    private func discoverWallPaperCell(for tableView: UITableView) -> DiscoverWallpaperCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverWallpaperCellIdentity) as! DiscoverWallpaperCell
+        return cell
+    }
 }
 
 extension MovieViewController: UITableViewDelegate {
@@ -151,7 +159,17 @@ extension MovieViewController: UITableViewDelegate {
         case .times:
             return 156
             
-        case .headerCategory, .headerPopular, .headerNew, .headerComing, .headerActor, .category, .new, .coming, .actor, .top:
+        case .headerCategory,
+                .headerPopular,
+                .headerNew,
+                .headerComing,
+                .headerActor,
+                .category,
+                .new,
+                .coming,
+                .actor,
+                .top,
+                .discoverWallpaper:
             return UITableView.automaticDimension
         }
     }
@@ -166,6 +184,9 @@ extension MovieViewController: UITableViewDelegate {
             
         case .times:
             NotificationCenter.default.post(name: Notification.Name("Open_ShowTime"), object: nil)
+            
+        case .discoverWallpaper:
+            viewModel.gotoDiscoverWallpaper()
             
         default:
             break
@@ -205,9 +226,9 @@ extension MovieViewController: HeaderCellDelegate {
         }
     }
     
-    func didSelectedSeeAllTV(section: TVSectionType) {
-        NSLog("TAP - \(section)")
-    }
+    func didSelectedSeeAllTV(section: TVSectionType) {}
+    
+    func didSelectedSeeAllDiscover(section: DiscoverSectionType) {}
 }
 
 extension MovieViewController: TopHorizontalCellDelegate {

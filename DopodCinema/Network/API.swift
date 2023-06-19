@@ -438,5 +438,30 @@ class API {
             completion(response)
         }, errorHandler: error)
     }
+    
+    func getWallpaper(with id: WallpaperID,
+                      page: Int = 1,
+                      completion: @escaping ([Wallpaper]) -> Void,
+                      error: @escaping (NetworkError) -> Void) {
+        let parametters: [String: Any] = [
+            "appId": Constant.Network.APP_ID,
+            "appKey": Constant.Network.APP_KEY,
+            "type": "phone",
+            "method": "category",
+            "id": id.rawValue,
+            "page": page
+        ]
+        
+        Network.get(URLPath.WallPaper.WALL_PAPER,
+                    parameters: parametters,
+                    responseType: WallpaperInfo.self,
+                    completionHandler: { response in
+            completion(response.wallpapers)
+        }, errorHandler: error)
+    }
 }
 
+enum WallpaperID: String {
+    case movie = "20"
+    case actor = "7"
+}

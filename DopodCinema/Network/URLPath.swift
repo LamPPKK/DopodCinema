@@ -61,5 +61,10 @@ struct URLPath {
         static let LINK_MOVIE = previewPath + "/movie"
         static let LINK_TV = previewPath + "/series"
     }
+    
+    // MARK: - Wall Paper
+    struct WallPaper {
+        static let WALL_PAPER = Constant.Network.HOST_LINK_URL + "/api/service/wallpaper"
+    }
 }
 
