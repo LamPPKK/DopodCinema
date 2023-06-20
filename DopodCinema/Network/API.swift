@@ -463,5 +463,6 @@ class API {
 
 enum WallpaperID: String {
     case movie = "20"
+    case tv = "29"
     case actor = "7"
 }

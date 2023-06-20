@@ -47,6 +47,9 @@ Trending Wallpaper</string>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="See more"/>
+                                        <connections>
+                                            <action selector="didToSeemore" destination="KGk-i7-Jjw" eventType="touchUpInside" id="U8t-dQ-6sk"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemIndigoColor"/>

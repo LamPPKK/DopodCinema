@@ -83,4 +83,8 @@ class DiscoverWallpaperViewModel {
     func gotoWallpaperPreview(_ url: String) {
         self.navigator.gotoWallpaperPreview(url)
     }
+    
+    func gotoSeeMoreWallpaper(_ wallpaperID: WallpaperID) {
+        self.navigator.gotoSeeMoreWallpaper(wallpaperID)
+    }
 }

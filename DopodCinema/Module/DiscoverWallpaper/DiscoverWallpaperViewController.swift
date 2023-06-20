@@ -70,7 +70,8 @@ extension DiscoverWallpaperViewController: UITableViewDataSource {
             
         case .headerMovie:
             return headerCell(for: tableView,
-                              headerTitle: "Movie Wallpaper")
+                              headerTitle: "Movie Wallpaper",
+                              section: section)
             
         case .movies(let wallpapers):
             return wallpaperHorizontalCell(for: tableView,
@@ -79,7 +80,9 @@ extension DiscoverWallpaperViewController: UITableViewDataSource {
             
         case .headerActor:
             return headerCell(for: tableView,
-                              headerTitle: "Actor Wallpaper")
+                              headerTitle: "Actor Wallpaper",
+                              section: section)
+            
         case .actors(let wallpapers):
             return wallpaperHorizontalCell(for: tableView,
                                            indexPath: indexPath,
@@ -89,15 +92,17 @@ extension DiscoverWallpaperViewController: UITableViewDataSource {
     
     private func checkOutCell(for tableView: UITableView) -> DiscoverCheckoutCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DiscoverCheckoutCellIdentity) as! DiscoverCheckoutCell
+        cell.delegate = self
         return cell
     }
     
     private func headerCell(for tableView: UITableView,
                             headerTitle: String,
-                            bottom: CGFloat = 0) -> HeaderCell {
+                            bottom: CGFloat = 0,
+                            section: DiscoverSectionType) -> HeaderCell {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: HeaderCellIdentity) as! HeaderCell
         headerCell.delegate = self
-        headerCell.setTitle(headerTitle, bottom: bottom)
+        headerCell.setTitle(headerTitle, bottom: bottom, discoverSection: section)
         return headerCell
     }
     
@@ -119,7 +124,16 @@ extension DiscoverWallpaperViewController: UITableViewDelegate {
 
 extension DiscoverWallpaperViewController: HeaderCellDelegate {
     func didSelectedSeeAllDiscover(section: DiscoverSectionType) {
-
+        switch section {
+        case .headerMovie:
+            viewModel.gotoSeeMoreWallpaper(.movie)
+            
+        case .headerActor:
+            viewModel.gotoSeeMoreWallpaper(.actor)
+            
+        default:
+            break
+        }
     }
     
     func didSelectedSeeAllMovie(section: MovieSectionType) {}
@@ -130,5 +144,11 @@ extension DiscoverWallpaperViewController: HeaderCellDelegate {
 extension DiscoverWallpaperViewController: WallpaperHorizontalCellDelegate {
     func didSelectedWallpaper(_ url: String) {
         viewModel.gotoWallpaperPreview(url)
+    }
+}
+
+extension DiscoverWallpaperViewController: DiscoverCheckoutCellDelegate {
+    func didToSeemore() {
+        viewModel.gotoSeeMoreWallpaper(.tv)
     }
 }

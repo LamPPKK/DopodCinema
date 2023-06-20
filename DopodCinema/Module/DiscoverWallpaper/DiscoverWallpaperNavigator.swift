@@ -11,6 +11,7 @@ import UIKit
 protocol DiscoverWallpaperNavigator {
     func start()
     func gotoWallpaperPreview(_ url: String)
+    func gotoSeeMoreWallpaper(_ wallpaperID: WallpaperID)
 }
 
 class DefaultDiscoverWallpaperNavigator: DiscoverWallpaperNavigator {
@@ -31,5 +32,10 @@ class DefaultDiscoverWallpaperNavigator: DiscoverWallpaperNavigator {
     func gotoWallpaperPreview(_ url: String) {
         let viewController = WallpaperPreviewViewController(url: url)
         navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    func gotoSeeMoreWallpaper(_ wallpaperID: WallpaperID) {
+        let navigator = DefaultMoreWallpaperNavigator(navigationController: navigationController)
+        navigator.start(wallpaperID)
     }
 }

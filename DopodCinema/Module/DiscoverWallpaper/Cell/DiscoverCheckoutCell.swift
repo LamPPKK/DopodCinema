@@ -7,12 +7,18 @@
 
 import UIKit
 
+protocol DiscoverCheckoutCellDelegate: NSObjectProtocol {
+    func didToSeemore()
+}
+
 class DiscoverCheckoutCell: UITableViewCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var contentLabel: UILabel!
     @IBOutlet private weak var seeMoreButton: UIButton!
+    
+    weak var delegate: DiscoverCheckoutCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,5 +36,9 @@ class DiscoverCheckoutCell: UITableViewCell {
         seeMoreButton.backgroundColor = .white
         seeMoreButton.setTitle("See more", for: .normal)
         seeMoreButton.setTitleColor(Constant.Color.color4E69F7, for: .normal)
+    }
+    
+    @IBAction func didToSeemore() {
+        delegate?.didToSeemore()
     }
 }

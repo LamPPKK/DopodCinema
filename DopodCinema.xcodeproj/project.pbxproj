@@ -239,6 +239,10 @@
 		99EB6EE029AD04CA0075F29D /* MovieTrailerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99EB6EDE29AD04CA0075F29D /* MovieTrailerCell.xib */; };
 		99F6471329A9A80900603272 /* CustomizeCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F6471229A9A80900603272 /* CustomizeCollectionFlowLayout.swift */; };
 		B26EA3419ED9632B85979C91 /* Pods_DopodCinema.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90C5252D51EB9543C9BAF822 /* Pods_DopodCinema.framework */; };
+		D92B41F92A415B69007600B7 /* MoreWallpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B41F72A415B69007600B7 /* MoreWallpaperViewController.swift */; };
+		D92B41FA2A415B69007600B7 /* MoreWallpaperViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D92B41F82A415B69007600B7 /* MoreWallpaperViewController.xib */; };
+		D92B41FC2A415C28007600B7 /* MoreWallpaperNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B41FB2A415C28007600B7 /* MoreWallpaperNavigator.swift */; };
+		D92B41FE2A4166E4007600B7 /* MoreWallpaperViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B41FD2A4166E4007600B7 /* MoreWallpaperViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -478,6 +482,10 @@
 		99EB6EDD29AD04CA0075F29D /* MovieTrailerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrailerCell.swift; sourceTree = "<group>"; };
 		99EB6EDE29AD04CA0075F29D /* MovieTrailerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieTrailerCell.xib; sourceTree = "<group>"; };
 		99F6471229A9A80900603272 /* CustomizeCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		D92B41F72A415B69007600B7 /* MoreWallpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreWallpaperViewController.swift; sourceTree = "<group>"; };
+		D92B41F82A415B69007600B7 /* MoreWallpaperViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreWallpaperViewController.xib; sourceTree = "<group>"; };
+		D92B41FB2A415C28007600B7 /* MoreWallpaperNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreWallpaperNavigator.swift; sourceTree = "<group>"; };
+		D92B41FD2A4166E4007600B7 /* MoreWallpaperViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreWallpaperViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -611,6 +619,7 @@
 		993D16EA2A3E1A0F00A5D3D5 /* DiscoverWallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				D92B41F62A415B3B007600B7 /* MoreWallpaper */,
 				997B47DC2A40B9DB00C7DB6A /* WallpaperPreview */,
 				997B47D12A3EB5C100C7DB6A /* Cell */,
 				993D16EB2A3E1A3200A5D3D5 /* DiscoverWallpaperViewController.swift */,
@@ -1166,6 +1175,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D92B41F62A415B3B007600B7 /* MoreWallpaper */ = {
+			isa = PBXGroup;
+			children = (
+				D92B41F72A415B69007600B7 /* MoreWallpaperViewController.swift */,
+				D92B41F82A415B69007600B7 /* MoreWallpaperViewController.xib */,
+				D92B41FB2A415C28007600B7 /* MoreWallpaperNavigator.swift */,
+				D92B41FD2A4166E4007600B7 /* MoreWallpaperViewModel.swift */,
+			);
+			path = MoreWallpaper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1268,6 +1288,7 @@
 				998B53DE29B2EE9500822525 /* ActorDetailViewController.xib in Resources */,
 				991693CC2A0D472D00553A62 /* GoogleService-Info.plist in Resources */,
 				994082A229C21C0D00B44A8E /* SearchDataViewController.xib in Resources */,
+				D92B41FA2A415B69007600B7 /* MoreWallpaperViewController.xib in Resources */,
 				99E6BE4729BE387300234C3E /* TVDetailSeasonViewController.xib in Resources */,
 				997B47E02A40B9F500C7DB6A /* WallpaperPreviewViewController.xib in Resources */,
 				99BACD7829954A0300762A3E /* ShowTimeViewController.xib in Resources */,
@@ -1431,6 +1452,7 @@
 				993EA18329A1A82700C5470B /* NewCell.swift in Sources */,
 				99DA604729C0CCE200164F0A /* ActorListNavigator.swift in Sources */,
 				99B3E89329A9FE3A00BC4483 /* MovieDetailNavigator.swift in Sources */,
+				D92B41F92A415B69007600B7 /* MoreWallpaperViewController.swift in Sources */,
 				99142F9C299A779D00E7BA3D /* MovieViewModel.swift in Sources */,
 				993EA18C29A1AEBC00C5470B /* ComingHorizontalCell.swift in Sources */,
 				997274D929C4C1810043940B /* ShowTimeViewController+CollectionView.swift in Sources */,
@@ -1443,6 +1465,7 @@
 				993EA1A629A1F9C500C5470B /* SettingViewModel.swift in Sources */,
 				9931322A299B67DE00AA9E2C /* MovieViewController+TableView.swift in Sources */,
 				991C9A2129A5D0A9004FE5D5 /* Image.swift in Sources */,
+				D92B41FC2A415C28007600B7 /* MoreWallpaperNavigator.swift in Sources */,
 				995DEB9B29F9670200B34F6C /* WatchLinkScreen.swift in Sources */,
 				997274D029C4B96E0043940B /* Location.swift in Sources */,
 				9962A54929CB3C7000CF20CA /* FavoriteDataViewModel.swift in Sources */,
@@ -1485,6 +1508,7 @@
 				991127CD29C8482900C27AED /* FavoriteAlertView.swift in Sources */,
 				99BACD65299544B600762A3E /* Constant.swift in Sources */,
 				9944483529B8D2CF00BB7380 /* TVDetailViewController.swift in Sources */,
+				D92B41FE2A4166E4007600B7 /* MoreWallpaperViewModel.swift in Sources */,
 				993EA19429A1B27300C5470B /* ActorCell.swift in Sources */,
 				997274E929C5A5E10043940B /* ShowTimeDetailViewController.swift in Sources */,
 				995DEB9E29F9670200B34F6C /* ServerCell.swift in Sources */,

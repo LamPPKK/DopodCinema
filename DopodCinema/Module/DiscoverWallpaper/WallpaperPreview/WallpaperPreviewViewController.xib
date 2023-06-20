@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WallpaperPreviewViewController" customModule="DopodCinema" customModuleProvider="target">
             <connections>
+                <outlet property="heightOfBottomSheet" destination="vDS-8g-wdB" id="Ajn-SJ-7Mr"/>
                 <outlet property="optionsBottomSheet" destination="ueT-Kb-DHq" id="Pqg-ax-61D"/>
                 <outlet property="saveLabel" destination="aI4-ER-QuB" id="uwu-wO-I4y"/>
                 <outlet property="saveView" destination="lyJ-SX-j5c" id="iD2-7N-m3b"/>
@@ -121,7 +122,7 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_download" width="21" height="20"/>
+        <image name="ic_download" width="20.333333969116211" height="20"/>
         <image name="ic_round-share" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

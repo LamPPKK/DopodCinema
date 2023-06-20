@@ -16,8 +16,10 @@ class WallpaperPreviewViewController: BaseViewController<BaseViewModel> {
     @IBOutlet private weak var saveLabel: UILabel!
     @IBOutlet private weak var shareView: UIView!
     @IBOutlet private weak var shareLabel: UILabel!
-
+    @IBOutlet private weak var heightOfBottomSheet: NSLayoutConstraint!
+    
     // MARK: - Properties
+    private let heightValue: CGFloat = 130
     private var url: String
     
     init(url: String) {
@@ -100,7 +102,10 @@ class WallpaperPreviewViewController: BaseViewController<BaseViewModel> {
     @objc
     private func tapToShare() {
         optionsBottomSheet.isHidden = true
-        
+        let imageToShare = [wallpaperImageView.image ?? UIImage()]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        self.present(activityViewController, animated: true, completion: nil)
     }
     
     @objc
