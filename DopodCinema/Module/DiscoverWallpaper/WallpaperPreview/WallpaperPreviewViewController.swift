@@ -39,7 +39,7 @@ class WallpaperPreviewViewController: BaseViewController<BaseViewModel> {
 
     // MARK: - Private functions
     private func setupView() {
-        setupSubHeader(with: .empty)
+        setupSubHeader(with: .empty, isBackWhite: true)
         
         if let wallpaperURL = URL(string: url) {
             wallpaperImageView.sd_setImage(with: wallpaperURL,
