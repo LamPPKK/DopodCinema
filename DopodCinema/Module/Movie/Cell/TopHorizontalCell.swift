@@ -17,7 +17,7 @@ class TopHorizontalCell: UITableViewCell {
     
     // MARK: - IBOutlets
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var pageControl: CustomPageControl!
+    @IBOutlet private weak var pageControl: UIStackView!
     
     // MARK: - Properties
     private let TopCellIdentity: String = "TopCell"
@@ -55,6 +55,8 @@ class TopHorizontalCell: UITableViewCell {
                                         at: .centeredHorizontally,
                                         animated: true)
         })
+        
+        drawPageControl(at: centerIndex)
     }
     
     // MARK: - Private functions
@@ -66,6 +68,30 @@ class TopHorizontalCell: UITableViewCell {
         
         let customizeLayout = CustomizeCollectionFlowLayout()
         collectionView.collectionViewLayout = customizeLayout
+        
+        pageControl.spacing = 8
+        pageControl.axis = .horizontal
+        pageControl.alignment = .center
+    }
+    
+    private func drawPageControl(at centerIndex: Int) {
+        for subView in pageControl.subviews {
+            subView.removeFromSuperview()
+        }
+        
+        for index in 0..<10 {
+            let pageImage = UIImageView()
+            
+            if index == centerIndex {
+                pageImage.frame = CGRect(x: 0, y: 0, width: 24, height: 8)
+                pageImage.image = UIImage(named: "ic_active_dot")
+            } else {
+                pageImage.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
+                pageImage.image = UIImage(named: "ic_inactive_dot")
+            }
+            pageImage.contentMode = .scaleAspectFit
+            pageControl.addArrangedSubview(pageImage)
+        }
     }
 }
 
@@ -99,6 +125,19 @@ extension TopHorizontalCell: UICollectionViewDataSource {
 }
 
 extension TopHorizontalCell: UICollectionViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var visibleRect = CGRect()
+        
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+        
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        
+        guard let indexPath = collectionView.indexPathForItem(at: visiblePoint) else { return }
+        
+        drawPageControl(at: indexPath.row)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if screenType == .movie {
             delegate?.didSelectMovie?(with: movies[indexPath.row].id)
