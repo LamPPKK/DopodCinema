@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class WallpaperPreviewViewController: BaseViewController<BaseViewModel> {
 
@@ -93,18 +94,59 @@ class WallpaperPreviewViewController: BaseViewController<BaseViewModel> {
     @objc
     private func tapToDownload() {
         optionsBottomSheet.isHidden = true
-        UIImageWriteToSavedPhotosAlbum(wallpaperImageView.image ?? UIImage(),
-                                       self,
-                                       #selector(image(_:didFinishSavingWithError:contextInfo:)),
-                                       nil)
+        
+        let status = PHPhotoLibrary.authorizationStatus()
+        switch status {
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization { newStatus in
+                DispatchQueue.main.async {
+                    switch newStatus {
+                    case .notDetermined,
+                            .limited,
+                            .denied,
+                            .restricted:
+                        self.showAlert(with: "DopodCinema would like to Access Your Photos.",
+                                       msg: "Settings -> Dopod Cinema -> Photos")
+                        
+                    case .authorized:
+                        UIImageWriteToSavedPhotosAlbum(self.wallpaperImageView.image ?? UIImage(),
+                                                       self,
+                                                       #selector(self.image(_:didFinishSavingWithError:contextInfo:)),
+                                                       nil)
+                        
+                    @unknown default:
+                        fatalError()
+                    }
+                }
+            }
+            
+        case .restricted,
+                .denied,
+                .limited:
+            showAlert(with: "DopodCinema would like to Access Your Photos.",
+                      msg: "Settings -> Dopod Cinema -> Photos")
+            
+        case .authorized:
+            UIImageWriteToSavedPhotosAlbum(wallpaperImageView.image ?? UIImage(),
+                                           self,
+                                           #selector(image(_:didFinishSavingWithError:contextInfo:)),
+                                           nil)
+        @unknown default:
+            fatalError()
+        }
     }
     
     @objc
     private func tapToShare() {
         optionsBottomSheet.isHidden = true
-        let imageToShare = [wallpaperImageView.image ?? UIImage()]
-        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        let wallpaperURL = URL(string: url)
+        let textTitle = "Dopod cinema want to share this wallpaper."
+        let sharedObjects: [AnyObject] = [wallpaperURL as AnyObject,
+                                          textTitle as AnyObject]
+        let activityViewController = UIActivityViewController(activityItems: sharedObjects,
+                                                              applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
     }
     

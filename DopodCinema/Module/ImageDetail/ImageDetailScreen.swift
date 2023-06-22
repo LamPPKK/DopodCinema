@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class ImageDetailScreen: UIViewController {
 
@@ -85,7 +86,47 @@ extension ImageDetailScreen: ImageDetailCellDelegate {
         let bottomSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         let saveAction = UIAlertAction(title: "Save Image", style: .default, handler: { [weak self] _ in
-            UIImageWriteToSavedPhotosAlbum(selectedImage, self, #selector(self?.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            guard let self = self else { return }
+                
+            let status = PHPhotoLibrary.authorizationStatus()
+            switch status {
+            case .notDetermined:
+                PHPhotoLibrary.requestAuthorization { newStatus in
+                    DispatchQueue.main.async {
+                        switch newStatus {
+                        case .notDetermined,
+                                .limited,
+                                .denied,
+                                .restricted:
+                            self.showAlert(with: "DopodCinema would like to Access Your Photos.",
+                                           msg: "Settings -> Dopod Cinema -> Photos")
+                            
+                        case .authorized:
+                            UIImageWriteToSavedPhotosAlbum(selectedImage,
+                                                           self,
+                                                           #selector(self.image(_:didFinishSavingWithError:contextInfo:)),
+                                                           nil)
+                            
+                        @unknown default:
+                            fatalError()
+                        }
+                    }
+                }
+                
+            case .restricted,
+                    .denied,
+                    .limited:
+                self.showAlert(with: "DopodCinema would like to Access Your Photos.",
+                          msg: "Settings -> Dopod Cinema -> Photos")
+                
+            case .authorized:
+                UIImageWriteToSavedPhotosAlbum(selectedImage,
+                                               self,
+                                               #selector(self.image(_:didFinishSavingWithError:contextInfo:)),
+                                               nil)
+            @unknown default:
+                fatalError()
+            }
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

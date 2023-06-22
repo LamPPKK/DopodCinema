@@ -1679,7 +1679,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "DopodCinema would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DopodCinema would like to request location permission to show all nearby cinemas on the map.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "DopodCinema would like to request permission to download image.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "DopodCinema would like to request permission to download image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1715,7 +1715,7 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "DopodCinema would like to request location permission to show all nearby cinemas on the map.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "DopodCinema would like to request location permission to show all nearby cinemas on the map.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "DopodCinema would like to request permission to download image.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "DopodCinema would like to request permission to download image.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
