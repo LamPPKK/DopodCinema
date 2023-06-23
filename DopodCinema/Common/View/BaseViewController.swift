@@ -48,6 +48,7 @@ class BaseViewController<ViewModel>: UIViewController, BaseHeaderSubViewDelegate
     }
     
     func setupSubHeader(with title: String,
+                        titleColor: UIColor = .black,
                         isDetail: Bool = false,
                         isSave: Bool = false,
                         isBackWhite: Bool = false) {
@@ -62,6 +63,7 @@ class BaseViewController<ViewModel>: UIViewController, BaseHeaderSubViewDelegate
                 $0.delegate = self
                 $0.moveTo(parentViewController: self)
                 $0.setupHeader(withTitle: title,
+                               titleColor: titleColor,
                                isDetail: isDetail,
                                isSave: isSave,
                                isBackWhite: isBackWhite)

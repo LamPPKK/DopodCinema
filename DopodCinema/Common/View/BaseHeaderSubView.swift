@@ -98,18 +98,19 @@ class BaseHeaderSubView: UIView {
     
     private func setupUI() {
         self.backgroundColor = .clear
-        titleLabel.textColor = .black
         titleLabel.font = UIFont.fontPoppinsBold(withSize: 16)
         backButton.setImage(UIImage(named: "ic_back")?.withRenderingMode(.alwaysTemplate), for: .normal)
         backButton.tintColor = Constant.Color.color2B2F31
     }
     
     func setupHeader(withTitle title: String,
+                     titleColor: UIColor,
                      isDetail: Bool,
                      isSave: Bool,
                      isBackWhite: Bool) {
         setupUI()
         titleLabel.text = title
+        titleLabel.textColor = titleColor
         saveButton.isHidden = !isDetail
         backButton.tintColor = isBackWhite ? .white : Constant.Color.color2B2F31
         self.isSave = isSave
