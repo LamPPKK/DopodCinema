@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import YouTubePlayer
 
 class YoutubeViewController: BaseViewController<BaseViewModel> {
 
@@ -30,7 +29,10 @@ class YoutubeViewController: BaseViewController<BaseViewModel> {
         super.viewDidLoad()
 
         setupUI()
+        
+        LoadingView.shared.startLoading()
         youtubeView.loadVideoID(key)
+        youtubeView.delegate = self
     }
 
     // MARK: - Private functions
@@ -38,5 +40,11 @@ class YoutubeViewController: BaseViewController<BaseViewModel> {
         topConstraint.constant = Constant.HEIGHT_NAV
         self.view.backgroundColor = .black
         setupSubHeader(with: .empty, isBackWhite: true)
+    }
+}
+
+extension YoutubeViewController: YouTubePlayerDelegate {
+    func playerReady(_ videoPlayer: YouTubePlayerView) {
+        LoadingView.shared.endLoading()
     }
 }

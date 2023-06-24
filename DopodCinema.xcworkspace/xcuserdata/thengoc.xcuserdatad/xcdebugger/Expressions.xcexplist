@@ -11,10 +11,48 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in ShowTimeViewModel.handleListCinema(with:completion:):ShowTimeViewModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "YouTubePlayerView.handleJSEvent(_:):YouTubePlayer.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ShowTimeDetailViewModel.getShowTimes():ShowTimeDetailViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "listTransform">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "TVDetailSeasonViewModel.getFullEpisode(_:episode:):TVDetailSeasonViewModel.swift">
          <PersistentStrings>
             <PersistentString
                value = "tvDetailInfo">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CinemaViewModel.getShowTimes():CinemaViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.moviesCinema[selectedIndex].getDays()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "YouTubePlayerView.init(coder:):YouTubePlayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "playerParameters()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ShowTimeDetailViewController.tableView(_:numberOfRowsInSection:):ShowTimeDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "viewModel.getShowTimes().first?.theaters.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -30,26 +68,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CinemaViewModel.getShowTimes():CinemaViewModel.swift">
+         contextName = "CinemaDetailViewController.collectionView(_:numberOfItemsInSection:):CinemaDetailViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "self.moviesCinema[selectedIndex].getDays()">
+               value = "selectedIndex">
             </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "MovieCinema.getDays():ShowTimeViewModel.swift">
-         <PersistentStrings>
             <PersistentString
-               value = "name">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ShowTimeDetailViewModel.getShowTimes():ShowTimeDetailViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "listTransform">
+               value = "viewModel.getShowTimes()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -62,26 +87,12 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CinemaDetailViewController.collectionView(_:numberOfItemsInSection:):CinemaDetailViewController.swift">
+         contextName = "MovieCinema.getDays():ShowTimeViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "selectedIndex">
-            </PersistentString>
-            <PersistentString
-               value = "viewModel.getShowTimes()">
+               value = "name">
             </PersistentString>
          </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "ShowTimeDetailViewController.tableView(_:numberOfRowsInSection:):ShowTimeDetailViewController.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "viewModel.getShowTimes().first?.theaters.count">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "closure #1 in ShowTimeViewModel.handleListCinema(with:completion:):ShowTimeViewModel.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

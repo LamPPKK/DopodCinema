@@ -17,8 +17,6 @@ target 'DopodCinema' do
     
     pod "MXParallaxHeader"
     
-    pod 'YouTubePlayer'
-    
     # Firebase
     pod 'FirebaseRemoteConfig', :git => 'https://github.com/firebase/firebase-ios-sdk.git', :branch => 'master'
 end

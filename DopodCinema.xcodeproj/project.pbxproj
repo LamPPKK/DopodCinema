@@ -112,6 +112,8 @@
 		995B266E29D0876B0020C584 /* ShowTimeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266D29D0876B0020C584 /* ShowTimeDetailViewModel.swift */; };
 		995B267129D0894A0020C584 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B266F29D0894A0020C584 /* DayCell.swift */; };
 		995B267229D0894A0020C584 /* DayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995B267029D0894A0020C584 /* DayCell.xib */; };
+		995C84DB2A46866000C74B80 /* YoutubePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995C84DA2A46866000C74B80 /* YoutubePlayer.swift */; };
+		995C84DD2A4687BE00C74B80 /* YTPlayer.html in Resources */ = {isa = PBXBuildFile; fileRef = 995C84DC2A4687BE00C74B80 /* YTPlayer.html */; };
 		995DEB9829F9670100B34F6C /* WatchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995DEB8F29F9670100B34F6C /* WatchHeaderView.swift */; };
 		995DEB9929F9670100B34F6C /* WatchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995DEB9029F9670100B34F6C /* WatchScreen.xib */; };
 		995DEB9A29F9670200B34F6C /* WatchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995DEB9129F9670100B34F6C /* WatchScreen.swift */; };
@@ -354,6 +356,8 @@
 		995B266D29D0876B0020C584 /* ShowTimeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTimeDetailViewModel.swift; sourceTree = "<group>"; };
 		995B266F29D0894A0020C584 /* DayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		995B267029D0894A0020C584 /* DayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayCell.xib; sourceTree = "<group>"; };
+		995C84DA2A46866000C74B80 /* YoutubePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayer.swift; sourceTree = "<group>"; };
+		995C84DC2A4687BE00C74B80 /* YTPlayer.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = YTPlayer.html; sourceTree = "<group>"; };
 		995DEB8F29F9670100B34F6C /* WatchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchHeaderView.swift; sourceTree = "<group>"; };
 		995DEB9029F9670100B34F6C /* WatchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WatchScreen.xib; sourceTree = "<group>"; };
 		995DEB9129F9670100B34F6C /* WatchScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchScreen.swift; sourceTree = "<group>"; };
@@ -866,6 +870,7 @@
 		998CCD2629912C4000AE6283 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				995C84DC2A4687BE00C74B80 /* YTPlayer.html */,
 				991693CB2A0D472D00553A62 /* GoogleService-Info.plist */,
 				99EB6EDB29ACFCB90075F29D /* loading.json */,
 				99313233299B7A0600AA9E2C /* Fonts */,
@@ -1039,6 +1044,7 @@
 				99B3E89429AA02A600BC4483 /* ViewModelType.swift */,
 				991127CE29C8545300C27AED /* UserDataDefaults.swift */,
 				991693C92A0D40A600553A62 /* RemoteConfigManager.swift */,
+				995C84DA2A46866000C74B80 /* YoutubePlayer.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1281,6 +1287,7 @@
 				99E6BE5029BE3C1E00234C3E /* SeasonCell.xib in Resources */,
 				990E975829D14BB1000BC1B5 /* TimeCell.xib in Resources */,
 				997B47D52A3EB5D900C7DB6A /* DiscoverCheckoutCell.xib in Resources */,
+				995C84DD2A4687BE00C74B80 /* YTPlayer.html in Resources */,
 				99313247299B7A0700AA9E2C /* Poppins-Medium.otf in Resources */,
 				993EA18029A1A7E100C5470B /* NewHorizontallCell.xib in Resources */,
 				997F361329E45C0200D4EBC0 /* CinemaHeaderViewController.xib in Resources */,
@@ -1477,6 +1484,7 @@
 				999EA25929BF744D00B38382 /* EpisodeCell.swift in Sources */,
 				991C9A1C29A5C8A5004FE5D5 /* API.swift in Sources */,
 				99DA603929C0BC9900164F0A /* MovieListViewController.swift in Sources */,
+				995C84DB2A46866000C74B80 /* YoutubePlayer.swift in Sources */,
 				998C15CF29ABB49F0027C3BF /* ImageCell.swift in Sources */,
 				9913D94F29F541C1009467E0 /* ImageDetailCell.swift in Sources */,
 				990E975729D14BB1000BC1B5 /* TimeCell.swift in Sources */,
