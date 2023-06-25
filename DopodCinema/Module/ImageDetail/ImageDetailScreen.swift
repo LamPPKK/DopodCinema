@@ -40,12 +40,17 @@ class ImageDetailScreen: UIViewController {
         collectionView.register(UINib(nibName: ImageDetailCellIdentity, bundle: nil), forCellWithReuseIdentifier: ImageDetailCellIdentity)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.isPagingEnabled = true
+        collectionView.isPagingEnabled = false
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
-        let selectedIndexPath = IndexPath(row: self.selectedIndex, section: 0)
-        self.collectionView.scrollToItem(at: selectedIndexPath,
-                                    at: .centeredHorizontally, animated: false)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            let selectedIndexPath = IndexPath(row: self.selectedIndex, section: 0)
+            self.collectionView.scrollToItem(at: selectedIndexPath,
+                                             at: .centeredHorizontally,
+                                             animated: false)
+            self.collectionView.isPagingEnabled = true
+        }
     }
     
     // MARK: - IBAction

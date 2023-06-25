@@ -25,19 +25,11 @@ class TrailerViewController: BaseViewController<TrailerViewModel> {
     
     // MARK: - Private functions
     private func setupUI() {
-//        view.backgroundColor = .clear
-//
-//        let blurEffect = UIBlurEffect(style: .light)
-//        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-//        blurEffectView.frame = blurView.bounds
-//        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        blurView.addSubview(blurEffectView)
-        
         setupSubHeader(with: .empty)
         topConstraint.constant = Constant.HEIGHT_NAV
         emptyLabel.font = .fontPoppinsSemiBold(withSize: 16)
         if viewModel.getListTrailer().isEmpty {
-            emptyLabel.text = "The resource you requested could not be found."
+            emptyLabel.text = "This movie doesn't have a trailer yet, we will update it as soon as possible."
             emptyLabel.isHidden = false
             tableView.isHidden = true
         } else {

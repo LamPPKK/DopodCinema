@@ -148,7 +148,16 @@ class WallpaperPreviewViewController: BaseViewController<BaseViewModel> {
                                           textTitle as AnyObject]
         let activityViewController = UIActivityViewController(activityItems: sharedObjects,
                                                               applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = self.view
+        
+        //  For iPad
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceRect = CGRect(x: UIScreen.main.bounds.width / 2,
+                                                  y: UIScreen.main.bounds.height / 2,
+                                                  width: 0,
+                                                  height: 0)
+            popoverController.sourceView = self.view
+            popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+        }
         self.present(activityViewController, animated: true, completion: nil)
     }
     
