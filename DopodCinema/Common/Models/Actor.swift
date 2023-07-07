@@ -32,6 +32,18 @@ struct ActorDetailInfo: Codable {
     let biography: String?
     let movie_credits: MovieCredits
     let tv_credits: TVCreditsInfo
+    
+    static func empty() -> ActorDetailInfo {
+        return .init(id: 0,
+                     name: .empty,
+                     profile_path: nil,
+                     gender: 0,
+                     birthday: nil,
+                     place_of_birth: nil,
+                     biography: nil,
+                     movie_credits: MovieCredits(cast: []),
+                     tv_credits: TVCreditsInfo(cast: []))
+    }
 }
 
 // MARK: - Movie Credits Info

@@ -8,13 +8,12 @@
 import UIKit
 
 protocol MovieNavigator {
-    func start()
     func gotoSearch()
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
     func gotoCategory(with categories: [GenreInfo])
     func gotoCategory(with selectedIndex: Int?, categories: [GenreInfo], id: Int)
-    func gotoMovieList(with title: String, type: MovieType, movieList: [MovieInfo], categories: [GenreInfo])
+    func gotoMovieList(with title: String, type: MovieType, categories: [GenreInfo])
     func gotoActorList(with title: String, actorList: [ActorInfo])
     func gotoDiscoverWallpaper()
 }
@@ -26,12 +25,6 @@ class DefaultMovieNavigator: MovieNavigator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         navigationController.setNavigationBarHidden(true, animated: false)
-    }
-    
-    func start() {
-        let movieVC = MovieViewController(nibName: "MovieViewController", bundle: nil)
-        movieVC.viewModel = MovieViewModel(navigator: self)
-        navigationController.pushViewController(movieVC, animated: true)
     }
     
     func gotoSearch() {
@@ -61,10 +54,15 @@ class DefaultMovieNavigator: MovieNavigator {
     
     func gotoMovieList(with title: String,
                        type: MovieType,
-                       movieList: [MovieInfo],
                        categories: [GenreInfo]) {
         let navigator = DefaultMovieListNavigator(navigationController: navigationController)
-        navigator.start(with: title, type: type, movieList: movieList, categories: categories)
+        let movieListVC = MovieListViewController(nibName: "MovieListViewController", bundle: nil)
+        movieListVC.viewModel = MovieListViewModel(navigator: navigator,
+                                                   service: MovieClient(),
+                                                   title: title,
+                                                   type: type,
+                                                   categories: categories)
+        navigationController.pushViewController(movieListVC, animated: true)
     }
     
     func gotoActorList(with title: String, actorList: [ActorInfo]) {

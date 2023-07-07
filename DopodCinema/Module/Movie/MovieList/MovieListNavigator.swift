@@ -8,7 +8,6 @@
 import UIKit
 
 protocol MovieListNavigator {
-    func start(with title: String, type: MovieType, movieList: [MovieInfo], categories: [GenreInfo])
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
 }
 
@@ -18,16 +17,6 @@ class DefaultMovieListNavigator: MovieListNavigator {
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-    }
-    
-    func start(with title: String, type: MovieType, movieList: [MovieInfo], categories: [GenreInfo]) {
-        let movieListVC = MovieListViewController(nibName: "MovieListViewController", bundle: nil)
-        movieListVC.viewModel = MovieListViewModel(navigator: self,
-                                                   title: title,
-                                                   type: type,
-                                                   movieList: movieList,
-                                                   categories: categories)
-        navigationController.pushViewController(movieListVC, animated: true)
     }
     
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {

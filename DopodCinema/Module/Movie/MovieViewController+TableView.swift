@@ -180,13 +180,13 @@ extension MovieViewController: UITableViewDelegate {
         switch section {
         case .popular(let movies):
             let id = movies[indexPath.row].id
-            viewModel.showMovieDetailInfo(with: id)
+            selectedMovieTrigger.accept(id)
             
         case .times:
             NotificationCenter.default.post(name: Notification.Name("Open_ShowTime"), object: nil)
             
         case .discoverWallpaper:
-            viewModel.gotoDiscoverWallpaper()
+            gotoWallpaperTrigger.accept(())
             
         default:
             break
@@ -198,28 +198,22 @@ extension MovieViewController: HeaderCellDelegate {
     func didSelectedSeeAllMovie(section: MovieSectionType) {
         switch section {
         case .headerCategory:
-            viewModel.gotoCategory()
+            seeAllCategoryTrigger.accept(())
             
         case .headerPopular(let title):
-            viewModel.gotoMovieList(with: title,
-                                    type: .popular,
-                                    movieList: viewModel.getMoviesPopular(),
-                                    categories: viewModel.getCategories())
+            gotoMovieListTrigger.accept((title: title,
+                                         type: .popular))
             
         case .headerNew(let title):
-            viewModel.gotoMovieList(with: title,
-                                    type: .new,
-                                    movieList: viewModel.getMoviesNew(),
-                                    categories: viewModel.getCategories())
+            gotoMovieListTrigger.accept((title: title,
+                                         type: .new))
             
         case .headerComing(let title):
-            viewModel.gotoMovieList(with: title,
-                                    type: .upcoming,
-                                    movieList: viewModel.getMoviesComing(),
-                                    categories: viewModel.getCategories())
+            gotoMovieListTrigger.accept((title: title,
+                                         type: .upcoming))
             
         case .headerActor(let title):
-            viewModel.gotoActorList(with: title)
+            gotoActorListTrigger.accept(title)
             
         default:
             break
@@ -233,19 +227,19 @@ extension MovieViewController: HeaderCellDelegate {
 
 extension MovieViewController: TopHorizontalCellDelegate {
     func didSelectMovie(with id: Int) {
-        viewModel.showMovieDetailInfo(with: id)
+        selectedMovieTrigger.accept(id)
     }
 }
 
 extension MovieViewController: CategoryHorizontalCellDelgate {
     func selectedCategory(selectedIndex: Int, id: Int) {
-        viewModel.gotoCategory(with: selectedIndex, id: id)
+        selectedCategoryTrigger.accept((selectedIndex, id))
     }
 }
 
 extension MovieViewController: NewHorizontallCellDelegate, ComingHorizontalCellDelegate {
     func selectedMovie(_ id: Int) {
-        viewModel.showMovieDetailInfo(with: id)
+        selectedMovieTrigger.accept(id)
     }
     
     func selectedTV(_ id: Int) {
@@ -255,6 +249,6 @@ extension MovieViewController: NewHorizontallCellDelegate, ComingHorizontalCellD
 
 extension MovieViewController: ActorHorizontallCellDelegate {
     func didSelectedActor(id: Int) {
-        viewModel.showActorDetail(with: id)
+        selectedActorTrigger.accept(id)
     }
 }

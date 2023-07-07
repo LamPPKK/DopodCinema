@@ -38,103 +38,20 @@ enum CollectionViewTag: Int {
 
 class MovieViewModel: ViewModelType {
     
-    struct Input {
-    }
-    
-    struct Output {
-    }
-    
     // MARK: - Properties
     private let navigator: MovieNavigator
-    
+    private let movieServices: MovieServices
     private var categories: [GenreInfo] = []
     private var moviesPopular: [MovieInfo] = []
     private var moviesToprated: [MovieInfo] = []
     private var moviesUpcoming: [MovieInfo] = []
     private var moviesNowPlaying: [MovieInfo] = []
     private var actorsPopular: [ActorInfo] = []
-    
-    init(navigator: MovieNavigator) {
+        
+    init(navigator: MovieNavigator,
+         movieServices: MovieServices) {
+        self.movieServices = movieServices
         self.navigator = navigator
-    }
-    
-    func getAllData(completion: @escaping () -> Void) {
-        
-        LoadingView.shared.startLoading()
-        
-        let group = DispatchGroup()
-        
-        // 1.
-        group.enter()
-        API.shared.getMoviesTopRated(completion: { [weak self] moviesToprate in
-            guard let self = self else { return }
-            
-            self.moviesToprated = moviesToprate
-            group.leave()
-        }, error: { _ in
-            group.leave()
-        })
-        
-        // 2.
-        group.enter()
-        API.shared.getMoviesPopular(completion: { [weak self] moviesPopular in
-            guard let self = self else { return }
-            
-            self.moviesPopular = moviesPopular
-            group.leave()
-        }, error: { _ in
-            group.leave()
-        })
-        
-        // 3.
-        group.enter()
-        API.shared.getMoviesUpComing(completion: { [weak self] moviesUpcoming in
-            guard let self = self else { return }
-            
-            self.moviesUpcoming = moviesUpcoming
-            group.leave()
-        }, error: { _ in
-            group.leave()
-        })
-        
-        // 4.
-        group.enter()
-        API.shared.getActors(completion: { [weak self] actors in
-            guard let self = self else { return }
-            
-            self.actorsPopular = actors
-            group.leave()
-        }, error: { _ in
-            group.leave()
-        })
-        
-        // 5.
-        group.enter()
-        API.shared.getMoviesNowPlaying(completion: { [weak self] moviesNowPlaying in
-            guard  let self = self else { return }
-            
-            self.moviesNowPlaying = moviesNowPlaying
-            group.leave()
-        }, error: { _ in
-            group.leave()
-        })
-        
-        // 6.
-        group.enter()
-        API.shared.getListGenreMovie(completion: { [weak self] listGenre in
-            guard let self = self else { return }
-            
-            self.categories = listGenre
-            self.saveCategories(self.categories)
-            group.leave()
-        } , error: { _ in
-            group.leave()
-        })
-        
-        group.notify(queue: .main) {
-            LoadingView.shared.endLoading()
-            completion()
-        }
     }
     
     func getSections() -> [MovieSectionType] {
@@ -176,7 +93,115 @@ class MovieViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        return Output()
+        let loading = ActivityIndicator()
+        
+        let getMoviesTopRateTrigger = self.movieServices.getMovieTopRate(at: 1).trackActivity(loading)
+        let getMoviesNowPlayingTrigger = self.movieServices.getMovieNowPlaying(at: 1).trackActivity(loading)
+        let getMoviesCommingTrigger = self.movieServices.getMovieUpComing(at: 1).trackActivity(loading)
+        let getMoviesPopularTrigger = self.movieServices.getMoviePopular(at: 1).trackActivity(loading)
+        let getMovieCategoriesTrigger = self.movieServices.getMovieCategories().trackActivity(loading)
+        let getActorsTrigger = self.movieServices.getActors(at: 1).trackActivity(loading)
+        
+        let getDataEvent = Observable.zip(getMoviesTopRateTrigger,
+                                          getMoviesPopularTrigger,
+                                          getMoviesNowPlayingTrigger,
+                                          getMoviesCommingTrigger,
+                                          getMovieCategoriesTrigger,
+                                          getActorsTrigger)
+            .map { (topRate, popular, nowPlaying, upComming, category, actor) in
+                return (topRate.results,
+                        popular.results,
+                        nowPlaying.results,
+                        upComming.results,
+                        category.genres,
+                        actor.results)
+            }
+            .do { [weak self] (moviesToprate, moviesPopular, moviesNowPlaying, moviesComming, categories, actors) in
+                guard let self = self else { return }
+                
+                self.moviesToprated = moviesToprate
+                self.moviesPopular = moviesPopular
+                self.moviesNowPlaying = moviesNowPlaying
+                self.moviesUpcoming = moviesComming
+                self.categories = categories
+                self.saveCategories(categories)
+                self.actorsPopular = actors
+            }
+        
+        let selectedMovieEvent = input.selectedMovieTrigger
+            .flatMapLatest { id in
+                self.movieServices.getMovieDetail(id).trackActivity(loading)
+            }
+            .do(onNext: { [weak self] movieDetailInfo in
+                guard let self = self else { return }
+                self.navigator.gotoMovieDetail(movieDetailInfo)
+            })
+            .mapToVoid()
+        
+        let selectedActorEvent = input.selectedActorTrigger
+            .flatMapLatest { id in
+                self.movieServices.getActorDetail(id).trackActivity(loading)
+            }
+            .do(onNext: { [weak self] actorDetailInfo in
+                guard let self = self else { return }
+                self.navigator.gotoActorDetail(actorDetailInfo)
+            })
+            .mapToVoid()
+               
+        let seeAllCategoryEvent = input.seeAllCategoryTrigger
+            .do(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoCategory(with: self.categories)
+            })
+                        
+        let selectedCategoryEvent = input.selectedCategoryTrigger
+            .do(onNext: { [weak self] (selectedIndex, idCategory) in
+                guard let self = self else { return }
+                self.navigator.gotoCategory(with: selectedIndex,
+                                            categories: self.categories,
+                                            id: idCategory)
+            })
+            .mapToVoid()
+                
+        let gotoMovieListEvent = input.gotoMovieListTrigger
+            .do { [weak self] (title, movieType) in
+                guard let self = self else { return }
+                self.navigator.gotoMovieList(with: title,
+                                             type: movieType,
+                                             categories: self.categories)
+            }
+            .mapToVoid()
+        
+        let gotoActorListEvent = input.gotoActorListTrigger
+            .do(onNext: { [weak self] title in
+                guard let self = self else { return }
+                self.navigator.gotoActorList(with: title,
+                                             actorList: self.actorsPopular)
+            })
+            .mapToVoid()
+                
+        let gotoSearchEvent = input.gotoSearchTrigger
+            .do(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoSearch()
+            })
+        
+        let gotoDiscoveryEvent = input.gotoDiscoveryWallPaperTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoDiscoverWallpaper()
+            }
+                    
+        return .init(loadingEvent: loading.asObservable(),
+                     getDataEvent: getDataEvent,
+                     gotoSearchEvent: gotoSearchEvent,
+                     selectedMovieEvent: selectedMovieEvent,
+                     selectedActorEvent: selectedActorEvent,
+                     seeAllCategoryEvent: seeAllCategoryEvent,
+                     selectedCategoryEvent: selectedCategoryEvent,
+                     gotoMovieListEvent: gotoMovieListEvent,
+                     gotoActorListEvent: gotoActorListEvent,
+                     gotoDiscoveryWallPaperEvent: gotoDiscoveryEvent)
     }
     
     func getCategories() -> [GenreInfo] {
@@ -203,55 +228,6 @@ class MovieViewModel: ViewModelType {
         self.actorsPopular
     }
     
-    func showMovieDetailInfo(with id: Int) {
-        LoadingView.shared.startLoading()
-        
-        API.shared.getMovieDetail(with: id) { [weak self] movieDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.gotoMovieDetail(movieDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
-    }
-    
-    func showActorDetail(with id: Int) {
-        LoadingView.shared.startLoading()
-        
-        API.shared.getActorDetail(with: id) { [weak self] actorDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.gotoActorDetail(actorDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
-    }
-    
-    func gotoCategory() {
-        self.navigator.gotoCategory(with: categories)
-    }
-    
-    func gotoCategory(with selectedIndex: Int, id: Int) {
-        self.navigator.gotoCategory(with: selectedIndex, categories: categories, id: id)
-    }
-    
-    func gotoMovieList(with title: String,
-                       type: MovieType,
-                       movieList: [MovieInfo],
-                       categories: [GenreInfo]) {
-        self.navigator.gotoMovieList(with: title, type: type, movieList: movieList, categories: categories)
-    }
-    
-    func gotoActorList(with title: String) {
-        self.navigator.gotoActorList(with: title, actorList: self.actorsPopular)
-    }
-    
-    func gotoSearch() {
-        self.navigator.gotoSearch()
-    }
-    
     func saveCategories(_ categories: [GenreInfo]) {
         let listSaveCategory = categories.map {
             return SaveCategoryInfo(id: $0.id, name: $0.name)
@@ -259,8 +235,30 @@ class MovieViewModel: ViewModelType {
         
         UserDataDefaults.shared.setCategories(listSaveCategory)
     }
+}
+
+extension MovieViewModel {
+    struct Input {
+        let gotoSearchTrigger: Observable<Void>
+        let selectedMovieTrigger: Observable<Int>
+        let selectedActorTrigger: Observable<Int>
+        let seeAllCategoryTrigger: Observable<Void>
+        let selectedCategoryTrigger: Observable<(selectedIndex: Int, idCategory: Int)>
+        let gotoMovieListTrigger: Observable<(title: String, type: MovieType)>
+        let gotoActorListTrigger: Observable<String>
+        let gotoDiscoveryWallPaperTrigger: Observable<Void>
+    }
     
-    func gotoDiscoverWallpaper() {
-        self.navigator.gotoDiscoverWallpaper()
+    struct Output {
+        let loadingEvent: Observable<Bool>
+        let getDataEvent: Observable<([MovieInfo], [MovieInfo], [MovieInfo], [MovieInfo], [GenreInfo], [ActorInfo])>
+        let gotoSearchEvent: Observable<Void>
+        let selectedMovieEvent: Observable<Void>
+        let selectedActorEvent: Observable<Void>
+        let seeAllCategoryEvent: Observable<Void>
+        let selectedCategoryEvent: Observable<Void>
+        let gotoMovieListEvent: Observable<Void>
+        let gotoActorListEvent: Observable<Void>
+        let gotoDiscoveryWallPaperEvent: Observable<Void>
     }
 }

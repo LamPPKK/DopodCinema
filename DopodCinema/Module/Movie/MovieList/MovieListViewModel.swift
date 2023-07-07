@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 enum MovieType {
     case popular
@@ -14,32 +16,29 @@ enum MovieType {
     case upcoming
 }
 
-class MovieListViewModel {
+class MovieListViewModel: ViewModelType {
+    
     // MARK: - Properties
+    private var service: MovieServices
     private var navigator: MovieListNavigator
     private var title: String
-    private var movieList: [MovieInfo]
     private var categories: [GenreInfo]
     private var type: MovieType
-    
+        
     init(navigator: MovieListNavigator,
+         service: MovieServices,
          title: String,
          type: MovieType,
-         movieList: [MovieInfo],
          categories: [GenreInfo]) {
         self.navigator = navigator
+        self.service = service
         self.title = title
-        self.movieList = movieList
         self.categories = categories
         self.type = type
     }
     
     func getNavigationTitle() -> String {
         self.title
-    }
-    
-    func getMovieList() -> [MovieInfo] {
-        self.movieList
     }
     
     func getCategories() -> [GenreInfo] {
@@ -59,68 +58,66 @@ class MovieListViewModel {
         }
     }
     
-    func loadMore(at pageIndex: Int, completion: @escaping (Bool) -> Void) {
-        switch type {
-        case .popular:
-            getMoviesPopular(at: pageIndex, completion: completion)
+    func transform(input: Input) -> Output {
+        let loading = ActivityIndicator()
+        let error = ErrorTracker()
+        
+        let getDataTrigger = Observable.merge(input.loadDataTrigger,
+                                       input.loadMoreTrigger)
+        
+        let getDataEvent = getDataTrigger
+            .flatMapLatest({ pageIndex in
+                switch self.type {
+                case .popular:
+                    return self.service.getMoviePopular(at: pageIndex)
+                        .trackActivity(loading)
+                        .trackError(error)
+                    
+                case .new:
+                    return self.service.getMovieNowPlaying(at: pageIndex)
+                        .trackActivity(loading)
+                        .trackError(error)
+                    
+                case .upcoming:
+                    return self.service.getMovieUpComing(at: pageIndex)
+                        .trackActivity(loading)
+                        .trackError(error)
+                }
+            })
+            .map {
+                $0.results
+            }
+        
+        let selectedMovieEvent = input.selectedMovieTrigger
+            .flatMapLatest { idMovie in
+                self.service.getMovieDetail(idMovie)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do(onNext: { [weak self] movieDetailInfo in
+                guard let self = self else { return }
+                self.navigator.gotoMovieDetail(movieDetailInfo)
+            })
+            .mapToVoid()
+        
+        return .init(loadingEvent: loading.asObservable(),
+                     getDataEvent: getDataEvent,
+                     errorEvent: error.asObservable(),
+                     selectedMovieEvent: selectedMovieEvent)
+    }
+}
 
-        case .new:
-            getMoviesNew(at: pageIndex, completion: completion)
-            
-        case .upcoming:
-            getMoviesUpcoming(at: pageIndex, completion: completion)
-            
-        }
+extension MovieListViewModel {
+    struct Input {
+        let loadDataTrigger: Observable<Int>
+        let loadMoreTrigger: Observable<Int>
+        let selectedMovieTrigger: Observable<Int>
     }
     
-    func getMoviesPopular(at page: Int, completion: @escaping (Bool) -> Void) {
-        API.shared.getMoviesPopular(at: page,
-                                    completion: { [weak self] movies in
-            guard let self = self else {
-                return
-            }
-            
-            self.movieList.append(contentsOf: movies)
-            completion(true)
-        }, error: { error in
-            if let topVC = UIApplication.getTopViewController() {
-                topVC.showAlert(msg: error.localizedDescription)
-            }
-            completion(false)
-        })
-    }
-    
-    func getMoviesNew(at page: Int, completion: @escaping (Bool) -> Void) {
-        API.shared.getMoviesNowPlaying(at: page,
-                                    completion: { [weak self] movies in
-            guard let self = self else {
-                return
-            }
-            
-            self.movieList.append(contentsOf: movies)
-            completion(true)
-        }, error: { error in
-            if let topVC = UIApplication.getTopViewController() {
-                topVC.showAlert(msg: error.localizedDescription)
-            }
-            completion(false)
-        })
-    }
-    
-    func getMoviesUpcoming(at page: Int, completion: @escaping (Bool) -> Void) {
-        API.shared.getMoviesUpComing(at: page,
-                                    completion: { [weak self] movies in
-            guard let self = self else {
-                return
-            }
-            
-            self.movieList.append(contentsOf: movies)
-            completion(true)
-        }, error: { error in
-            if let topVC = UIApplication.getTopViewController() {
-                topVC.showAlert(msg: error.localizedDescription)
-            }
-            completion(false)
-        })
+    struct Output {
+        let loadingEvent: Observable<Bool>
+        let getDataEvent: Observable<[MovieInfo]>
+        let errorEvent: Observable<Error>
+        let selectedMovieEvent: Observable<Void>
     }
 }

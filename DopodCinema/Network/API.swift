@@ -9,76 +9,6 @@ class API {
     
     static let shared = API()
     
-    // MARK: - Get movie toprated
-    func getMoviesTopRated(completion: @escaping ([MovieInfo]) -> Void, error: @escaping (NetworkError) -> Void) {
-        let parametters: [String: Any] = [
-            "api_key": Constant.Network.API_KEY,
-            "language": "en-US",
-            "page": 1
-        ]
-        
-        Network.get(URLPath.MoviesPath.GET_MOVIES_TOPRATED,
-                    parameters: parametters,
-                    responseType: MoviesTopRated.self,
-                    completionHandler: { response in
-            completion(response.results)
-        }, errorHandler: error)
-    }
-    
-    // MARK: - Get movie popular
-    func getMoviesPopular(at page: Int = 1,
-                          completion: @escaping ([MovieInfo]) -> Void,
-                          error: @escaping (NetworkError) -> Void) {
-        let parametters: [String: Any] = [
-            "api_key": Constant.Network.API_KEY,
-            "language": "en-US",
-            "page": page
-        ]
-        
-        Network.get(URLPath.MoviesPath.GET_MOVIES_POPULAR,
-                    parameters: parametters,
-                    responseType: MoviesPopular.self,
-                    completionHandler: { response in
-            completion(response.results)
-        }, errorHandler: error)
-    }
-    
-    // MARK: - Get movie now playing
-    func getMoviesNowPlaying(at page: Int = 1,
-                             completion: @escaping ([MovieInfo]) -> Void,
-                             error: @escaping (NetworkError) -> Void) {
-        let parametters: [String: Any] = [
-            "api_key": Constant.Network.API_KEY,
-            "language": "en-US",
-            "page": page
-        ]
-        
-        Network.get(URLPath.MoviesPath.GET_MOVIES_NOWPLAYING,
-                    parameters: parametters,
-                    responseType: MoviesNowPlaying.self,
-                    completionHandler: { response in
-            completion(response.results)
-        }, errorHandler: error)
-    }
-
-    // MARK: - Get movie upcoming
-    func getMoviesUpComing(at page: Int = 1,
-                           completion: @escaping ([MovieInfo]) -> Void,
-                           error: @escaping (NetworkError) -> Void) {
-        let parametters: [String: Any] = [
-            "api_key": Constant.Network.API_KEY,
-            "language": "en-US",
-            "page": page
-        ]
-        
-        Network.get(URLPath.MoviesPath.GET_MOVIES_UPCOMING,
-                    parameters: parametters,
-                    responseType: MoviesUpComing.self,
-                    completionHandler: { response in
-            completion(response.results)
-        }, errorHandler: error)
-    }
-    
     // MARK: - Get movie detail
     func getMovieDetail(with id: Int, completion: @escaping (MovieDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
         let parametters: [String: Any] = [
@@ -108,7 +38,7 @@ class API {
         
         Network.get(URLPath.GET_MOVIES_BY_GENRE_ID,
                     parameters: parametters,
-                    responseType: MoviesCategory.self,
+                    responseType: MovieContainerInfo.self,
                     completionHandler: { response in
             completion(response.results)
         }, errorHandler: error)

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import RxGesture
 
 class MovieViewController: BaseViewController<MovieViewModel> {
@@ -28,14 +30,20 @@ class MovieViewController: BaseViewController<MovieViewModel> {
     let ActorHorizontallCellIdentity: String = "ActorHorizontallCell"
     let DiscoverWallpaperCellIdentity: String = "DiscoverWallpaperCell"
     
+    let gotoSearchTrigger = PublishRelay<Void>()
+    let selectedMovieTrigger = PublishRelay<Int>()
+    let selectedActorTrigger = PublishRelay<Int>()
+    let seeAllCategoryTrigger = PublishRelay<Void>()
+    let selectedCategoryTrigger = PublishRelay<(selectedIndex: Int, idCategory: Int)>()
+    let gotoMovieListTrigger = PublishRelay<(title: String, type: MovieType)>()
+    let gotoActorListTrigger = PublishRelay<String>()
+    let gotoWallpaperTrigger = PublishRelay<Void>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindViewModel()
         setupUI()
-        
-        viewModel.getAllData {
-            self.tableView.reloadData()
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +83,41 @@ class MovieViewController: BaseViewController<MovieViewModel> {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: Constant.BOTTOM_SAFE_AREA, right: 0)
     }
     
+    private func bindViewModel() {
+        let input = MovieViewModel.Input(gotoSearchTrigger: gotoSearchTrigger.asObservable(),
+                                         selectedMovieTrigger: selectedMovieTrigger.asObservable(),
+                                         selectedActorTrigger: selectedActorTrigger.asObservable(),
+                                         seeAllCategoryTrigger: seeAllCategoryTrigger.asObservable(),
+                                         selectedCategoryTrigger: selectedCategoryTrigger.asObservable(),
+                                         gotoMovieListTrigger: gotoMovieListTrigger.asObservable(),
+                                         gotoActorListTrigger: gotoActorListTrigger.asObservable(),
+                                         gotoDiscoveryWallPaperTrigger: gotoWallpaperTrigger.asObservable())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.loadingEvent
+            .subscribe(onNext: { isLoading in
+                isLoading ? LoadingView.shared.startLoading() : LoadingView.shared.endLoading()
+            })
+            .disposed(by: disposeBag)
+        
+        output.getDataEvent
+            .subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
+                self.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
+        output.gotoSearchEvent.subscribe().disposed(by: disposeBag)
+        output.selectedMovieEvent.subscribe().disposed(by: disposeBag)
+        output.selectedActorEvent.subscribe().disposed(by: disposeBag)
+        output.seeAllCategoryEvent.subscribe().disposed(by: disposeBag)
+        output.selectedCategoryEvent.subscribe().disposed(by: disposeBag)
+        output.gotoMovieListEvent.subscribe().disposed(by: disposeBag)
+        output.gotoActorListEvent.subscribe().disposed(by: disposeBag)
+        output.gotoDiscoveryWallPaperEvent.subscribe().disposed(by: disposeBag)
+    }
+    
     // MARK: - Action
     private func bindAction() {
        searchView
@@ -82,7 +125,7 @@ class MovieViewController: BaseViewController<MovieViewModel> {
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.gotoSearch()
+                self?.gotoSearchTrigger.accept(())
             })
             .disposed(by: disposeBag)
     }

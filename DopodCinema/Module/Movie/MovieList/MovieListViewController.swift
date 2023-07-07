@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class MovieListViewController: BaseViewController<MovieListViewModel> {
 
@@ -16,12 +18,21 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
     
     // MARK: - Properties
     private let ComingCellIdentity: String = "ComingCell"
-    private var page: Int = 2
+    
+    private let loadDataTrigger = PublishRelay<Int>()
+    private let loadMoreTrigger = PublishRelay<Int>()
+    private let selectedMovieTrigger = PublishRelay<Int>()
+    
+    private var movies: [MovieInfo] = []
+    private var page: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        bindViewModel()
         setupUI()
+        
+        loadDataTrigger.accept(page)
     }
     
     // MARK: - Private functions
@@ -40,35 +51,62 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    private func bindViewModel() {
+        let input = MovieListViewModel.Input(loadDataTrigger: loadDataTrigger.asObservable(),
+                                             loadMoreTrigger: loadMoreTrigger.asObservable(),
+                                             selectedMovieTrigger: selectedMovieTrigger.asObservable())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.loadingEvent
+            .subscribe(onNext: { isLoading in
+                isLoading ? LoadingView.shared.startLoading() : LoadingView.shared.endLoading()
+            })
+            .disposed(by: disposeBag)
+        
+        output.getDataEvent
+            .subscribe(onNext: { [weak self] movies in
+                guard let self = self else { return }
+                if !movies.isEmpty {
+                    self.page += 1
+                    self.movies.append(contentsOf: movies)
+                    self.collectionView.reloadData()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        output.errorEvent
+            .subscribe { [weak self] error in
+                guard let self = self else { return }
+                self.showAlert(msg: error.error?.localizedDescription ?? .empty)
+            }
+            .disposed(by: disposeBag)
+        
+        output.selectedMovieEvent.subscribe().disposed(by: disposeBag)
+    }
 }
 
 extension MovieListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getMovieList().count
+        return movies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComingCellIdentity, for: indexPath) as! ComingCell
-        let movie = viewModel.getMovieList()[indexPath.row]
+        let movie = movies[indexPath.row]
         cell.bindData(movie, genres: viewModel.getCategories())
-//        if screenType == .movie {
-//            let movie = movies[indexPath.row]
-//            cell.bindData(movie, genres: genres)
-//        } else {
-//            let tvShow = tvShows[indexPath.row]
-//            cell.bindData(tvShow, genres: genres)
-//        }
         return cell
     }
 }
 
 extension MovieListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.gotoMovieDetail(with: viewModel.getMovieList()[indexPath.row].id)
+        selectedMovieTrigger.accept(movies[indexPath.row].id)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.getMovieList().count - 1 {
+        if indexPath.row == movies.count - 1 {
             loadingView.startAnimating()
             loadingView.isHidden = false
             loadMoreData(at: page)
@@ -79,12 +117,7 @@ extension MovieListViewController: UICollectionViewDelegate {
     }
     
     private func loadMoreData(at page: Int) {
-        viewModel.loadMore(at: page) { [weak self] isSucceeded in
-            if isSucceeded {
-                self?.collectionView.reloadData()
-                self?.page += 1
-            }
-        }
+        loadMoreTrigger.accept(page)
     }
 }
 

@@ -32,7 +32,9 @@ class HomePageViewController: UIPageViewController {
     private func setupViewControllers() {
         movieNavigationController = UINavigationController()
         let movieNavigator = DefaultMovieNavigator(navigationController: movieNavigationController)
-        movieNavigator.start()
+        let movieVC = MovieViewController(nibName: "MovieViewController", bundle: nil)
+        movieVC.viewModel = MovieViewModel(navigator: movieNavigator, movieServices: MovieClient())
+        movieNavigationController.pushViewController(movieVC, animated: true)
         
         tvNavigationController = UINavigationController()
         let tvNavigator = DefaultTVShowNavigator(navigationController: tvNavigationController)

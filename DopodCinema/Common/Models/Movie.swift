@@ -22,23 +22,7 @@ struct MovieInfo: Codable {
     let genre_ids: [Int]
 }
 
-struct MoviesNowPlaying: Codable {
-    let results: [MovieInfo]
-}
-
-struct MoviesTopRated: Codable {
-    let results: [MovieInfo]
-}
-
-struct MoviesPopular: Codable {
-    let results: [MovieInfo]
-}
-
-struct MoviesUpComing: Codable {
-    let results: [MovieInfo]
-}
-
-struct MoviesCategory: Codable {
+struct MovieContainerInfo: Codable {
     let results: [MovieInfo]
 }
 
