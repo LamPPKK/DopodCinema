@@ -1224,3 +1224,9 @@ Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNTestUtilities.m
 Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/RCNUserDefaultsManagerTests.m
 Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/SecondApp-GoogleService-Info.plist
 Pods/FirebaseRemoteConfig/FirebaseRemoteConfig/Tests/Unit/TestABTPayload.txt
+DopodCinema.xcworkspace/contents.xcworkspacedata
+DopodCinema.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+DopodCinema.xcworkspace/xcuserdata/thengoc.xcuserdatad/UserInterfaceState.xcuserstate
+Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatLoggingTestUtils.swift
+Pods/SDWebImage/SDWebImage/Private/SDImageFramePool.h
+Pods/SDWebImage/SDWebImage/Private/SDImageFramePool.m
