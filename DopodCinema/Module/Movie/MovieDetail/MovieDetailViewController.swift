@@ -8,6 +8,8 @@
 import UIKit
 import SDWebImage
 import RxGesture
+import RxSwift
+import RxCocoa
 
 class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
 
@@ -46,13 +48,24 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     let StartingCellIdentity: String = "StartingCell"
     
     private var isCloseTime: Bool = false
+    let loadingTrigger = PublishRelay<Void>()
+    let selectedMovieTrigger = PublishRelay<Int>()
+    let selectedActorTrigger = PublishRelay<Int>()
+    let gotoYoutubeTrigger = PublishRelay<String>()
+    let gotoShowTimeTrigger = PublishRelay<Void>()
+    let gotoTrailerTrigger = PublishRelay<Void>()
+    let gotoScreenShotTrigger = PublishRelay<Int>()
+    let saveTrigger = PublishRelay<Void>()
+    let removeTrigger = PublishRelay<Void>()
+    let playTrigger = PublishRelay<Void>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setupCollectionView()
-        bindData()
+        bindViewModel()
+        loadingTrigger.accept(())
     }
     
     override func didToFavorite() {
@@ -63,9 +76,9 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         }
         
         if subHeaderView.isSave {
-            viewModel.saveMovieToLocal()
+            saveTrigger.accept(())
         } else {
-            viewModel.remove(viewModel.movieDetailInfo.id)
+            removeTrigger.accept(())
         }
         
         NotificationCenter.default.post(name: Notification.Name("Did_change_list_favorite"), object: nil)
@@ -127,7 +140,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.gotoDetailShowTime()
+                self?.gotoShowTimeTrigger.accept(())
             })
             .disposed(by: disposeBag)
         
@@ -136,7 +149,11 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.actionPlay()
+                if Utils.isShowFull() {
+                    self?.playTrigger.accept(())
+                } else {
+                    self?.gotoTrailerTrigger.accept(())
+                }
             })
             .disposed(by: disposeBag)
         
@@ -145,7 +162,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     }
     
     private func setupCollectionView() {
-        if viewModel.movieDetailInfo.videos.results.isEmpty {
+        if viewModel.getMovieDetailInfo().videos.results.isEmpty {
             heightTrailerView.constant = 0
             seeAllButton.isHidden = true
         } else {
@@ -157,7 +174,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             trailerCollectionView.tag = CollectionViewTag.trailer.rawValue
         }
         
-        if viewModel.movieDetailInfo.images.posters.isEmpty {
+        if viewModel.getMovieDetailInfo().images.posters.isEmpty {
             heightImageView.constant = 0
         } else {
             imageCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
@@ -167,7 +184,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             imageCollectionView.tag = CollectionViewTag.screenshots.rawValue
         }
         
-        if viewModel.movieDetailInfo.credits.cast.isEmpty {
+        if viewModel.getMovieDetailInfo().credits.cast.isEmpty {
             heightStartingView.constant = 0
         } else {
             startingCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
@@ -177,7 +194,7 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
             startingCollectionView.tag = CollectionViewTag.starting.rawValue
         }
         
-        if viewModel.movieDetailInfo.recommendations.results.isEmpty {
+        if viewModel.getMovieDetailInfo().recommendations.results.isEmpty {
             heightSimilarView.constant = 0
         } else {
             similarCollectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
@@ -188,9 +205,55 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
         }
     }
     
-    private func bindData() {
-        let movieDetailInfo = viewModel.movieDetailInfo
+    private func bindViewModel() {
+        let input = MovieDetailViewModel.Input(loadingTrigger: loadingTrigger.asObservable(),
+                                               selectedMovieTrigger: selectedMovieTrigger.asObservable(),
+                                               selectedActorTrigger: selectedActorTrigger.asObservable(),
+                                               gotoYoutubeTrigger: gotoYoutubeTrigger.asObservable(),
+                                               gotoShowTimeTrigger: gotoShowTimeTrigger.asObservable(),
+                                               gotoTrailerTrigger: gotoTrailerTrigger.asObservable(),
+                                               gotoScreenShotTrigger: gotoScreenShotTrigger.asObservable(),
+                                               saveTrigger: saveTrigger.asObservable(),
+                                               removeTrigger: removeTrigger.asObservable(),
+                                               playTrigger: playTrigger.asObservable())
         
+        let output = viewModel.transform(input: input)
+        
+        output.loadingEvent
+            .subscribe(onNext: { isLoading in
+                isLoading
+                ? LoadingView.shared.startLoading()
+                : LoadingView.shared.endLoading()
+            })
+            .disposed(by: disposeBag)
+        
+        output.errorEvent
+            .subscribe(onNext: { [weak self] error in
+                guard let self = self else { return }
+                self.showAlert(msg: error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+        
+        output.getDataEvent
+            .subscribe(onNext: { [weak self] movieDetailInfo in
+                guard let self = self else { return }
+                self.bindData(movieDetailInfo)
+            })
+            .disposed(by: disposeBag)
+        
+        [output.selectedMovieEvent,
+         output.selectedActorEvent,
+         output.gotoYoutubeEvent,
+         output.gotoShowTimeEvent,
+         output.gotoTrailerEvent,
+         output.gotoScreenShotEvent,
+         output.saveEvent,
+         output.removeEvent,
+         output.playTrigger
+        ].forEach({ $0.subscribe().disposed(by: disposeBag) })
+    }
+    
+    private func bindData(_ movieDetailInfo: MovieDetailInfo) {
         setupSubHeader(with: movieDetailInfo.original_title,
                        isDetail: true,
                        isSave: viewModel.isFavourite(movieDetailInfo.id))
@@ -232,6 +295,6 @@ class MovieDetailViewController: BaseViewController<MovieDetailViewModel> {
     }
     
     @IBAction func didToSeeAll() {
-        viewModel.gotoTrailerScreen()
+        gotoTrailerTrigger.accept(())
     }
 }

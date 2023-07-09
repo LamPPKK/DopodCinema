@@ -17,19 +17,20 @@ protocol MovieServices {
     func getActors(at page: Int) -> Observable<ActorPopular>
     func getActorDetail(_ id: Int) -> Observable<ActorDetailInfo>
     func getMovieDetail(_ id: Int) -> Observable<MovieDetailInfo>
+    func getLinkMovie(_ name: String) -> Observable<LinkContainerInfo>
 }
 
 class MovieClient: MovieServices {
     
-    func getMovieTopRate(at page: Int) -> RxSwift.Observable<MovieContainerInfo> {
+    func getMovieTopRate(at page: Int) -> Observable<MovieContainerInfo> {
         movieRequest(router: .topRate(page: page))
     }
     
-    func getMovieUpComing(at page: Int) -> RxSwift.Observable<MovieContainerInfo> {
+    func getMovieUpComing(at page: Int) -> Observable<MovieContainerInfo> {
         movieRequest(router: .comming(page: page))
     }
     
-    func getMovieNowPlaying(at page: Int) -> RxSwift.Observable<MovieContainerInfo> {
+    func getMovieNowPlaying(at page: Int) -> Observable<MovieContainerInfo> {
         movieRequest(router: .nowplaying(page: page))
     }
     
@@ -51,6 +52,10 @@ class MovieClient: MovieServices {
     
     func getMovieDetail(_ id: Int) -> Observable<MovieDetailInfo> {
         movieRequest(router: .detail(id: id))
+    }
+    
+    func getLinkMovie(_ name: String) -> Observable<LinkContainerInfo> {
+        APIClient.requestEncrypt(MovieRouter.link(name: name))
     }
     
     private func movieRequest<T: Codable>(router: MovieRouter) -> Observable<T> {

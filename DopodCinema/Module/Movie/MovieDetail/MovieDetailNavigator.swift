@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MovieDetailNavigator {
-    func start(_ movieDetailInfo: MovieDetailInfo)
+    func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
     func gotoDetailShowTime(_ movieDetailInfo: MovieDetailInfo)
     func gotoTrailerScreen(with list: [VideoInfo])
@@ -25,7 +25,7 @@ class DefaultMovieDetailNavigator: MovieDetailNavigator {
         self.navigationController = navigationController
     }
     
-    func start(_ movieDetailInfo: MovieDetailInfo) {
+    func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {
         let movieDetailVC = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
         let viewModel = MovieDetailViewModel(self,
                                              movieDetailInfo: movieDetailInfo)

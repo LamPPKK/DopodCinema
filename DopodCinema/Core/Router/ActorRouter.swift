@@ -13,6 +13,10 @@ enum ActorRouter: APIConfiguration {
     case actor(page: Int)
     case actorDetail(id: Int)
     
+    var hostURL: String {
+        return Constant.Network.HOST_URL
+    }
+    
     var method: HTTPMethod {
         return .get
     }
@@ -47,7 +51,7 @@ enum ActorRouter: APIConfiguration {
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = try Constant.Network.HOST_URL.asURL()
+        let url = try hostURL.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         

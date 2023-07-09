@@ -6,44 +6,125 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-class MovieDetailViewModel {
+class MovieDetailViewModel: ViewModelType {
     
     // MARK: - Properties
     private var navigator: DefaultMovieDetailNavigator
-    var movieDetailInfo: MovieDetailInfo
+    private var service: MovieServices
+    private var movieDetailInfo: MovieDetailInfo
     
-    init(_ navigator: DefaultMovieDetailNavigator, movieDetailInfo: MovieDetailInfo) {
+    init(_ navigator: DefaultMovieDetailNavigator,
+         movieDetailInfo: MovieDetailInfo,
+         service: MovieServices = MovieClient()) {
         self.navigator = navigator
         self.movieDetailInfo = movieDetailInfo
+        self.service = service
     }
     
-    func showMovieDetail(with id: Int) {
-        LoadingView.shared.startLoading()
+    func transform(input: Input) -> Output {
+        let loading = ActivityIndicator()
+        let error = ErrorTracker()
         
-        API.shared.getMovieDetail(with: id) { [weak self] movieDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.start(movieDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
-    }
-    
-    func showActorDetailInfo(with id: Int) {
-        LoadingView.shared.startLoading()
+        let getDataEvent = input.loadingTrigger
+            .flatMapLatest { _ in
+                return Observable.just(self.movieDetailInfo)
+            }
         
-        API.shared.getActorDetail(with: id) { [weak self] actorDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.gotoActorDetail(actorDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
+        let selectMovieEvent = input.selectedMovieTrigger
+            .flatMapLatest { idMovie in
+                self.service.getMovieDetail(idMovie)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do { movieDetailInfo in
+                self.navigator.gotoMovieDetail(movieDetailInfo)
+            }
+            .mapToVoid()
+        
+        let selectedActorEvent = input.selectedActorTrigger
+            .flatMapLatest { idActor in
+                self.service.getActorDetail(idActor)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do { actorDetailInfo in
+                self.navigator.gotoActorDetail(actorDetailInfo)
+            }
+            .mapToVoid()
+        
+        let gotoYoutubeEvent = input.gotoYoutubeTrigger
+            .do { [weak self] key in
+                guard let self = self else { return }
+                self.navigator.gotoYoutubeScreen(key)
+            }
+            .mapToVoid()
+        
+        let gotoShowTimeEvent = input.gotoShowTimeTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoDetailShowTime(self.movieDetailInfo)
+            }
+        
+        let gotoTrailerEvent = input.gotoTrailerTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoTrailerScreen(with: self.movieDetailInfo.videos.results)
+            }
+        
+        let gotoScreenShotEvent = input.gotoScreenShotTrigger
+            .do { [weak self] selectedIndex in
+                guard let self = self else { return }
+                self.navigator.gotoScreenShots(with: selectedIndex,
+                                               images: self.movieDetailInfo.images.posters)
+            }
+            .mapToVoid()
+        
+        let saveEvent = input.saveTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.saveMovieToLocal()
+            }
+        
+        let removeEvent = input.removeTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.remove(self.movieDetailInfo.id)
+            }
+        
+        let playEvent = input.playTrigger
+            .flatMapLatest { _ in
+                self.service.getLinkMovie(self.movieDetailInfo.original_title)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do { [weak self] linkInfo in
+                guard let self = self else { return }
+                self.navigator.gotoWatchScreen(posterPath: self.movieDetailInfo.poster_path ?? .empty,
+                                               linkContainerInfo: linkInfo)
+            }
+            .mapToVoid()
+        
+        return .init(loadingEvent: loading.asObservable(),
+                     errorEvent: error.asObservable(),
+                     getDataEvent: getDataEvent,
+                     selectedMovieEvent: selectMovieEvent,
+                     selectedActorEvent: selectedActorEvent,
+                     gotoYoutubeEvent: gotoYoutubeEvent,
+                     gotoShowTimeEvent: gotoShowTimeEvent,
+                     gotoTrailerEvent: gotoTrailerEvent,
+                     gotoScreenShotEvent: gotoScreenShotEvent,
+                     saveEvent: saveEvent,
+                     removeEvent: removeEvent,
+                     playTrigger: playEvent)
     }
     
+    func getMovieDetailInfo() -> MovieDetailInfo {
+        movieDetailInfo
+    }
+
     func isFavourite(_ id: Int) -> Bool {
         let listLocal: [SavedInfo] = UserDataDefaults.shared.getListMovie()
         let listExits = listLocal.filter { $0.id == id }
@@ -51,7 +132,7 @@ class MovieDetailViewModel {
     }
     
     // MARK: - Save movie to local
-    func saveMovieToLocal() {
+    private func saveMovieToLocal() {
         var list: [SavedInfo] = UserDataDefaults.shared.getListMovie()
         
         let movieInfo: SavedInfo = SavedInfo(id: self.movieDetailInfo.id,
@@ -63,7 +144,7 @@ class MovieDetailViewModel {
         UserDataDefaults.shared.setListMovie(list)
     }
     
-    func remove(_ id: Int) {
+    private func remove(_ id: Int) {
         var list: [SavedInfo] = UserDataDefaults.shared.getListMovie()
         
         var listIndex: [Int] = []
@@ -80,42 +161,34 @@ class MovieDetailViewModel {
         // Save
         UserDataDefaults.shared.setListMovie(list)
     }
-    
-    func gotoDetailShowTime() {
-        self.navigator.gotoDetailShowTime(self.movieDetailInfo)
+}
+
+extension MovieDetailViewModel {
+    struct Input {
+        let loadingTrigger: Observable<Void>
+        let selectedMovieTrigger: Observable<Int>
+        let selectedActorTrigger: Observable<Int>
+        let gotoYoutubeTrigger: Observable<String>
+        let gotoShowTimeTrigger: Observable<Void>
+        let gotoTrailerTrigger: Observable<Void>
+        let gotoScreenShotTrigger: Observable<Int>
+        let saveTrigger: Observable<Void>
+        let removeTrigger: Observable<Void>
+        let playTrigger: Observable<Void>
     }
     
-    func gotoTrailerScreen() {
-        self.navigator.gotoTrailerScreen(with: movieDetailInfo.videos.results)
-    }
-    
-    func gotoScreenShot(at selectedIndex: Int) {
-        self.navigator.gotoScreenShots(with: selectedIndex, images: movieDetailInfo.images.posters)
-    }
-    
-    func actionPlay() {
-        if Utils.isShowFull() {
-            gotoPlayScreen()
-        } else {
-            gotoTrailerScreen()
-        }
-    }
-    
-    func gotoPlayScreen() {
-        LoadingView.shared.startLoading()
-        
-        API.shared.getLinkMovie(with: self.movieDetailInfo.original_title,
-                                completion: { [weak self] linkInfo in
-            guard let self = self else { return }
-            self.navigator.gotoWatchScreen(posterPath: self.movieDetailInfo.poster_path ?? .empty,
-                                           linkContainerInfo: linkInfo)
-            LoadingView.shared.endLoading()
-        }, error: { _ in
-            LoadingView.shared.endLoading()
-        })
-    }
-    
-    func gotoYoutubeScreen(_ key: String) {
-        navigator.gotoYoutubeScreen(key)
+    struct Output {
+        let loadingEvent: Observable<Bool>
+        let errorEvent: Observable<Error>
+        let getDataEvent: Observable<MovieDetailInfo>
+        let selectedMovieEvent: Observable<Void>
+        let selectedActorEvent: Observable<Void>
+        let gotoYoutubeEvent: Observable<Void>
+        let gotoShowTimeEvent: Observable<Void>
+        let gotoTrailerEvent: Observable<Void>
+        let gotoScreenShotEvent: Observable<Void>
+        let saveEvent: Observable<Void>
+        let removeEvent: Observable<Void>
+        let playTrigger: Observable<Void>
     }
 }

@@ -77,10 +77,10 @@ class MovieListViewController: BaseViewController<MovieListViewModel> {
             .disposed(by: disposeBag)
         
         output.errorEvent
-            .subscribe { [weak self] error in
+            .subscribe(onNext: { [weak self] error in
                 guard let self = self else { return }
-                self.showAlert(msg: error.error?.localizedDescription ?? .empty)
-            }
+                self.showAlert(msg: error.localizedDescription)
+            })
             .disposed(by: disposeBag)
         
         output.selectedMovieEvent.subscribe().disposed(by: disposeBag)

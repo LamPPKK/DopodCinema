@@ -1033,10 +1033,10 @@
 			isa = PBXGroup;
 			children = (
 				99DA603629C0BC8300164F0A /* MovieList */,
-				99B3E89029A9F75B00BC4483 /* MovieNavigator.swift */,
-				99142F9B299A779D00E7BA3D /* MovieViewModel.swift */,
 				99D884BA29A7B4A00091DF91 /* MovieDetail */,
 				99313224299B3C3F00AA9E2C /* Cell */,
+				99B3E89029A9F75B00BC4483 /* MovieNavigator.swift */,
+				99142F9B299A779D00E7BA3D /* MovieViewModel.swift */,
 				99A6A9F92992953600D3EEEF /* MovieViewController.swift */,
 				99A6A9FA2992953600D3EEEF /* MovieViewController.xib */,
 				99313229299B67DE00AA9E2C /* MovieViewController+TableView.swift */,
@@ -1172,8 +1172,8 @@
 		99D884BA29A7B4A00091DF91 /* MovieDetail */ = {
 			isa = PBXGroup;
 			children = (
-				99B3E88D29A9F67B00BC4483 /* MovieDetailViewModel.swift */,
 				998C15CC29ABB4820027C3BF /* SubView */,
+				99B3E88D29A9F67B00BC4483 /* MovieDetailViewModel.swift */,
 				99D884BB29A7B4DA0091DF91 /* MovieDetailViewController.swift */,
 				99D884BC29A7B4DA0091DF91 /* MovieDetailViewController.xib */,
 				99B3E89229A9FE3A00BC4483 /* MovieDetailNavigator.swift */,

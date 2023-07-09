@@ -16,6 +16,17 @@ enum MovieRouter: APIConfiguration {
     case popular(page: Int)
     case category
     case detail(id: Int)
+    case link(name: String)
+    
+    var hostURL: String {
+        switch self {
+        case .link(_):
+            return Constant.Network.HOST_LINK_URL
+            
+        default:
+            return Constant.Network.HOST_URL
+        }
+    }
     
     var method: HTTPMethod {
         switch self {
@@ -43,6 +54,9 @@ enum MovieRouter: APIConfiguration {
             
         case .detail(let id):
             return "/movie/\(id)"
+            
+        case .link(_):
+            return "/encrypt/movie"
         }
     }
     
@@ -94,11 +108,18 @@ enum MovieRouter: APIConfiguration {
                 "append_to_response": "videos,credits,recommendations,reviews,images"
             ]
             return params
+            
+        case .link(let name):
+            let params: [String: Any] = [
+                "appId": Constant.Network.APP_ID,
+                "name": name
+            ]
+            return params
         }
     }
     
     func asURLRequest() throws -> URLRequest {
-        let url = try Constant.Network.HOST_URL.asURL()
+        let url = try hostURL.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         

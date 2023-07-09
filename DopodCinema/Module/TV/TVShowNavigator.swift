@@ -42,7 +42,11 @@ class DefaultTVShowNavigator: TVShowNavigator {
     
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo) {
         let navigator = DefaultMovieDetailNavigator(navigationController: navigationController)
-        navigator.start(movieDetailInfo)
+        let movieDetailVC = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
+        let viewModel = MovieDetailViewModel(navigator,
+                                             movieDetailInfo: movieDetailInfo)
+        movieDetailVC.viewModel = viewModel
+        navigationController.pushViewController(movieDetailVC, animated: true)
     }
     
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo) {

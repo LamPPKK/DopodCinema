@@ -14,19 +14,19 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         
         switch tag {
         case .trailer:
-            let numberOfItemsTrailer = viewModel.movieDetailInfo.videos.results.count
+            let numberOfItemsTrailer = viewModel.getMovieDetailInfo().videos.results.count
             return numberOfItemsTrailer > 5 ? 5 : numberOfItemsTrailer
             
         case .screenshots:
-            let numberOfItemsPoster = viewModel.movieDetailInfo.images.posters.count
+            let numberOfItemsPoster = viewModel.getMovieDetailInfo().images.posters.count
             return numberOfItemsPoster > 10 ? 10 : numberOfItemsPoster
             
         case .starting:
-            let numberOfItemsActing = viewModel.movieDetailInfo.credits.cast.count
+            let numberOfItemsActing = viewModel.getMovieDetailInfo().credits.cast.count
             return numberOfItemsActing > 10 ? 10 : numberOfItemsActing
             
         case .similarmovies:
-            let numberOfItemsSimilar = viewModel.movieDetailInfo.recommendations.results.count
+            let numberOfItemsSimilar = viewModel.getMovieDetailInfo().recommendations.results.count
             return numberOfItemsSimilar > 10 ? 10 : numberOfItemsSimilar
             
         default:
@@ -41,20 +41,26 @@ extension MovieDetailViewController: UICollectionViewDataSource {
         
         switch tag {
         case .trailer:
-            return trailerCell(for: collectionView, indexPath: indexPath, videos: viewModel.movieDetailInfo.videos.results)
+            return trailerCell(for: collectionView,
+                               indexPath: indexPath,
+                               videos: viewModel.getMovieDetailInfo().videos.results)
             
         case .screenshots:
-            let path = viewModel.movieDetailInfo.images.posters[indexPath.row].file_path
-            return imageCell(for: collectionView, indexPath: indexPath, path: path)
+            let path = viewModel.getMovieDetailInfo().images.posters[indexPath.row].file_path
+            return imageCell(for: collectionView,
+                             indexPath: indexPath,
+                             path: path)
             
         case .starting:
             return startingCell(for: collectionView,
                                 indexPath: indexPath,
-                                actings: viewModel.movieDetailInfo.credits.cast)
+                                actings: viewModel.getMovieDetailInfo().credits.cast)
             
         case .similarmovies:
-            let path = viewModel.movieDetailInfo.recommendations.results[indexPath.row].poster_path
-            return imageCell(for: collectionView, indexPath: indexPath, path: path)
+            let path = viewModel.getMovieDetailInfo().recommendations.results[indexPath.row].poster_path
+            return imageCell(for: collectionView,
+                             indexPath: indexPath,
+                             path: path)
             
         default:
             return UICollectionViewCell()
@@ -81,7 +87,7 @@ extension MovieDetailViewController: UICollectionViewDataSource {
                               indexPath: IndexPath,
                               actings: [CastInfo]) -> StartingCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StartingCellIdentity, for: indexPath) as! StartingCell
-        let acting = viewModel.movieDetailInfo.credits.cast[indexPath.row]
+        let acting = actings[indexPath.row]
         cell.bindData(acting)
         return cell
     }
@@ -118,18 +124,19 @@ extension MovieDetailViewController: UICollectionViewDelegate {
         
         switch tag {
         case .trailer:
-            viewModel.gotoYoutubeScreen(viewModel.movieDetailInfo.videos.results[indexPath.row].key)
+            let key = viewModel.getMovieDetailInfo().videos.results[indexPath.row].key
+            gotoYoutubeTrigger.accept(key)
             
         case .screenshots:
-            viewModel.gotoScreenShot(at: indexPath.row)
+            gotoScreenShotTrigger.accept(indexPath.row)
             
         case .starting:
-            let id = viewModel.movieDetailInfo.credits.cast[indexPath.row].id
-            viewModel.showActorDetailInfo(with: id)
+            let id = viewModel.getMovieDetailInfo().credits.cast[indexPath.row].id
+            selectedActorTrigger.accept(id)
             
         case .similarmovies:
-            let id = viewModel.movieDetailInfo.recommendations.results[indexPath.row].id
-            viewModel.showMovieDetail(with: id)
+            let id = viewModel.getMovieDetailInfo().recommendations.results[indexPath.row].id
+            selectedMovieTrigger.accept(id)
             
         default:
             break
