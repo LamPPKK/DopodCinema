@@ -20,47 +20,45 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HPZ-5R-dNt">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dyH-Nz-Gaw">
-                                    <rect key="frame" x="16" y="8" width="382" height="40"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvT-fs-4F6">
-                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="UMj-K3-cDt"/>
-                                                <constraint firstAttribute="height" constant="40" id="dKl-yP-y2t"/>
-                                            </constraints>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="ic_back"/>
-                                            <connections>
-                                                <action selector="didBackToViewController" destination="iN0-l3-epB" eventType="touchUpInside" id="31e-BV-zm3"/>
-                                            </connections>
-                                        </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Hold on wallpaper for more option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjg-1R-3m9">
-                                            <rect key="frame" x="48" y="0.0" width="286" height="40"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1Z-BN-Con">
-                                            <rect key="frame" x="342" y="0.0" width="40" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="c1H-Ww-Naa"/>
-                                                <constraint firstAttribute="width" secondItem="a1Z-BN-Con" secondAttribute="height" multiplier="1:1" id="pdb-dr-JLy"/>
-                                            </constraints>
-                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="ic_save_inactive"/>
-                                            <connections>
-                                                <action selector="didSave" destination="iN0-l3-epB" eventType="touchUpInside" id="VVg-5v-cQr"/>
-                                            </connections>
-                                        </button>
-                                    </subviews>
-                                </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvT-fs-4F6">
+                                    <rect key="frame" x="16" y="8" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="UMj-K3-cDt"/>
+                                        <constraint firstAttribute="height" constant="40" id="dKl-yP-y2t"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="didBackToViewController" destination="iN0-l3-epB" eventType="touchUpInside" id="31e-BV-zm3"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Hold on wallpaper for more option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjg-1R-3m9">
+                                    <rect key="frame" x="78" y="18" width="258.33333333333331" height="20.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1Z-BN-Con">
+                                    <rect key="frame" x="358" y="8" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="c1H-Ww-Naa"/>
+                                        <constraint firstAttribute="width" secondItem="a1Z-BN-Con" secondAttribute="height" multiplier="1:1" id="pdb-dr-JLy"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="ic_save_inactive"/>
+                                    <connections>
+                                        <action selector="didSave" destination="iN0-l3-epB" eventType="touchUpInside" id="VVg-5v-cQr"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="dyH-Nz-Gaw" firstAttribute="centerX" secondItem="HPZ-5R-dNt" secondAttribute="centerX" id="fgb-s4-maQ"/>
-                                <constraint firstItem="dyH-Nz-Gaw" firstAttribute="centerY" secondItem="HPZ-5R-dNt" secondAttribute="centerY" id="mkV-co-X2O"/>
-                                <constraint firstAttribute="trailing" secondItem="dyH-Nz-Gaw" secondAttribute="trailing" constant="16" id="p4E-VJ-ico"/>
+                                <constraint firstItem="JvT-fs-4F6" firstAttribute="centerY" secondItem="HPZ-5R-dNt" secondAttribute="centerY" id="29u-IN-Np2"/>
+                                <constraint firstAttribute="trailing" secondItem="a1Z-BN-Con" secondAttribute="trailing" constant="16" id="CtV-i7-wL9"/>
+                                <constraint firstItem="gjg-1R-3m9" firstAttribute="centerX" secondItem="HPZ-5R-dNt" secondAttribute="centerX" id="ENI-qP-s2E"/>
+                                <constraint firstItem="JvT-fs-4F6" firstAttribute="leading" secondItem="HPZ-5R-dNt" secondAttribute="leading" constant="16" id="KrS-8g-pcm"/>
+                                <constraint firstItem="gjg-1R-3m9" firstAttribute="centerY" secondItem="HPZ-5R-dNt" secondAttribute="centerY" id="jXo-M4-zRV"/>
+                                <constraint firstItem="a1Z-BN-Con" firstAttribute="centerY" secondItem="HPZ-5R-dNt" secondAttribute="centerY" id="ysj-xj-GEl"/>
                             </constraints>
                         </view>
                     </subviews>

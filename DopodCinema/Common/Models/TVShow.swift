@@ -78,15 +78,7 @@ struct Crew: Codable {
     let profilePath: String?
 }
 
-struct TVShowsPopularInfo: Codable {
-    let results: [TVShowInfo]
-}
-
-struct TVShowsOnAirInfo: Codable {
-    let results: [TVShowInfo]
-}
-
-struct TVShowsTopRateInfo: Codable {
+struct TVShowContainerInfo: Codable {
     let results: [TVShowInfo]
 }
 

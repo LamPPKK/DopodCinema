@@ -8,7 +8,6 @@
 import UIKit
 
 protocol TVShowNavigator {
-    func start()
     func gotoSearch()
     func gotoMovieDetail(_ movieDetailInfo: MovieDetailInfo)
     func gotoActorDetail(_ actorDetailInfo: ActorDetailInfo)
@@ -27,12 +26,6 @@ class DefaultTVShowNavigator: TVShowNavigator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         navigationController.setNavigationBarHidden(true, animated: false)
-    }
-    
-    func start() {
-        let tvShowVC = TVViewController(nibName: "TVViewController", bundle: nil)
-        tvShowVC.viewModel = TVViewModel(navigator: self)
-        navigationController.pushViewController(tvShowVC, animated: true)
     }
     
     func gotoSearch() {

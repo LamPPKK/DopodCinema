@@ -44,63 +44,6 @@ class API {
         }, errorHandler: error)
     }
     
-    // MARK: - Get list tv show top rate
-    func getTVShowsTopRate(at page: Int = 1,
-                           completion: @escaping ([TVShowInfo]) -> Void,
-                           error: @escaping (NetworkError) -> Void) {
-
-        let parametters: [String: Any] = [
-            "api_key": Constant.Network.API_KEY,
-            "language": "en-US",
-            "page": page
-        ]
-
-        Network.get(URLPath.TVShowPath.GET_TV_SHOW_TOPRATED,
-                    parameters: parametters,
-                    responseType: TVShowsTopRateInfo.self,
-                    completionHandler: { response in
-            completion(response.results)
-        }, errorHandler: error)
-    }
-    
-    // MARK: - Get list tv show popular
-    func getTVShowsPopular(at page: Int = 1,
-                           completion: @escaping ([TVShowInfo]) -> Void,
-                           error: @escaping (NetworkError) -> Void) {
-
-        let parametters: [String: Any] = [
-            "api_key": Constant.Network.API_KEY,
-            "language": "en-US",
-            "page": page
-        ]
-
-        Network.get(URLPath.TVShowPath.GET_TV_SHOW_POPULAR,
-                    parameters: parametters,
-                    responseType: TVShowsPopularInfo.self,
-                    completionHandler: { response in
-            completion(response.results)
-        }, errorHandler: error)
-    }
-    
-    // MARK: - Get list tv show on the air
-    func getTVShowOnAir(at page: Int = 1,
-                        completion: @escaping ([TVShowInfo]) -> Void,
-                        error: @escaping (NetworkError) -> Void) {
-        
-        let parametters: [String: Any] = [
-            "api_key": Constant.Network.API_KEY,
-            "language": "en-US",
-            "page": page
-        ]
-        
-        Network.get(URLPath.TVShowPath.GET_TV_SHOW_ON_AIR,
-                    parameters: parametters,
-                    responseType: TVShowsOnAirInfo.self,
-                    completionHandler: { response in
-            completion(response.results)
-        }, errorHandler: error)
-    }
-    
     // MARK: - Get tv detail
     func getTVShowDetail(with id: Int, completion: @escaping (TVShowDetailInfo) -> Void, error: @escaping (NetworkError) -> Void) {
         let parametters: [String: Any] = [

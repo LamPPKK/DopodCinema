@@ -38,7 +38,9 @@ class HomePageViewController: UIPageViewController {
         
         tvNavigationController = UINavigationController()
         let tvNavigator = DefaultTVShowNavigator(navigationController: tvNavigationController)
-        tvNavigator.start()
+        let tvShowVC = TVViewController(nibName: "TVViewController", bundle: nil)
+        tvShowVC.viewModel = TVViewModel(navigator: tvNavigator)
+        tvNavigationController.pushViewController(tvShowVC, animated: true)
         
         favNavigationController = UINavigationController()
         let favNavigator = DefaultFavoriteNavigator(navigationController: favNavigationController)

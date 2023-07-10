@@ -74,53 +74,14 @@ class TVListViewModel {
     }
     
     func getTVShowsPopular(at page: Int, completion: @escaping (Bool) -> Void) {
-        API.shared.getTVShowsPopular(at: page,
-                                    completion: { [weak self] tvShows in
-            guard let self = self else {
-                return
-            }
-            
-            self.list.append(contentsOf: tvShows)
-            completion(true)
-        }, error: { error in
-            if let topVC = UIApplication.getTopViewController() {
-                topVC.showAlert(msg: error.localizedDescription)
-            }
-            completion(false)
-        })
+        
     }
     
     func getTVShowsOnAir(at page: Int, completion: @escaping (Bool) -> Void) {
-        API.shared.getTVShowOnAir(at: page,
-                                  completion: { [weak self] tvShows in
-          guard let self = self else {
-              return
-          }
-          
-          self.list.append(contentsOf: tvShows)
-          completion(true)
-      }, error: { error in
-          if let topVC = UIApplication.getTopViewController() {
-              topVC.showAlert(msg: error.localizedDescription)
-          }
-          completion(false)
-      })
+        
     }
     
     func getTVShowsTopRate(at page: Int, completion: @escaping (Bool) -> Void) {
-        API.shared.getTVShowsTopRate(at: page,
-                                     completion: { [weak self] tvShows in
-             guard let self = self else {
-                 return
-             }
-             
-             self.list.append(contentsOf: tvShows)
-             completion(true)
-         }, error: { error in
-             if let topVC = UIApplication.getTopViewController() {
-                 topVC.showAlert(msg: error.localizedDescription)
-             }
-             completion(false)
-         })
+        
     }
 }

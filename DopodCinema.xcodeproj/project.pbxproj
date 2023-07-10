@@ -197,6 +197,8 @@
 		99A6A9FB2992953600D3EEEF /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6A9F92992953600D3EEEF /* MovieViewController.swift */; };
 		99A6A9FC2992953600D3EEEF /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A6A9FA2992953600D3EEEF /* MovieViewController.xib */; };
 		99A6A9FF2992964700D3EEEF /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A6A9FE2992964700D3EEEF /* HomePageViewController.swift */; };
+		99A95B3A2A5C3D7700F03478 /* TVRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A95B392A5C3D7700F03478 /* TVRouter.swift */; };
+		99A95B3C2A5C3EFF00F03478 /* TVClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A95B3B2A5C3EFF00F03478 /* TVClient.swift */; };
 		99AEB9322A586F770044C166 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEB9312A586F770044C166 /* ActivityIndicator.swift */; };
 		99AEB9342A58737D0044C166 /* ActorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEB9332A58737D0044C166 /* ActorRouter.swift */; };
 		99AEB9362A5876D30044C166 /* ErrorTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AEB9352A5876D30044C166 /* ErrorTracker.swift */; };
@@ -454,6 +456,8 @@
 		99A6A9F92992953600D3EEEF /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		99A6A9FA2992953600D3EEEF /* MovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
 		99A6A9FE2992964700D3EEEF /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		99A95B392A5C3D7700F03478 /* TVRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVRouter.swift; sourceTree = "<group>"; };
+		99A95B3B2A5C3EFF00F03478 /* TVClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVClient.swift; sourceTree = "<group>"; };
 		99AEB9312A586F770044C166 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		99AEB9332A58737D0044C166 /* ActorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorRouter.swift; sourceTree = "<group>"; };
 		99AEB9352A5876D30044C166 /* ErrorTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTracker.swift; sourceTree = "<group>"; };
@@ -619,6 +623,7 @@
 			children = (
 				992E67A02A566936005E3AD0 /* MovieRouter.swift */,
 				99AEB9332A58737D0044C166 /* ActorRouter.swift */,
+				99A95B392A5C3D7700F03478 /* TVRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -627,6 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				992E67A32A566AC0005E3AD0 /* MovieClient.swift */,
+				99A95B3B2A5C3EFF00F03478 /* TVClient.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -1566,6 +1572,7 @@
 				99DA603929C0BC9900164F0A /* MovieListViewController.swift in Sources */,
 				995C84DB2A46866000C74B80 /* YoutubePlayer.swift in Sources */,
 				998C15CF29ABB49F0027C3BF /* ImageCell.swift in Sources */,
+				99A95B3A2A5C3D7700F03478 /* TVRouter.swift in Sources */,
 				9913D94F29F541C1009467E0 /* ImageDetailCell.swift in Sources */,
 				990E975729D14BB1000BC1B5 /* TimeCell.swift in Sources */,
 				994A8ED629F6C2280052143A /* WebViewScreen.swift in Sources */,
@@ -1585,6 +1592,7 @@
 				99BACD61299543B700762A3E /* BaseHeaderView.swift in Sources */,
 				998B53E029B2F45D00822525 /* ActorDetailNavigator.swift in Sources */,
 				99BACD6A299545CC00762A3E /* BaseViewController.swift in Sources */,
+				99A95B3C2A5C3EFF00F03478 /* TVClient.swift in Sources */,
 				997274E029C59E460043940B /* ShowTimeDetailNavigator.swift in Sources */,
 				993EA19029A1B1EC00C5470B /* ActorHorizontallCell.swift in Sources */,
 				995DEB9A29F9670200B34F6C /* WatchScreen.swift in Sources */,

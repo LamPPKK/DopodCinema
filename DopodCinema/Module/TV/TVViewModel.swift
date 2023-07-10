@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 enum TVSectionType {
     case top(tvshows: [TVShowInfo])
@@ -22,85 +24,135 @@ enum TVSectionType {
     case actor(actors: [ActorInfo])
 }
 
-class TVViewModel: NSObject {
+class TVViewModel: ViewModelType {
     
     // MARK: - Properties
     private var navigator: TVShowNavigator
+    private var services: TVServices
     private var categories: [GenreInfo] = []
     private var tvShowsToprate: [TVShowInfo] = []
     private var tvShowsPopular: [TVShowInfo] = []
     private var tvShowsOnair: [TVShowInfo] = []
     private var actors: [ActorInfo] = []
     
-    init(navigator: TVShowNavigator) {
+    init(navigator: TVShowNavigator,
+         services: TVServices = TVClient()) {
         self.navigator = navigator
+        self.services = services
     }
     
-    func getAllData(completion: @escaping () -> Void) {
+    func transform(input: Input) -> Output {
+        let loading = ActivityIndicator()
+        let error = ErrorTracker()
         
-        LoadingView.shared.startLoading()
-        
-        let group = DispatchGroup()
-        
-        // 1.
-        group.enter()
-        API.shared.getTVShowsTopRate { [weak self] tvShowsToprate in
-            guard let self = self else { return }
-            
-            self.tvShowsToprate = tvShowsToprate
-            group.leave()
-        } error: { error in
-            group.leave()
-        }
+        let getTVOnAirTrigger = services.getTVShowOnAir(at: 1).trackActivity(loading).asDriverOnErrorJustComplete()
+        let getTVPopularTrigger = services.getTVShowsPopular(at: 1).trackActivity(loading).asDriverOnErrorJustComplete()
+        let getTVTopRateTrigger = services.getTVShowsTopRate(at: 1).trackActivity(loading).asDriverOnErrorJustComplete()
+        let getTVCategorisTrigger = services.getTVCategories().trackActivity(loading).asDriverOnErrorJustComplete()
+        let getActorsTrigger = services.getActors(at: 1).trackActivity(loading).asDriverOnErrorJustComplete()
 
-        // 2.
-        group.enter()
-        API.shared.getListGenreTV { [weak self] categories in
-            guard let self = self else { return }
-            
-            self.categories = categories
-            group.leave()
-        } error: { error in
-            group.leave()
-        }
+        let getDataEvent = Driver.zip(getTVOnAirTrigger,
+                                      getTVPopularTrigger,
+                                      getTVTopRateTrigger,
+                                      getTVCategorisTrigger,
+                                      getActorsTrigger)
+            .map { (onAirInfo, popularInfo, toprateInfo, categoryInfo, actorInfo) in
+                return (onAirInfo.results,
+                        popularInfo.results,
+                        toprateInfo.results,
+                        categoryInfo.genres,
+                        actorInfo.results)
+            }
+            .do { [weak self] (tvsOnAir, tvsPopular, tvsToprate, categories, actors) in
+                guard let self = self else { return }
+                self.tvShowsOnair = tvsOnAir
+                self.tvShowsPopular = tvsPopular
+                self.tvShowsToprate = tvsToprate
+                self.categories = categories
+                self.actors = actors
+            }
+            .mapToVoid()
         
-        // 3.
-        group.enter()
-        API.shared.getTVShowsPopular { [weak self] tvShowsPopular in
-            guard let self = self else { return }
-            
-            self.tvShowsPopular = tvShowsPopular
-            group.leave()
-        } error: { error in
-            group.leave()
-        }
-
-        // 4.
-        group.enter()
-        API.shared.getTVShowOnAir { [weak self] tvShowsOnair in
-            guard let self = self else { return }
-            
-            self.tvShowsOnair = tvShowsOnair
-            group.leave()
-        } error: { error in
-            group.leave()
-        }
+        let selectedActorEvent = input.selectedActorTrigger
+            .flatMapLatest { idActor in
+                self.services.getActorDetail(idActor)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do { [weak self] actorDetailInfo in
+                guard let self = self else { return }
+                self.navigator.gotoActorDetail(actorDetailInfo)
+            }
+            .mapToVoid()
         
-        // 5.
-        group.enter()
-        API.shared.getActors(completion: { [weak self] actors in
-            guard let self = self else { return }
-            
-            self.actors = actors
-            group.leave()
-        }, error: { error in
-            group.leave()
-        })
+        let selectedTVShowEvent = input.selectedTVShowTrigger
+            .flatMapLatest { idTV in
+                self.services.getTVShowDetail(idTV)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do { [weak self] tvShowDetailInfo in
+                guard let self = self else { return }
+                self.navigator.gotoTVDetail(tvShowDetailInfo)
+            }
+            .mapToVoid()
         
-        group.notify(queue: .main) {
-            LoadingView.shared.endLoading()
-            completion()
-        }
+        let gotoSearchEvent = input.gotoSearchTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoSearch()
+            }
+        
+        let gotoDiscoveryEvent = input.gotoDiscoveryWallPaperTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoDiscoverWallpaper()
+            }
+        
+        let gotoCategoryEvent = input.gotoCategoryTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoCategory(with: self.categories)
+            }
+        
+        let selectedCategoryEvent = input.selectedCategoryTrigger
+            .do { [weak self] (selectedIndex, categoryID) in
+                guard let self = self else { return }
+                self.navigator.gotoCategory(with: selectedIndex,
+                                            categories: self.categories,
+                                            id: categoryID)
+            }
+            .mapToVoid()
+        
+        let gotoTVListEvent = input.gotoTVListTrigger
+            .do { [weak self] (title, type, tvShows) in
+                guard let self = self else { return }
+                self.navigator.gotoTVList(with: title,
+                                          type: type,
+                                          list: tvShows,
+                                          categories: self.categories)
+            }
+            .mapToVoid()
+        
+        let gotoActorListEvent = input.gotoActorListTrigger
+            .do { [weak self] title in
+                guard let self = self else { return }
+                self.navigator.gotoActorList(with: title,
+                                             actorList: self.actors)
+            }
+            .mapToVoid()
+        
+        return .init(getDataEvent: getDataEvent.asDriver(),
+                     loadingEvent: loading.asDriver(),
+                     errorEvent: error.asDriver(),
+                     selectedActorEvent: selectedActorEvent.asDriverOnErrorJustComplete(),
+                     selectedTVShowEvent: selectedTVShowEvent.asDriverOnErrorJustComplete(),
+                     gotoSearchEvent: gotoSearchEvent.asDriverOnErrorJustComplete(),
+                     gotoDiscoveryWallPaperEvent: gotoDiscoveryEvent.asDriverOnErrorJustComplete(),
+                     gotoCategoryEvent: gotoCategoryEvent.asDriverOnErrorJustComplete(),
+                     selectedCategoryEvent: selectedCategoryEvent.asDriverOnErrorJustComplete(),
+                     gotoTVListEvent: gotoTVListEvent.asDriverOnErrorJustComplete(),
+                     gotoActorListEvent: gotoActorListEvent.asDriverOnErrorJustComplete())
     }
     
     func getSections() -> [TVSectionType] {
@@ -155,57 +207,31 @@ class TVViewModel: NSObject {
     func getCategories() -> [GenreInfo] {
         categories
     }
-    
-    func showActorDetail(with id: Int) {
-        LoadingView.shared.startLoading()
-        
-        API.shared.getActorDetail(with: id) { [weak self] actorDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.gotoActorDetail(actorDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
+}
+
+extension TVViewModel {
+    struct Input {
+        let selectedActorTrigger: Observable<Int>
+        let selectedTVShowTrigger: Observable<Int>
+        let gotoSearchTrigger: Observable<Void>
+        let gotoDiscoveryWallPaperTrigger: Observable<Void>
+        let gotoCategoryTrigger: Observable<Void>
+        let selectedCategoryTrigger: Observable<(selectedIndex: Int, categoryID: Int)>
+        let gotoTVListTrigger: Observable<(title: String, type: TVShowType, tvShows: [TVShowInfo])>
+        let gotoActorListTrigger: Observable<String>
     }
     
-    func showTVDetail(with id: Int) {
-        LoadingView.shared.startLoading()
-        
-        API.shared.getTVShowDetail(with: id) { [weak self] tvDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.gotoTVDetail(tvDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
-    }
-    
-    func gotoSearch() {
-        self.navigator.gotoSearch()
-    }
-    
-    func gotoTVList(with title: String,
-                    type: TVShowType,
-                    list: [TVShowInfo],
-                    categories: [GenreInfo]) {
-        self.navigator.gotoTVList(with: title, type: type, list: list, categories: categories)
-    }
-    
-    func gotoActorList(with title: String) {
-        self.navigator.gotoActorList(with: title, actorList: self.actors)
-    }
-    
-    func gotoCategory() {
-        self.navigator.gotoCategory(with: categories)
-    }
-    
-    func gotoCategory(with selectedIndex: Int, id: Int) {
-        self.navigator.gotoCategory(with: selectedIndex, categories: categories, id: id)
-    }
-    
-    func gotoDiscoverWallpaper() {
-        self.navigator.gotoDiscoverWallpaper()
+    struct Output {
+        let getDataEvent: Driver<Void>
+        let loadingEvent: Driver<Bool>
+        let errorEvent: Driver<Error>
+        let selectedActorEvent: Driver<Void>
+        let selectedTVShowEvent: Driver<Void>
+        let gotoSearchEvent: Driver<Void>
+        let gotoDiscoveryWallPaperEvent: Driver<Void>
+        let gotoCategoryEvent: Driver<Void>
+        let selectedCategoryEvent: Driver<Void>
+        let gotoTVListEvent: Driver<Void>
+        let gotoActorListEvent: Driver<Void>
     }
 }

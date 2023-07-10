@@ -180,10 +180,10 @@ extension TVViewController: UITableViewDelegate {
         
         switch section {
         case .popular(let tvShows):
-            viewModel.showTVDetail(with: tvShows[indexPath.row].id)
+            selectedTVTrigger.onNext(tvShows[indexPath.row].id)
             
         case .discoverWallpaper:
-            viewModel.gotoDiscoverWallpaper()
+            gotoDiscoveryTrigger.onNext(())
             
         default:
             break
@@ -199,28 +199,25 @@ extension TVViewController: HeaderCellDelegate {
     func didSelectedSeeAllTV(section: TVSectionType) {
         switch section {
         case .headerCategory:
-            viewModel.gotoCategory()
+            gotoCategoryTrigger.onNext(())
             
         case .headerPopular(let title):
-            viewModel.gotoTVList(with: title,
-                                 type: .popular,
-                                 list: viewModel.getPopularList(),
-                                 categories: viewModel.getCategories())
+            gotoTVListTrigger.onNext((title: title,
+                                      type: .popular,
+                                      tvShows: viewModel.getPopularList()))
 
         case .headerOnAir(let title):
-            viewModel.gotoTVList(with: title,
-                                 type: .onAir,
-                                 list: viewModel.getOnAirList(),
-                                 categories: viewModel.getCategories())
+            gotoTVListTrigger.onNext((title: title,
+                                      type: .onAir,
+                                      tvShows: viewModel.getOnAirList()))
             
         case .headerToprate(let title):
-            viewModel.gotoTVList(with: title,
-                                 type: .topRate,
-                                 list: viewModel.getToprateList(),
-                                 categories: viewModel.getCategories())
+            gotoTVListTrigger.onNext((title: title,
+                                      type: .topRate,
+                                      tvShows: viewModel.getToprateList()))
             
         case .headerActor(let title):
-            viewModel.gotoActorList(with: title)
+            gotoActorListTrigger.onNext(title)
             
         default:
             break
@@ -230,28 +227,26 @@ extension TVViewController: HeaderCellDelegate {
 
 extension TVViewController: TopHorizontalCellDelegate {
     func didSelectTV(with id: Int) {
-        viewModel.showTVDetail(with: id)
+        selectedTVTrigger.onNext(id)
     }
 }
 
 extension TVViewController: NewHorizontallCellDelegate, ComingHorizontalCellDelegate {
-    func selectedMovie(_ id: Int) {
-        
-    }
+    func selectedMovie(_ id: Int) {}
     
     func selectedTV(_ id: Int) {
-        viewModel.showTVDetail(with: id)
+        selectedTVTrigger.onNext(id)
     }
 }
 
 extension TVViewController: ActorHorizontallCellDelegate {
     func didSelectedActor(id: Int) {
-        viewModel.showActorDetail(with: id)
+        selectedActorTrigger.onNext(id)
     }
 }
 
 extension TVViewController: CategoryHorizontalCellDelgate {
     func selectedCategory(selectedIndex: Int, id: Int) {
-        viewModel.gotoCategory(with: selectedIndex, id: id)
+        selectedCategoryTrigger.onNext((selectedIndex, id))
     }
 }

@@ -105,6 +105,7 @@ class MovieDetailViewModel: ViewModelType {
                 self.navigator.gotoWatchScreen(posterPath: self.movieDetailInfo.poster_path ?? .empty,
                                                linkContainerInfo: linkInfo)
             }
+            .retry()
             .mapToVoid()
         
         return .init(loadingEvent: loading.asObservable(),

@@ -7,6 +7,8 @@
 
 import UIKit
 import RxGesture
+import RxSwift
+import RxCocoa
 
 class TVViewController: BaseViewController<TVViewModel> {
 
@@ -27,16 +29,21 @@ class TVViewController: BaseViewController<TVViewModel> {
     let ActorHorizontallCellIdentity: String = "ActorHorizontallCell"
     let DiscoverWallpaperCellIdentity: String = "DiscoverWallpaperCell"
     
+    let selectedActorTrigger = PublishSubject<Int>()
+    let selectedTVTrigger = PublishSubject<Int>()
+    let gotoSearchTrigger = PublishSubject<Void>()
+    let gotoDiscoveryTrigger = PublishSubject<Void>()
+    let gotoCategoryTrigger = PublishSubject<Void>()
+    let selectedCategoryTrigger = PublishSubject<(selectedIndex: Int, categoryID: Int)>()
+    let gotoTVListTrigger = PublishSubject<(title: String, type: TVShowType, tvShows: [TVShowInfo])>()
+    let gotoActorListTrigger = PublishSubject<String>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
-        
-        viewModel.getAllData {
-            self.tableView.reloadData()
-        }
-        
         bindAction()
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,8 +87,51 @@ class TVViewController: BaseViewController<TVViewModel> {
             .tapGesture()
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
-                self?.viewModel.gotoSearch()
+                self?.gotoSearchTrigger.onNext(())
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func bindViewModel() {
+        let input = TVViewModel.Input(selectedActorTrigger: selectedActorTrigger.asObserver(),
+                                      selectedTVShowTrigger: selectedTVTrigger.asObserver(),
+                                      gotoSearchTrigger: gotoSearchTrigger.asObserver(),
+                                      gotoDiscoveryWallPaperTrigger: gotoDiscoveryTrigger.asObserver(),
+                                      gotoCategoryTrigger: gotoCategoryTrigger.asObserver(),
+                                      selectedCategoryTrigger: selectedCategoryTrigger.asObserver(),
+                                      gotoTVListTrigger: gotoTVListTrigger.asObserver(),
+                                      gotoActorListTrigger: gotoActorListTrigger.asObserver())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.loadingEvent
+            .drive { isLoading in
+                isLoading ? LoadingView.shared.startLoading() : LoadingView.shared.endLoading()
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorEvent
+            .drive (onNext: {[weak self] error in
+                guard let self = self else { return }
+                self.showAlert(msg: error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+        
+        output.getDataEvent
+            .drive { [weak self] _ in
+                guard let self = self else { return }
+                self.tableView.reloadData()
+            }
+            .disposed(by: disposeBag)
+        
+        [output.selectedActorEvent,
+         output.selectedTVShowEvent,
+         output.gotoSearchEvent,
+         output.gotoDiscoveryWallPaperEvent,
+         output.gotoCategoryEvent,
+         output.selectedCategoryEvent,
+         output.gotoTVListEvent,
+         output.gotoActorListEvent]
+            .forEach({ $0.drive().disposed(by: disposeBag) })
     }
 }
