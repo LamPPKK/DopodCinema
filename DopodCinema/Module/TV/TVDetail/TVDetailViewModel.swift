@@ -6,17 +6,22 @@
 //
 
 import Foundation
-import UIKit
+import RxSwift
+import RxCocoa
 
-class TVDetailViewModel {
+class TVDetailViewModel: ViewModelType {
     
     // MARK: - Properties
     private var navigator: TVDetailNavigator
     private var tvDetailInfo: TVShowDetailInfo
+    private var services: TVServices
     
-    init(navigator: TVDetailNavigator, tvDetailInfo: TVShowDetailInfo) {
+    init(navigator: TVDetailNavigator,
+         services: TVServices = TVClient(),
+         tvDetailInfo: TVShowDetailInfo) {
         self.navigator = navigator
         self.tvDetailInfo = tvDetailInfo
+        self.services = services
     }
     
     func getTVDetailInfo() -> TVShowDetailInfo {
@@ -61,53 +66,101 @@ class TVDetailViewModel {
         UserDataDefaults.shared.setListTV(list)
     }
     
-    func gotoTrailerScreen() {
-        self.navigator.gotoTrailerScreen(with: tvDetailInfo.videos.results)
-    }
-    
-    func gotoScreenShot(at selectedIndex: Int) {
-        self.navigator.gotoScreenShots(with: selectedIndex, images: tvDetailInfo.images.posters)
-    }
-    
-    func gotoYoutubeScreen(_ key: String) {
-        navigator.gotoYoutubeScreen(key)
-    }
-    
-    func gotoActorDetail(_ id: Int) {
-        LoadingView.shared.startLoading()
+    func transform(input: Input) -> Output {
+        let loading = ActivityIndicator()
+        let error = ErrorTracker()
         
-        API.shared.getActorDetail(with: id) { [weak self] actorDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.gotoActorDetail(actorDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
-    }
-    
-    func gotoTVDetail(_ id: Int) {
-        LoadingView.shared.startLoading()
-        
-        API.shared.getTVShowDetail(with: id) { [weak self] tvShowDetail in
-            guard let self = self else { return }
-            
-            self.navigator.start(tvShowDetail)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-            if let topVC = UIApplication.getTopViewController() {
-                topVC.showAlert(with: "Notification", msg: "The resource you requested could not be found.")
+        let gotoTrailerEvent = input.gotoTrailerTrigger
+            .do { [weak self] _ in
+                guard let self = self else { return }
+                self.navigator.gotoTrailerScreen(with: self.tvDetailInfo.videos.results)
             }
-        }
+        
+        let gotoScreenShotEvent = input.gotoScreenShotTrigger
+            .do { [weak self] selectedIndex in
+                guard let self = self else { return }
+                self.navigator.gotoScreenShots(with: selectedIndex, images: self.tvDetailInfo.images.posters)
+            }
+            .mapToVoid()
+        
+        let gotoYoutubeTrigger = input.gotoYoutubeTrigger
+            .do { [weak self] key in
+                guard let self = self else { return }
+                self.navigator.gotoYoutubeScreen(key)
+            }
+            .mapToVoid()
+        
+        let gotoActorDetailEvent = input.gotoActorDetailTrigger
+            .flatMap { idActor in
+                self.services.getActorDetail(idActor)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do { [weak self] actorDetailInfo in
+                guard let self = self else { return }
+                self.navigator.gotoActorDetail(actorDetailInfo)
+            }
+            .mapToVoid()
+                
+        let gotoTVDetailEvent = input.gotoTVDetailTrigger
+            .flatMap { idTVShow in
+                self.services.getTVShowDetail(idTVShow)
+                    .trackActivity(loading)
+                    .trackError(error)
+            }
+            .do { [weak self] tvDetailInfo in
+                guard let self = self else { return }
+                self.navigator.start(tvDetailInfo)
+            }
+            .mapToVoid()
+        
+        let showFullEpiscodeEvent = input.showFullEpiscodeTrigger
+            .do { [weak self] linkInfo in
+                guard let self = self else { return }
+                self.navigator.gotoWatchScreen(posterPath: self.tvDetailInfo.poster_path ?? .empty,
+                                               linkContainerInfo: linkInfo)
+            }
+            .mapToVoid()
+        
+        let gotoEpisodeOverViewEvent = input.gotoEpisodeOverViewTrigger
+            .do { [weak self] episcodeInfo in
+                guard let self = self else { return }
+                self.navigator.gotoEpisodeOverView(episcodeInfo)
+            }
+            .mapToVoid()
+        
+        return .init(loadingEvent: loading.asDriver(),
+                     allErrorEvent: error.asDriver(),
+                     gotoTrailerEvent: gotoTrailerEvent.asDriverOnErrorJustComplete(),
+                     gotoScreenShotEvent: gotoScreenShotEvent.asDriverOnErrorJustComplete(),
+                     gotoYoutubeEvent: gotoYoutubeTrigger.asDriverOnErrorJustComplete(),
+                     gotoActorDetailEvent: gotoActorDetailEvent.asDriverOnErrorJustComplete(),
+                     gotoTVDetailEvent: gotoTVDetailEvent.asDriverOnErrorJustComplete(),
+                     showFullEpiscodeEvent: showFullEpiscodeEvent.asDriverOnErrorJustComplete(),
+                     gotoEpisodeOverViewEvent: gotoEpisodeOverViewEvent.asDriverOnErrorJustComplete())
+    }
+}
+
+extension TVDetailViewModel {
+    struct Input {
+        let gotoTrailerTrigger: Observable<Void>
+        let gotoScreenShotTrigger: Observable<Int>
+        let gotoYoutubeTrigger: Observable<String>
+        let gotoActorDetailTrigger: Observable<Int>
+        let gotoTVDetailTrigger: Observable<Int>
+        let showFullEpiscodeTrigger: Observable<LinkContainerInfo>
+        let gotoEpisodeOverViewTrigger: Observable<EpiscodeInfo>
     }
     
-    func showFullEpisode(_ linkInfo: LinkContainerInfo) {
-        navigator.gotoWatchScreen(posterPath: tvDetailInfo.poster_path ?? .empty,
-                                  linkContainerInfo: linkInfo)
-    }
-    
-    func showEpisodeOverView(_ episcodeInfo: EpiscodeInfo) {
-        navigator.gotoEpisodeOverView(episcodeInfo)
+    struct Output {
+        let loadingEvent: Driver<Bool>
+        let allErrorEvent: Driver<Error>
+        let gotoTrailerEvent: Driver<Void>
+        let gotoScreenShotEvent: Driver<Void>
+        let gotoYoutubeEvent: Driver<Void>
+        let gotoActorDetailEvent: Driver<Void>
+        let gotoTVDetailEvent: Driver<Void>
+        let showFullEpiscodeEvent: Driver<Void>
+        let gotoEpisodeOverViewEvent: Driver<Void>
     }
 }

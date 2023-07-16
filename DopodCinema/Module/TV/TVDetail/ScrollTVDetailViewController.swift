@@ -7,6 +7,8 @@
 
 import UIKit
 import MXParallaxHeader
+import RxSwift
+import RxCocoa
 
 class ScrollTVDetailViewController: MXScrollViewController {
 
@@ -15,10 +17,20 @@ class ScrollTVDetailViewController: MXScrollViewController {
     private var tvDetailViewController: TVDetailViewController!
     private var tvDetailPagerVC: TVDetailContentViewController!
     
+    private let disposeBag = DisposeBag()
+    private let gotoTrailerTrigger = PublishSubject<Void>()
+    private let gotoScreenShotTrigger = PublishSubject<Int>()
+    private let gotoYoutubeTrigger = PublishSubject<String>()
+    private let gotoActorDetailTrigger = PublishSubject<Int>()
+    private let gotoTVShowDetailTrigger = PublishSubject<Int>()
+    private let showFullEpiscodeTrigger = PublishSubject<LinkContainerInfo>()
+    private let gotoEpisodeOverViewTrigger = PublishSubject<EpiscodeInfo>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupScreen()
+        bindViewModel()
     }
     
     // MARK: - Private functions
@@ -34,34 +46,70 @@ class ScrollTVDetailViewController: MXScrollViewController {
         tvDetailPagerVC.tvDetailInfo = viewModel.getTVDetailInfo()
         childViewController = tvDetailPagerVC
     }
+    
+    private func bindViewModel() {
+        let input = TVDetailViewModel.Input(gotoTrailerTrigger: gotoTrailerTrigger.asObserver(),
+                                            gotoScreenShotTrigger: gotoScreenShotTrigger.asObserver(),
+                                            gotoYoutubeTrigger: gotoYoutubeTrigger.asObserver(),
+                                            gotoActorDetailTrigger: gotoActorDetailTrigger.asObserver(),
+                                            gotoTVDetailTrigger: gotoTVShowDetailTrigger.asObserver(),
+                                            showFullEpiscodeTrigger: showFullEpiscodeTrigger.asObserver(),
+                                            gotoEpisodeOverViewTrigger: gotoEpisodeOverViewTrigger.asObserver())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.loadingEvent
+            .drive { isLoading in
+                isLoading ? LoadingView.shared.startLoading() : LoadingView.shared.endLoading()
+            }
+            .disposed(by: disposeBag)
+        
+        output.allErrorEvent
+            .drive { [weak self] _ in
+                guard let self = self else { return }
+                self.showAlert(with: "Notification",
+                               msg: "The resource you requested could not be found.")
+            }
+            .disposed(by: disposeBag)
+            
+        
+        [output.gotoScreenShotEvent,
+         output.gotoTrailerEvent,
+         output.gotoYoutubeEvent,
+         output.gotoActorDetailEvent,
+         output.gotoTVDetailEvent,
+         output.showFullEpiscodeEvent,
+         output.gotoEpisodeOverViewEvent]
+            .forEach({ $0.drive().disposed(by: disposeBag) })
+    }
 }
 
 extension ScrollTVDetailViewController: TVDetailContentViewControllerDelegate, TVDetailViewControllerDelegate {
     func gotoYoutubeScreen(_ key: String) {
-        viewModel.gotoYoutubeScreen(key)
+        gotoYoutubeTrigger.onNext(key)
     }
     
     func gotoScreenShot(_ index: Int) {
-        viewModel.gotoScreenShot(at: index)
+        gotoScreenShotTrigger.onNext(index)
     }
     
     func gotoActorDetailScreen(_ id: Int) {
-        viewModel.gotoActorDetail(id)
+        gotoActorDetailTrigger.onNext(id)
     }
     
     func gotoTVDetailScreen(_ id: Int) {
-        viewModel.gotoTVDetail(id)
+        gotoTVShowDetailTrigger.onNext(id)
     }
     
     func gotoTrailerScreen() {
-        viewModel.gotoTrailerScreen()
+        gotoTrailerTrigger.onNext(())
     }
     
     func showFullEpisode(_ linkInfo: LinkContainerInfo) {
-        viewModel.showFullEpisode(linkInfo)
+        showFullEpiscodeTrigger.onNext(linkInfo)
     }
     
     func showEpisodeOverView(_ episcodeInfo: EpiscodeInfo) {
-        viewModel.showEpisodeOverView(episcodeInfo)
+        gotoEpisodeOverViewTrigger.onNext(episcodeInfo)
     }
 }
