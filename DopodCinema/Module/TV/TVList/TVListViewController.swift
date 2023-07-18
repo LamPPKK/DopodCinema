@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TVListViewController: BaseViewController<TVListViewModel> {
 
@@ -16,12 +18,19 @@ class TVListViewController: BaseViewController<TVListViewModel> {
     
     // MARK: - Properties
     private let ComingCellIdentity: String = "ComingCell"
-    private var page: Int = 2
+    private let loadDataTrigger = PublishSubject<Int>()
+    private let loadMoreTrigger = PublishSubject<Int>()
+    private let selectedTVDetailTrigger = PublishSubject<Int>()
+    private var tvShows = [TVShowInfo]()
+    private var page: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
+        bindViewModel()
+        
+        loadDataTrigger.onNext(page)
     }
     
     // MARK: - Private functions
@@ -40,16 +49,50 @@ class TVListViewController: BaseViewController<TVListViewModel> {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    private func bindViewModel() {
+        let input = TVListViewModel.Input(loadDataTrigger: loadDataTrigger.asObserver(),
+                                          loadMoreTrigger: loadMoreTrigger.asObserver(),
+                                          selectedTVDetailTrigger: selectedTVDetailTrigger.asObserver())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.loadingEvent
+            .drive { isLoading in
+                isLoading ? LoadingView.shared.startLoading() : LoadingView.shared.endLoading()
+            }
+            .disposed(by: disposeBag)
+        
+        output.errorEvent
+            .drive(onNext: { [weak self] error in
+                guard let self = self else { return }
+                self.showAlert(msg: error.localizedDescription)
+            })
+            .disposed(by: disposeBag)
+        
+        output.getDataEvent
+            .drive(onNext: { [weak self] tvShows in
+                guard let self = self else { return }
+                if !tvShows.isEmpty {
+                    self.page += 1
+                    self.tvShows.append(contentsOf: tvShows)
+                    self.collectionView.reloadData()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        output.selectedTVDetailEvent.drive().disposed(by: disposeBag)
+    }
 }
 
 extension TVListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.getTVList().count
+        return tvShows.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ComingCellIdentity, for: indexPath) as! ComingCell
-        let tv = viewModel.getTVList()[indexPath.row]
+        let tv = tvShows[indexPath.row]
         cell.bindData(tv, genres: viewModel.getCategories())
         return cell
     }
@@ -57,11 +100,11 @@ extension TVListViewController: UICollectionViewDataSource {
 
 extension TVListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel.gotoTVDetail(with: viewModel.getTVList()[indexPath.row].id)
+        selectedTVDetailTrigger.onNext(tvShows[indexPath.row].id)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == viewModel.getTVList().count - 1 {
+        if indexPath.row == tvShows.count - 1 {
             loadingView.startAnimating()
             loadingView.isHidden = false
             loadMoreData(at: page)
@@ -72,12 +115,7 @@ extension TVListViewController: UICollectionViewDelegate {
     }
     
     private func loadMoreData(at page: Int) {
-        viewModel.loadMore(at: page) { [weak self] isSucceeded in
-            if isSucceeded {
-                self?.collectionView.reloadData()
-                self?.page += 1
-            }
-        }
+        loadMoreTrigger.onNext(page)
     }
 }
 

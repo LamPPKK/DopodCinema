@@ -44,19 +44,6 @@ class MovieListViewModel: ViewModelType {
         self.categories
     }
     
-    func gotoMovieDetail(with id: Int) {
-        LoadingView.shared.startLoading()
-        
-        API.shared.getMovieDetail(with: id) { [weak self] movieDetailInfo in
-            guard let self = self else { return }
-            
-            self.navigator.gotoMovieDetail(movieDetailInfo)
-            LoadingView.shared.endLoading()
-        } error: { error in
-            LoadingView.shared.endLoading()
-        }
-    }
-    
     func transform(input: Input) -> Output {
         let loading = ActivityIndicator()
         let error = ErrorTracker()
