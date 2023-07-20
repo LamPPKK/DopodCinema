@@ -8,7 +8,6 @@
 import UIKit
 
 protocol TrailerNavigator {
-    func start(with list: [VideoInfo])
     func gotoYoutubeScreen(_ key: String)
 }
 
@@ -20,15 +19,10 @@ class DefaultTrailerNavigator: TrailerNavigator {
         self.navigationController = navigationController
     }
     
-    func start(with list: [VideoInfo]) {
-        let trailerViewController = TrailerViewController(nibName: "TrailerViewController", bundle: nil)
-        trailerViewController.viewModel = TrailerViewModel(listTrailer: list, navigator: self)
-        navigationController.pushViewController(trailerViewController, animated: true)
-    }
-    
     func gotoYoutubeScreen(_ key: String) {
         let youtubeScreen = YoutubeViewController(key: key)
         youtubeScreen.viewModel = BaseViewModel()
         navigationController.pushViewController(youtubeScreen, animated: true)
     }
 }
+

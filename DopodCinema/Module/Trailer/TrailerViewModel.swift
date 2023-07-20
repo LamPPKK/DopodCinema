@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
-class TrailerViewModel {
+class TrailerViewModel: ViewModelType {
     // MARK: - Properties
     private var listTrailer: [VideoInfo]
     private var navigator: TrailerNavigator
@@ -18,11 +20,34 @@ class TrailerViewModel {
         self.navigator = navigator
     }
     
-    func getListTrailer() -> [VideoInfo] {
-        self.listTrailer
-    }
-    
-    func gotoYoutubeScreen(_ key: String) {
-        self.navigator.gotoYoutubeScreen(key)
+    func transform(input: Input) -> Output {
+        let getDataEvent = input.getDataTrigger
+            .flatMapLatest { [weak self] _ in
+                guard let self = self else { return Driver<[VideoInfo]>.empty() }
+                return Driver.just(self.listTrailer)
+            }
+        
+        let gotoYoutubeEvent = input.gotoYoutubeTrigger
+            .do { [weak self] key in
+                guard let self = self else { return }
+                self.navigator.gotoYoutubeScreen(key)
+            }
+            .mapToVoid()
+        
+        return .init(getDataEvent: getDataEvent.asDriverOnErrorJustComplete(),
+                     gotoYoutubeEvent: gotoYoutubeEvent.asDriverOnErrorJustComplete())
     }
 }
+
+extension TrailerViewModel {
+    struct Input {
+        let getDataTrigger: Observable<Void>
+        let gotoYoutubeTrigger: Observable<String>
+    }
+    
+    struct Output {
+        let getDataEvent: Driver<[VideoInfo]>
+        let gotoYoutubeEvent: Driver<Void>
+    }
+}
+

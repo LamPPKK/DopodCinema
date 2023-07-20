@@ -40,7 +40,9 @@ class DefaultTVDetailNavigator: TVDetailNavigator {
     
     func gotoTrailerScreen(with list: [VideoInfo]) {
         let navigator = DefaultTrailerNavigator(navigationController: self.navigationController)
-        navigator.start(with: list)
+        let trailerViewController = TrailerViewController(nibName: "TrailerViewController", bundle: nil)
+        trailerViewController.viewModel = TrailerViewModel(listTrailer: list, navigator: navigator)
+        navigationController.pushViewController(trailerViewController, animated: true)
     }
     
     func gotoScreenShots(with selectedIndex: Int, images: [ImageInfo]) {
