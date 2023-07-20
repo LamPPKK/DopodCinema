@@ -27,11 +27,15 @@ class SettingViewController: BaseViewController<SettingViewModel> {
     @IBOutlet private weak var shareLabel: UILabel!
     @IBOutlet private weak var aboutAppLabel: UILabel!
     
+    private let gotoPrivacyPolicyTrigger = PublishSubject<(title: String, url: String)>()
+    private let gotoShareAppTrigger = PublishSubject<Void>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupUI()
         setAction()
+        bindViewModel()
     }
     
     // MARK: - Private functions
@@ -75,8 +79,7 @@ class SettingViewController: BaseViewController<SettingViewModel> {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                
-                self.tapToPolicy()
+                self.gotoPrivacyPolicyTrigger.onNext((title: "Privacy Policy", url: Constant.Setting.URL_POLICY))
             })
             .disposed(by: disposeBag)
         
@@ -97,10 +100,26 @@ class SettingViewController: BaseViewController<SettingViewModel> {
             .when(.recognized)
             .subscribe(onNext: { [weak self] _ in
                 guard let self = self else { return }
-                
-                self.tapToShareApp()
+                self.gotoShareAppTrigger.onNext(())
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func bindViewModel() {
+        let input = SettingViewModel.Input(gotoPrivacyPolicyTrigger: gotoPrivacyPolicyTrigger.asObserver(),
+                                           gotoShareAppTrigger: gotoShareAppTrigger.asObserver())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.gotoShareAppEvent
+            .drive { [weak self] urlShareApp in
+                guard let self = self else { return }
+                self.handleShareApp(urlShareApp)
+            }
+            .disposed(by: disposeBag)
+        
+        [output.gotoPrivacyPolicyEvent]
+            .forEach({ $0.drive().disposed(by: disposeBag) })
     }
     
     // MARK: - Action
@@ -121,12 +140,8 @@ class SettingViewController: BaseViewController<SettingViewModel> {
 
     }
     
-    private func tapToPolicy() {
-        
-    }
-    
-    private func tapToShareApp() {
-        if let urlStr = NSURL(string: "https://itunes.apple.com/us/app/myapp/id\(Constant.Setting.MY_APP_ID)?ls=1&mt=8") {
+    private func handleShareApp(_ url: String) {
+        if let urlStr = NSURL(string: url) {
             let objectsToShare = [urlStr]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
             

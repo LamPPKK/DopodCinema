@@ -107,6 +107,7 @@
 		994A8ED529F6C2280052143A /* WebViewScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 994A8ED329F6C2280052143A /* WebViewScreen.xib */; };
 		994A8ED629F6C2280052143A /* WebViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994A8ED429F6C2280052143A /* WebViewScreen.swift */; };
 		994A8ED829F6C2B00052143A /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994A8ED729F6C2B00052143A /* WebViewModel.swift */; };
+		994C71D72A6982DA008C9138 /* SettingNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994C71D62A6982DA008C9138 /* SettingNavigator.swift */; };
 		9956659B299D28270068B78F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9956659A299D28270068B78F /* Network.swift */; };
 		995B265E29CE7F0C0020C584 /* FavoriteActorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */; };
 		995B265F29CE7F0C0020C584 /* FavoriteActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */; };
@@ -364,6 +365,7 @@
 		994A8ED329F6C2280052143A /* WebViewScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewScreen.xib; sourceTree = "<group>"; };
 		994A8ED429F6C2280052143A /* WebViewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewScreen.swift; sourceTree = "<group>"; };
 		994A8ED729F6C2B00052143A /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		994C71D62A6982DA008C9138 /* SettingNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNavigator.swift; sourceTree = "<group>"; };
 		9956659A299D28270068B78F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		995B265C29CE7F0C0020C584 /* FavoriteActorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteActorViewController.swift; sourceTree = "<group>"; };
 		995B265D29CE7F0C0020C584 /* FavoriteActorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteActorViewController.xib; sourceTree = "<group>"; };
@@ -707,19 +709,12 @@
 		993EA1A329A1F99F00C5470B /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				993EA1A429A1F9B400C5470B /* ViewModel */,
+				993EA1A529A1F9C500C5470B /* SettingViewModel.swift */,
 				993EA19F29A1F99500C5470B /* SettingViewController.swift */,
 				993EA1A029A1F99500C5470B /* SettingViewController.xib */,
+				994C71D62A6982DA008C9138 /* SettingNavigator.swift */,
 			);
 			path = Setting;
-			sourceTree = "<group>";
-		};
-		993EA1A429A1F9B400C5470B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				993EA1A529A1F9C500C5470B /* SettingViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9940829329C20FD200B44A8E /* Search */ = {
@@ -1618,6 +1613,7 @@
 				99BACD7729954A0300762A3E /* ShowTimeViewController.swift in Sources */,
 				99313258299B904900AA9E2C /* CategoryCell.swift in Sources */,
 				9944483829B8D34100BB7380 /* TVDetailViewModel.swift in Sources */,
+				994C71D72A6982DA008C9138 /* SettingNavigator.swift in Sources */,
 				99DA604529C0CC4E00164F0A /* ActorListViewModel.swift in Sources */,
 				998B53E829B340C800822525 /* TVShowNavigator.swift in Sources */,
 				997B47D42A3EB5D900C7DB6A /* DiscoverCheckoutCell.swift in Sources */,

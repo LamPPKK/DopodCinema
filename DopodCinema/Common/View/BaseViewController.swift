@@ -110,8 +110,9 @@ class BaseViewController<ViewModel>: UIViewController, BaseHeaderSubViewDelegate
 extension BaseViewController: BaseHeaderViewDelegate {
     
     func didMoveToSetting() {
+        let navigator = DefaultSettingNavigator(navigationController: self.navigationController ?? UINavigationController())
         let settingViewController = SettingViewController(nibName: "SettingViewController", bundle: nil)
-        settingViewController.viewModel = SettingViewModel()
+        settingViewController.viewModel = SettingViewModel(navigator: navigator)
         settingViewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(settingViewController, animated: true)
     }

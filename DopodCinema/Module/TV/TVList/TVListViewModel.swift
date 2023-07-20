@@ -54,7 +54,7 @@ class TVListViewModel: ViewModelType {
                                        input.loadMoreTrigger)
         
         let getDataEvent = getDataTrigger
-            .flatMapLatest({ pageIndex in
+            .flatMapLatest { pageIndex in
                 switch self.type {
                 case .popular:
                     return self.services.getTVShowsPopular(at: pageIndex)
@@ -71,7 +71,7 @@ class TVListViewModel: ViewModelType {
                         .trackActivity(loading)
                         .trackError(error)
                 }
-            })
+            }
             .map {
                 $0.results
             }
