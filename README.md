@@ -17,7 +17,7 @@ You need to use the software and how to install them.
 
 1. Clone the repo
    ```sh
-   git clone https://gitlab.com/lnthe54/dopodcinema.git
+   git clone https://github.com/lnthe54/DopodCinema.git
    ```
 2. Install PodFile
    ```sh
